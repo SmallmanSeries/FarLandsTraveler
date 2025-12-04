@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "com.smallmanseries.farlandstraveler.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "border.EntityMixin",
+    "border.LevelMixin",
+    "border.PlayerMixin",
+    "border.ServerGamePacketListenerImplMixin",
+    "border.WorldBorderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "border.WorldBorderRendererMixin"
+  ]
+}
