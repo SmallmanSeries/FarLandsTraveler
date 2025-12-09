@@ -13,42 +13,42 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(WorldBorder.class)
 public abstract class WorldBorderMixin {
-    //使世界边界碰撞检测失效
-    @Inject(at = @At("HEAD"), method = "isWithinBounds(Lnet/minecraft/core/BlockPos;)Z",cancellable = true)
+    // 使世界边界碰撞检测失效
+    @Inject(method = "isWithinBounds(Lnet/minecraft/core/BlockPos;)Z", at = @At("HEAD"), cancellable = true)
     public void isWithinBounds(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
-    @Inject(at = @At("HEAD"), method = "isWithinBounds(Lnet/minecraft/world/level/ChunkPos;)Z",cancellable = true)
+    @Inject(method = "isWithinBounds(Lnet/minecraft/world/level/ChunkPos;)Z", at = @At("HEAD"), cancellable = true)
     public void isWithinBounds(ChunkPos pos, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
-    @Inject(at = @At("HEAD"), method = "isWithinBounds(Lnet/minecraft/world/phys/Vec3;)Z",cancellable = true)
+    @Inject(method = "isWithinBounds(Lnet/minecraft/world/phys/Vec3;)Z", at = @At("HEAD"), cancellable = true)
     public void isWithinBounds(Vec3 pos, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
-    @Inject(at = @At("HEAD"), method = "isWithinBounds(Lnet/minecraft/world/phys/AABB;)Z",cancellable = true)
+    @Inject(method = "isWithinBounds(Lnet/minecraft/world/phys/AABB;)Z", at = @At("HEAD"), cancellable = true)
     public void isWithinBounds(AABB box, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
-    @Inject(at = @At("HEAD"), method = "isWithinBounds(DD)Z",cancellable = true)
+    @Inject(method = "isWithinBounds(DD)Z", at = @At("HEAD"), cancellable = true)
     public void isWithinBounds(double x, double z, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
-    @Inject(at = @At("HEAD"), method = "isWithinBounds(DDD)Z",cancellable = true)
+    @Inject(method = "isWithinBounds(DDD)Z", at = @At("HEAD"), cancellable = true)
     public void isWithinBounds(double x, double z, double offset, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
-    @Inject(at = @At("HEAD"), method = "isWithinBounds(DDDD)Z",cancellable = true)
+    @Inject(method = "isWithinBounds(DDDD)Z", at = @At("HEAD"), cancellable = true)
     public void isWithinBounds(double x1, double z1, double x2, double z2, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
 
-    //使世界边界警告、扣血机制失效
-    @Inject(at = @At("RETURN"), method = "getDistanceToBorder(Lnet/minecraft/world/entity/Entity;)D",cancellable = true)
+    // 使世界边界警告、扣血机制失效
+    @Inject(method = "getDistanceToBorder(Lnet/minecraft/world/entity/Entity;)D", at = @At("RETURN"), cancellable = true)
     public void getDistanceToBorder(Entity entity, CallbackInfoReturnable<Double> cir) {
         cir.setReturnValue(Double.MAX_VALUE);
     }
-    @Inject(at = @At("RETURN"), method = "getDistanceToBorder(DD)D",cancellable = true)
+    @Inject(method = "getDistanceToBorder(DD)D", at = @At("RETURN"), cancellable = true)
     public void getDistanceToBorder(double x, double z, CallbackInfoReturnable<Double> cir) {
         cir.setReturnValue(Double.MAX_VALUE);
     }

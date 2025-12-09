@@ -9,9 +9,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WorldBorderRenderer.class)
-public class WorldBorderRendererMixin {
-    //取消世界边界渲染
-    @Inject(at = @At("HEAD"), method = "render",cancellable = true)
+public abstract class WorldBorderRendererMixin {
+    // 取消世界边界渲染
+    @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     private void render(WorldBorder worldBorder, Vec3 cameraPosition, double renderDistance, double farPlaneDepth, CallbackInfo ci) {
         ci.cancel();
     }
