@@ -18,6 +18,6 @@ public class FarLandsTravelerClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        FarLandsTraveler.LOGGER.info("Far Lands Travelers, set off!"); //边境旅者，启程！
+        //FarLandsTraveler.LOGGER.info("Far Lands Travelers, set off!");
     }
 }

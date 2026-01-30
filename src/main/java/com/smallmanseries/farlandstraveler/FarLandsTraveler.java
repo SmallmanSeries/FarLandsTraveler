@@ -26,7 +26,6 @@ public class FarLandsTraveler {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        LOGGER.info("Far Lands Travelers, gather!"); // 边境旅者，集结！
-
+        //LOGGER.info("Far Lands Travelers, gather!");
     }
 }
