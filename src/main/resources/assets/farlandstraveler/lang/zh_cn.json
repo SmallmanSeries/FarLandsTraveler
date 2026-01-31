@@ -1,4 +1,12 @@
 {
   "aaa" : "啊啊啊",
-  "bbb" : "一个小人掉下来了！！！！！！！！！！！！！！！！！！！！！！！！！！！"
+  "bbb" : "一个小人掉下来了！！！！！！！！！！！！！！！！！！！！！！！！！！！",
+
+  "itemGroup.farlandstraveler.flt_blocks": "边境旅者：方块",
+  "itemGroup.farlandstraveler.flt_items": "边境旅者：物品",
+
+  "block.farlandstraveler.asd" : "asd",
+
+  "item.farlandstraveler.qwe" : "qwe",
+  "item.farlandstraveler.all" : "all"
 }
