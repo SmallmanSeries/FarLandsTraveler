@@ -1,18 +1,10 @@
 package com.smallmanseries.farlandstraveler;
 
 import com.mojang.logging.LogUtils;
-import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
-import com.smallmanseries.farlandstraveler.common.item.FLTItems;
-import com.smallmanseries.farlandstraveler.common.misc.FLTCreativeTabs;
-import com.smallmanseries.farlandstraveler.common.worldgen.farlands.DataRegisterFarLands;
-import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import org.slf4j.Logger;
 
 @Mod(FarLandsTraveler.MODID)

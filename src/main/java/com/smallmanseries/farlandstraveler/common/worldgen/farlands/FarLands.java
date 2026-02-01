@@ -2,10 +2,15 @@ package com.smallmanseries.farlandstraveler.common.worldgen.farlands;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.smallmanseries.farlandstraveler.common.DataRegister;
 import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.biome.BiomeSource;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.levelgen.NoiseChunk;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
 public record FarLands(
@@ -15,7 +20,6 @@ public record FarLands(
         Holder<NoiseGeneratorSettings> settings,
         BiomeSource biomeSource
 ) {
-    // private static final Codec<Holder<LevelStem>> CODEC_DIM = RegistryFileCodec.create(Registries.LEVEL_STEM, LevelStem.CODEC);
 
     // 编解码器
     /* json文件格式：
@@ -38,10 +42,23 @@ public record FarLands(
     );
 
     // 默认边境之地定义文件
-    public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegisterFarLands.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands")); //边境之地
-    public static final ResourceKey<FarLands> FAR_LANDS_REPEATING = ResourceKey.create(DataRegisterFarLands.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands_repeating")); //循环边境之地
-    public static final ResourceKey<FarLands> FARTHER_LANDS = ResourceKey.create(DataRegisterFarLands.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "farther_lands")); //遥远之地
-    public static final ResourceKey<FarLands> FARTHER_LANDS_LSC = ResourceKey.create(DataRegisterFarLands.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "farther_lands_lsc")); //异光遥远之地（LSC是“Light System has Crashed，光照系统已崩溃"的缩写）
-    public static final ResourceKey<FarLands> FRINGE_LANDS = ResourceKey.create(DataRegisterFarLands.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "fringe_lands")); //边缘之地
-    public static final ResourceKey<FarLands> SEA_OF_END = ResourceKey.create(DataRegisterFarLands.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "sea_of_end")); //终焉之海+条纹之海+切片之海（都是基岩海，很合理）
+    public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands")); //边境之地
+    public static final ResourceKey<FarLands> FAR_LANDS_REPEATING = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands_repeating")); //循环边境之地
+    public static final ResourceKey<FarLands> FARTHER_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "farther_lands")); //遥远之地
+    public static final ResourceKey<FarLands> FARTHER_LANDS_LSC = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "farther_lands_lsc")); //异光遥远之地（LSC是“Light System has Crashed，光照系统已崩溃"的缩写）
+    public static final ResourceKey<FarLands> FRINGE_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "fringe_lands")); //边缘之地
+    public static final ResourceKey<FarLands> SEA_OF_END = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "sea_of_end")); //终焉之海+条纹之海+切片之海（都是基岩海，很合理）
+
+
+    // 获取该区块中生效的边境之地
+    public static FarLands[] getFarLandsInChunk(ChunkPos pos){
+
+        return new FarLands[0];
+    }
+
+
+    public static NoiseChunk[] createNoiseChunks(ChunkAccess chunk) {
+
+        return new NoiseChunk[0];
+    }
 }

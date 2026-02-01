@@ -2,7 +2,7 @@
   "dimension": "minecraft:overworld",
   "iscorner": false,
   "dist": 1000,
-  "settings": "farlandstraveler:test",
+  "settings": "test",
   "biome_source": {
     "type": "fixed",
     "biome": "minecraft:plains"
