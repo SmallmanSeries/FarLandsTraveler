@@ -1,20 +1,5 @@
 package com.smallmanseries.farlandstraveler.common.misc;
 
-import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
-import com.smallmanseries.farlandstraveler.common.item.FLTItems;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
-
 public class FLTCreativeTabs {
     /*
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, FarLandsTraveler.MODID);

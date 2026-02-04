@@ -1,11 +1,5 @@
 package com.smallmanseries.farlandstraveler.common.item;
 
-import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import net.minecraft.world.item.Item;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
 public class FLTItems {
     /*
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(FarLandsTraveler.MODID);

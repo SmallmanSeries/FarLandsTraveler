@@ -1,19 +1,5 @@
 package com.smallmanseries.farlandstraveler.common.block;
 
-import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import com.smallmanseries.farlandstraveler.common.item.FLTItems;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
-
 public class FLTBlocks {
     /*
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(FarLandsTraveler.MODID);
