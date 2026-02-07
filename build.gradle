@@ -28,7 +28,8 @@ neoForge {
         minecraftVersion = project.parchment_minecraft_version
     }
 
-    accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+    // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+    // 暂时不需要这个，改变字段访问权限的
 
 
     runs {

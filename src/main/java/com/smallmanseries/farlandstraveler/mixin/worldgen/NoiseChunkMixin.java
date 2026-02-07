@@ -17,7 +17,7 @@ public abstract class NoiseChunkMixin {
 
     // 如果在对应维度（还没做）且坐标大于指定值时，获取noise settings里的路由器，否则获取random里的（原版一律为random里的）
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/RandomState;router()Lnet/minecraft/world/level/levelgen/NoiseRouter;"))
-    private void modify(int cellCountXZ, RandomState random, int firstNoiseX, int firstNoiseZ, NoiseSettings noiseSettings, DensityFunctions.BeardifierOrMarker beardifier, NoiseGeneratorSettings noiseGeneratorSettings, Aquifer.FluidPicker fluidPicker, Blender blendifier, CallbackInfo ci){
+    private void modifyRandomRouter(int cellCountXZ, RandomState random, int firstNoiseX, int firstNoiseZ, NoiseSettings noiseSettings, DensityFunctions.BeardifierOrMarker beardifier, NoiseGeneratorSettings noiseGeneratorSettings, Aquifer.FluidPicker fluidPicker, Blender blendifier, CallbackInfo ci){
         if((firstNoiseX > 12550824
                 || firstNoiseZ > 12550824
                 || firstNoiseX < -12550824
@@ -30,9 +30,8 @@ public abstract class NoiseChunkMixin {
 
     // 应用路由器
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/RandomState;router()Lnet/minecraft/world/level/levelgen/NoiseRouter;"))
-    private NoiseRouter redirectRandomRouter(RandomState state) {
+    private NoiseRouter applyRandomRouter(RandomState state) {
         return this.router;
     }
-
 
 }
