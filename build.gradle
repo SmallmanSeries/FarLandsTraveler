@@ -28,8 +28,8 @@ neoForge {
         minecraftVersion = project.parchment_minecraft_version
     }
 
-    // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
-    // 这个东西要用到accessTransformers的时候再打开，现在暂时没用
+    accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+
 
     runs {
         client {

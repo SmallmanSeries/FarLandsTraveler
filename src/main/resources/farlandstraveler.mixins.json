@@ -8,7 +8,8 @@
     "border.PlayerMixin",
     "border.ServerGamePacketListenerImplMixin",
     "border.WorldBorderMixin",
-    "worldgen.ChunkMapMixin"
+    "worldgen.ChunkMapMixin",
+    "worldgen.NoiseChunkMixin"
   ],
   "injectors": {
     "defaultRequire": 1
