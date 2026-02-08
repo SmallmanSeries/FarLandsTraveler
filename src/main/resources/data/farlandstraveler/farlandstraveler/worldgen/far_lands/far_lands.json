@@ -1,6 +1,6 @@
 {
   "dimension": "minecraft:overworld",
-  "settings": "farlandstraveler:test",
+  "settings": "farlandstraveler:far_lands",
   "biome_source": {
     "type": "fixed",
     "biome": "minecraft:plains"
