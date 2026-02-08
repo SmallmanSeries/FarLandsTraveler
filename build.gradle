@@ -29,8 +29,7 @@ neoForge {
     }
 
     // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
-    // 暂时不需要这个，改变字段访问权限的
-
+    // 暂时用不上，修改字段访问权限的
 
     runs {
         client {
