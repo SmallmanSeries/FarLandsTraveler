@@ -8,5 +8,18 @@
   "block.farlandstraveler.asd" : "asd",
 
   "item.farlandstraveler.qwe" : "qwe",
-  "item.farlandstraveler.all" : "all"
+  "item.farlandstraveler.all" : "all",
+
+  "farlandstraveler.configuration.remove_world_border" : "Remove world border",
+  "farlandstraveler.configuration.remove_coordinate_limits" : "Remove coordinate limits",
+  "farlandstraveler.configuration.enable_far_lands" : "Enable Far Lands",
+  "farlandstraveler.configuration.far_lands_distance" : "Far Lands Distance",
+
+
+
+  "propernoun.farlandstraveler.farlands" : "The Far Lands",
+  "propernoun.farlandstraveler.fartherlands" : "The Farther Lands",
+  "propernoun.farlandstraveler.fringelands" : "The Fringe Lands",
+  "propernoun.farlandstraveler.distanceeffect" : "Distance Effects",
+  "propernoun.farlandstraveler.grandpillar" : "The Grand Pillars"
 }

@@ -8,5 +8,22 @@
   "block.farlandstraveler.asd" : "asd",
 
   "item.farlandstraveler.qwe" : "qwe",
-  "item.farlandstraveler.all" : "all"
+  "item.farlandstraveler.all" : "all",
+
+  "farlandstraveler.configuration.remove_world_border" : "移除世界边界",
+  "farlandstraveler.configuration.remove_coordinate_limits" : "移除世界界限",
+  "farlandstraveler.configuration.enable_far_lands" : "启用边境之地",
+  "farlandstraveler.configuration.far_lands_distance" : "边境之地距离",
+
+
+
+
+
+
+
+  "propernoun.farlandstraveler.farlands" : "边境之地",
+  "propernoun.farlandstraveler.fartherlands" : "遥远之地",
+  "propernoun.farlandstraveler.fringelands" : "边缘之地",
+  "propernoun.farlandstraveler.distanceeffect" : "距离现象",
+  "propernoun.farlandstraveler.grandpillar" : "擎天巨柱"
 }

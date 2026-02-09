@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.mixin.worldgen;
 
 import com.mojang.datafixers.DataFixer;
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.DataRegister;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.Holder;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.storage.LevelStorageSource;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
@@ -43,6 +45,7 @@ public abstract class ChunkMapMixin {
     @Final
     private RandomState randomState;
 
+    @Unique
     public RandomState randomStateFarLands = this.randomState;
 
     // 计算噪声路由器（不计算会导致生成基岩海）
@@ -85,10 +88,10 @@ public abstract class ChunkMapMixin {
         // 开始替换生成器
         // 边境之地
         if (context.level().dimension() == Level.OVERWORLD &&
-                (chunk.getPos().getMaxBlockX() > 12550824
-                || chunk.getPos().getMaxBlockZ() > 12550824
-                || chunk.getPos().getMinBlockX() < -12550824
-                || chunk.getPos().getMinBlockZ() < -12550824)) {
+                (chunk.getPos().getMaxBlockX() > Config.FAR_LANDS_DISTANCE.getAsInt()
+                || chunk.getPos().getMaxBlockZ() > Config.FAR_LANDS_DISTANCE.getAsInt()
+                || chunk.getPos().getMinBlockX() < -(Config.FAR_LANDS_DISTANCE.getAsInt())
+                || chunk.getPos().getMinBlockZ() < -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
             // 这里需要获取噪声设置，并计算这个噪声设置中的NoiseRouter，不然会生成基岩海
             NoiseGeneratorSettings settings = context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).settings().value();
             NoiseGeneratorSettings settingsMapped = new NoiseGeneratorSettings(

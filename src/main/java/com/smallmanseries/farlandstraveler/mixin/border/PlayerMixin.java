@@ -1,18 +1,19 @@
 package com.smallmanseries.farlandstraveler.mixin.border;
 
+import com.smallmanseries.farlandstraveler.Config;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArgs;
-import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin {
-    // 允许玩家最大到33554431，防止出去后引发ticking player崩溃
-    // 为什么要比33554432小一格？为了保险~
-    @ModifyArgs(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(DDD)D"))
-    private void modifyArgs(Args args){
-        args.set(1, (double) -33554431f);
-        args.set(2, (double) 33554431f);
+    // 允许玩家出界
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(DDD)D"))
+    private double modifyClamp(double value, double min, double max){
+        if(Config.REMOVE_COORDINATE_LIMITS.getAsBoolean()) {
+            return value;
+        }
+        return value < min ? min : Math.min(value, max);
     }
 }
