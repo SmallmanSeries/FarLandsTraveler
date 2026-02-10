@@ -18,7 +18,7 @@ public class FarLandsTraveler {
         /*
         FLTItems.registerItems(modEventBus);
         FLTCreativeTabs.registerCreativeTabs(modEventBus);
-         */
+ */
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 

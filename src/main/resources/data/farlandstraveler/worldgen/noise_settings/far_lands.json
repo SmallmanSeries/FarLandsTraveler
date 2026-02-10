@@ -71,7 +71,7 @@
                           "argument1": 0.078125,
                           "argument2": {
                             "type": "minecraft:range_choice",
-                            "input": "minecraft:overworld/base_3d_noise",
+                            "input": "farlandstraveler:overworld/base_3d_noise_overflowable",
                             "min_inclusive": -100,
                             "max_exclusive": 100,
                             "when_in_range": {
@@ -160,7 +160,7 @@
                                 }
                               }
                             },
-                            "when_out_of_range": "minecraft:overworld/base_3d_noise"
+                            "when_out_of_range": "farlandstraveler:overworld/base_3d_noise_overflowable"
                           }
                         }
                       }
