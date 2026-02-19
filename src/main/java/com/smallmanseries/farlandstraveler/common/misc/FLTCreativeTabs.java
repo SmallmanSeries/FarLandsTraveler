@@ -31,7 +31,7 @@ public class FLTCreativeTabs {
     // 刷怪蛋
     // 调试用品
 
-    public static void registerCreativeTabs(IEventBus modEventBus){
+    public static void register(IEventBus modEventBus){
         TABS.register(modEventBus);
     }
      */

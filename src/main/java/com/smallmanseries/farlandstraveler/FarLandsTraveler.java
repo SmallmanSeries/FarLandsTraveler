@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler;
 
 import com.mojang.logging.LogUtils;
+import com.smallmanseries.farlandstraveler.common.worldgen.FLTDensityFunctions;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -15,10 +16,13 @@ public class FarLandsTraveler {
 
     public FarLandsTraveler(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+
         /*
-        FLTItems.registerItems(modEventBus);
-        FLTCreativeTabs.registerCreativeTabs(modEventBus);
- */
+        FLTItems.register(modEventBus);
+        FLTCreativeTabs.register(modEventBus);
+        */
+        FLTDensityFunctions.register(modEventBus);
+
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
