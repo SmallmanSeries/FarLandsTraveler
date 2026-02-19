@@ -11,6 +11,8 @@ import net.minecraft.world.level.levelgen.DensityFunctions;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import org.slf4j.Logger;
 
+import java.util.Arrays;
+
 public record VirtualDensityFunction ( Holder<NoiseGeneratorSettings> settings ) implements DensityFunction  {
 
     public static final Logger LOGGER = LogUtils.getLogger();
@@ -31,7 +33,7 @@ public record VirtualDensityFunction ( Holder<NoiseGeneratorSettings> settings )
 
     @Override
     public void fillArray(double[] doubles, ContextProvider contextProvider) {
-        this.settings.value().noiseRouter().finalDensity().fillArray(doubles, contextProvider);
+        settings.value().noiseRouter().finalDensity().fillArray(doubles, contextProvider);
     }
 
     @Override

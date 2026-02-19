@@ -1,5 +1,5 @@
 {
-  "credit" : "Made By INF32768",
+  "credit" : "Made By Ki, The Adventurer",
   "aquifers_enabled": true,
   "default_block": {
     "Name": "minecraft:stone"
@@ -71,14 +71,14 @@
                           "argument1": 0.078125,
                           "argument2": {
                             "type": "minecraft:range_choice",
-                            "input": "farlandstraveler:overworld/base_3d_noise_overflowable",
+                            "input": "farlandstraveler:overworld/base_3d_noise_12550825",
                             "min_inclusive": -100,
                             "max_exclusive": 100,
                             "when_in_range": {
                               "type": "farlandstraveler:virtual_density_function",
-                              "settings": "minecraft:overworld"
+                              "settings": "minecraft:nether"
                             },
-                            "when_out_of_range": "farlandstraveler:overworld/base_3d_noise_overflowable"
+                            "when_out_of_range": "farlandstraveler:overworld/base_3d_noise_12550825"
                           }
                         }
                       }
