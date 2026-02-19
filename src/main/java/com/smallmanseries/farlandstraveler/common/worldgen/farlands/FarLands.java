@@ -9,6 +9,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
+/**
+ * 边境之地数据驱动文件
+ *
+ * @param dimension 应用维度（暂未实现）
+ * @param settings 噪声设置
+ * @param biomeSource 生物群系源
+ */
+
+
 public record FarLands(
         String dimension,
         Holder<NoiseGeneratorSettings> settings,

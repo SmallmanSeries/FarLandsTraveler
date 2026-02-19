@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "farlandstraveler:block/test_block"
+    }
+  }
+}

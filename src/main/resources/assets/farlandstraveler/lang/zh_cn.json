@@ -2,13 +2,16 @@
   "aaa" : "啊啊啊",
   "bbb" : "一个小人掉下来了！！！！！！！！！！！！！！！！！！！！！！！！！！！",
 
-  "itemGroup.farlandstraveler.flt_blocks": "边境旅者：方块",
+  "itemGroup.farlandstraveler.flt_blocks_building": "边境旅者：建筑方块",
+  "itemGroup.farlandstraveler.flt_blocks_natural": "边境旅者：自然方块",
   "itemGroup.farlandstraveler.flt_items": "边境旅者：物品",
+  "itemGroup.farlandstraveler.flt_test": "边境旅者：测试用品",
 
-  "block.farlandstraveler.asd" : "asd",
+  "block.farlandstraveler.test_block" : "asd",
+  "item.farlandstraveler.test_block" : "asd",
 
-  "item.farlandstraveler.qwe" : "qwe",
-  "item.farlandstraveler.all" : "all",
+  "item.farlandstraveler.test_item" : "qwe",
+  "item.farlandstraveler.test_item1" : "all",
 
   "farlandstraveler.configuration.remove_world_border" : "移除世界边界",
   "farlandstraveler.configuration.remove_coordinate_limits" : "移除世界界限",

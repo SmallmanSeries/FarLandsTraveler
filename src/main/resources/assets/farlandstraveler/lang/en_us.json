@@ -2,13 +2,17 @@
   "aaa" : "ahahah",
   "bbb" : "A Smallman Fell From Sky!!!!!!!!!!",
 
-  "itemGroup.farlandstraveler.flt_blocks": "Far Lands Traveler : Blocks",
+  "itemGroup.farlandstraveler.flt_blocks_building": "Far Lands Traveler : Building Blocks",
+  "itemGroup.farlandstraveler.flt_blocks_natural": "Far Lands Traveler : Natural Blocks",
   "itemGroup.farlandstraveler.flt_items": "Far Lands Traveler : Items",
 
-  "block.farlandstraveler.asd" : "asd",
+  "itemGroup.farlandstraveler.flt_test": "Far Lands Traveler : Test Only",
 
-  "item.farlandstraveler.qwe" : "qwe",
-  "item.farlandstraveler.all" : "all",
+  "block.farlandstraveler.test_block" : "asd",
+  "item.farlandstraveler.test_block" : "asd",
+
+  "item.farlandstraveler.test_item" : "qwe",
+  "item.farlandstraveler.test_item1" : "all",
 
   "farlandstraveler.configuration.remove_world_border" : "Remove world border",
   "farlandstraveler.configuration.remove_coordinate_limits" : "Remove coordinate limits",
