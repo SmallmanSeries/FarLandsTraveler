@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "farlandstraveler:block/far_lands_paeonia"
+  },
+  "render_type": "cutout"
+}

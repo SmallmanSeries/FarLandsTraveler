@@ -48,7 +48,9 @@ public class FLTCreativeTabs {
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
-                output.accept(FLTItems.TEST_ITEM);
+                output.accept(FLTBlocks.FAR_LANDS_ROSE);
+                output.accept(FLTBlocks.CYAN_FAR_LANDS_ROSE);
+                output.accept(FLTBlocks.FAR_LANDS_PAEONIA);
             }))
             .build());
     // 物品

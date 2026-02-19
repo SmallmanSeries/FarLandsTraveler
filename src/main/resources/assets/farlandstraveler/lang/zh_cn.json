@@ -8,7 +8,14 @@
   "itemGroup.farlandstraveler.flt_test": "边境旅者：测试用品",
 
   "block.farlandstraveler.test_block" : "asd",
+  "block.farlandstraveler.far_lands_rose" : "边境玫瑰",
+  "block.farlandstraveler.cyan_far_lands_rose" : "青边境玫瑰",
+  "block.farlandstraveler.far_lands_paeonia" : "边境芍药",
+
   "item.farlandstraveler.test_block" : "asd",
+  "item.farlandstraveler.far_lands_rose" : "边境玫瑰",
+  "item.farlandstraveler.cyan_far_lands_rose" : "青边境玫瑰",
+  "item.farlandstraveler.far_lands_paeonia" : "边境芍药",
 
   "item.farlandstraveler.test_item" : "qwe",
   "item.farlandstraveler.test_item1" : "all",

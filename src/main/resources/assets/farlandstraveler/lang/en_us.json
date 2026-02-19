@@ -9,7 +9,14 @@
   "itemGroup.farlandstraveler.flt_test": "Far Lands Traveler : Test Only",
 
   "block.farlandstraveler.test_block" : "asd",
+  "block.farlandstraveler.far_lands_rose" : "Far Lands Rose",
+  "block.farlandstraveler.cyan_far_lands_rose" : "Cyan Far Lands Rose",
+  "block.farlandstraveler.far_lands_paeonia" : "Far Lands Paeonia",
+
   "item.farlandstraveler.test_block" : "asd",
+  "item.farlandstraveler.far_lands_rose" : "Far Lands Rose",
+  "item.farlandstraveler.cyan_far_lands_rose" : "Cyan Far Lands Rose",
+  "item.farlandstraveler.far_lands_paeonia" : "Far Lands Paeonia",
 
   "item.farlandstraveler.test_item" : "qwe",
   "item.farlandstraveler.test_item1" : "all",
