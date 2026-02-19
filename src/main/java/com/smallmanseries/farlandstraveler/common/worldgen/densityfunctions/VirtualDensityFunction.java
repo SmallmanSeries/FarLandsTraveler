@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions;
 
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -8,8 +9,11 @@ import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.DensityFunctions;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
+import org.slf4j.Logger;
 
 public record VirtualDensityFunction ( Holder<NoiseGeneratorSettings> settings ) implements DensityFunction  {
+
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final MapCodec<VirtualDensityFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(

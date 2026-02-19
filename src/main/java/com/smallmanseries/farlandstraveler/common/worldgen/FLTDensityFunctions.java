@@ -16,7 +16,7 @@ public class FLTDensityFunctions {
 
     public static final DeferredRegister<MapCodec<? extends DensityFunction>> FUNCTIONS = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, FarLandsTraveler.MODID);
 
-    public static final Supplier<MapCodec<VirtualDensityFunction>> VIRTUAL_DENSITY_FUNCTION = FUNCTIONS.register("virtual_density_function", VirtualDensityFunction.CODEC::codec);
+    public static final Supplier<MapCodec<VirtualDensityFunction>> VIRTUAL_DENSITY_FUNCTION = FUNCTIONS.register("virtual_density_function", () -> VirtualDensityFunction.CODEC.codec());
 
     public static void register(IEventBus modEventBus){
         FUNCTIONS.register(modEventBus);
