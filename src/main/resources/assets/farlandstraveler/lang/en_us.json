@@ -2,18 +2,24 @@
   "aaa" : "ahahah",
   "bbb" : "A Smallman Fell From Sky!!!!!!!!!!",
 
-  "itemGroup.farlandstraveler.flt_blocks_building": "Far Lands Traveler : Building Blocks",
-  "itemGroup.farlandstraveler.flt_blocks_natural": "Far Lands Traveler : Natural Blocks",
-  "itemGroup.farlandstraveler.flt_items": "Far Lands Traveler : Items",
-
-  "itemGroup.farlandstraveler.flt_test": "Far Lands Traveler : Test Only",
+  "itemGroup.farlandstraveler.flt_building_blocks": "FLT: Building Blocks",
+  "itemGroup.farlandstraveler.flt_natural_blocks": "FLT: Natural Blocks",
+  "itemGroup.farlandstraveler.flt_functional_blocks": "FLT: Functional Blocks",
+  "itemGroup.farlandstraveler.flt_items": "FLT: Items",
+  "itemGroup.farlandstraveler.flt_tools": "FLT: Exploration Tools",
+  "itemGroup.farlandstraveler.flt_equipments": "FLT: Exploration Equipments",
+  "itemGroup.farlandstraveler.flt_supplies": "FLT: Exploration Supplies",
+  "itemGroup.farlandstraveler.flt_spawn_eggs": "FLT: Spawn Eggs",
+  "itemGroup.farlandstraveler.flt_test": "FLT: Test Only",
 
   "block.farlandstraveler.test_block" : "asd",
+  "block.farlandstraveler.glowing_obsidian" : "Glowing Obsidian",
   "block.farlandstraveler.far_lands_rose" : "Far Lands Rose",
   "block.farlandstraveler.cyan_far_lands_rose" : "Cyan Far Lands Rose",
   "block.farlandstraveler.far_lands_paeonia" : "Far Lands Paeonia",
 
   "item.farlandstraveler.test_block" : "asd",
+  "item.farlandstraveler.glowing_obsidian" :"Glowing Obsidian",
   "item.farlandstraveler.far_lands_rose" : "Far Lands Rose",
   "item.farlandstraveler.cyan_far_lands_rose" : "Cyan Far Lands Rose",
   "item.farlandstraveler.far_lands_paeonia" : "Far Lands Paeonia",
@@ -31,6 +37,8 @@
   "propernoun.farlandstraveler.farlands" : "The Far Lands",
   "propernoun.farlandstraveler.fartherlands" : "The Farther Lands",
   "propernoun.farlandstraveler.fringelands" : "The Fringe Lands",
+  "propernoun.farlandstraveler.seaofend" : "Sea Of End",
   "propernoun.farlandstraveler.distanceeffect" : "Distance Effects",
   "propernoun.farlandstraveler.grandpillar" : "The Grand Pillars"
+
 }
