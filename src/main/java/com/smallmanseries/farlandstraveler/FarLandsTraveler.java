@@ -20,15 +20,20 @@ public class FarLandsTraveler {
     public FarLandsTraveler(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
-        FLTBlocks.register(modEventBus);
-        FLTItems.register(modEventBus);
-        FLTCreativeTabs.register(modEventBus);
-        FLTDensityFunctions.register(modEventBus);
+        FLTBlocks.BLOCKS.register(modEventBus);
+        FLTItems.ITEMS.register(modEventBus);
+        FLTCreativeTabs.TABS.register(modEventBus);
+        FLTDensityFunctions.FUNCTIONS.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
+
+        event.enqueueWork(() -> {
+            FLTBlocks.registerPots();
+            FLTBlocks.registerFlammability();
+        });
         //LOGGER.info("Far Lands Travelers, gather!");
     }
 

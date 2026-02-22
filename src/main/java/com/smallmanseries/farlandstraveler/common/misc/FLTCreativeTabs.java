@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -114,9 +113,5 @@ public class FLTCreativeTabs {
                 output.accept(FLTItems.TEST_ITEM);
             }))
             .build());
-
-    public static void register(IEventBus modEventBus){
-        TABS.register(modEventBus);
-    }
 
 }
