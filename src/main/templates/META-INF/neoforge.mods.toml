@@ -31,8 +31,8 @@ config="${mod_id}.mixins.json"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-modId="mixson"
-type="required"
-versionRange="[${mixson_version},)"
-ordering="NONE"
-side="BOTH"
+    modId="mixson"
+    type="required"
+    versionRange="[${mixson_version},)"
+    ordering="NONE"
+    side="BOTH"
