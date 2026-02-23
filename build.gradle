@@ -76,11 +76,12 @@ configurations {
 repositories {
     // 这里写前置的存储库
     // 前置是在下面的dependencies里定义的
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     // 这里写前置
-
+    implementation "com.github.ramixin:mixson-neoforge:${project.mixson_version}"
 }
 
 // 所有用${}写的东西的定义都在这
@@ -89,6 +90,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
+            mixson_version         : mixson_version,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,

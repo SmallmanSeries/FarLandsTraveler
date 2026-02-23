@@ -29,3 +29,10 @@ config="${mod_id}.mixins.json"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="mixson"
+type="required"
+versionRange="[${mixson_version},)"
+ordering="NONE"
+side="BOTH"
