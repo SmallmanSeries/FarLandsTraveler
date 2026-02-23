@@ -22,7 +22,7 @@ import org.slf4j.Logger;
  * @param settings 要捕获的噪声设置
  */
 
-public record VirtualDensityFunction ( Holder<NoiseGeneratorSettings> settings ) implements DensityFunction  {
+public record VirtualDensityFunction ( Holder<NoiseGeneratorSettings> settings ) implements DensityFunction.SimpleFunction  {
 
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -38,16 +38,6 @@ public record VirtualDensityFunction ( Holder<NoiseGeneratorSettings> settings )
     @Override
     public double compute(FunctionContext functionContext) {
         return this.settings.value().noiseRouter().finalDensity().compute(functionContext);
-    }
-
-    @Override
-    public void fillArray(double[] doubles, ContextProvider contextProvider) {
-        settings.value().noiseRouter().finalDensity().fillArray(doubles, contextProvider);
-    }
-
-    @Override
-    public DensityFunction mapAll(Visitor visitor) {
-        return this.settings.value().noiseRouter().finalDensity().mapAll(visitor);
     }
 
     @Override
