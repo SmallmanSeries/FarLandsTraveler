@@ -9,7 +9,6 @@
     "border.ServerGamePacketListenerImplMixin",
     "border.WorldBorderMixin",
     "worldgen.ChunkMapMixin",
-    "worldgen.NoiseChunkMixin",
     "worldgen.PerlinNoiseMixin"
   ],
   "injectors": {

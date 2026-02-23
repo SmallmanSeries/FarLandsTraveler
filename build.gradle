@@ -74,12 +74,13 @@ configurations {
 }
 
 repositories {
-    // 这里写前置的存储库，但是目前不需要前置
+    // 这里写前置的存储库
     // 前置是在下面的dependencies里定义的
 }
 
 dependencies {
-    // 这里写前置，但是目前不需要前置
+    // 这里写前置
+
 }
 
 // 所有用${}写的东西的定义都在这

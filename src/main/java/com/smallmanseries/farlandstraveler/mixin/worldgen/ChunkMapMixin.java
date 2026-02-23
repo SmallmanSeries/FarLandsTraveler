@@ -48,35 +48,6 @@ public abstract class ChunkMapMixin {
     @Unique
     public RandomState randomStateFarLands = this.randomState;
 
-    // 计算噪声路由器（不计算会导致生成基岩海）
-    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/RandomState;create(Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;Lnet/minecraft/core/HolderGetter;J)Lnet/minecraft/world/level/levelgen/RandomState;"), locals = LocalCapture.CAPTURE_FAILHARD)
-    private void getRandom(ServerLevel level,
-                           LevelStorageSource.LevelStorageAccess levelStorageAccess,
-                           DataFixer fixerUpper,
-                           StructureTemplateManager structureManager,
-                           Executor dispatcher,
-                           BlockableEventLoop mainThreadExecutor,
-                           LightChunkGetter lightChunk,
-                           ChunkGenerator generator,
-                           ChunkProgressListener progressListener,
-                           ChunkStatusUpdateListener chunkStatusListener,
-                           Supplier overworldDataStorage,
-                           TicketStorage ticketStorage,
-                           int serverViewDistance,
-                           boolean sync,
-                           CallbackInfo ci,
-                           Path path,
-                           RegistryAccess registryaccess,
-                           long i
-                           ) {
-        // 边境之地
-        this.randomStateFarLands = RandomState.create(level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).settings().value(), registryaccess.lookupOrThrow(Registries.NOISE), i);
-        // 遥远之地
-        // 边缘之墙
-        // 边缘之角
-        // 基岩海
-    }
-
     // 应用世界生成器
     @ModifyArgs(method = "applyStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/chunk/status/ChunkStep;apply(Lnet/minecraft/world/level/chunk/status/WorldGenContext;Lnet/minecraft/util/StaticCache2D;Lnet/minecraft/world/level/chunk/ChunkAccess;)Ljava/util/concurrent/CompletableFuture;"))
     private void modifyGenerator(Args args){
@@ -85,31 +56,17 @@ public abstract class ChunkMapMixin {
         ChunkAccess chunk = args.get(2);
         ChunkGenerator generator = context.generator();
         ServerLevel level = context.level();
-        // 开始替换生成器
+        // 开始替换生成器。这里就不用管noise_router了，它使用Mixson事件注入的规则切换
         // 边境之地边缘
         if (context.level().dimension() == Level.OVERWORLD &&
                 (chunk.getPos().getMaxBlockX() > Config.FAR_LANDS_DISTANCE.getAsInt()
                 || chunk.getPos().getMaxBlockZ() > Config.FAR_LANDS_DISTANCE.getAsInt()
                 || chunk.getPos().getMinBlockX() < -(Config.FAR_LANDS_DISTANCE.getAsInt())
                 || chunk.getPos().getMinBlockZ() < -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
-            // 这里需要获取噪声设置，并计算这个噪声设置中的NoiseRouter，不然会生成基岩海
-            NoiseGeneratorSettings settings = context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS_EDGE).settings().value();
-            NoiseGeneratorSettings settingsMapped = new NoiseGeneratorSettings(
-                    settings.noiseSettings(),
-                    settings.defaultBlock(),
-                    settings.defaultFluid(),
-                    this.randomStateFarLands.router(),
-                    settings.surfaceRule(),
-                    settings.spawnTarget(),
-                    settings.seaLevel(),
-                    settings.disableMobGeneration(),
-                    settings.aquifersEnabled(),
-                    settings.oreVeinsEnabled(),
-                    settings.useLegacyRandomSource());
-            Holder<NoiseGeneratorSettings> settingsHolder = Holder.direct(settingsMapped);
+
             generator = new NoiseBasedChunkGenerator(
                     context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS_EDGE).biomeSource(),
-                    settingsHolder
+                    context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS_EDGE).settings()
             );
         }// 以下同理
         // 边境之地
@@ -118,24 +75,10 @@ public abstract class ChunkMapMixin {
                         || chunk.getPos().getMinBlockZ() > Config.FAR_LANDS_DISTANCE.getAsInt()
                         || chunk.getPos().getMaxBlockX() < -(Config.FAR_LANDS_DISTANCE.getAsInt())
                         || chunk.getPos().getMaxBlockZ() < -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
-            // 这里需要获取噪声设置，并计算这个噪声设置中的NoiseRouter，不然会生成基岩海
-            NoiseGeneratorSettings settings = context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).settings().value();
-            NoiseGeneratorSettings settingsMapped = new NoiseGeneratorSettings(
-                    settings.noiseSettings(),
-                    settings.defaultBlock(),
-                    settings.defaultFluid(),
-                    this.randomStateFarLands.router(),
-                    settings.surfaceRule(),
-                    settings.spawnTarget(),
-                    settings.seaLevel(),
-                    settings.disableMobGeneration(),
-                    settings.aquifersEnabled(),
-                    settings.oreVeinsEnabled(),
-                    settings.useLegacyRandomSource());
-            Holder<NoiseGeneratorSettings> settingsHolder = Holder.direct(settingsMapped);
+
             generator = new NoiseBasedChunkGenerator(
                     context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).biomeSource(),
-                    settingsHolder
+                    context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).settings()
             );
         }
         // 遥远之地
