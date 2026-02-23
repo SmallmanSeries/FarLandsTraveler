@@ -1,0 +1,36 @@
+{
+  "dimension": "minecraft:overworld",
+  "settings": "farlandstraveler:far_lands_edge",
+  "biome_source": {
+    "type": "multi_noise",
+    "biomes": [
+      {
+        "biome": "farlandstraveler:far_lands_edge",
+        "parameters": {
+          "temperature": [
+            -0.2,
+            0.2
+          ],
+          "humidity": [
+            -1,
+            0
+          ],
+          "continentalness": [
+            -0.11,
+            0.1
+          ],
+          "erosion": [
+            0,
+            1
+          ],
+          "weirdness": [
+            -0.45,
+            1
+          ],
+          "depth": 0,
+          "offset": 0
+        }
+      }
+    ]
+  }
+}

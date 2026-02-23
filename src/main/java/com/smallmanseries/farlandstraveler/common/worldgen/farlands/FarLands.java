@@ -41,6 +41,7 @@ public record FarLands(
     );
 
     // 默认边境之地定义文件
+    public static final ResourceKey<FarLands> FAR_LANDS_EDGE = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands_edge")); //边境之地边缘
     public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands")); //边境之地
     //遥远之地
     //边缘之墙
