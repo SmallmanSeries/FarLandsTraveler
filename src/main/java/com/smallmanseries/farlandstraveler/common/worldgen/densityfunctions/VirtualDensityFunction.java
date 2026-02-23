@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
  * <p>
  * 注意：该功能尚未完成，完成后移除本段
  * <p>
- * 这是个“虚最终密度”，在噪声设置（noise_settings）定义文件中充当一个密度函数使用，作用是捕获指定噪声设置（noise_settings）中的指定密度函数。
+ * 这是个“虚密度函数”，在噪声设置（noise_settings）定义文件中充当一个密度函数使用，作用是捕获指定噪声设置（noise_settings）中的指定密度函数。
  * <p>
  * 用法：{
  *     "type": "farlandstraveler:virtual_density_function",

@@ -1,5 +1,4 @@
 {
-  "credit" : "Made By INF32768",
   "aquifers_enabled": true,
   "default_block": {
     "Name": "minecraft:stone"

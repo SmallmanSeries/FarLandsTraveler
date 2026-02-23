@@ -24,6 +24,11 @@ public class Config {
             .comment("The distance between the generated location of the Far Lands and the origin of the world")
             .comment("Actually, it's the location of the first switch to the world generator")
             .defineInRange("far_lands_distance", 12550824, 0, Integer.MAX_VALUE);
+
+    public static final ModConfigSpec.IntValue REPEATING_FAR_LANDS_DISTANCE = BUILDER
+            .comment("The distance between the generated location of the Repeating Far Lands and the origin of the world")
+            .comment("Actually, it's the location of the second switch to the world generator")
+            .defineInRange("repeating_far_lands_distance", 12560824, 0, Integer.MAX_VALUE);
     // </配置文件正文>
 
     static final ModConfigSpec SPEC = BUILDER.build();
