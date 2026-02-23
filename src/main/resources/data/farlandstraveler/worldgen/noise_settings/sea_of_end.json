@@ -75,7 +75,8 @@
                             "max_exclusive": 100,
                             "when_in_range": {
                               "type": "farlandstraveler:virtual_density_function",
-                              "settings": "minecraft:end"
+                              "settings": "end",
+                              "function": "final_density"
                             },
                             "when_out_of_range": "farlandstraveler:overworld/base_3d_noise_12550825"
                           }
