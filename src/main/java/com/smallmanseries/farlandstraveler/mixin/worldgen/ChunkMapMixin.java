@@ -40,10 +40,8 @@ public abstract class ChunkMapMixin {
         // 开始替换生成器。这里就不用管noise_router了，它使用Mixson事件注入的规则切换
         // 边境之地边缘
         if (context.level().dimension() == Level.OVERWORLD &&
-                (chunk.getPos().getMaxBlockX() > Config.FAR_LANDS_DISTANCE.getAsInt()
-                || chunk.getPos().getMaxBlockZ() > Config.FAR_LANDS_DISTANCE.getAsInt()
-                || chunk.getPos().getMinBlockX() < -(Config.FAR_LANDS_DISTANCE.getAsInt())
-                || chunk.getPos().getMinBlockZ() < -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
+                (Math.max(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
+                || Math.min(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
 
             generator = new NoiseBasedChunkGenerator(
                     context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS_EDGE).biomeSource(),
@@ -52,10 +50,8 @@ public abstract class ChunkMapMixin {
         }// 以下同理
         // 边境之地
         if (context.level().dimension() == Level.OVERWORLD &&
-                (chunk.getPos().getMinBlockX() > Config.FAR_LANDS_DISTANCE.getAsInt()
-                        || chunk.getPos().getMinBlockZ() > Config.FAR_LANDS_DISTANCE.getAsInt()
-                        || chunk.getPos().getMaxBlockX() < -(Config.FAR_LANDS_DISTANCE.getAsInt())
-                        || chunk.getPos().getMaxBlockZ() < -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
+                (Math.max(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
+                        || Math.min(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
 
             generator = new NoiseBasedChunkGenerator(
                     context.level().registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).biomeSource(),
