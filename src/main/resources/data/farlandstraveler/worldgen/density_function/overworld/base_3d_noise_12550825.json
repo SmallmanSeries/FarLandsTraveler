@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:old_blended_noise",
+  "type": "farlandstraveler:old_blended_noise_overflowable",
   "smear_scale_multiplier": 8.0,
   "xz_factor": 80.0,
   "xz_scale": 0.25,
