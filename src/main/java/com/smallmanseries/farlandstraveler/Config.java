@@ -17,8 +17,8 @@ public class Config {
 
     public static final ModConfigSpec.BooleanValue ENABLE_FAR_LANDS = BUILDER
             .comment("Enable noises to overflow and create the Far Lands.")
-            .comment("The side effect is the appearance of the Grand Pillars in the normal world.")
-            .define("enable_far_lands", true);
+            .comment("Now deprecated.")
+            .define("enable_far_lands", false);
 
     public static final ModConfigSpec.IntValue FAR_LANDS_DISTANCE = BUILDER
             .comment("The distance between the generated location of the Far Lands and the origin of the world")

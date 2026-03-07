@@ -9,12 +9,13 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
+import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
 import net.minecraft.world.level.levelgen.synth.PerlinNoise;
 
 import java.util.stream.IntStream;
 
-public class BlendedNoiseOverflowable implements DensityFunction.SimpleFunction{
+public class BlendedNoiseOverflowable extends BlendedNoise {
     private static final Codec<Double> SCALE_RANGE = Codec.doubleRange(0.001, 1000.0);
     public static final MapCodec<BlendedNoiseOverflowable> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
@@ -44,6 +45,7 @@ public class BlendedNoiseOverflowable implements DensityFunction.SimpleFunction{
     }
 
     private BlendedNoiseOverflowable(
+            RandomSource random,
             PerlinNoise minLimitNoise,
             PerlinNoise maxLimitNoise,
             PerlinNoise mainNoise,
@@ -53,6 +55,8 @@ public class BlendedNoiseOverflowable implements DensityFunction.SimpleFunction{
             double yFactor,
             double smearScaleMultiplier
     ) {
+        super(random, xzScale, yScale, xzFactor, yFactor, smearScaleMultiplier);
+
         this.minLimitNoise = minLimitNoise;
         this.maxLimitNoise = maxLimitNoise;
         this.mainNoise = mainNoise;
@@ -69,6 +73,7 @@ public class BlendedNoiseOverflowable implements DensityFunction.SimpleFunction{
     @VisibleForTesting
     public BlendedNoiseOverflowable(RandomSource random, double xzScale, double yScale, double xzFactor, double yFactor, double smearScaleMultiplier) {
         this(
+                random,
                 PerlinNoise.createLegacyForBlendedNoise(random, IntStream.rangeClosed(-15, 0)),
                 PerlinNoise.createLegacyForBlendedNoise(random, IntStream.rangeClosed(-15, 0)),
                 PerlinNoise.createLegacyForBlendedNoise(random, IntStream.rangeClosed(-7, 0)),
@@ -97,7 +102,6 @@ public class BlendedNoiseOverflowable implements DensityFunction.SimpleFunction{
         double resultLow = 0.0;
         double resultHigh = 0.0;
         double resultSelector = 0.0;
-        boolean flag = true;
         double fractal = 1.0;
 
         for (int i = 0; i < 8; i++) {

@@ -29,7 +29,7 @@
 
   "farlandstraveler.configuration.remove_world_border" : "Remove world border",
   "farlandstraveler.configuration.remove_coordinate_limits" : "Remove coordinate limits",
-  "farlandstraveler.configuration.enable_far_lands" : "Enable Far Lands",
+  "farlandstraveler.configuration.enable_far_lands" : "Enable Far Lands (Deprecated)",
   "farlandstraveler.configuration.far_lands_distance" : "Far Lands Distance",
 
 
