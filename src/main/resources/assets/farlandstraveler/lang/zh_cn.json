@@ -27,6 +27,9 @@
   "item.farlandstraveler.test_item" : "qwe",
   "item.farlandstraveler.fake_chunk_marker" : "假区块标记器",
 
+  "message.farlandstraveler.fake_chunk_marked": "当前区块已被标记为§c假区块",
+  "message.farlandstraveler.fake_chunk_unmarked": "当前区块已被标记为正常区块",
+
   "farlandstraveler.configuration.remove_world_border" : "移除世界边界",
   "farlandstraveler.configuration.remove_coordinate_limits" : "移除世界界限",
   "farlandstraveler.configuration.enable_far_lands" : "启用边境之地（已废弃）",

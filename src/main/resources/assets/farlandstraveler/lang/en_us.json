@@ -27,6 +27,9 @@
   "item.farlandstraveler.test_item" : "qwe",
   "item.farlandstraveler.fake_chunk_marker" : "Fake Chunk Marker",
 
+  "message.farlandstraveler.fake_chunk_marked": "Current chunk has been marked as a §cFake Chunk",
+  "message.farlandstraveler.fake_chunk_unmarked": "Current chunk has been marked as a normal chunk",
+
   "farlandstraveler.configuration.remove_world_border" : "Remove world border",
   "farlandstraveler.configuration.remove_coordinate_limits" : "Remove coordinate limits",
   "farlandstraveler.configuration.enable_far_lands" : "Enable Far Lands (Deprecated)",

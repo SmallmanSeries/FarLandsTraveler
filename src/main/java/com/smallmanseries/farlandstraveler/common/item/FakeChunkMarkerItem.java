@@ -26,15 +26,14 @@ public class FakeChunkMarkerItem extends Item {
             if(chunk.getData(FLTAttachments.FAKE_CHUNK)) {
                 chunk.setData(FLTAttachments.FAKE_CHUNK, false);
                 if (player != null) {
-                    player.displayClientMessage(Component.literal("该区块现在不是假区块"), true);
+                    player.displayClientMessage(Component.translatable("message.farlandstraveler.fake_chunk_unmarked"), true);
                 }
             } else {
                 chunk.setData(FLTAttachments.FAKE_CHUNK, true);
                 if (player != null) {
-                    player.displayClientMessage(Component.literal("该区块现在是假区块"), true);
+                    player.displayClientMessage(Component.translatable("message.farlandstraveler.fake_chunk_marked"), true);
                 }
             }
-            chunk.markUnsaved();
         }
 
         return InteractionResult.SUCCESS;

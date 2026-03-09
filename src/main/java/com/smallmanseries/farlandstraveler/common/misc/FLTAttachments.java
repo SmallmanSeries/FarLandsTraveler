@@ -16,7 +16,7 @@ public class FLTAttachments {
     public static final Supplier<AttachmentType<Boolean>> FAKE_CHUNK = ATTACHMENT_TYPES.register(
             "fake_chunk", () -> AttachmentType.builder(() -> false)
                     .sync(ByteBufCodecs.BOOL)
-                    .serialize(Codec.BOOL.fieldOf("fake_chunk"))
+                    .serialize(Codec.BOOL.fieldOf("fake"))
                     .build());
 
 }
