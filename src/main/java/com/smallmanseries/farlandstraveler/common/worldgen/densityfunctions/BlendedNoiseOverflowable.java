@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.smallmanseries.farlandstraveler.mixin.worldgen.BlendedNoiseMixin;
 import com.smallmanseries.farlandstraveler.mixin.worldgen.IBlendedNoiseMixin;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 
@@ -27,12 +28,16 @@ public class BlendedNoiseOverflowable {
                             SCALE_RANGE.fieldOf("y_factor").forGetter(instance4 -> ((IBlendedNoiseMixin) instance4).getYFactor()),
                             Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter(instance5 -> ((IBlendedNoiseMixin) instance5).getSmearScaleMultiplier())
                     )
-                    .apply(instance, BlendedNoiseOverflowable::createUnseededOverflowable)
+                    .apply(instance, BlendedNoiseOverflowable::createUnseeded)
     );
 
-    private static BlendedNoise createUnseededOverflowable(double xzScale, double yScale, double xzFactor, double yFactor, double smearScaleMultiplier) {
+    private static BlendedNoise createUnseeded(double xzScale, double yScale, double xzFactor, double yFactor, double smearScaleMultiplier) {
+        return createSeeded(new XoroshiroRandomSource(0L), xzScale, yScale, xzFactor, yFactor, smearScaleMultiplier);
+    }
+
+    public static BlendedNoise createSeeded(RandomSource random, double xzScale, double yScale, double xzFactor, double yFactor, double smearScaleMultiplier) {
         createOverflowable = true;
-        BlendedNoise blendedNoise = new BlendedNoise(new XoroshiroRandomSource(0L), xzScale, yScale, xzFactor, yFactor, smearScaleMultiplier);
+        BlendedNoise blendedNoise = new BlendedNoise(random, xzScale, yScale, xzFactor, yFactor, smearScaleMultiplier);
         createOverflowable = false;
         return blendedNoise;
     }
