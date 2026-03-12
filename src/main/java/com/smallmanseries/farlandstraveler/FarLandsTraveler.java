@@ -38,13 +38,30 @@ public class FarLandsTraveler {
             JsonObject noiseRouterOverworld = context.getFile().getAsJsonObject().getAsJsonObject("noise_router");
             // 基于base_3d_noise的溢出切换final_density
             JsonElement finalDensity = noiseRouterOverworld.get("final_density");
+            JsonObject overflowCheck = new JsonObject();
+            overflowCheck.addProperty("type", "minecraft:range_choice");
+            overflowCheck.addProperty("input", "farlandstraveler:far_lands/far_lands_generation_check");
+            overflowCheck.addProperty("min_inclusive", -100);
+            overflowCheck.addProperty("max_exclusive", 100);
+            overflowCheck.add("when_in_range", finalDensity);
+            overflowCheck.addProperty("when_out_of_range", "farlandstraveler:far_lands/far_lands");
+            JsonObject boxSelect = new JsonObject();
+            boxSelect.addProperty("type", "farlandstraveler:box_select");
+            boxSelect.addProperty("invert", true);
+            boxSelect.addProperty("origin_x", -12550824);
+            boxSelect.addProperty("origin_y", -25101648);
+            boxSelect.addProperty("origin_z", -12550824);
+            boxSelect.addProperty("extend_x", 25101648);
+            boxSelect.addProperty("extend_y", 50203296);
+            boxSelect.addProperty("extend_z", 25101648);
             JsonObject finalDensityModified = new JsonObject();
             finalDensityModified.addProperty("type", "minecraft:range_choice");
-            finalDensityModified.addProperty("input", "farlandstraveler:far_lands/far_lands_generation_check");
-            finalDensityModified.addProperty("min_inclusive", -2);
-            finalDensityModified.addProperty("max_exclusive", 2);
-            finalDensityModified.add("when_in_range", finalDensity);
+            finalDensityModified.add("input", boxSelect);
+            finalDensityModified.addProperty("min_inclusive", 0);
+            finalDensityModified.addProperty("max_exclusive", 1);
+            finalDensityModified.add("when_in_range", overflowCheck);
             finalDensityModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/far_lands");
+
             //基于距离（distance）切换其他密度函数
 
             //应用修改后的noise_router

@@ -32,21 +32,21 @@ import net.minecraft.world.level.levelgen.DensityFunction;
  * 当坐标在选区内时，返回1，否则返回0
  */
 
-public record BoxSelect(boolean invert, int originX, int originY, int originZ, int extendX, int extendY, int extendZ) implements DensityFunction.SimpleFunction {
+public record BoxSelectFunction(boolean invert, int originX, int originY, int originZ, int extendX, int extendY, int extendZ) implements DensityFunction.SimpleFunction {
     private static final Codec<Integer> INPUT_RANGE = Codec.intRange(0, Integer.MAX_VALUE);
-    public static final MapCodec<BoxSelect> DATA_CODEC = RecordCodecBuilder.mapCodec(
+    public static final MapCodec<BoxSelectFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            Codec.BOOL.fieldOf("invert").forGetter(BoxSelect::invert),
-                            Codec.INT.fieldOf("origin_x").forGetter(BoxSelect::originX),
-                            Codec.INT.fieldOf("origin_y").forGetter(BoxSelect::originY),
-                            Codec.INT.fieldOf("origin_z").forGetter(BoxSelect::originZ),
-                            INPUT_RANGE.fieldOf("extend_x").forGetter(BoxSelect::extendX),
-                            INPUT_RANGE.fieldOf("extend_y").forGetter(BoxSelect::extendY),
-                            INPUT_RANGE.fieldOf("extend_z").forGetter(BoxSelect::extendZ)
+                            Codec.BOOL.fieldOf("invert").forGetter(BoxSelectFunction::invert),
+                            Codec.INT.fieldOf("origin_x").forGetter(BoxSelectFunction::originX),
+                            Codec.INT.fieldOf("origin_y").forGetter(BoxSelectFunction::originY),
+                            Codec.INT.fieldOf("origin_z").forGetter(BoxSelectFunction::originZ),
+                            INPUT_RANGE.fieldOf("extend_x").forGetter(BoxSelectFunction::extendX),
+                            INPUT_RANGE.fieldOf("extend_y").forGetter(BoxSelectFunction::extendY),
+                            INPUT_RANGE.fieldOf("extend_z").forGetter(BoxSelectFunction::extendZ)
                     )
-                    .apply(instance, BoxSelect::new)
+                    .apply(instance, BoxSelectFunction::new)
     );
-    public static final KeyDispatchDataCodec<BoxSelect> CODEC = KeyDispatchDataCodec.of(DATA_CODEC);
+    public static final KeyDispatchDataCodec<BoxSelectFunction> CODEC = KeyDispatchDataCodec.of(DATA_CODEC);
 
     @Override
     public double compute(FunctionContext functionContext) {
