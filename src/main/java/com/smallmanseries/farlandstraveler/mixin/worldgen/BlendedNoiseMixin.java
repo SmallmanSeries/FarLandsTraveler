@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.mixin.worldgen;
 
 import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.BlendedNoiseOverflowable;
+import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.BlendedNoiseRepeating;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.PerlinNoise;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,6 +23,9 @@ public abstract class BlendedNoiseMixin {
     @Redirect(method = "compute", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/synth/PerlinNoise;wrap(D)D"))
     private double redirectWrap(double value) {
         if(((BlendedNoise)(Object)this) instanceof BlendedNoiseOverflowable) {
+            if (((BlendedNoise)(Object)this) instanceof BlendedNoiseRepeating) {
+                return ((BlendedNoiseRepeating)(Object)this).canOverflow ? value : PerlinNoise.wrap(value);
+            }
             return value;
         }
         return PerlinNoise.wrap(value);

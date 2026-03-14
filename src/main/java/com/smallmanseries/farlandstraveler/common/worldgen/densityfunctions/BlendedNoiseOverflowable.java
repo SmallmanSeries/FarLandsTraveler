@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.synth.BlendedNoise;
  * 可溢出的混合噪声，用于创建可生成边境之地的自定义噪声。由 {@link BlendedNoiseMixin} 基于修改原版的 {@link BlendedNoise} 类来实现。
  */
 public class BlendedNoiseOverflowable extends BlendedNoise{
-    private static final Codec<Double> SCALE_RANGE = Codec.doubleRange(0.001, 1000.0);
+    protected static final Codec<Double> SCALE_RANGE = Codec.doubleRange(0.001, 1000.0);
     public static final MapCodec<BlendedNoiseOverflowable> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
                             SCALE_RANGE.fieldOf("xz_scale").forGetter(instance1 -> instance1.xzScale),
