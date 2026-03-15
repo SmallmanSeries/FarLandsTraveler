@@ -36,7 +36,7 @@ public class Config {
     public static final ModConfigSpec.IntValue REPEATING_FAR_LANDS_DISTANCE = BUILDER
             .comment("The distance between the generated location of the Repeating Far Lands and the origin of the world")
             .comment("Actually, it's the location that the terrain starts to repeat")
-            .defineInRange("repeating_far_lands_distance", 12560824, 0, Integer.MAX_VALUE);
+            .defineInRange("repeating_far_lands_distance", 12560832, 0, Integer.MAX_VALUE);
     // </配置文件正文>
 
     static final ModConfigSpec SPEC = BUILDER.build();

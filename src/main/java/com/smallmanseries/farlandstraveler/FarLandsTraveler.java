@@ -51,9 +51,9 @@ public class FarLandsTraveler {
             boxSelect.addProperty("origin_x", -12550824);
             boxSelect.addProperty("origin_y", -25101648);
             boxSelect.addProperty("origin_z", -12550824);
-            boxSelect.addProperty("extend_x", 25101648);
-            boxSelect.addProperty("extend_y", 50203296);
-            boxSelect.addProperty("extend_z", 25101648);
+            boxSelect.addProperty("extend_x", 25101649);
+            boxSelect.addProperty("extend_y", 50203297);
+            boxSelect.addProperty("extend_z", 25101649);
             JsonObject finalDensityModified = new JsonObject();
             finalDensityModified.addProperty("type", "minecraft:range_choice");
             finalDensityModified.add("input", boxSelect);
