@@ -44,7 +44,7 @@ public class FarLandsTraveler {
             overflowCheck.addProperty("min_inclusive", -100);
             overflowCheck.addProperty("max_exclusive", 100);
             overflowCheck.add("when_in_range", finalDensity);
-            overflowCheck.addProperty("when_out_of_range", "farlandstraveler:far_lands/far_lands");
+            overflowCheck.addProperty("when_out_of_range", "farlandstraveler:far_lands/final_density");
             JsonObject boxSelect = new JsonObject();
             boxSelect.addProperty("type", "farlandstraveler:box_select");
             boxSelect.addProperty("invert", true);
@@ -60,12 +60,30 @@ public class FarLandsTraveler {
             finalDensityModified.addProperty("min_inclusive", 0);
             finalDensityModified.addProperty("max_exclusive", 1);
             finalDensityModified.add("when_in_range", overflowCheck);
-            finalDensityModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/far_lands");
+            finalDensityModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/final_density");
 
-            //基于距离（distance）切换其他密度函数
+            //基于框选（box_select）切换其他密度函数
+            JsonElement initialDensity = noiseRouterOverworld.get("initial_density_without_jaggedness");
+            boxSelect = new JsonObject();
+            boxSelect.addProperty("type", "farlandstraveler:box_select");
+            boxSelect.addProperty("invert", true);
+            boxSelect.addProperty("origin_x", -12550824);
+            boxSelect.addProperty("origin_y", -25101648);
+            boxSelect.addProperty("origin_z", -12550824);
+            boxSelect.addProperty("extend_x", 25101645);
+            boxSelect.addProperty("extend_y", 50203297);
+            boxSelect.addProperty("extend_z", 25101645);
+            JsonObject initialDensityModified = new JsonObject();
+            initialDensityModified.addProperty("type", "minecraft:range_choice");
+            initialDensityModified.add("input", boxSelect);
+            initialDensityModified.addProperty("min_inclusive", 0);
+            initialDensityModified.addProperty("max_exclusive", 1);
+            initialDensityModified.add("when_in_range", initialDensity);
+            initialDensityModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/initial_density_without_jaggedness");
 
             //应用修改后的noise_router
             noiseRouterOverworld.add("final_density", finalDensityModified);
+            noiseRouterOverworld.add("initial_density_without_jaggedness", initialDensityModified);
 
         }, false);
     }
