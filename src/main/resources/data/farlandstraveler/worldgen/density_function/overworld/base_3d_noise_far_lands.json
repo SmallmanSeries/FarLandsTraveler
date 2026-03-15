@@ -16,8 +16,10 @@
     "type": "farlandstraveler:old_blended_noise_customizable",
     "overflowable": true,
     "smear_scale_multiplier": 8.0,
-    "xz_factor": 1.0063747208948193361647012180236,
-    "xz_scale": 0.25,
+    "x_factor": 1.0063747208948193361647012180236,
+    "x_scale": 0.25,
+    "z_factor": 1.0063747208948193361647012180236,
+    "z_scale": 0.25,
     "y_factor": 160.0,
     "y_scale": 0.125
   },
@@ -168,8 +170,10 @@
                         "repeat_length": 16,
                         "repeat_count": 172647,
                         "smear_scale_multiplier": 8.0,
-                        "xz_factor": 80.0,
-                        "xz_scale": 0.25,
+                        "x_factor": 80.0,
+                        "x_scale": 0.25,
+                        "z_factor": 80.0,
+                        "z_scale": 0.25,
                         "y_factor": 160.0,
                         "y_scale": 0.125
                       },
@@ -180,8 +184,10 @@
                         "repeat_length": 16,
                         "repeat_count": 29,
                         "smear_scale_multiplier": 8.0,
-                        "xz_factor": 80.0,
-                        "xz_scale": 0.25,
+                        "x_factor": 80.0,
+                        "x_scale": 0.25,
+                        "z_factor": 80.0,
+                        "z_scale": 0.25,
                         "y_factor": 160.0,
                         "y_scale": 0.125
                       }
@@ -193,8 +199,10 @@
                       "repeat_length": 16,
                       "repeat_count": 23,
                       "smear_scale_multiplier": 8.0,
-                      "xz_factor": 80.0,
-                      "xz_scale": 0.25,
+                      "x_factor": 80.0,
+                      "x_scale": 0.25,
+                      "z_factor": 80.0,
+                      "z_scale": 0.25,
                       "y_factor": 160.0,
                       "y_scale": 0.125
                     }
@@ -206,8 +214,10 @@
                     "repeat_length": 16,
                     "repeat_count": 19,
                     "smear_scale_multiplier": 8.0,
-                    "xz_factor": 80.0,
-                    "xz_scale": 0.25,
+                    "x_factor": 80.0,
+                    "x_scale": 0.25,
+                    "z_factor": 80.0,
+                    "z_scale": 0.25,
                     "y_factor": 160.0,
                     "y_scale": 0.125
                   }
@@ -219,8 +229,10 @@
                   "repeat_length": 16,
                   "repeat_count": 17,
                   "smear_scale_multiplier": 8.0,
-                  "xz_factor": 80.0,
-                  "xz_scale": 0.25,
+                  "x_factor": 80.0,
+                  "x_scale": 0.25,
+                  "z_factor": 80.0,
+                  "z_scale": 0.25,
                   "y_factor": 160.0,
                   "y_scale": 0.125
                 }
@@ -232,8 +244,10 @@
                 "repeat_length": 16,
                 "repeat_count": 13,
                 "smear_scale_multiplier": 8.0,
-                "xz_factor": 80.0,
-                "xz_scale": 0.25,
+                "x_factor": 80.0,
+                "x_scale": 0.25,
+                "z_factor": 80.0,
+                "z_scale": 0.25,
                 "y_factor": 160.0,
                 "y_scale": 0.125
               }
@@ -245,8 +259,10 @@
               "repeat_length": 16,
               "repeat_count": 11,
               "smear_scale_multiplier": 8.0,
-              "xz_factor": 80.0,
-              "xz_scale": 0.25,
+              "x_factor": 80.0,
+              "x_scale": 0.25,
+              "z_factor": 80.0,
+              "z_scale": 0.25,
               "y_factor": 160.0,
               "y_scale": 0.125
             }
@@ -258,8 +274,10 @@
             "repeat_length": 16,
             "repeat_count": 7,
             "smear_scale_multiplier": 8.0,
-            "xz_factor": 80.0,
-            "xz_scale": 0.25,
+            "x_factor": 80.0,
+            "x_scale": 0.25,
+            "z_factor": 80.0,
+            "z_scale": 0.25,
             "y_factor": 160.0,
             "y_scale": 0.125
           }
@@ -271,8 +289,10 @@
           "repeat_length": 16,
           "repeat_count": 5,
           "smear_scale_multiplier": 8.0,
-          "xz_factor": 80.0,
-          "xz_scale": 0.25,
+          "x_factor": 80.0,
+          "x_scale": 0.25,
+          "z_factor": 80.0,
+          "z_scale": 0.25,
           "y_factor": 160.0,
           "y_scale": 0.125
         }
@@ -284,8 +304,10 @@
         "repeat_length": 16,
         "repeat_count": 3,
         "smear_scale_multiplier": 8.0,
-        "xz_factor": 80.0,
-        "xz_scale": 0.25,
+        "x_factor": 80.0,
+        "x_scale": 0.25,
+        "z_factor": 80.0,
+        "z_scale": 0.25,
         "y_factor": 160.0,
         "y_scale": 0.125
       }
@@ -297,8 +319,10 @@
       "repeat_length": 16,
       "repeat_count": 2,
       "smear_scale_multiplier": 8.0,
-      "xz_factor": 80.0,
-      "xz_scale": 0.25,
+      "x_factor": 80.0,
+      "x_scale": 0.25,
+      "z_factor": 80.0,
+      "z_scale": 0.25,
       "y_factor": 160.0,
       "y_scale": 0.125
     }

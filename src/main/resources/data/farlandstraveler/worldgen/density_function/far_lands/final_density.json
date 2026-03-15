@@ -1,6 +1,4 @@
 {
-  "type": "minecraft:min",
-  "argument1": {
     "type": "minecraft:squeeze",
     "argument": {
       "type": "minecraft:mul",
@@ -49,6 +47,4 @@
         }
       }
     }
-  },
-  "argument2": "minecraft:overworld/caves/noodle"
 }

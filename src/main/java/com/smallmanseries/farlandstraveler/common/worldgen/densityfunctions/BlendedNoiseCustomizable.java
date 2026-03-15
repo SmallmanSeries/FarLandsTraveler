@@ -32,19 +32,24 @@ import java.util.Optional;
  * @author INF32768
  */
 public class BlendedNoiseCustomizable extends BlendedNoise{
-    protected static final Codec<Double> SCALE_RANGE = Codec.doubleRange(0.001, 1000.0);
+    protected static final Codec<Double> SCALE_RANGE = Codec.doubleRange(0.001, Double.MAX_VALUE);
     private static final Codec<Integer> POSITIVE_INT_RANGE = Codec.intRange(1, Integer.MAX_VALUE);
     public static final MapCodec<BlendedNoiseCustomizable> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            SCALE_RANGE.fieldOf("xz_scale").forGetter(instance1 -> instance1.xzScale),
+                            SCALE_RANGE.fieldOf("x_scale").forGetter(instance1 -> instance1.xzScale),
                             SCALE_RANGE.fieldOf("y_scale").forGetter(instance2 -> instance2.yScale),
-                            SCALE_RANGE.fieldOf("xz_factor").forGetter(instance3 -> instance3.xzFactor),
+                            SCALE_RANGE.fieldOf("z_scale").forGetter(instance1 -> instance1.zScale),
+                            SCALE_RANGE.fieldOf("x_factor").forGetter(instance3 -> instance3.xzFactor),
                             SCALE_RANGE.fieldOf("y_factor").forGetter(instance4 -> instance4.yFactor),
+                            SCALE_RANGE.fieldOf("z_factor").forGetter(instance3 -> instance3.zFactor),
                             Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter(instance5 -> instance5.smearScaleMultiplier),
                             Codec.BOOL.fieldOf("overflowable").forGetter(instance6 -> instance6.overflowable),
                             Codec.intRange(-1, Integer.MAX_VALUE).optionalFieldOf("repeat_start").forGetter(instance7 -> instance7.repeatStart),
                             POSITIVE_INT_RANGE.optionalFieldOf("repeat_length").forGetter(instance8 -> instance8.repeatLength),
-                            POSITIVE_INT_RANGE.optionalFieldOf("repeat_count").forGetter(instance9 -> instance9.repeatCount)
+                            POSITIVE_INT_RANGE.optionalFieldOf("repeat_count").forGetter(instance9 -> instance9.repeatCount),
+                            Codec.DOUBLE.optionalFieldOf("x_shift", 0.0).forGetter(instance10 -> instance10.xShift),
+                            Codec.DOUBLE.optionalFieldOf("y_shift", 0.0).forGetter(instance11 -> instance11.yShift),
+                            Codec.DOUBLE.optionalFieldOf("z_shift", 0.0).forGetter(instance12 -> instance12.zShift)
                     )
                     .apply(instance, BlendedNoiseCustomizable::createUnseeded)
     );
@@ -72,21 +77,35 @@ public class BlendedNoiseCustomizable extends BlendedNoise{
      */
     private final Optional<Integer> repeatCount;
 
-    public BlendedNoiseCustomizable(RandomSource random, double xzScale, double yScale, double xzFactor, double yFactor, double smearScaleMultiplier, boolean overflowable, Optional<Integer> repeatStart, Optional<Integer> repeatLength, Optional<Integer> repeatCount) {
-        super(random, xzScale, yScale, xzFactor, yFactor, smearScaleMultiplier);
+    public final double zScale;
+    public final double zFactor;
+    public final double zMultiplier;
+
+    public final double xShift;
+    public final double yShift;
+    public final double zShift;
+
+    public BlendedNoiseCustomizable(RandomSource random, double xScale, double yScale, double zScale, double xFactor, double yFactor, double zFactor, double smearScaleMultiplier, boolean overflowable, Optional<Integer> repeatStart, Optional<Integer> repeatLength, Optional<Integer> repeatCount, double xShift, double yShift, double zShift) {
+        super(random, xScale, yScale, xFactor, yFactor, smearScaleMultiplier);
         this.overflowable = overflowable;
         this.repeatStart = repeatStart;
         this.repeatLength = repeatLength;
         this.repeatCount = repeatCount;
+        this.zScale = zScale;
+        this.zFactor = zFactor;
+        this.zMultiplier = 684.412 * this.zScale;
+        this.xShift = xShift;
+        this.yShift = yShift;
+        this.zShift = zShift;
     }
 
-    public static BlendedNoiseCustomizable createUnseeded(double xzScale, double yScale, double xzFactor, double yFactor, double smearScaleMultiplier, boolean overflowable, Optional<Integer> repeatStart, Optional<Integer> repeatLength, Optional<Integer> repeatCount) {
-        return new BlendedNoiseCustomizable(new XoroshiroRandomSource(0L), xzScale, yScale, xzFactor, yFactor, smearScaleMultiplier, overflowable, repeatStart, repeatLength, repeatCount);
+    public static BlendedNoiseCustomizable createUnseeded(double xScale, double yScale, double zScale, double xFactor, double yFactor, double zFactor, double smearScaleMultiplier, boolean overflowable, Optional<Integer> repeatStart, Optional<Integer> repeatLength, Optional<Integer> repeatCount, double xShift, double yShift, double zShift) {
+        return new BlendedNoiseCustomizable(new XoroshiroRandomSource(0L), xScale, yScale, zScale, xFactor, yFactor, zFactor, smearScaleMultiplier, overflowable, repeatStart, repeatLength, repeatCount, xShift, yShift, zShift);
     }
 
     @Override
     public BlendedNoiseCustomizable withNewRandom(RandomSource random) {
-        return new BlendedNoiseCustomizable(random, this.xzScale, this.yScale, this.xzFactor, this.yFactor, this.smearScaleMultiplier, this.overflowable, this.repeatStart, this.repeatLength, this.repeatCount);
+        return new BlendedNoiseCustomizable(random, this.xzScale, this.yScale, this.zScale, this.xzFactor, this.yFactor, this.zFactor, this.smearScaleMultiplier, this.overflowable, this.repeatStart, this.repeatLength, this.repeatCount, this.xShift, this.yShift, this.zShift);
     }
 
     /**
