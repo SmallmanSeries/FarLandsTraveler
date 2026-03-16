@@ -1,4 +1,7 @@
 {
+  "type": "farlandstraveler:nan_converter",
+  "convert_to": -1.0,
+  "input": {
     "type": "minecraft:squeeze",
     "argument": {
       "type": "minecraft:mul",
@@ -47,4 +50,5 @@
         }
       }
     }
+  }
 }

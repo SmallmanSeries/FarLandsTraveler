@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.BlendedNoiseCustomizable;
 import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.BoxSelectFunction;
+import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.NaNConverter;
 import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.VirtualDensityFunction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.DensityFunction;
@@ -17,5 +18,6 @@ public class FLTDensityFunctions {
         FUNCTIONS.register("virtual_density_function", () -> VirtualDensityFunction.DATA_CODEC);
         FUNCTIONS.register("old_blended_noise_customizable", () -> BlendedNoiseCustomizable.DATA_CODEC);
         FUNCTIONS.register("box_select", () -> BoxSelectFunction.DATA_CODEC);
+        FUNCTIONS.register("nan_converter", () -> NaNConverter.DATA_CODEC);
     }
 }
