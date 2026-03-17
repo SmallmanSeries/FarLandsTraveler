@@ -16,43 +16,86 @@
     "type": "minecraft:range_choice",
     "input": {
       "type": "farlandstraveler:box_select",
-      "invert": true,
+      "invert": false,
       "origin_x": 0,
       "origin_y": -25101648,
       "origin_z": -12550824,
-      "extend_x": 12790832,
+      "extend_x": 12792832,
       "extend_y": 50203297,
       "extend_z": 25101648
     },
     "min_inclusive": 0,
     "max_exclusive": 1,
     "when_in_range": {
-      "type": "farlandstraveler:old_blended_noise_customizable",
-      "overflowable": true,
-      "smear_scale_multiplier": 8.0,
-      "x_factor": 80.0,
-      "x_scale": 1.25E43,
-      "z_factor": 80.0,
-      "z_scale": 0.25,
-      "y_factor": 160.0,
-      "y_scale": 0.125,
-      "x_shift": -12546829.0
-    },
-    "when_out_of_range": {
       "type": "minecraft:range_choice",
       "input": {
         "type": "farlandstraveler:box_select",
-        "invert": true,
-        "origin_x": -12790832,
+        "invert": false,
+        "origin_x": -12792832,
         "origin_y": -25101648,
         "origin_z": -12550824,
-        "extend_x": 12790832,
+        "extend_x": 12792832,
         "extend_y": 50203297,
         "extend_z": 25101648
       },
       "min_inclusive": 0,
       "max_exclusive": 1,
       "when_in_range": {
+        "type": "minecraft:range_choice",
+        "input": {
+          "type": "farlandstraveler:box_select",
+          "invert": false,
+          "origin_x": -12550824,
+          "origin_y": -25101648,
+          "origin_z": 0,
+          "extend_x": 25101648,
+          "extend_y": 50203297,
+          "extend_z": 12870832
+        },
+        "min_inclusive": 0,
+        "max_exclusive": 1,
+        "when_in_range": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "farlandstraveler:box_select",
+            "invert": false,
+            "origin_x": -12550824,
+            "origin_y": -25101648,
+            "origin_z": -12870832,
+            "extend_x": 25101648,
+            "extend_y": 50203297,
+            "extend_z": 12870832
+          },
+          "min_inclusive": 0,
+          "max_exclusive": 1,
+          "when_in_range": -10.0,
+          "when_out_of_range": {
+            "type": "farlandstraveler:old_blended_noise_customizable",
+            "overflowable": true,
+            "smear_scale_multiplier": 8.0,
+            "x_factor": 80.0,
+            "x_scale": 0.25,
+            "z_factor": 80.0,
+            "z_scale": 3.125E43,
+            "y_factor": 160.0,
+            "y_scale": 0.125,
+            "z_shift": 12637467.0
+          }
+        },
+        "when_out_of_range": {
+          "type": "farlandstraveler:old_blended_noise_customizable",
+          "overflowable": true,
+          "smear_scale_multiplier": 8.0,
+          "x_factor": 80.0,
+          "x_scale": 0.25,
+          "z_factor": 80.0,
+          "z_scale": 3.125E43,
+          "y_factor": 160.0,
+          "y_scale": 0.125,
+          "z_shift": -12637467.0
+        }
+      },
+      "when_out_of_range": {
         "type": "farlandstraveler:old_blended_noise_customizable",
         "overflowable": true,
         "smear_scale_multiplier": 8.0,
@@ -63,8 +106,19 @@
         "y_factor": 160.0,
         "y_scale": 0.125,
         "x_shift": 12546829.0
-      },
-      "when_out_of_range": -10.0
+      }
+    },
+    "when_out_of_range": {
+    "type": "farlandstraveler:old_blended_noise_customizable",
+    "overflowable": true,
+    "smear_scale_multiplier": 8.0,
+    "x_factor": 80.0,
+    "x_scale": 1.25E43,
+    "z_factor": 80.0,
+    "z_scale": 0.25,
+    "y_factor": 160.0,
+    "y_scale": 0.125,
+    "x_shift": -12546829.0
     }
   },
   "when_out_of_range": {
@@ -82,15 +136,67 @@
     "min_inclusive": 0,
     "max_exclusive": 1,
     "when_in_range": {
-      "type": "farlandstraveler:old_blended_noise_customizable",
-      "overflowable": true,
-      "smear_scale_multiplier": 8.0,
-      "x_factor": 1.0063747208948193361647012180236,
-      "x_scale": 0.25,
-      "z_factor": 1.0063747208948193361647012180236,
-      "z_scale": 0.25,
-      "y_factor": 160.0,
-      "y_scale": 0.125
+      "type": "minecraft:range_choice",
+      "input": {
+        "type": "farlandstraveler:box_select",
+        "invert": false,
+        "origin_x": -12710832,
+        "origin_y": -25101648,
+        "origin_z": -12550824,
+        "extend_x": 25421664,
+        "extend_y": 50203297,
+        "extend_z": 25101648
+      },
+      "min_inclusive": 0,
+      "max_exclusive": 1,
+      "when_in_range": {
+        "type": "minecraft:range_choice",
+        "input": {
+          "type": "farlandstraveler:box_select",
+          "invert": false,
+          "origin_x": -12550824,
+          "origin_y": -25101648,
+          "origin_z": -12710832,
+          "extend_x": 25101648,
+          "extend_y": 50203297,
+          "extend_z": 25421664
+        },
+        "min_inclusive": 0,
+        "max_exclusive": 1,
+        "when_in_range": {
+          "type": "farlandstraveler:old_blended_noise_customizable",
+          "overflowable": true,
+          "smear_scale_multiplier": 8.0,
+          "x_factor": 1.0063747208948193361647012180236,
+          "x_scale": 0.25,
+          "z_factor": 1.0063747208948193361647012180236,
+          "z_scale": 0.25,
+          "y_factor": 160.0,
+          "y_scale": 0.125
+        },
+        "when_out_of_range": {
+          "type": "farlandstraveler:old_blended_noise_customizable",
+          "overflowable": true,
+          "smear_scale_multiplier": 8.0,
+          "x_factor": 80.0,
+          "x_scale": 0.25,
+          "z_factor": 1.0063747208948193361647012180236,
+          "z_scale": 0.25,
+          "y_factor": 160.0,
+          "y_scale": 0.125
+        }
+      },
+      "when_out_of_range": {
+        "type": "farlandstraveler:old_blended_noise_customizable",
+        "overflowable": true,
+        "smear_scale_multiplier": 8.0,
+        "x_factor": 1.0063747208948193361647012180236,
+        "x_scale": 0.25,
+        "z_factor": 80.0,
+        "z_scale": 0.25,
+        "y_factor": 160.0,
+        "y_scale": 0.125
+      }
     },
     "when_out_of_range": {
       "type": "minecraft:range_choice",
