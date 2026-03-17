@@ -7,22 +7,23 @@ import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.DensityFunction;
 
 /**
-* <p>{
-* <p>"type": "farlandstraveler:nan_converter",
-* <p>"input": 要处理的密度函数,
-* <p>"convert_to": 要转换成的数
-* <p>}
-*/
+ * 将密度函数计算结果中的NaN转换成指定的数值
+ * <p>{
+ * <p>"type": "farlandstraveler:nan_converter",
+ * <p>"input": 要处理的密度函数,
+ * <p>"convert_to": 要转换成的数
+ * <p>}
+ */
 
-public record NaNConverter(DensityFunction input, double convertTo) implements DensityFunction.SimpleFunction {
-    public static final MapCodec<NaNConverter> DATA_CODEC = RecordCodecBuilder.mapCodec(
+public record NaNConverterFunction(DensityFunction input, double convertTo) implements DensityFunction.SimpleFunction {
+    public static final MapCodec<NaNConverterFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            DensityFunction.DIRECT_CODEC.fieldOf("input").forGetter(NaNConverter::input),
-                            Codec.DOUBLE.fieldOf("convert_to").forGetter(NaNConverter::convertTo)
+                            DensityFunction.DIRECT_CODEC.fieldOf("input").forGetter(NaNConverterFunction::input),
+                            Codec.DOUBLE.fieldOf("convert_to").forGetter(NaNConverterFunction::convertTo)
                     )
-                    .apply(instance, NaNConverter::new)
+                    .apply(instance, NaNConverterFunction::new)
     );
-    public static final KeyDispatchDataCodec<NaNConverter> CODEC = KeyDispatchDataCodec.of(DATA_CODEC);
+    public static final KeyDispatchDataCodec<NaNConverterFunction> CODEC = KeyDispatchDataCodec.of(DATA_CODEC);
 
 
     @Override
@@ -33,7 +34,7 @@ public record NaNConverter(DensityFunction input, double convertTo) implements D
 
     @Override
     public DensityFunction mapAll(Visitor visitor) {
-        return visitor.apply(new NaNConverter(this.input.mapAll(visitor), this.convertTo));
+        return visitor.apply(new NaNConverterFunction(this.input.mapAll(visitor), this.convertTo));
     }
 
     @Override
