@@ -180,7 +180,7 @@
                           },
                           "min_inclusive": 0,
                           "max_exclusive": 1,
-                          "when_in_range": -10.0,
+                          "when_in_range": -0.001,
                           "when_out_of_range": {
                             "type": "farlandstraveler:old_blended_noise_customizable",
                             "overflowable": true,
@@ -192,7 +192,7 @@
                             "y_factor": 160.0,
                             "y_scale": 0.125,
                             "x_shift": 12710583.0,
-                            "z_shift": 12550675.0
+                            "z_shift": 12550175.0
                           }
                         },
                         "when_out_of_range": {
@@ -205,7 +205,7 @@
                           "z_scale": 0.25E22,
                           "y_factor": 160.0,
                           "y_scale": 0.125,
-                          "x_shift": 12550675.0,
+                          "x_shift": 12550175.0,
                           "z_shift": 12710583.0
                         }
                       },
@@ -219,7 +219,7 @@
                         "z_scale": 0.25E22,
                         "y_factor": 160.0,
                         "y_scale": 0.125,
-                        "x_shift": -12550675.0,
+                        "x_shift": -12550175.0,
                         "z_shift": 12710583.0
                       }
                     },
@@ -234,7 +234,7 @@
                       "y_factor": 160.0,
                       "y_scale": 0.125,
                       "x_shift": -12710583.0,
-                      "z_shift": 12550675.0
+                      "z_shift": 12550175.0
                     }
                   },
                   "when_out_of_range": {
@@ -248,7 +248,7 @@
                     "y_factor": 160.0,
                     "y_scale": 0.125,
                     "x_shift": 12710583.0,
-                    "z_shift": -12550675.0
+                    "z_shift": -12550175.0
                   }
                 },
                 "when_out_of_range": {
@@ -261,7 +261,7 @@
                   "z_scale": 0.25E22,
                   "y_factor": 160.0,
                   "y_scale": 0.125,
-                  "x_shift": 12550675.0,
+                  "x_shift": 12550175.0,
                   "z_shift": -12710583.0
                 }
               },
@@ -275,7 +275,7 @@
                 "z_scale": 0.25E22,
                 "y_factor": 160.0,
                 "y_scale": 0.125,
-                "x_shift": -12550675.0,
+                "x_shift": -12550175.0,
                 "z_shift": -12710583.0
               }
             },
@@ -290,7 +290,7 @@
               "y_factor": 160.0,
               "y_scale": 0.125,
               "x_shift": -12710583.0,
-              "z_shift": -12550675.0
+              "z_shift": -12550175.0
             }
           },
           "when_out_of_range": {

@@ -21,36 +21,101 @@
           "argument1": {
             "type": "minecraft:y_clamped_gradient",
             "from_value": 1,
-            "from_y": 0,
+            "from_y": 240,
             "to_value": 0,
-            "to_y": 16
+            "to_y": 256
           },
           "argument2": {
             "type": "minecraft:add",
-            "argument1": 0.078125,
-            "argument2": {
-              "type": "minecraft:clamp",
-              "input": {
-                "type": "minecraft:add",
-                "argument1": -0.703125,
+            "argument1": {
+              "type": "minecraft:mul",
+              "argument1": {
+                "type": "minecraft:cache_2d",
+                "argument": "farlandstraveler:overworld/sea_of_end_gradient"
+              },
+              "argument2": {
+                "type": "minecraft:mul",
+                "argument1": {
+                  "type": "minecraft:y_clamped_gradient",
+                  "from_value": 1,
+                  "from_y": 64,
+                  "to_value": 0,
+                  "to_y": 72
+                },
                 "argument2": {
-                  "type": "minecraft:mul",
-                  "argument1": 4,
+                  "type": "minecraft:add",
+                  "argument1": {
+                    "type": "minecraft:mul",
+                    "argument1": {
+                      "type": "minecraft:cache_2d",
+                      "argument": "farlandstraveler:overworld/sea_of_end_gradient"
+                    },
+                    "argument2": 8.0
+                  },
                   "argument2": {
-                    "type": "minecraft:quarter_negative",
-                    "argument": {
-                      "type": "minecraft:mul",
-                      "argument1": "minecraft:overworld/depth",
+                    "type": "minecraft:clamp",
+                    "input": {
+                      "type": "minecraft:add",
+                      "argument1": -0.703125,
                       "argument2": {
-                        "type": "minecraft:cache_2d",
-                        "argument": "minecraft:overworld/factor"
+                        "type": "minecraft:mul",
+                        "argument1": 4,
+                        "argument2": {
+                          "type": "minecraft:quarter_negative",
+                          "argument": {
+                            "type": "minecraft:mul",
+                            "argument1": "minecraft:overworld/depth",
+                            "argument2": {
+                              "type": "minecraft:cache_2d",
+                              "argument": "minecraft:overworld/factor"
+                            }
+                          }
+                        }
                       }
-                    }
+                    },
+                    "max": 64,
+                    "min": -64
                   }
                 }
+              }
+            },
+            "argument2": {
+              "type": "minecraft:mul",
+              "argument1": {
+                "type": "minecraft:y_clamped_gradient",
+                "from_value": 1,
+                "from_y": 0,
+                "to_value": 0,
+                "to_y": 16
               },
-              "max": 64,
-              "min": -64
+              "argument2": {
+                "type": "minecraft:add",
+                "argument1": 0.078125,
+                "argument2": {
+                  "type": "minecraft:clamp",
+                  "input": {
+                    "type": "minecraft:add",
+                    "argument1": -0.703125,
+                    "argument2": {
+                      "type": "minecraft:mul",
+                      "argument1": 4,
+                      "argument2": {
+                        "type": "minecraft:quarter_negative",
+                        "argument": {
+                          "type": "minecraft:mul",
+                          "argument1": "minecraft:overworld/depth",
+                          "argument2": {
+                            "type": "minecraft:cache_2d",
+                            "argument": "minecraft:overworld/factor"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "max": 64,
+                  "min": -64
+                }
+              }
             }
           }
         }
