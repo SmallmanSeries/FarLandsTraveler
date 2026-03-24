@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:add",
+  "argument1": 1.0,
+  "argument2": {
+    "type": "minecraft:noise",
+    "noise": "minecraft:aquifer_barrier",
+    "xz_scale": 1,
+    "y_scale": 0.5
+  }
+}

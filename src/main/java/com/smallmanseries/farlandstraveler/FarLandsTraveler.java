@@ -99,6 +99,24 @@ public class FarLandsTraveler {
             floodednessModified.add("when_in_range", floodedness);
             floodednessModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/fluid_level_floodedness");
 
+            JsonElement barrier = noiseRouterOverworld.get("barrier");
+            boxSelect = new JsonObject();
+            boxSelect.addProperty("type", "farlandstraveler:box_select");
+            boxSelect.addProperty("invert", true);
+            boxSelect.addProperty("origin_x", -12550824);
+            boxSelect.addProperty("origin_y", -25101648);
+            boxSelect.addProperty("origin_z", -12550824);
+            boxSelect.addProperty("extend_x", 25101645);
+            boxSelect.addProperty("extend_y", 50203297);
+            boxSelect.addProperty("extend_z", 25101645);
+            JsonObject barrierModified = new JsonObject();
+            barrierModified.addProperty("type", "minecraft:range_choice");
+            barrierModified.add("input", boxSelect);
+            barrierModified.addProperty("min_inclusive", 0);
+            barrierModified.addProperty("max_exclusive", 1);
+            barrierModified.add("when_in_range", barrier);
+            barrierModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/barrier");
+
             //应用修改后的noise_router
             noiseRouterOverworld.add("final_density", finalDensityModified);
             noiseRouterOverworld.add("initial_density_without_jaggedness", initialDensityModified);

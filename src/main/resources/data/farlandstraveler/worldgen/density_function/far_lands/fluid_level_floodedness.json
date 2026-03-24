@@ -1,6 +1,110 @@
 {
   "type": "minecraft:mul",
-  "argument1": "farlandstraveler:overworld/sea_of_end_gradient",
+  "argument1": {
+    "type": "minecraft:range_choice",
+    "input": {
+      "type": "farlandstraveler:box_select",
+      "invert": false,
+      "origin_x": 12710832,
+      "origin_y": -25101648,
+      "origin_z": -12710832,
+      "extend_x": 160000,
+      "extend_y": 50203297,
+      "extend_z": 25421664
+    },
+    "min_inclusive": 0,
+    "max_exclusive": 1,
+    "when_in_range": {
+      "type": "minecraft:range_choice",
+      "input": {
+        "type": "farlandstraveler:box_select",
+        "invert": false,
+        "origin_x": -12870832,
+        "origin_y": -25101648,
+        "origin_z": -12710832,
+        "extend_x": 160000,
+        "extend_y": 50203297,
+        "extend_z": 25421664
+      },
+      "min_inclusive": 0,
+      "max_exclusive": 1,
+      "when_in_range":{
+        "type": "minecraft:range_choice",
+        "input": {
+          "type": "farlandstraveler:box_select",
+          "invert": false,
+          "origin_x": -12710832,
+          "origin_y": -25101648,
+          "origin_z": 12710832,
+          "extend_x": 25421664,
+          "extend_y": 50203297,
+          "extend_z": 160000
+        },
+        "min_inclusive": 0,
+        "max_exclusive": 1,
+        "when_in_range": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "farlandstraveler:box_select",
+            "invert": false,
+            "origin_x": -12710832,
+            "origin_y": -25101648,
+            "origin_z": -12870832,
+            "extend_x": 25421664,
+            "extend_y": 50203297,
+            "extend_z": 160000
+          },
+          "min_inclusive": 0,
+          "max_exclusive": 1,
+          "when_in_range": {
+            "type": "farlandstraveler:radial_gradient",
+            "center_x": 0.0,
+            "center_z": 0.0,
+            "inner_radius": 17975831.00344593,
+            "outer_radius": 18015831.00344593,
+            "inner_value": 1.0,
+            "outer_value": 0.0
+          },
+          "when_out_of_range": {
+            "type": "farlandstraveler:radial_gradient",
+            "center_x": 0.0,
+            "center_z": 3834080837.814857,
+            "inner_radius": 3846833669.814857,
+            "outer_radius": 3846873669.814857,
+            "inner_value": 1.0,
+            "outer_value": 0.0
+          }
+        },
+        "when_out_of_range": {
+          "type": "farlandstraveler:radial_gradient",
+          "center_x": 0.0,
+          "center_z": -3834080837.814857,
+          "inner_radius": 3846833669.814857,
+          "outer_radius": 3846873669.814857,
+          "inner_value": 1.0,
+          "outer_value": 0.0
+        }
+      },
+      "when_out_of_range": {
+        "type": "farlandstraveler:radial_gradient",
+        "center_x": 3834080837.814857,
+        "center_z": 0.0,
+        "inner_radius": 3846833669.814857,
+        "outer_radius": 3846873669.814857,
+        "inner_value": 1.0,
+        "outer_value": 0.0
+      }
+    },
+    "when_out_of_range": {
+      "type": "farlandstraveler:radial_gradient",
+      "center_x": -3834080837.814857,
+      "center_z": 0.0,
+      "inner_radius": 3846833669.814857,
+      "outer_radius": 3846873669.814857,
+      "inner_value": 1.0,
+      "outer_value": 0.0
+    }
+  },
   "argument2": {
     "type": "minecraft:noise",
     "noise": "minecraft:aquifer_fluid_level_floodedness",

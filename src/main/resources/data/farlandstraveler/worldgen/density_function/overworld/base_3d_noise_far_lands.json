@@ -76,9 +76,9 @@
               "origin_x": 12710832,
               "origin_y": -25101648,
               "origin_z": 12550824,
-              "extend_x": 160000,
+              "extend_x": 160001,
               "extend_y": 50203297,
-              "extend_z": 160000
+              "extend_z": 160001
             },
             "min_inclusive": 0,
             "max_exclusive": 1,
@@ -90,9 +90,9 @@
                 "origin_x": 12550824,
                 "origin_y": -25101648,
                 "origin_z": 12710832,
-                "extend_x": 160000,
+                "extend_x": 160001,
                 "extend_y": 50203297,
-                "extend_z": 160000
+                "extend_z": 160001
               },
               "min_inclusive": 0,
               "max_exclusive": 1,
@@ -104,9 +104,9 @@
                   "origin_x": -12710824,
                   "origin_y": -25101648,
                   "origin_z": 12710832,
-                  "extend_x": 160000,
+                  "extend_x": 160001,
                   "extend_y": 50203297,
-                  "extend_z": 160000
+                  "extend_z": 160001
                 },
                 "min_inclusive": 0,
                 "max_exclusive": 1,
@@ -118,9 +118,9 @@
                     "origin_x": -12870832,
                     "origin_y": -25101648,
                     "origin_z": 12550824,
-                    "extend_x": 160000,
+                    "extend_x": 160001,
                     "extend_y": 50203297,
-                    "extend_z": 160000
+                    "extend_z": 160001
                   },
                   "min_inclusive": 0,
                   "max_exclusive": 1,
@@ -132,9 +132,9 @@
                       "origin_x": 12710832,
                       "origin_y": -25101648,
                       "origin_z": -12710824,
-                      "extend_x": 160000,
+                      "extend_x": 160001,
                       "extend_y": 50203297,
-                      "extend_z": 160000
+                      "extend_z": 160001
                     },
                     "min_inclusive": 0,
                     "max_exclusive": 1,
@@ -146,9 +146,9 @@
                         "origin_x": 12550824,
                         "origin_y": -25101648,
                         "origin_z": -12870832,
-                        "extend_x": 160000,
+                        "extend_x": 160001,
                         "extend_y": 50203297,
-                        "extend_z": 160000
+                        "extend_z": 160001
                       },
                       "min_inclusive": 0,
                       "max_exclusive": 1,
@@ -160,9 +160,9 @@
                           "origin_x": -12710824,
                           "origin_y": -25101648,
                           "origin_z": -12870832,
-                          "extend_x": 160000,
+                          "extend_x": 160001,
                           "extend_y": 50203297,
-                          "extend_z": 160000
+                          "extend_z": 160001
                         },
                         "min_inclusive": 0,
                         "max_exclusive": 1,
@@ -174,9 +174,9 @@
                             "origin_x": -12870832,
                             "origin_y": -25101648,
                             "origin_z": -12710824,
-                            "extend_x": 160000,
+                            "extend_x": 160001,
                             "extend_y": 50203297,
-                            "extend_z": 160000
+                            "extend_z": 160001
                           },
                           "min_inclusive": 0,
                           "max_exclusive": 1,

@@ -3,7 +3,6 @@ package com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.mixin.worldgen.BlendedNoiseMixin;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
@@ -44,7 +43,7 @@ public class BlendedNoiseCustomizable extends BlendedNoise{
                             SCALE_RANGE.fieldOf("z_factor").forGetter(instance3 -> instance3.zFactor),
                             Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter(instance5 -> instance5.smearScaleMultiplier),
                             Codec.BOOL.fieldOf("overflowable").forGetter(instance6 -> instance6.overflowable),
-                            Codec.intRange(-1, Integer.MAX_VALUE).optionalFieldOf("repeat_start").forGetter(instance7 -> instance7.repeatStart),
+                            POSITIVE_INT_RANGE.optionalFieldOf("repeat_start").forGetter(instance7 -> instance7.repeatStart),
                             POSITIVE_INT_RANGE.optionalFieldOf("repeat_length").forGetter(instance8 -> instance8.repeatLength),
                             POSITIVE_INT_RANGE.optionalFieldOf("repeat_count").forGetter(instance9 -> instance9.repeatCount),
                             Codec.DOUBLE.optionalFieldOf("x_shift", 0.0).forGetter(instance10 -> instance10.xShift),
@@ -116,7 +115,7 @@ public class BlendedNoiseCustomizable extends BlendedNoise{
     @Override
     public double compute(FunctionContext context) {
         if (this.repeatStart.isPresent() && this.repeatLength.isPresent() && this.repeatCount.isPresent()) {
-            int repeatStart = this.repeatStart.get() == -1 ? Config.REPEATING_FAR_LANDS_DISTANCE.getAsInt() : this.repeatStart.get();
+            int repeatStart = this.repeatStart.get();
             int repeatLength = this.repeatLength.get();
             int sectionLength = repeatLength * this.repeatCount.get();
 
