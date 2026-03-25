@@ -3,6 +3,6 @@
   "settings": "farlandstraveler:far_lands",
   "biome_source": {
     "type": "fixed",
-    "biome": "farlandstraveler:far_lands"
+    "biome": "farlandstraveler:fringe_lands"
   }
 }

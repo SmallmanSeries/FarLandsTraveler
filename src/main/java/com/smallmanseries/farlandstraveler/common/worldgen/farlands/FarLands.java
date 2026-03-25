@@ -44,7 +44,7 @@ public record FarLands(
     public static final ResourceKey<FarLands> FAR_LANDS_EDGE = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands_edge")); //边境之地边缘
     public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands")); //边境之地
     //遥远之地
-    //边缘之墙
+    public static final ResourceKey<FarLands> FRINGE_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "fringe_lands")); //边缘之墙
     //边缘之角（由于边缘之地的墙变种和角变种缩放不一致，必须使用不一样的噪声设置）
     //终焉之海+条纹之海+切片之海（都是基岩海，很合理）
 
