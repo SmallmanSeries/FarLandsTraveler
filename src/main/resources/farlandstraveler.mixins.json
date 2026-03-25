@@ -9,6 +9,7 @@
     "border.ServerGamePacketListenerImplMixin",
     "border.WorldBorderMixin",
     "fakechunk.BlockBehaviourMixin",
+    "worldgen.AquiferMixin",
     "worldgen.BlendedNoiseMixin",
     "worldgen.ChunkMapMixin",
     "worldgen.DensityFunctionsClampMixin",
