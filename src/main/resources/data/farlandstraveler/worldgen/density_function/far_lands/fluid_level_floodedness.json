@@ -5,12 +5,12 @@
     "input": {
       "type": "farlandstraveler:box_select",
       "invert": false,
-      "origin_x": 12710832,
+      "origin_x": 14900000,
       "origin_y": -25101648,
-      "origin_z": -12710832,
-      "extend_x": 160000,
+      "origin_z": -14900000,
+      "extend_x": 1600000,
       "extend_y": 50203297,
-      "extend_z": 25421664
+      "extend_z": 29800000
     },
     "min_inclusive": 0,
     "max_exclusive": 1,
@@ -19,12 +19,12 @@
       "input": {
         "type": "farlandstraveler:box_select",
         "invert": false,
-        "origin_x": -12870832,
+        "origin_x": -16500000,
         "origin_y": -25101648,
-        "origin_z": -12710832,
-        "extend_x": 160000,
+        "origin_z": -14900000,
+        "extend_x": 1600000,
         "extend_y": 50203297,
-        "extend_z": 25421664
+        "extend_z": 29800000
       },
       "min_inclusive": 0,
       "max_exclusive": 1,
@@ -33,12 +33,12 @@
         "input": {
           "type": "farlandstraveler:box_select",
           "invert": false,
-          "origin_x": -12710832,
+          "origin_x": -14900000,
           "origin_y": -25101648,
-          "origin_z": 12710832,
-          "extend_x": 25421664,
+          "origin_z": 14900000,
+          "extend_x": 29800000,
           "extend_y": 50203297,
-          "extend_z": 160000
+          "extend_z": 1600000
         },
         "min_inclusive": 0,
         "max_exclusive": 1,
@@ -47,12 +47,12 @@
           "input": {
             "type": "farlandstraveler:box_select",
             "invert": false,
-            "origin_x": -12710832,
+            "origin_x": -14900000,
             "origin_y": -25101648,
-            "origin_z": -12870832,
-            "extend_x": 25421664,
+            "origin_z": -16500000,
+            "extend_x": 29800000,
             "extend_y": 50203297,
-            "extend_z": 160000
+            "extend_z": 1600000
           },
           "min_inclusive": 0,
           "max_exclusive": 1,
@@ -60,17 +60,17 @@
             "type": "farlandstraveler:radial_gradient",
             "center_x": 0.0,
             "center_z": 0.0,
-            "inner_radius": 17975831.00344593,
-            "outer_radius": 18015831.00344593,
+            "inner_radius": 21071782.07935912,
+            "outer_radius": 21871782.07935912,
             "inner_value": 1.0,
             "outer_value": 0.0
           },
           "when_out_of_range": {
             "type": "farlandstraveler:radial_gradient",
             "center_x": 0.0,
-            "center_z": 3834080837.814857,
-            "inner_radius": 3846833669.814857,
-            "outer_radius": 3846873669.814857,
+            "center_z": 262612500,
+            "inner_radius": 278312500,
+            "outer_radius": 279112500,
             "inner_value": 1.0,
             "outer_value": 0.0
           }
@@ -78,29 +78,29 @@
         "when_out_of_range": {
           "type": "farlandstraveler:radial_gradient",
           "center_x": 0.0,
-          "center_z": -3834080837.814857,
-          "inner_radius": 3846833669.814857,
-          "outer_radius": 3846873669.814857,
+          "center_z": -262612500,
+          "inner_radius": 278312500,
+          "outer_radius": 279112500,
           "inner_value": 1.0,
           "outer_value": 0.0
         }
       },
       "when_out_of_range": {
         "type": "farlandstraveler:radial_gradient",
-        "center_x": 3834080837.814857,
+        "center_x": 262612500,
         "center_z": 0.0,
-        "inner_radius": 3846833669.814857,
-        "outer_radius": 3846873669.814857,
+        "inner_radius": 278312500,
+        "outer_radius": 279112500,
         "inner_value": 1.0,
         "outer_value": 0.0
       }
     },
     "when_out_of_range": {
       "type": "farlandstraveler:radial_gradient",
-      "center_x": -3834080837.814857,
+      "center_x": -262612500,
       "center_z": 0.0,
-      "inner_radius": 3846833669.814857,
-      "outer_radius": 3846873669.814857,
+      "inner_radius": 278312500,
+      "outer_radius": 279112500,
       "inner_value": 1.0,
       "outer_value": 0.0
     }

@@ -3,12 +3,12 @@
   "input": {
     "type": "farlandstraveler:box_select",
     "invert": false,
-    "origin_x": -12710832,
+    "origin_x": -14900000,
     "origin_y": -25101648,
-    "origin_z": -12710832,
-    "extend_x": 25421664,
+    "origin_z": -14900000,
+    "extend_x": 29800000,
     "extend_y": 50203297,
-    "extend_z": 25421664
+    "extend_z": 29800000
   },
   "min_inclusive": 0,
   "max_exclusive": 1,
@@ -20,7 +20,7 @@
       "origin_x": 0,
       "origin_y": -25101648,
       "origin_z": -12550824,
-      "extend_x": 12792832,
+      "extend_x": 16777216,
       "extend_y": 50203297,
       "extend_z": 25101648
     },
@@ -31,10 +31,10 @@
       "input": {
         "type": "farlandstraveler:box_select",
         "invert": false,
-        "origin_x": -12792832,
+        "origin_x": -16777216,
         "origin_y": -25101648,
         "origin_z": -12550824,
-        "extend_x": 12792832,
+        "extend_x": 16777216,
         "extend_y": 50203297,
         "extend_z": 25101648
       },
@@ -50,7 +50,7 @@
           "origin_z": 0,
           "extend_x": 25101648,
           "extend_y": 50203297,
-          "extend_z": 12870832
+          "extend_z": 16777216
         },
         "min_inclusive": 0,
         "max_exclusive": 1,
@@ -61,10 +61,10 @@
             "invert": false,
             "origin_x": -12550824,
             "origin_y": -25101648,
-            "origin_z": -12870832,
+            "origin_z": -16777216,
             "extend_x": 25101648,
             "extend_y": 50203297,
-            "extend_z": 12870832
+            "extend_z": 16777216
           },
           "min_inclusive": 0,
           "max_exclusive": 1,
@@ -73,12 +73,12 @@
             "input": {
               "type": "farlandstraveler:box_select",
               "invert": false,
-              "origin_x": 12710832,
+              "origin_x": 14900000,
               "origin_y": -25101648,
               "origin_z": 12550824,
-              "extend_x": 160001,
+              "extend_x": 33554432,
               "extend_y": 50203297,
-              "extend_z": 160001
+              "extend_z": 2349177
             },
             "min_inclusive": 0,
             "max_exclusive": 1,
@@ -89,10 +89,10 @@
                 "invert": false,
                 "origin_x": 12550824,
                 "origin_y": -25101648,
-                "origin_z": 12710832,
-                "extend_x": 160001,
+                "origin_z": 14900000,
+                "extend_x": 2349177,
                 "extend_y": 50203297,
-                "extend_z": 160001
+                "extend_z": 33554432
               },
               "min_inclusive": 0,
               "max_exclusive": 1,
@@ -101,12 +101,12 @@
                 "input": {
                   "type": "farlandstraveler:box_select",
                   "invert": false,
-                  "origin_x": -12710824,
+                  "origin_x": -14900001,
                   "origin_y": -25101648,
-                  "origin_z": 12710832,
-                  "extend_x": 160001,
+                  "origin_z": 14900000,
+                  "extend_x": 2349177,
                   "extend_y": 50203297,
-                  "extend_z": 160001
+                  "extend_z": 33554432
                 },
                 "min_inclusive": 0,
                 "max_exclusive": 1,
@@ -115,12 +115,12 @@
                   "input": {
                     "type": "farlandstraveler:box_select",
                     "invert": false,
-                    "origin_x": -12870832,
+                    "origin_x": -48454432,
                     "origin_y": -25101648,
                     "origin_z": 12550824,
-                    "extend_x": 160001,
+                    "extend_x": 33554432,
                     "extend_y": 50203297,
-                    "extend_z": 160001
+                    "extend_z": 2349177
                   },
                   "min_inclusive": 0,
                   "max_exclusive": 1,
@@ -129,12 +129,12 @@
                     "input": {
                       "type": "farlandstraveler:box_select",
                       "invert": false,
-                      "origin_x": 12710832,
+                      "origin_x": 14900000,
                       "origin_y": -25101648,
-                      "origin_z": -12710824,
-                      "extend_x": 160001,
+                      "origin_z": -14900001,
+                      "extend_x": 33554432,
                       "extend_y": 50203297,
-                      "extend_z": 160001
+                      "extend_z": 2349177
                     },
                     "min_inclusive": 0,
                     "max_exclusive": 1,
@@ -145,10 +145,10 @@
                         "invert": false,
                         "origin_x": 12550824,
                         "origin_y": -25101648,
-                        "origin_z": -12870832,
-                        "extend_x": 160001,
+                        "origin_z": -48454432,
+                        "extend_x": 2349177,
                         "extend_y": 50203297,
-                        "extend_z": 160001
+                        "extend_z": 33554432
                       },
                       "min_inclusive": 0,
                       "max_exclusive": 1,
@@ -157,12 +157,12 @@
                         "input": {
                           "type": "farlandstraveler:box_select",
                           "invert": false,
-                          "origin_x": -12710824,
+                          "origin_x": -14900001,
                           "origin_y": -25101648,
-                          "origin_z": -12870832,
-                          "extend_x": 160001,
+                          "origin_z": -48454432,
+                          "extend_x": 2349177,
                           "extend_y": 50203297,
-                          "extend_z": 160001
+                          "extend_z": 33554432
                         },
                         "min_inclusive": 0,
                         "max_exclusive": 1,
@@ -171,12 +171,12 @@
                           "input": {
                             "type": "farlandstraveler:box_select",
                             "invert": false,
-                            "origin_x": -12870832,
+                            "origin_x": -48454432,
                             "origin_y": -25101648,
-                            "origin_z": -12710824,
-                            "extend_x": 160001,
+                            "origin_z": -14900001,
+                            "extend_x": 33554432,
                             "extend_y": 50203297,
-                            "extend_z": 160001
+                            "extend_z": 2349177
                           },
                           "min_inclusive": 0,
                           "max_exclusive": 1,
@@ -191,8 +191,8 @@
                             "z_scale": 0.25E22,
                             "y_factor": 160.0,
                             "y_scale": 0.125,
-                            "x_shift": 12710583.0,
-                            "z_shift": 12550175.0
+                            "x_shift": 14899999,
+                            "z_shift": 12550759
                           }
                         },
                         "when_out_of_range": {
@@ -205,8 +205,8 @@
                           "z_scale": 0.25E22,
                           "y_factor": 160.0,
                           "y_scale": 0.125,
-                          "x_shift": 12550175.0,
-                          "z_shift": 12710583.0
+                          "x_shift": 12550807,
+                          "z_shift": 14899999
                         }
                       },
                       "when_out_of_range": {
@@ -219,8 +219,8 @@
                         "z_scale": 0.25E22,
                         "y_factor": 160.0,
                         "y_scale": 0.125,
-                        "x_shift": -12550175.0,
-                        "z_shift": 12710583.0
+                        "x_shift": -12550807,
+                        "z_shift": 14899999
                       }
                     },
                     "when_out_of_range": {
@@ -233,8 +233,8 @@
                       "z_scale": 0.25E22,
                       "y_factor": 160.0,
                       "y_scale": 0.125,
-                      "x_shift": -12710583.0,
-                      "z_shift": 12550175.0
+                      "x_shift": -14899999,
+                      "z_shift": 12550759
                     }
                   },
                   "when_out_of_range": {
@@ -247,8 +247,8 @@
                     "z_scale": 0.25E22,
                     "y_factor": 160.0,
                     "y_scale": 0.125,
-                    "x_shift": 12710583.0,
-                    "z_shift": -12550175.0
+                    "x_shift": 14899999,
+                    "z_shift": -12550759
                   }
                 },
                 "when_out_of_range": {
@@ -261,8 +261,8 @@
                   "z_scale": 0.25E22,
                   "y_factor": 160.0,
                   "y_scale": 0.125,
-                  "x_shift": 12550175.0,
-                  "z_shift": -12710583.0
+                  "x_shift": 12550807,
+                  "z_shift": -14899999
                 }
               },
               "when_out_of_range": {
@@ -275,8 +275,8 @@
                 "z_scale": 0.25E22,
                 "y_factor": 160.0,
                 "y_scale": 0.125,
-                "x_shift": -12550175.0,
-                "z_shift": -12710583.0
+                "x_shift": -12550807,
+                "z_shift": -14899999
               }
             },
             "when_out_of_range": {
@@ -289,8 +289,8 @@
               "z_scale": 0.25E22,
               "y_factor": 160.0,
               "y_scale": 0.125,
-              "x_shift": -12710583.0,
-              "z_shift": -12550175.0
+              "x_shift": -14899999,
+              "z_shift": -12550759
             }
           },
           "when_out_of_range": {
@@ -300,10 +300,10 @@
             "x_factor": 80.0,
             "x_scale": 0.25,
             "z_factor": 80.0,
-            "z_scale": 3.125E43,
+            "z_scale": 1.5625E42,
             "y_factor": 160.0,
             "y_scale": 0.125,
-            "z_shift": 12637467.0
+            "z_shift": 13435680
           }
         },
         "when_out_of_range": {
@@ -313,10 +313,10 @@
           "x_factor": 80.0,
           "x_scale": 0.25,
           "z_factor": 80.0,
-          "z_scale": 3.125E43,
+          "z_scale": 1.5625E42,
           "y_factor": 160.0,
           "y_scale": 0.125,
-          "z_shift": -12637467.0
+          "z_shift": -13435680
         }
       },
       "when_out_of_range": {
@@ -324,25 +324,25 @@
         "overflowable": true,
         "smear_scale_multiplier": 8.0,
         "x_factor": 80.0,
-        "x_scale": 1.25E43,
+        "x_scale": 6.25E41,
         "z_factor": 80.0,
         "z_scale": 0.25,
         "y_factor": 160.0,
         "y_scale": 0.125,
-        "x_shift": 12546829.0
+        "x_shift": 11630008
       }
     },
     "when_out_of_range": {
-    "type": "farlandstraveler:old_blended_noise_customizable",
-    "overflowable": true,
-    "smear_scale_multiplier": 8.0,
-    "x_factor": 80.0,
-    "x_scale": 1.25E43,
-    "z_factor": 80.0,
-    "z_scale": 0.25,
-    "y_factor": 160.0,
-    "y_scale": 0.125,
-    "x_shift": -12546829.0
+      "type": "farlandstraveler:old_blended_noise_customizable",
+      "overflowable": true,
+      "smear_scale_multiplier": 8.0,
+      "x_factor": 80.0,
+      "x_scale": 6.25E41,
+      "z_factor": 80.0,
+      "z_scale": 0.25,
+      "y_factor": 160.0,
+      "y_scale": 0.125,
+      "x_shift": -11630008
     }
   },
   "when_out_of_range": {
@@ -350,12 +350,12 @@
     "input": {
       "type": "farlandstraveler:box_select",
       "invert": false,
-      "origin_x": -12630832,
+      "origin_x": -13400000,
       "origin_y": -25101648,
-      "origin_z": -12630832,
-      "extend_x": 25261664,
+      "origin_z": -13400000,
+      "extend_x": 26800000,
       "extend_y": 50203297,
-      "extend_z": 25261664
+      "extend_z": 26800000
     },
     "min_inclusive": 0,
     "max_exclusive": 1,
@@ -364,10 +364,10 @@
       "input": {
         "type": "farlandstraveler:box_select",
         "invert": false,
-        "origin_x": -12710832,
+        "origin_x": -14900000,
         "origin_y": -25101648,
         "origin_z": -12550824,
-        "extend_x": 25421664,
+        "extend_x": 29800000,
         "extend_y": 50203297,
         "extend_z": 25101648
       },
@@ -380,10 +380,10 @@
           "invert": false,
           "origin_x": -12550824,
           "origin_y": -25101648,
-          "origin_z": -12710832,
+          "origin_z": -14900000,
           "extend_x": 25101648,
           "extend_y": 50203297,
-          "extend_z": 25421664
+          "extend_z": 29800000
         },
         "min_inclusive": 0,
         "max_exclusive": 1,
@@ -391,9 +391,9 @@
           "type": "farlandstraveler:old_blended_noise_customizable",
           "overflowable": true,
           "smear_scale_multiplier": 8.0,
-          "x_factor": 1.0063747208948193361647012180236,
+          "x_factor": 1.0676589839838404235450995090043,
           "x_scale": 0.25,
-          "z_factor": 1.0063747208948193361647012180236,
+          "z_factor": 1.0676589839838404235450995090043,
           "z_scale": 0.25,
           "y_factor": 160.0,
           "y_scale": 0.125
@@ -404,7 +404,7 @@
           "smear_scale_multiplier": 8.0,
           "x_factor": 80.0,
           "x_scale": 0.25,
-          "z_factor": 1.0063747208948193361647012180236,
+          "z_factor": 1.0676589839838404235450995090043,
           "z_scale": 0.25,
           "y_factor": 160.0,
           "y_scale": 0.125
@@ -414,7 +414,7 @@
         "type": "farlandstraveler:old_blended_noise_customizable",
         "overflowable": true,
         "smear_scale_multiplier": 8.0,
-        "x_factor": 1.0063747208948193361647012180236,
+        "x_factor": 1.0676589839838404235450995090043,
         "x_scale": 0.25,
         "z_factor": 80.0,
         "z_scale": 0.25,
@@ -427,12 +427,12 @@
       "input": {
         "type": "farlandstraveler:box_select",
         "invert": false,
-        "origin_x": -12593680,
+        "origin_x": -12902848,
         "origin_y": -25101648,
-        "origin_z": -12593680,
-        "extend_x": 25187360,
+        "origin_z": -12902848,
+        "extend_x": 25805696,
         "extend_y": 50203297,
-        "extend_z": 25187360
+        "extend_z": 25805696
       },
       "min_inclusive": 0,
       "max_exclusive": 1,
@@ -441,12 +441,12 @@
         "input": {
           "type": "farlandstraveler:box_select",
           "invert": false,
-          "origin_x": -12596320,
+          "origin_x": -12905488,
           "origin_y": -25101648,
-          "origin_z": -12596320,
-          "extend_x": 25192640,
+          "origin_z": -12905488,
+          "extend_x": 25810976,
           "extend_y": 50203297,
-          "extend_z": 25192640
+          "extend_z": 25810976
         },
         "min_inclusive": 0,
         "max_exclusive": 1,
@@ -455,12 +455,12 @@
           "input": {
             "type": "farlandstraveler:box_select",
             "invert": false,
-            "origin_x": -12599040,
+            "origin_x": -12908208,
             "origin_y": -25101648,
-            "origin_z": -12599040,
-            "extend_x": 25198080,
+            "origin_z": -12908208,
+            "extend_x": 25816416,
             "extend_y": 50203297,
-            "extend_z": 25198080
+            "extend_z": 25816416
           },
           "min_inclusive": 0,
           "max_exclusive": 1,
@@ -469,12 +469,12 @@
             "input": {
               "type": "farlandstraveler:box_select",
               "invert": false,
-              "origin_x": -12601392,
+              "origin_x": -12910560,
               "origin_y": -25101648,
-              "origin_z": -12601392,
-              "extend_x": 25202784,
+              "origin_z": -12910560,
+              "extend_x": 25821120,
               "extend_y": 50203297,
-              "extend_z": 25202784
+              "extend_z": 25821120
             },
             "min_inclusive": 0,
             "max_exclusive": 1,
@@ -483,12 +483,12 @@
               "input": {
                 "type": "farlandstraveler:box_select",
                 "invert": false,
-                "origin_x": -12603680,
+                "origin_x": -12912848,
                 "origin_y": -25101648,
-                "origin_z": -12603680,
-                "extend_x": 25207360,
+                "origin_z": -12912848,
+                "extend_x": 25825696,
                 "extend_y": 50203297,
-                "extend_z": 25207360
+                "extend_z": 25825696
               },
               "min_inclusive": 0,
               "max_exclusive": 1,
@@ -497,12 +497,12 @@
                 "input": {
                   "type": "farlandstraveler:box_select",
                   "invert": false,
-                  "origin_x": -12605344,
+                  "origin_x": -12914512,
                   "origin_y": -25101648,
-                  "origin_z": -12605344,
-                  "extend_x": 25210688,
+                  "origin_z": -12914512,
+                  "extend_x": 25829024,
                   "extend_y": 50203297,
-                  "extend_z": 25210688
+                  "extend_z": 25829024
                 },
                 "min_inclusive": 0,
                 "max_exclusive": 1,
@@ -511,12 +511,12 @@
                   "input": {
                     "type": "farlandstraveler:box_select",
                     "invert": false,
-                    "origin_x": -12606704,
+                    "origin_x": -12915872,
                     "origin_y": -25101648,
-                    "origin_z": -12606704,
-                    "extend_x": 25213408,
+                    "origin_z": -12915872,
+                    "extend_x": 25831744,
                     "extend_y": 50203297,
-                    "extend_z": 25213408
+                    "extend_z": 25831744
                   },
                   "min_inclusive": 0,
                   "max_exclusive": 1,
@@ -525,12 +525,12 @@
                     "input": {
                       "type": "farlandstraveler:box_select",
                       "invert": false,
-                      "origin_x": -12607616,
+                      "origin_x": -12916784,
                       "origin_y": -25101648,
-                      "origin_z": -12607616,
-                      "extend_x": 25215232,
+                      "origin_z": -12916784,
+                      "extend_x": 25833568,
                       "extend_y": 50203297,
-                      "extend_z": 25215232
+                      "extend_z": 25833568
                     },
                     "min_inclusive": 0,
                     "max_exclusive": 1,
@@ -539,12 +539,12 @@
                       "input": {
                         "type": "farlandstraveler:box_select",
                         "invert": false,
-                        "origin_x": -12608352,
+                        "origin_x": -12917520,
                         "origin_y": -25101648,
-                        "origin_z": -12608352,
-                        "extend_x": 25216704,
+                        "origin_z": -12917520,
+                        "extend_x": 25835040,
                         "extend_y": 50203297,
-                        "extend_z": 25216704
+                        "extend_z": 25835040
                       },
                       "min_inclusive": 0,
                       "max_exclusive": 1,
@@ -553,19 +553,19 @@
                         "input": {
                           "type": "farlandstraveler:box_select",
                           "invert": false,
-                          "origin_x": -12608816,
+                          "origin_x": -12917984,
                           "origin_y": -25101648,
-                          "origin_z": -12608816,
-                          "extend_x": 25217632,
+                          "origin_z": -12917984,
+                          "extend_x": 25835968,
                           "extend_y": 50203297,
-                          "extend_z": 25217632
+                          "extend_z": 25835968
                         },
                         "min_inclusive": 0,
                         "max_exclusive": 1,
                         "when_in_range": {
                           "type": "farlandstraveler:old_blended_noise_customizable",
                           "overflowable": true,
-                          "repeat_start": 12608816,
+                          "repeat_start": 12917984,
                           "repeat_length": 16,
                           "repeat_count": 172647,
                           "smear_scale_multiplier": 8.0,
@@ -579,7 +579,7 @@
                         "when_out_of_range": {
                           "type": "farlandstraveler:old_blended_noise_customizable",
                           "overflowable": true,
-                          "repeat_start": 12608352,
+                          "repeat_start": 12917520,
                           "repeat_length": 16,
                           "repeat_count": 29,
                           "smear_scale_multiplier": 8.0,
@@ -594,7 +594,7 @@
                       "when_out_of_range": {
                         "type": "farlandstraveler:old_blended_noise_customizable",
                         "overflowable": true,
-                        "repeat_start": 12607616,
+                        "repeat_start": 12916784,
                         "repeat_length": 16,
                         "repeat_count": 23,
                         "smear_scale_multiplier": 8.0,
@@ -609,7 +609,7 @@
                     "when_out_of_range": {
                       "type": "farlandstraveler:old_blended_noise_customizable",
                       "overflowable": true,
-                      "repeat_start": 12606704,
+                      "repeat_start": 12915872,
                       "repeat_length": 16,
                       "repeat_count": 19,
                       "smear_scale_multiplier": 8.0,
@@ -624,7 +624,7 @@
                   "when_out_of_range": {
                     "type": "farlandstraveler:old_blended_noise_customizable",
                     "overflowable": true,
-                    "repeat_start": 12605344,
+                    "repeat_start": 12914512,
                     "repeat_length": 16,
                     "repeat_count": 17,
                     "smear_scale_multiplier": 8.0,
@@ -639,7 +639,7 @@
                 "when_out_of_range": {
                   "type": "farlandstraveler:old_blended_noise_customizable",
                   "overflowable": true,
-                  "repeat_start": 12603680,
+                  "repeat_start": 12912848,
                   "repeat_length": 16,
                   "repeat_count": 13,
                   "smear_scale_multiplier": 8.0,
@@ -654,7 +654,7 @@
               "when_out_of_range": {
                 "type": "farlandstraveler:old_blended_noise_customizable",
                 "overflowable": true,
-                "repeat_start": 12601392,
+                "repeat_start": 12910560,
                 "repeat_length": 16,
                 "repeat_count": 11,
                 "smear_scale_multiplier": 8.0,
@@ -669,7 +669,7 @@
             "when_out_of_range": {
               "type": "farlandstraveler:old_blended_noise_customizable",
               "overflowable": true,
-              "repeat_start": 12599040,
+              "repeat_start": 12908208,
               "repeat_length": 16,
               "repeat_count": 7,
               "smear_scale_multiplier": 8.0,
@@ -684,7 +684,7 @@
           "when_out_of_range": {
             "type": "farlandstraveler:old_blended_noise_customizable",
             "overflowable": true,
-            "repeat_start": 12596320,
+            "repeat_start": 12905488,
             "repeat_length": 16,
             "repeat_count": 5,
             "smear_scale_multiplier": 8.0,
@@ -699,7 +699,7 @@
         "when_out_of_range": {
           "type": "farlandstraveler:old_blended_noise_customizable",
           "overflowable": true,
-          "repeat_start": 12593680,
+          "repeat_start": 12902848,
           "repeat_length": 16,
           "repeat_count": 3,
           "smear_scale_multiplier": 8.0,
@@ -714,7 +714,7 @@
       "when_out_of_range": {
         "type": "farlandstraveler:old_blended_noise_customizable",
         "overflowable": true,
-        "repeat_start": 12590832,
+        "repeat_start": 12900000,
         "repeat_length": 16,
         "repeat_count": 2,
         "smear_scale_multiplier": 8.0,

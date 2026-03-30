@@ -36,6 +36,7 @@ public class FarLandsTraveler {
         Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace("worldgen/noise_settings/overworld").toString(), "noiseRouterInjectorOverworld", (context) -> {
             // 获取noise_router
             JsonObject noiseRouterOverworld = context.getFile().getAsJsonObject().getAsJsonObject("noise_router");
+            int dist = Config.FAR_LANDS_DISTANCE.getAsInt();
             // 基于base_3d_noise的溢出切换final_density
             JsonElement finalDensity = noiseRouterOverworld.get("final_density");
             JsonObject overflowCheck = new JsonObject();
@@ -48,12 +49,12 @@ public class FarLandsTraveler {
             JsonObject boxSelect = new JsonObject();
             boxSelect.addProperty("type", "farlandstraveler:box_select");
             boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -12550824);
+            boxSelect.addProperty("origin_x", -dist);
             boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -12550824);
-            boxSelect.addProperty("extend_x", 25101649);
+            boxSelect.addProperty("origin_z", -dist);
+            boxSelect.addProperty("extend_x", 2 * dist + 1);
             boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 25101649);
+            boxSelect.addProperty("extend_z", 2 * dist + 1);
             JsonObject finalDensityModified = new JsonObject();
             finalDensityModified.addProperty("type", "minecraft:range_choice");
             finalDensityModified.add("input", boxSelect);
@@ -67,12 +68,12 @@ public class FarLandsTraveler {
             boxSelect = new JsonObject();
             boxSelect.addProperty("type", "farlandstraveler:box_select");
             boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -12550824);
+            boxSelect.addProperty("origin_x", -dist);
             boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -12550824);
-            boxSelect.addProperty("extend_x", 25101645);
+            boxSelect.addProperty("origin_z", -dist);
+            boxSelect.addProperty("extend_x", 2 * dist - 3);
             boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 25101645);
+            boxSelect.addProperty("extend_z", 2 * dist - 3);
             JsonObject initialDensityModified = new JsonObject();
             initialDensityModified.addProperty("type", "minecraft:range_choice");
             initialDensityModified.add("input", boxSelect);
@@ -85,12 +86,12 @@ public class FarLandsTraveler {
             boxSelect = new JsonObject();
             boxSelect.addProperty("type", "farlandstraveler:box_select");
             boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -12550824);
+            boxSelect.addProperty("origin_x", -dist);
             boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -12550824);
-            boxSelect.addProperty("extend_x", 25101645);
+            boxSelect.addProperty("origin_z", -dist);
+            boxSelect.addProperty("extend_x", 2 * dist - 3);
             boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 25101645);
+            boxSelect.addProperty("extend_z", 2 * dist - 3);
             JsonObject floodednessModified = new JsonObject();
             floodednessModified.addProperty("type", "minecraft:range_choice");
             floodednessModified.add("input", boxSelect);
@@ -103,12 +104,12 @@ public class FarLandsTraveler {
             boxSelect = new JsonObject();
             boxSelect.addProperty("type", "farlandstraveler:box_select");
             boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -12550824);
+            boxSelect.addProperty("origin_x", -dist);
             boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -12550824);
-            boxSelect.addProperty("extend_x", 25101645);
+            boxSelect.addProperty("origin_z", -dist);
+            boxSelect.addProperty("extend_x", 2 * dist - 3);
             boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 25101645);
+            boxSelect.addProperty("extend_z", 2 * dist - 3);
             JsonObject barrierModified = new JsonObject();
             barrierModified.addProperty("type", "minecraft:range_choice");
             barrierModified.add("input", boxSelect);

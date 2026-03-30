@@ -36,7 +36,7 @@ public class Config {
     public static final ModConfigSpec.IntValue FRINGE_LANDS_DISTANCE = BUILDER
             .comment("The distance between the generated location of the Fringe Lands and the origin of the world")
             .comment("Actually, it's the location of the second switch to the world generator")
-            .defineInRange("repeating_far_lands_distance", 12710832, 0, Integer.MAX_VALUE);
+            .defineInRange("repeating_far_lands_distance", 14900000, 0, Integer.MAX_VALUE);
     // </配置文件正文>
 
     static final ModConfigSpec SPEC = BUILDER.build();
