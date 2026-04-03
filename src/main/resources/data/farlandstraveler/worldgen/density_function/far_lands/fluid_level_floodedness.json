@@ -8,7 +8,7 @@
       "origin_x": 14900000,
       "origin_y": -25101648,
       "origin_z": -14900000,
-      "extend_x": 1600000,
+      "extend_x": 33554432,
       "extend_y": 50203297,
       "extend_z": 29800000
     },
@@ -19,10 +19,10 @@
       "input": {
         "type": "farlandstraveler:box_select",
         "invert": false,
-        "origin_x": -16500000,
+        "origin_x": -48454432,
         "origin_y": -25101648,
         "origin_z": -14900000,
-        "extend_x": 1600000,
+        "extend_x": 33554432,
         "extend_y": 50203297,
         "extend_z": 29800000
       },
@@ -38,7 +38,7 @@
           "origin_z": 14900000,
           "extend_x": 29800000,
           "extend_y": 50203297,
-          "extend_z": 1600000
+          "extend_z": 33554432
         },
         "min_inclusive": 0,
         "max_exclusive": 1,
@@ -49,10 +49,10 @@
             "invert": false,
             "origin_x": -14900000,
             "origin_y": -25101648,
-            "origin_z": -16500000,
+            "origin_z": -48454432,
             "extend_x": 29800000,
             "extend_y": 50203297,
-            "extend_z": 1600000
+            "extend_z": 33554432
           },
           "min_inclusive": 0,
           "max_exclusive": 1,
