@@ -3,6 +3,7 @@ package com.smallmanseries.farlandstraveler.common.worldgen.farlands;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.smallmanseries.farlandstraveler.common.DataRegister;
+import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.BiomeSourceHolder;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +22,7 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 public record FarLands(
         String dimension,
         Holder<NoiseGeneratorSettings> settings,
-        BiomeSource biomeSource
+        Holder<BiomeSource> biomeSource
 ) {
 
     // 编解码器
@@ -36,15 +37,15 @@ public record FarLands(
         farLandsInstance -> farLandsInstance.group(
                 Codec.STRING.fieldOf("dimension").forGetter(FarLands::dimension),
                 NoiseGeneratorSettings.CODEC.fieldOf("settings").forGetter(FarLands::settings),
-                BiomeSource.CODEC.fieldOf("biome_source").forGetter(FarLands::biomeSource)
+                BiomeSourceHolder.HOLDER_CODEC.fieldOf("biome_source").forGetter(FarLands::biomeSource)
         ).apply(farLandsInstance, farLandsInstance.stable(FarLands::new))
     );
 
     // 默认边境之地定义文件
-    public static final ResourceKey<FarLands> FAR_LANDS_EDGE = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands_edge")); //边境之地边缘
+    //public static final ResourceKey<FarLands> FAR_LANDS_EDGE = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands_edge")); //边境之地边缘
     public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands")); //边境之地
     //遥远之地
-    public static final ResourceKey<FarLands> FRINGE_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "fringe_lands")); //边缘之墙
+    //public static final ResourceKey<FarLands> FRINGE_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "fringe_lands")); //边缘之墙
     //边缘之角（由于边缘之地的墙变种和角变种缩放不一致，必须使用不一样的噪声设置）
     //终焉之海+条纹之海+切片之海（都是基岩海，很合理）
 

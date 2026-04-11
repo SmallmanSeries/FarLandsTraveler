@@ -19,6 +19,12 @@ public class Config {
             .comment("Enable noises to overflow and create the Far Lands.")
             .comment("Now deprecated.")
             .define("enable_far_lands", false);
+/*
+    public static final ModConfigSpec.BooleanValue FORCED_BIOME_REPLACEMENT = BUILDER
+            .comment("Forcibly replacing the biome when in the Far Lands.")
+            .define("forced_biome_replacement", false);
+
+ */
 
     public static final ModConfigSpec.BooleanValue ENABLE_SKY_GRID = BUILDER
             .comment("Enable the sky grid to generate in the Fringe Lands.")

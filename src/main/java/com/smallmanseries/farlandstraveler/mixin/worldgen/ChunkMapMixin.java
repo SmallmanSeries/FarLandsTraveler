@@ -39,6 +39,7 @@ public abstract class ChunkMapMixin {
         ServerLevel level = context.level();
         // 开始替换生成器。这里就不用管noise_router了，它使用Mixson事件注入的规则切换
         // 边境之地边缘
+        /*
         if (level.dimension() == Level.OVERWORLD &&
                 (Math.max(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
                 || Math.min(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
@@ -48,18 +49,23 @@ public abstract class ChunkMapMixin {
                     level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS_EDGE).settings()
             );
         }// 以下同理
+
+         */
         // 边境之地
+
         if (level.dimension() == Level.OVERWORLD &&
-                (Math.max(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
-                        || Math.min(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
+                (Math.max(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
+                        || Math.min(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
 
             generator = new NoiseBasedChunkGenerator(
-                    level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).biomeSource(),
+                   // level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).biomeSource(),
+                    context.generator().getBiomeSource(),
                     level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).settings()
             );
         }
         // 遥远之地
         // 边缘之地
+        /*
         if (level.dimension() == Level.OVERWORLD &&
                 (Math.max(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) >= Config.FRINGE_LANDS_DISTANCE.getAsInt()
                         || Math.min(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) <= -(Config.FRINGE_LANDS_DISTANCE.getAsInt()))) {
@@ -69,6 +75,8 @@ public abstract class ChunkMapMixin {
                     level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FRINGE_LANDS).settings()
             );
         }
+
+         */
         // 边缘之角
         // 基岩海
 

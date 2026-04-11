@@ -7,7 +7,9 @@ import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
 import com.smallmanseries.farlandstraveler.common.misc.FLTCreativeTabs;
+import com.smallmanseries.farlandstraveler.common.worldgen.FLTBiomeSources;
 import com.smallmanseries.farlandstraveler.common.worldgen.FLTDensityFunctions;
+import net.minecraft.core.SectionPos;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -29,6 +31,7 @@ public class FarLandsTraveler {
         FLTItems.ITEMS.register(modEventBus);
         FLTCreativeTabs.TABS.register(modEventBus);
         FLTDensityFunctions.FUNCTIONS.register(modEventBus);
+        FLTBiomeSources.BIOME_SOURCES.register(modEventBus);
         FLTAttachments.ATTACHMENT_TYPES.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -123,6 +126,29 @@ public class FarLandsTraveler {
             noiseRouterOverworld.add("initial_density_without_jaggedness", initialDensityModified);
             noiseRouterOverworld.add("fluid_level_floodedness", floodednessModified);
 
+        }, false);
+
+        Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace("worldgen/world_preset/normal").toString(), "biomeSourceInjectorOverworldNormal", (context) -> {
+            JsonObject normalOverworld = context.getFile().getAsJsonObject()
+                    .getAsJsonObject("dimensions")
+                    .getAsJsonObject(ResourceLocation.withDefaultNamespace("overworld").toString())
+                    .getAsJsonObject("generator");
+            JsonElement biomeSource = normalOverworld.get("biome_source");
+
+            if (!biomeSource.isJsonNull()) {
+                int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
+                JsonObject biomeSourceNew = new JsonObject();
+                biomeSourceNew.addProperty("type", "farlandstraveler:distance");
+                biomeSourceNew.addProperty("origin_x", -dist * 4);
+                biomeSourceNew.addProperty("origin_y", -25101648);
+                biomeSourceNew.addProperty("origin_z", -dist * 4);
+                biomeSourceNew.addProperty("extend_x", dist * 8);
+                biomeSourceNew.addProperty("extend_y", 50203297);
+                biomeSourceNew.addProperty("extend_z", dist * 8);
+                biomeSourceNew.add("inside", biomeSource);
+                biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
+                normalOverworld.add("biome_source", biomeSourceNew);
+            }
         }, false);
     }
 

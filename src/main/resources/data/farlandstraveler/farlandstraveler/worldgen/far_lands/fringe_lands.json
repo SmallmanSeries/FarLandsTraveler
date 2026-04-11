@@ -1,8 +1,0 @@
-{
-  "dimension": "minecraft:overworld",
-  "settings": "farlandstraveler:far_lands",
-  "biome_source": {
-    "type": "fixed",
-    "biome": "farlandstraveler:fringe_lands"
-  }
-}

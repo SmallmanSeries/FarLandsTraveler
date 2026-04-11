@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.DensityFunction;
 public record NaNConverterFunction(DensityFunction input, double convertTo) implements DensityFunction.SimpleFunction {
     public static final MapCodec<NaNConverterFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            DensityFunction.DIRECT_CODEC.fieldOf("input").forGetter(NaNConverterFunction::input),
+                            DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(NaNConverterFunction::input),
                             Codec.DOUBLE.fieldOf("convert_to").forGetter(NaNConverterFunction::convertTo)
                     )
                     .apply(instance, NaNConverterFunction::new)
