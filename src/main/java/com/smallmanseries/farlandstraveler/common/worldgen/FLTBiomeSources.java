@@ -12,6 +12,6 @@ public class FLTBiomeSources {
     public static final DeferredRegister<MapCodec<? extends BiomeSource>> BIOME_SOURCES = DeferredRegister.create(Registries.BIOME_SOURCE, FarLandsTraveler.MODID);
 
     static {
-        BIOME_SOURCES.register("distance", () -> BoxSelectBiomeSource.CODEC);
+        BIOME_SOURCES.register("box_select", () -> BoxSelectBiomeSource.CODEC);
     }
 }

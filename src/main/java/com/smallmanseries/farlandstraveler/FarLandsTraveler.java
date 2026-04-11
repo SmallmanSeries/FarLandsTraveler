@@ -138,12 +138,12 @@ public class FarLandsTraveler {
             if (!biomeSource.isJsonNull()) {
                 int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
                 JsonObject biomeSourceNew = new JsonObject();
-                biomeSourceNew.addProperty("type", "farlandstraveler:distance");
+                biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
                 biomeSourceNew.addProperty("origin_x", -dist * 4);
-                biomeSourceNew.addProperty("origin_y", -25101648);
+                biomeSourceNew.addProperty("origin_y", -6275412);
                 biomeSourceNew.addProperty("origin_z", -dist * 4);
                 biomeSourceNew.addProperty("extend_x", dist * 8);
-                biomeSourceNew.addProperty("extend_y", 50203297);
+                biomeSourceNew.addProperty("extend_y", 12550824);
                 biomeSourceNew.addProperty("extend_z", dist * 8);
                 biomeSourceNew.add("inside", biomeSource);
                 biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
@@ -159,12 +159,12 @@ public class FarLandsTraveler {
             if (!biomeSource.isJsonNull()) {
                 int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
                 JsonObject biomeSourceNew = new JsonObject();
-                biomeSourceNew.addProperty("type", "farlandstraveler:distance");
+                biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
                 biomeSourceNew.addProperty("origin_x", -dist * 4);
-                biomeSourceNew.addProperty("origin_y", -25101648);
+                biomeSourceNew.addProperty("origin_y", -6275412);
                 biomeSourceNew.addProperty("origin_z", -dist * 4);
                 biomeSourceNew.addProperty("extend_x", dist * 8);
-                biomeSourceNew.addProperty("extend_y", 50203297);
+                biomeSourceNew.addProperty("extend_y", 12550824);
                 biomeSourceNew.addProperty("extend_z", dist * 8);
                 biomeSourceNew.add("inside", biomeSource);
                 biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");

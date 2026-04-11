@@ -1,4 +1,17 @@
 {
-  "type": "fixed",
-  "biome": "farlandstraveler:far_lands"
+  "type": "farlandstraveler:box_select",
+  "origin_x": -3725000,
+  "origin_y": -6275412,
+  "origin_z": -3725000,
+  "extend_x": 7450000,
+  "extend_y": 12550824,
+  "extend_z": 7450000,
+  "inside": {
+    "type": "fixed",
+    "biome": "farlandstraveler:far_lands"
+  },
+  "outside": {
+    "type": "fixed",
+    "biome": "farlandstraveler:fringe_lands"
+  }
 }
