@@ -150,6 +150,27 @@ public class FarLandsTraveler {
                 normalOverworld.add("biome_source", biomeSourceNew);
             }
         }, false);
+
+        Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace("dimension/overworld").toString(), "biomeSourceInjectorOverworldNormal", (context) -> {
+            JsonObject normalOverworld = context.getFile().getAsJsonObject()
+                    .getAsJsonObject("generator");
+            JsonElement biomeSource = normalOverworld.get("biome_source");
+
+            if (!biomeSource.isJsonNull()) {
+                int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
+                JsonObject biomeSourceNew = new JsonObject();
+                biomeSourceNew.addProperty("type", "farlandstraveler:distance");
+                biomeSourceNew.addProperty("origin_x", -dist * 4);
+                biomeSourceNew.addProperty("origin_y", -25101648);
+                biomeSourceNew.addProperty("origin_z", -dist * 4);
+                biomeSourceNew.addProperty("extend_x", dist * 8);
+                biomeSourceNew.addProperty("extend_y", 50203297);
+                biomeSourceNew.addProperty("extend_z", dist * 8);
+                biomeSourceNew.add("inside", biomeSource);
+                biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
+                normalOverworld.add("biome_source", biomeSourceNew);
+            }
+        }, false);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

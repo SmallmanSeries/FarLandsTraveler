@@ -53,7 +53,7 @@ public abstract class ChunkMapMixin {
          */
         // 边境之地
 
-        if (level.dimension() == Level.OVERWORLD &&
+        if (level.dimension() == Level.OVERWORLD && context.generator() instanceof NoiseBasedChunkGenerator &&
                 (Math.max(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
                         || Math.min(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
 
