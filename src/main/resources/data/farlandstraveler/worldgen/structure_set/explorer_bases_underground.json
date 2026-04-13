@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 12550824,
+    "separation": 10,
+    "spacing": 40
+  },
+  "structures": [
+    {
+      "structure": "farlandstraveler:explorer_base/indev_cobblestone",
+      "weight": 1
+    }
+  ]
+}

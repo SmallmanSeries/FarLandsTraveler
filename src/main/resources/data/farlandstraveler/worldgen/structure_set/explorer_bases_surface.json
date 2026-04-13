@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 12550820,
+    "separation": 10,
+    "spacing": 40
+  },
+  "structures": [
+    {
+      "structure": "farlandstraveler:explorer_base/indev_wood",
+      "weight": 1
+    }
+  ]
+}
