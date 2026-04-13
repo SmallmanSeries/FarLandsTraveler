@@ -10,6 +10,7 @@
   },
   "start_pool": "farlandstraveler:explorer_base/indev_wood",
   "step": "surface_structures",
+  "start_jigsaw_name": "farlandstraveler:base_anchor",
   "terrain_adaptation": "none",
   "use_expansion_hack": true
 }

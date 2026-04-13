@@ -14,6 +14,7 @@
     }
   },
   "start_pool": "farlandstraveler:explorer_base/indev_cobblestone",
+  "start_jigsaw_name": "farlandstraveler:base_anchor",
   "step": "underground_structures",
   "terrain_adaptation": "none",
   "use_expansion_hack": true
