@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.DensityFunction;
  *     <p>
  *         "type": "farlandstraveler:box_select",
  *         <p>
- *         "invert": 是否反转选区,
+ *         "invert": （可选，默认为false）是否反转选区,
  *         <p>
  *         "origin_x": 选区起始方块的x坐标,
  *         <p>
@@ -36,7 +36,7 @@ public record BoxSelectFunction(boolean invert, int originX, int originY, int or
     private static final Codec<Integer> INPUT_RANGE = Codec.intRange(0, Integer.MAX_VALUE);
     public static final MapCodec<BoxSelectFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            Codec.BOOL.fieldOf("invert").forGetter(BoxSelectFunction::invert),
+                            Codec.BOOL.optionalFieldOf("invert", false).forGetter(BoxSelectFunction::invert),
                             Codec.INT.fieldOf("origin_x").forGetter(BoxSelectFunction::originX),
                             Codec.INT.fieldOf("origin_y").forGetter(BoxSelectFunction::originY),
                             Codec.INT.fieldOf("origin_z").forGetter(BoxSelectFunction::originZ),

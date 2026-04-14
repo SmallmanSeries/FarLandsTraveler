@@ -14,15 +14,20 @@ import java.util.Optional;
  * “高级”混合噪声，用于创建可生成边境之地/可循环的自定义噪声。由 {@link BlendedNoiseMixin} 基于修改原版的 {@link BlendedNoise} 类来实现。
  * <p>{
  * <p>"type": "farlandstraveler:old_blended_noise_customizable",
- * <p>"xz_scale": 平面比例,
+ * <p>"x_scale": X轴平面比例,
  * <p>"y_scale": 高度比例,
- * <p>"xz_factor": 主地形差异值XZ,
+ * <p>"x_scale": Z轴平面比例,
+ * <p>"x_factor": 主地形差异值X,
  * <p>"y_factor": 主地形差异值Y,
+ * <p>"z_factor": 主地形差异值Z,
  * <p>"smear_scale_multiplier": 与噪声在Y轴上的采样有关,
- * <p>"overflowable": 布尔值，噪声是否可以32位溢出,
- * <p>"repeat_start": （可选）循环开始坐标，值必须大于等于-1。若为-1，则使用配置界面中“循环边境之地距离”的值,
- * <p>"repeat_length": （可选）单个循环区域内每个循环节的长度，必须为正数,
- * <p>"repeat_count": （可选）每个循环区域内循环节的数量。必须为正数
+ * <p>"overflowable": （可选）布尔值，噪声是否可以32位溢出，默认为false,
+ * <p>"repeat_start": （可选）循环开始坐标，必须为正整数。
+ * <p>"repeat_length": （可选）单个循环区域内每个循环节的长度，必须为正整数,
+ * <p>"repeat_count": （可选）每个循环区域内循环节的数量。必须为正整数,
+ * <p>"x_shift": （可选）噪声在x轴上的偏移量，默认为0,
+ * <p>"y_shift": （可选）噪声在y轴上的偏移量，默认为0,
+ * <p>"z_shift": （可选）噪声在z轴上的偏移量，默认为0,
  * <p>}
  * <p>注："repeat_start"和"repeat_length"建议为 8 的倍数，否则后续的线性插值可能破坏循环模式。
  * <p>注2："repeat_start""repeat_length"和"repeat_count"三者都存在时，才会应用循环
@@ -42,7 +47,7 @@ public class BlendedNoiseCustomizable extends BlendedNoise{
                             SCALE_RANGE.fieldOf("y_factor").forGetter(instance4 -> instance4.yFactor),
                             SCALE_RANGE.fieldOf("z_factor").forGetter(instance3 -> instance3.zFactor),
                             Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter(instance5 -> instance5.smearScaleMultiplier),
-                            Codec.BOOL.fieldOf("overflowable").forGetter(instance6 -> instance6.overflowable),
+                            Codec.BOOL.optionalFieldOf("overflowable", false).forGetter(instance6 -> instance6.overflowable),
                             POSITIVE_INT_RANGE.optionalFieldOf("repeat_start").forGetter(instance7 -> instance7.repeatStart),
                             POSITIVE_INT_RANGE.optionalFieldOf("repeat_length").forGetter(instance8 -> instance8.repeatLength),
                             POSITIVE_INT_RANGE.optionalFieldOf("repeat_count").forGetter(instance9 -> instance9.repeatCount),
