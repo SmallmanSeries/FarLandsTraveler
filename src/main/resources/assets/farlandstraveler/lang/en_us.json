@@ -24,7 +24,7 @@
   "item.farlandstraveler.cyan_far_lands_rose" : "Cyan Far Lands Rose",
   "item.farlandstraveler.far_lands_paeonia" : "Far Lands Paeonia",
 
-  "item.farlandstraveler.test_item" : "qwe",
+  "item.farlandstraveler.test_item" : "placeholder",
   "item.farlandstraveler.fake_chunk_marker" : "Fake Chunk Marker",
 
   "message.farlandstraveler.fake_chunk_marked": "Current chunk has been marked as a §cFake Chunk",

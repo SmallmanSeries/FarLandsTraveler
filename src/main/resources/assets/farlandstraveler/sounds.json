@@ -1,0 +1,47 @@
+{
+  "block.holy_moss.break": {
+    "sounds": [
+      "minecraft:dig/grass1",
+      "minecraft:dig/grass2",
+      "minecraft:dig/grass3",
+      "minecraft:dig/grass4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.holy_moss.fall": {
+    "sounds": [
+      "minecraft:dig/grass1",
+      "minecraft:dig/grass2",
+      "minecraft:dig/grass3",
+      "minecraft:dig/grass4"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.holy_moss.hit": {
+    "sounds": [
+      "minecraft:dig/grass1",
+      "minecraft:dig/grass2",
+      "minecraft:dig/grass3",
+      "minecraft:dig/grass4"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.holy_moss.place": {
+    "sounds": [
+      "minecraft:dig/grass1",
+      "minecraft:dig/grass2",
+      "minecraft:dig/grass3",
+      "minecraft:dig/grass4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.holy_moss.step": {
+    "sounds": [
+      "minecraft:dig/grass1",
+      "minecraft:dig/grass2",
+      "minecraft:dig/grass3",
+      "minecraft:dig/grass4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  }
+}

@@ -3,6 +3,7 @@ package com.smallmanseries.farlandstraveler;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
+import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
@@ -33,6 +34,7 @@ public class FarLandsTraveler {
         FLTDensityFunctions.FUNCTIONS.register(modEventBus);
         FLTBiomeSources.BIOME_SOURCES.register(modEventBus);
         FLTAttachments.ATTACHMENT_TYPES.register(modEventBus);
+        FLTSoundEvents.SOUNDS.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 

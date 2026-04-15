@@ -43,7 +43,7 @@ public class FLTCreativeTabs {
     // 自然方块
     public static final Supplier<CreativeModeTab> FLT_NATURAL_BLOCKS = TABS.register("flt_natural_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_natural_blocks"))
-            .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
+            .icon(() -> new ItemStack(FLTBlocks.FAR_LANDS_ROSE.get()))
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_building_blocks"))
             .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {

@@ -24,7 +24,7 @@
   "item.farlandstraveler.cyan_far_lands_rose" : "青边境玫瑰",
   "item.farlandstraveler.far_lands_paeonia" : "边境芍药",
 
-  "item.farlandstraveler.test_item" : "qwe",
+  "item.farlandstraveler.test_item" : "占位符",
   "item.farlandstraveler.fake_chunk_marker" : "假区块标记器",
 
   "message.farlandstraveler.fake_chunk_marked": "当前区块已被标记为§c假区块",

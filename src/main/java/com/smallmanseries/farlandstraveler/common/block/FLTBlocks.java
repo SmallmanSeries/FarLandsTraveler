@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.common.block;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
+import com.smallmanseries.farlandstraveler.client.sound.FLTSoundTypes;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -28,7 +29,8 @@ public class FLTBlocks {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
-                    .strength(1346237208F, 30071926F));
+                    .strength(1346237208F, 30071926F)
+                    .sound(FLTSoundTypes.HOLY_MOSS));
 
     // 地表方块
     public static final DeferredBlock<Block> GLOWING_OBSIDIAN = RegisterBlockItem("glowing_obsidian", Block::new,
