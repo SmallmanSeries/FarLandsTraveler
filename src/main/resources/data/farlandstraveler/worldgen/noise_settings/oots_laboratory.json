@@ -27,71 +27,7 @@
     "continents": "minecraft:overworld/continents",
     "depth": "minecraft:overworld/depth",
     "erosion": "minecraft:overworld/erosion",
-    "final_density": {
-      "type": "minecraft:min",
-      "argument1": {
-        "type": "minecraft:squeeze",
-        "argument": {
-          "type": "minecraft:mul",
-          "argument1": 0.64,
-          "argument2": {
-            "type": "minecraft:interpolated",
-            "argument": {
-              "type": "minecraft:blend_density",
-              "argument": {
-                "type": "minecraft:add",
-                "argument1": 0.1171875,
-                "argument2": {
-                  "type": "minecraft:mul",
-                  "argument1": {
-                    "type": "minecraft:y_clamped_gradient",
-                    "from_value": 0,
-                    "from_y": -64,
-                    "to_value": 1,
-                    "to_y": -40
-                  },
-                  "argument2": {
-                    "type": "minecraft:add",
-                    "argument1": -0.1171875,
-                    "argument2": {
-                      "type": "minecraft:add",
-                      "argument1": -0.078125,
-                      "argument2": {
-                        "type": "minecraft:mul",
-                        "argument1": {
-                          "type": "minecraft:y_clamped_gradient",
-                          "from_value": 1,
-                          "from_y": 240,
-                          "to_value": 0,
-                          "to_y": 256
-                        },
-                        "argument2": {
-                          "type": "minecraft:add",
-                          "argument1": 0.078125,
-                          "argument2": {
-                            "type": "minecraft:range_choice",
-                            "input": "farlandstraveler:overworld/base_3d_noise_far_lands",
-                            "min_inclusive": -100,
-                            "max_exclusive": 100,
-                            "when_in_range": {
-                              "type": "farlandstraveler:virtual_density_function",
-                              "settings": "end",
-                              "function": "final_density"
-                            },
-                            "when_out_of_range": "farlandstraveler:overworld/base_3d_noise_far_lands"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "argument2": "minecraft:overworld/caves/noodle"
-    },
+    "final_density": "farlandstraveler:far_lands/final_density",
     "fluid_level_floodedness": {
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_fluid_level_floodedness",
@@ -104,66 +40,7 @@
       "xz_scale": 1,
       "y_scale": 0.7142857142857143
     },
-    "initial_density_without_jaggedness": {
-      "type": "minecraft:add",
-      "argument1": 0.1171875,
-      "argument2": {
-        "type": "minecraft:mul",
-        "argument1": {
-          "type": "minecraft:y_clamped_gradient",
-          "from_value": 0,
-          "from_y": -64,
-          "to_value": 1,
-          "to_y": -40
-        },
-        "argument2": {
-          "type": "minecraft:add",
-          "argument1": -0.1171875,
-          "argument2": {
-            "type": "minecraft:add",
-            "argument1": -0.078125,
-            "argument2": {
-              "type": "minecraft:mul",
-              "argument1": {
-                "type": "minecraft:y_clamped_gradient",
-                "from_value": 1,
-                "from_y": 240,
-                "to_value": 0,
-                "to_y": 256
-              },
-              "argument2": {
-                "type": "minecraft:add",
-                "argument1": 0.078125,
-                "argument2": {
-                  "type": "minecraft:clamp",
-                  "input": {
-                    "type": "minecraft:add",
-                    "argument1": -0.703125,
-                    "argument2": {
-                      "type": "minecraft:mul",
-                      "argument1": 4,
-                      "argument2": {
-                        "type": "minecraft:quarter_negative",
-                        "argument": {
-                          "type": "minecraft:mul",
-                          "argument1": "minecraft:overworld/depth",
-                          "argument2": {
-                            "type": "minecraft:cache_2d",
-                            "argument": "minecraft:overworld/factor"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "max": 64,
-                  "min": -64
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+    "initial_density_without_jaggedness": "farlandstraveler:far_lands/initial_density_without_jaggedness",
     "lava": {
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_lava",
@@ -258,7 +135,7 @@
     }
   },
   "ore_veins_enabled": true,
-  "sea_level": 63,
+  "sea_level": 32,
   "spawn_target": [
     {
       "continentalness": [

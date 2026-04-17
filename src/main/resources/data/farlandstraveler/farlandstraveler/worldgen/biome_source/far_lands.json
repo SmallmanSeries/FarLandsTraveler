@@ -7,8 +7,21 @@
   "extend_y": 12550824,
   "extend_z": 7450000,
   "inside": {
-    "type": "fixed",
-    "biome": "farlandstraveler:far_lands"
+    "type": "farlandstraveler:box_select",
+    "origin_x": -3137856,
+    "origin_y": 0,
+    "origin_z": -3137736,
+    "extend_x": 128,
+    "extend_y": 32,
+    "extend_z": 96,
+    "inside": {
+      "type": "fixed",
+      "biome": "farlandstraveler:oots_laboratory"
+    },
+    "outside": {
+      "type": "fixed",
+      "biome": "farlandstraveler:far_lands"
+    }
   },
   "outside": {
     "type": "fixed",

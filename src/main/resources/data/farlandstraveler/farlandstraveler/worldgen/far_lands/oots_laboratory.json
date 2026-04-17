@@ -1,0 +1,8 @@
+{
+  "dimension": "minecraft:overworld",
+  "settings": "farlandstraveler:oots_laboratory",
+  "biome_source": {
+    "type": "fixed",
+    "biome": "farlandstraveler:oots_laboratory"
+  }
+}

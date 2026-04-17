@@ -38,21 +38,8 @@ public abstract class ChunkMapMixin {
         ChunkGenerator generator = context.generator();
         ServerLevel level = context.level();
         // 开始替换生成器。这里就不用管noise_router了，它使用Mixson事件注入的规则切换
-        // 边境之地边缘
-        /*
-        if (level.dimension() == Level.OVERWORLD &&
-                (Math.max(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
-                || Math.min(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
 
-            generator = new NoiseBasedChunkGenerator(
-                    level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS_EDGE).biomeSource(),
-                    level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS_EDGE).settings()
-            );
-        }// 以下同理
-
-         */
         // 边境之地
-
         if (level.dimension() == Level.OVERWORLD && context.generator() instanceof NoiseBasedChunkGenerator &&
                 (Math.max(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) >= Config.FAR_LANDS_DISTANCE.getAsInt()
                         || Math.min(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
@@ -63,22 +50,16 @@ public abstract class ChunkMapMixin {
                     level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).settings()
             );
         }
-        // 遥远之地
-        // 边缘之地
-        /*
-        if (level.dimension() == Level.OVERWORLD &&
-                (Math.max(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) >= Config.FRINGE_LANDS_DISTANCE.getAsInt()
-                        || Math.min(chunk.getPos().getMaxBlockX(), chunk.getPos().getMaxBlockZ()) <= -(Config.FRINGE_LANDS_DISTANCE.getAsInt()))) {
+
+        // 岩石之令实验室
+        if (level.dimension() == Level.OVERWORLD && context.generator() instanceof NoiseBasedChunkGenerator && Config.GENERATE_OOTS_LABORATORY.getAsBoolean() &&
+                (chunk.getPos().getMinBlockX() >= -12551424 && chunk.getPos().getMaxBlockX() <= -12550912 && chunk.getPos().getMinBlockZ() >= -12550944 && chunk.getPos().getMaxBlockZ() <= -12550560)) {
 
             generator = new NoiseBasedChunkGenerator(
-                    level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FRINGE_LANDS).biomeSource(),
-                    level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FRINGE_LANDS).settings()
+                    context.generator().getBiomeSource(),
+                    level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.OOTS_LABORATORY).settings()
             );
         }
-
-         */
-        // 边缘之角
-        // 基岩海
 
         // 应用生成器
         WorldGenContext modifiedContext = new WorldGenContext(level, generator, context.structureManager(), context.lightEngine(), context.mainThreadExecutor(), context.unsavedListener());

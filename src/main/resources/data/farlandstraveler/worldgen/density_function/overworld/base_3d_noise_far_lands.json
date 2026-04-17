@@ -712,18 +712,34 @@
         }
       },
       "when_out_of_range": {
-        "type": "farlandstraveler:old_blended_noise_customizable",
-        "overflowable": true,
-        "repeat_start": 13000000,
-        "repeat_length": 16,
-        "repeat_count": 2,
-        "smear_scale_multiplier": 8.0,
-        "x_factor": 80.0,
-        "x_scale": 0.25,
-        "z_factor": 80.0,
-        "z_scale": 0.25,
-        "y_factor": 160.0,
-        "y_scale": 0.125
+        "type": "minecraft:range_choice",
+        "input": {
+          "type": "farlandstraveler:box_select",
+          "invert": false,
+          "origin_x": -12551421,
+          "origin_y": 0,
+          "origin_z": -12550941,
+          "extend_x": 509,
+          "extend_y": 128,
+          "extend_z": 381
+        },
+        "min_inclusive": 0,
+        "max_exclusive": 1,
+        "when_in_range": {
+          "type": "farlandstraveler:old_blended_noise_customizable",
+          "overflowable": true,
+          "repeat_start": 13000000,
+          "repeat_length": 16,
+          "repeat_count": 2,
+          "smear_scale_multiplier": 8.0,
+          "x_factor": 80.0,
+          "x_scale": 0.25,
+          "z_factor": 80.0,
+          "z_scale": 0.25,
+          "y_factor": 160.0,
+          "y_scale": 0.125
+        },
+        "when_out_of_range": -0.001
       }
     }
   }
