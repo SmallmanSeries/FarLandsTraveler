@@ -1,8 +1,7 @@
-package com.smallmanseries.farlandstraveler.common.worldgen;
+package com.smallmanseries.farlandstraveler.common.worldgen.biomesources;
 
 import com.mojang.serialization.MapCodec;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.BoxSelectBiomeSource;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.neoforged.neoforge.registries.DeferredRegister;

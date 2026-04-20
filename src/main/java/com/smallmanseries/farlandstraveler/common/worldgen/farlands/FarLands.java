@@ -2,6 +2,7 @@ package com.smallmanseries.farlandstraveler.common.worldgen.farlands;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.DataRegister;
 import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.BiomeSourceHolder;
 import net.minecraft.core.Holder;
@@ -41,7 +42,7 @@ public record FarLands(
         ).apply(farLandsInstance, farLandsInstance.stable(FarLands::new))
     );
 
-    public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "far_lands"));
-    public static final ResourceKey<FarLands> OOTS_LABORATORY = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath("farlandstraveler", "oots_laboratory"));
+    public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "far_lands"));
+    public static final ResourceKey<FarLands> OOTS_LABORATORY = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory"));
 
 }

@@ -1,8 +1,7 @@
-package com.smallmanseries.farlandstraveler.common.worldgen;
+package com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions;
 
 import com.mojang.serialization.MapCodec;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.neoforged.neoforge.registries.DeferredRegister;
