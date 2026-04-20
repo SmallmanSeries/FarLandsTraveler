@@ -20,6 +20,6 @@ public abstract class StructureBlockEntityMixin {
 
     @ModifyConstant(method = "detectSize", constant = @Constant(intValue = 80))
     private int maxDetectSize(int value) {
-        return Integer.MAX_VALUE;
+        return 512;
     }
 }
