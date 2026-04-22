@@ -1,7 +1,5 @@
 package com.smallmanseries.farlandstraveler;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
@@ -13,14 +11,11 @@ import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.FLTD
 import com.smallmanseries.farlandstraveler.common.worldgen.structure.FLTStructurePieceType;
 import com.smallmanseries.farlandstraveler.common.worldgen.structure.FLTStructures;
 import com.smallmanseries.farlandstraveler.common.worldgen.structure.placement.FLTStructurePlacements;
-import net.minecraft.core.SectionPos;
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.ramixin.mixson.inline.Mixson;
 import org.slf4j.Logger;
 
 @Mod(FarLandsTraveler.MODID)
