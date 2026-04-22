@@ -8,8 +8,11 @@ import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
 import com.smallmanseries.farlandstraveler.common.misc.FLTCreativeTabs;
-import com.smallmanseries.farlandstraveler.common.worldgen.FLTBiomeSources;
-import com.smallmanseries.farlandstraveler.common.worldgen.FLTDensityFunctions;
+import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.FLTBiomeSources;
+import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.FLTDensityFunctions;
+import com.smallmanseries.farlandstraveler.common.worldgen.structure.FLTStructurePieceType;
+import com.smallmanseries.farlandstraveler.common.worldgen.structure.FLTStructures;
+import com.smallmanseries.farlandstraveler.common.worldgen.structure.placement.FLTStructurePlacements;
 import net.minecraft.core.SectionPos;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -35,144 +38,21 @@ public class FarLandsTraveler {
         FLTBiomeSources.BIOME_SOURCES.register(modEventBus);
         FLTAttachments.ATTACHMENT_TYPES.register(modEventBus);
         FLTSoundEvents.SOUNDS.register(modEventBus);
+        FLTStructurePlacements.STRUCTURE_PLACEMENTS.register(modEventBus);
+        FLTStructures.STRUCTURES.register(modEventBus);
+        FLTStructurePieceType.STRUCTURE_PIECES.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace("worldgen/noise_settings/overworld").toString(), "noiseRouterInjectorOverworld", (context) -> {
-            // 获取noise_router
-            JsonObject noiseRouterOverworld = context.getFile().getAsJsonObject().getAsJsonObject("noise_router");
-            int dist = Config.FAR_LANDS_DISTANCE.getAsInt();
-            // 基于base_3d_noise的溢出切换final_density
-            JsonElement finalDensity = noiseRouterOverworld.get("final_density");
-            JsonObject overflowCheck = new JsonObject();
-            overflowCheck.addProperty("type", "minecraft:range_choice");
-            overflowCheck.addProperty("input", "farlandstraveler:far_lands/far_lands_generation_check");
-            overflowCheck.addProperty("min_inclusive", -100);
-            overflowCheck.addProperty("max_exclusive", 100);
-            overflowCheck.add("when_in_range", finalDensity);
-            overflowCheck.addProperty("when_out_of_range", "farlandstraveler:far_lands/final_density");
-            JsonObject boxSelect = new JsonObject();
-            boxSelect.addProperty("type", "farlandstraveler:box_select");
-            boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -dist);
-            boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -dist);
-            boxSelect.addProperty("extend_x", 2 * dist + 1);
-            boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 2 * dist + 1);
-            JsonObject finalDensityModified = new JsonObject();
-            finalDensityModified.addProperty("type", "minecraft:range_choice");
-            finalDensityModified.add("input", boxSelect);
-            finalDensityModified.addProperty("min_inclusive", 0);
-            finalDensityModified.addProperty("max_exclusive", 1);
-            finalDensityModified.add("when_in_range", overflowCheck);
-            finalDensityModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/final_density");
+        DataInjectors.noiseRouterInjector("worldgen/noise_settings/overworld", "noiseRouterInjectorNormal");
+        // DataInjectors.noiseRouterInjector("worldgen/noise_settings/amplified", "noiseRouterInjectorAmplified");
+        // DataInjectors.noiseRouterInjector("worldgen/noise_settings/large_biomes", "noiseRouterInjectorLargeBiomes");
 
-            //基于框选（box_select）切换其他密度函数
-            JsonElement initialDensity = noiseRouterOverworld.get("initial_density_without_jaggedness");
-            boxSelect = new JsonObject();
-            boxSelect.addProperty("type", "farlandstraveler:box_select");
-            boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -dist);
-            boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -dist);
-            boxSelect.addProperty("extend_x", 2 * dist - 3);
-            boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 2 * dist - 3);
-            JsonObject initialDensityModified = new JsonObject();
-            initialDensityModified.addProperty("type", "minecraft:range_choice");
-            initialDensityModified.add("input", boxSelect);
-            initialDensityModified.addProperty("min_inclusive", 0);
-            initialDensityModified.addProperty("max_exclusive", 1);
-            initialDensityModified.add("when_in_range", initialDensity);
-            initialDensityModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/initial_density_without_jaggedness");
+        DataInjectors.worldPresentInjector("worldgen/world_preset/normal", "worldPresentInjectorNormal");
+        // DataInjectors.worldPresentInjector("worldgen/world_preset/amplified", "biomeSourceInjectorAmplified");
+        // DataInjectors.worldPresentInjector("worldgen/world_preset/large_biome", "biomeSourceInjectorLargeBiome");
 
-            JsonElement floodedness = noiseRouterOverworld.get("fluid_level_floodedness");
-            boxSelect = new JsonObject();
-            boxSelect.addProperty("type", "farlandstraveler:box_select");
-            boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -dist);
-            boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -dist);
-            boxSelect.addProperty("extend_x", 2 * dist - 3);
-            boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 2 * dist - 3);
-            JsonObject floodednessModified = new JsonObject();
-            floodednessModified.addProperty("type", "minecraft:range_choice");
-            floodednessModified.add("input", boxSelect);
-            floodednessModified.addProperty("min_inclusive", 0);
-            floodednessModified.addProperty("max_exclusive", 1);
-            floodednessModified.add("when_in_range", floodedness);
-            floodednessModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/fluid_level_floodedness");
-
-            JsonElement barrier = noiseRouterOverworld.get("barrier");
-            boxSelect = new JsonObject();
-            boxSelect.addProperty("type", "farlandstraveler:box_select");
-            boxSelect.addProperty("invert", true);
-            boxSelect.addProperty("origin_x", -dist);
-            boxSelect.addProperty("origin_y", -25101648);
-            boxSelect.addProperty("origin_z", -dist);
-            boxSelect.addProperty("extend_x", 2 * dist - 3);
-            boxSelect.addProperty("extend_y", 50203297);
-            boxSelect.addProperty("extend_z", 2 * dist - 3);
-            JsonObject barrierModified = new JsonObject();
-            barrierModified.addProperty("type", "minecraft:range_choice");
-            barrierModified.add("input", boxSelect);
-            barrierModified.addProperty("min_inclusive", 0);
-            barrierModified.addProperty("max_exclusive", 1);
-            barrierModified.add("when_in_range", barrier);
-            barrierModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/barrier");
-
-            //应用修改后的noise_router
-            noiseRouterOverworld.add("final_density", finalDensityModified);
-            noiseRouterOverworld.add("initial_density_without_jaggedness", initialDensityModified);
-            noiseRouterOverworld.add("fluid_level_floodedness", floodednessModified);
-
-        }, false);
-
-        Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace("worldgen/world_preset/normal").toString(), "biomeSourceInjectorOverworldNormal", (context) -> {
-            JsonObject normalOverworld = context.getFile().getAsJsonObject()
-                    .getAsJsonObject("dimensions")
-                    .getAsJsonObject(ResourceLocation.withDefaultNamespace("overworld").toString())
-                    .getAsJsonObject("generator");
-            JsonElement biomeSource = normalOverworld.get("biome_source");
-
-            if (!biomeSource.isJsonNull()) {
-                int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
-                JsonObject biomeSourceNew = new JsonObject();
-                biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
-                biomeSourceNew.addProperty("origin_x", -dist * 4);
-                biomeSourceNew.addProperty("origin_y", -6275412);
-                biomeSourceNew.addProperty("origin_z", -dist * 4);
-                biomeSourceNew.addProperty("extend_x", dist * 8);
-                biomeSourceNew.addProperty("extend_y", 12550824);
-                biomeSourceNew.addProperty("extend_z", dist * 8);
-                biomeSourceNew.add("inside", biomeSource);
-                biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
-                normalOverworld.add("biome_source", biomeSourceNew);
-            }
-        }, false);
-
-        Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace("dimension/overworld").toString(), "biomeSourceInjectorOverworldNormal", (context) -> {
-            JsonObject normalOverworld = context.getFile().getAsJsonObject()
-                    .getAsJsonObject("generator");
-            JsonElement biomeSource = normalOverworld.get("biome_source");
-
-            if (!biomeSource.isJsonNull()) {
-                int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
-                JsonObject biomeSourceNew = new JsonObject();
-                biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
-                biomeSourceNew.addProperty("origin_x", -dist * 4);
-                biomeSourceNew.addProperty("origin_y", -6275412);
-                biomeSourceNew.addProperty("origin_z", -dist * 4);
-                biomeSourceNew.addProperty("extend_x", dist * 8);
-                biomeSourceNew.addProperty("extend_y", 12550824);
-                biomeSourceNew.addProperty("extend_z", dist * 8);
-                biomeSourceNew.add("inside", biomeSource);
-                biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
-                normalOverworld.add("biome_source", biomeSourceNew);
-            }
-        }, false);
+        DataInjectors.dimensionInjector("dimension/overworld", "dimensionInjectorNormal");
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
