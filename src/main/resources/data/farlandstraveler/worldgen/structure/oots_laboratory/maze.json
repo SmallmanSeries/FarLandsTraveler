@@ -1,0 +1,9 @@
+{
+  "type": "farlandstraveler:oots_laboratory",
+  "biomes": "farlandstraveler:oots_laboratory",
+  "pos": [-12551124, 60, -12550779],
+  "part": "maze",
+  "spawn_overrides": {},
+  "step": "strongholds",
+  "terrain_adaptation": "none"
+}

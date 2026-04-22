@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "farlandstraveler:oots_laboratory/exterior",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1346237208,
+    "x": -12550829,
+    "z": -12550788,
+    "type": "farlandstraveler:fixed"
+  }
+}

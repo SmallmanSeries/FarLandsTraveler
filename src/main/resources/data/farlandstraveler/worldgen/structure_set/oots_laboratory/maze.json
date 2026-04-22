@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "farlandstraveler:oots_laboratory/maze",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1346237208,
+    "x": -12551124,
+    "z": -12550779,
+    "type": "farlandstraveler:fixed"
+  }
+}

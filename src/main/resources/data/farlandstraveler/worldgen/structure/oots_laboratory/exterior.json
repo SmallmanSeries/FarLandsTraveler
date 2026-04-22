@@ -1,0 +1,9 @@
+{
+  "type": "farlandstraveler:oots_laboratory",
+  "biomes": "farlandstraveler:oots_laboratory",
+  "pos": [-12550829, 62, -12550788],
+  "part": "exterior",
+  "spawn_overrides": {},
+  "step": "strongholds",
+  "terrain_adaptation": "none"
+}
