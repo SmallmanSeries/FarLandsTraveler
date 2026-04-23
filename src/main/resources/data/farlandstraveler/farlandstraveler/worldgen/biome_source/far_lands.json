@@ -12,7 +12,7 @@
     "origin_y": 0,
     "origin_z": -3137736,
     "extend_x": 128,
-    "extend_y": 32,
+    "extend_y": 128,
     "extend_z": 96,
     "inside": {
       "type": "fixed",
@@ -20,12 +20,12 @@
     },
     "outside": {
       "type": "farlandstraveler:box_select",
-      "origin_x": -3137856,
+      "origin_x": -3137729,
       "origin_y": 0,
-      "origin_z": -3137736,
-      "extend_x": 999,
-      "extend_y": 32,
-      "extend_z": 999,
+      "origin_z": -3137702,
+      "extend_x": 32,
+      "extend_y": 128,
+      "extend_z": 10,
       "inside": {
         "type": "fixed",
         "biome": "farlandstraveler:oots_laboratory"

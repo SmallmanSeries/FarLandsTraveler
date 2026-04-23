@@ -1,17 +1,10 @@
 package com.smallmanseries.farlandstraveler.common.worldgen.structure;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.Locale;
-import java.util.function.Supplier;
 
 public class FLTStructurePieceType {
     public static final DeferredRegister<StructurePieceType> STRUCTURE_PIECES = DeferredRegister.create(Registries.STRUCTURE_PIECE, FarLandsTraveler.MODID);

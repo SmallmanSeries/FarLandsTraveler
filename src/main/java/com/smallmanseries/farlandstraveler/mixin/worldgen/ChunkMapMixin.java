@@ -53,7 +53,7 @@ public abstract class ChunkMapMixin {
 
         // 岩石之令实验室
         if (level.dimension() == Level.OVERWORLD && context.generator() instanceof NoiseBasedChunkGenerator && Config.GENERATE_OOTS_LABORATORY.getAsBoolean() &&
-                (chunk.getPos().getMinBlockX() >= -12551424 && chunk.getPos().getMaxBlockX() <= -12550912 && chunk.getPos().getMinBlockZ() >= -12550944 && chunk.getPos().getMaxBlockZ() <= -12550560)) {
+                (chunk.getPos().getMinBlockX() >= -12551424 && chunk.getPos().getMaxBlockX() <= -12550896 && chunk.getPos().getMinBlockZ() >= -12550944 && chunk.getPos().getMaxBlockZ() <= -12550560)) {
 
             generator = new NoiseBasedChunkGenerator(
                     context.generator().getBiomeSource(),
