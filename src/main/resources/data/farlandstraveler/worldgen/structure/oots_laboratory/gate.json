@@ -1,9 +1,9 @@
 {
   "type": "farlandstraveler:oots_laboratory",
   "biomes": "farlandstraveler:oots_laboratory",
-  "pos": [-12550838, 52, -12550788],
+  "pos": [-12550838, 62, -12550788],
   "part": "gate",
   "spawn_overrides": {},
-  "step": "strongholds",
+  "step": "vegetal_decoration",
   "terrain_adaptation": "none"
 }

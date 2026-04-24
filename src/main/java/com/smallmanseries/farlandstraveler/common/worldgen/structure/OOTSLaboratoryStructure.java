@@ -52,7 +52,7 @@ public class OOTSLaboratoryStructure extends Structure {
             return Optional.of(new Structure.GenerationStub(this.pos, builder -> {
                 switch (this.part) {
                     case "exterior" -> builder.addPiece(new Piece(context.structureTemplateManager(), EXTERIOR, new BlockPos(this.pos.getX() - 11, this.pos.getY(), this.pos.getZ() - 51)));
-                    case "gate" -> builder.addPiece(new Piece(context.structureTemplateManager(), GATE, new BlockPos(this.pos.getX() - 73, this.pos.getY(), this.pos.getZ() - 33)));
+                    case "gate" -> builder.addPiece(new Piece(context.structureTemplateManager(), GATE, new BlockPos(this.pos.getX() - 73, this.pos.getY() - 10, this.pos.getZ() - 33)));
                     case "maze" -> builder.addPiece(new Piece(context.structureTemplateManager(), MAZE, new BlockPos(this.pos.getX() - 128, this.pos.getY(), this.pos.getZ() - 128)));
                 }
             }));

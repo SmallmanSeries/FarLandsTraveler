@@ -4,6 +4,6 @@
   "pos": [-12550974, 31, -12550764],
   "part": "maze",
   "spawn_overrides": {},
-  "step": "strongholds",
+  "step": "vegetal_decoration",
   "terrain_adaptation": "none"
 }
