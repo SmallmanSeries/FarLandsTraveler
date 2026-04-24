@@ -25,6 +25,7 @@
     "requireAnnotations": true
   },
   "client": [
-    "border.WorldBorderRendererMixin"
+    "border.WorldBorderRendererMixin",
+    "structureblock.BlockEntityWithBoundingBoxRenderMixin"
   ]
 }
