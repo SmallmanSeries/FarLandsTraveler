@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 5
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:oak_planks",
+          "weight": 1,
+          "quality": 0
+        }
+      ]
+    }
+  ],
+  "random_sequence": "farlandstraveler:chests/oots_laboratory/cottage_fireplace"
+}

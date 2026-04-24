@@ -1,8 +1,8 @@
 {
   "type": "farlandstraveler:oots_laboratory",
   "biomes": "farlandstraveler:oots_laboratory",
-  "pos": [-12550974, 51, -12550764],
-  "part": "maze",
+  "pos": [-12551187, 43, -12550664],
+  "part": "cottage",
   "spawn_overrides": {},
   "step": "vegetal_decoration",
   "terrain_adaptation": "none"

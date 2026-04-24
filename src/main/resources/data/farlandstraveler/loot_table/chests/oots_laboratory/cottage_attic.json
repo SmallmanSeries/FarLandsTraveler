@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 27,
+        "max": 27
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "farlandstraveler:test_block",
+          "weight": 1,
+          "quality": 0
+        }
+      ]
+    }
+  ],
+  "random_sequence": "farlandstraveler:chests/oots_laboratory/cottage_attic"
+}
