@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "farlandstraveler:oots_laboratory/basement",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1346237208,
+    "x": -12551320,
+    "z": -12550737,
+    "type": "farlandstraveler:fixed"
+  }
+}

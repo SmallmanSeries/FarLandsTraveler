@@ -36,6 +36,8 @@ public class OOTSLaboratoryStructure extends Structure {
     private static final ResourceLocation GATE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/gate");
     private static final ResourceLocation MAZE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze");
     private static final ResourceLocation COTTAGE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/cottage");
+    private static final ResourceLocation BASEMENT = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/basement");
+    private static final ResourceLocation ENCHANTED_BOOK = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/enchanted_book");
 
     public final BlockPos pos;
     public final String part;
@@ -56,6 +58,10 @@ public class OOTSLaboratoryStructure extends Structure {
                     case "gate" -> builder.addPiece(new Piece(context.structureTemplateManager(), GATE, new BlockPos(this.pos.getX() - 73, this.pos.getY() - 10, this.pos.getZ() - 33)));
                     case "maze" -> builder.addPiece(new Piece(context.structureTemplateManager(), MAZE, new BlockPos(this.pos.getX() - 128, this.pos.getY() - 20, this.pos.getZ() - 128)));
                     case "cottage" -> builder.addPiece(new Piece(context.structureTemplateManager(), COTTAGE, new BlockPos(this.pos.getX() - 82, this.pos.getY() - 20, this.pos.getZ() - 50)));
+                    case "basement" -> {
+                        builder.addPiece(new Piece(context.structureTemplateManager(), BASEMENT, new BlockPos(this.pos.getX() - 77, this.pos.getY() - 40, this.pos.getZ() - 54)));
+                        builder.addPiece(new Piece(context.structureTemplateManager(), ENCHANTED_BOOK, new BlockPos(this.pos.getX() + 7, this.pos.getY() - 23, this.pos.getZ() - 25)));
+                    }
                 }
             }));
         }

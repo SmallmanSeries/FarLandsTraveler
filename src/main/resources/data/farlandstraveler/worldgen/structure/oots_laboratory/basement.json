@@ -1,0 +1,9 @@
+{
+  "type": "farlandstraveler:oots_laboratory",
+  "biomes": "farlandstraveler:oots_laboratory",
+  "pos": [-12551320, 33, -12550737],
+  "part": "basement",
+  "spawn_overrides": {},
+  "step": "vegetal_decoration",
+  "terrain_adaptation": "none"
+}
