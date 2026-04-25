@@ -35,17 +35,5 @@
   "farlandstraveler.configuration.enable_far_lands" : "启用边境之地（已废弃）",
   "farlandstraveler.configuration.enable_sky_grid" : "启用天空网格",
   "farlandstraveler.configuration.force_sky_grid" : "强制生成天空网格",
-  "farlandstraveler.configuration.far_lands_distance" : "边境之地距离",
-
-
-
-
-
-
-
-  "propernoun.farlandstraveler.farlands" : "边境之地",
-  "propernoun.farlandstraveler.fartherlands" : "遥远之地",
-  "propernoun.farlandstraveler.fringelands" : "边缘之地",
-  "propernoun.farlandstraveler.distanceeffect" : "距离现象",
-  "propernoun.farlandstraveler.grandpillar" : "擎天巨柱"
+  "farlandstraveler.configuration.far_lands_distance" : "边境之地距离"
 }

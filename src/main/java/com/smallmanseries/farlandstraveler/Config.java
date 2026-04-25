@@ -20,11 +20,6 @@ public class Config {
             .comment("Now deprecated.")
             .define("enable_far_lands", false);
 
-    public static final ModConfigSpec.BooleanValue GENERATE_OOTS_LABORATORY = BUILDER
-            .comment("Enable the generation of The Order Of The Stone Laboratory")
-            .define("generate_oots_laboratory", true);
-
-
     public static final ModConfigSpec.BooleanValue ENABLE_SKY_GRID = BUILDER
             .comment("Enable the sky grid to generate in the Fringe Lands.")
             .define("enable_sky_grid", false);
@@ -38,10 +33,10 @@ public class Config {
             .comment("Actually, it's the location of the first switch to the world generator")
             .defineInRange("far_lands_distance", 12550824, 0, Integer.MAX_VALUE);
 
-    public static final ModConfigSpec.IntValue FRINGE_LANDS_DISTANCE = BUILDER
-            .comment("The distance between the generated location of the Fringe Lands and the origin of the world")
-            .comment("Actually, it's the location of the second switch to the world generator")
-            .defineInRange("repeating_far_lands_distance", 14900000, 0, Integer.MAX_VALUE);
+    public static final ModConfigSpec.BooleanValue GENERATE_OOTS_LABORATORY = BUILDER
+            .comment("Enable the generation of The Order Of The Stone Laboratory")
+            .define("generate_oots_laboratory", true);
+
     // </配置文件正文>
 
     static final ModConfigSpec SPEC = BUILDER.build();

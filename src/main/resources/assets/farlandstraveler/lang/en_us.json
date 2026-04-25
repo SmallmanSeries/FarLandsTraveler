@@ -35,15 +35,5 @@
   "farlandstraveler.configuration.enable_far_lands" : "Enable Far Lands (Deprecated)",
   "farlandstraveler.configuration.enable_sky_grid" : "Enable Sky Grid",
   "farlandstraveler.configuration.force_sky_grid" : "Force generate Sky Grid",
-  "farlandstraveler.configuration.far_lands_distance" : "Far Lands Distance",
-
-
-
-  "propernoun.farlandstraveler.farlands" : "The Far Lands",
-  "propernoun.farlandstraveler.fartherlands" : "The Farther Lands",
-  "propernoun.farlandstraveler.fringelands" : "The Fringe Lands",
-  "propernoun.farlandstraveler.seaofend" : "Sea Of End",
-  "propernoun.farlandstraveler.distanceeffect" : "Distance Effects",
-  "propernoun.farlandstraveler.grandpillar" : "The Grand Pillars"
-
+  "farlandstraveler.configuration.far_lands_distance" : "Far Lands Distance"
 }
