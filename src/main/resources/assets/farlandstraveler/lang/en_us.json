@@ -35,5 +35,6 @@
   "farlandstraveler.configuration.enable_far_lands" : "Enable Far Lands (Deprecated)",
   "farlandstraveler.configuration.enable_sky_grid" : "Enable Sky Grid",
   "farlandstraveler.configuration.force_sky_grid" : "Force generate Sky Grid",
-  "farlandstraveler.configuration.far_lands_distance" : "Far Lands Distance"
+  "farlandstraveler.configuration.far_lands_distance" : "Far Lands Distance",
+  "farlandstraveler.configuration.generate_oots_laboratory" : "Generate The Order Of The Stone Laboratory"
 }

@@ -35,5 +35,6 @@
   "farlandstraveler.configuration.enable_far_lands" : "启用边境之地（已废弃）",
   "farlandstraveler.configuration.enable_sky_grid" : "启用天空网格",
   "farlandstraveler.configuration.force_sky_grid" : "强制生成天空网格",
-  "farlandstraveler.configuration.far_lands_distance" : "边境之地距离"
+  "farlandstraveler.configuration.far_lands_distance" : "边境之地距离",
+  "farlandstraveler.configuration.generate_oots_laboratory" : "生成岩石之令实验室"
 }
