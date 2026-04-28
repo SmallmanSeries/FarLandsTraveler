@@ -35,6 +35,8 @@ public class OOTSLaboratoryStructure extends Structure {
     private static final ResourceLocation EXTERIOR = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/exterior");
     private static final ResourceLocation GATE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/gate");
     private static final ResourceLocation MAZE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze");
+    private static final ResourceLocation MAZE_WALLPIECE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze_wallpiece");
+    private static final ResourceLocation MAZE_STONEFALL = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze_stonefall");
     private static final ResourceLocation COTTAGE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/cottage");
     private static final ResourceLocation BASEMENT = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/basement");
     private static final ResourceLocation ENCHANTED_BOOK = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/enchanted_book");
@@ -56,7 +58,13 @@ public class OOTSLaboratoryStructure extends Structure {
                 switch (this.part) {
                     case "exterior" -> builder.addPiece(new Piece(context.structureTemplateManager(), EXTERIOR, new BlockPos(this.pos.getX() - 11, this.pos.getY(), this.pos.getZ() - 51)));
                     case "gate" -> builder.addPiece(new Piece(context.structureTemplateManager(), GATE, new BlockPos(this.pos.getX() - 73, this.pos.getY() - 10, this.pos.getZ() - 33)));
-                    case "maze" -> builder.addPiece(new Piece(context.structureTemplateManager(), MAZE, new BlockPos(this.pos.getX() - 128, this.pos.getY() - 20, this.pos.getZ() - 128)));
+                    case "maze" -> {
+                        builder.addPiece(new Piece(context.structureTemplateManager(), MAZE, new BlockPos(this.pos.getX() - 128, this.pos.getY() - 20, this.pos.getZ() - 128)));
+                        builder.addPiece(new Piece(context.structureTemplateManager(), MAZE_STONEFALL, new BlockPos(this.pos.getX() - 29, this.pos.getY() + 37, this.pos.getZ() - 22)));
+                        if (context.random().nextInt(2) == 1) {
+                            builder.addPiece(new Piece(context.structureTemplateManager(), MAZE_WALLPIECE, new BlockPos(this.pos.getX() - 45, this.pos.getY() + 13, this.pos.getZ() - 31)));
+                        }
+                    }
                     case "cottage" -> builder.addPiece(new Piece(context.structureTemplateManager(), COTTAGE, new BlockPos(this.pos.getX() - 82, this.pos.getY() - 20, this.pos.getZ() - 50)));
                     case "basement" -> {
                         builder.addPiece(new Piece(context.structureTemplateManager(), BASEMENT, new BlockPos(this.pos.getX() - 77, this.pos.getY() - 40, this.pos.getZ() - 54)));
