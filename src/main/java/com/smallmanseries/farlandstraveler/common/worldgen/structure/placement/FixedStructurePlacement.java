@@ -3,6 +3,7 @@ package com.smallmanseries.farlandstraveler.common.worldgen.structure.placement;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.level.ChunkPos;
@@ -37,6 +38,10 @@ public class FixedStructurePlacement extends StructurePlacement {
     @Override
     protected boolean isPlacementChunk(ChunkGeneratorStructureState chunkGeneratorStructureState, int x, int z) {
         return this.pos.x == x && this.pos.z == z;
+    }
+
+    public BlockPos getPos() {
+        return new BlockPos(this.x, 64, this.z);
     }
 
     @Override
