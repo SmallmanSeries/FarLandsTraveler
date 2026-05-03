@@ -2,7 +2,7 @@ package com.smallmanseries.farlandstraveler.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.datafixers.util.Pair;
-import com.smallmanseries.farlandstraveler.common.worldgen.structure.placement.FixedStructurePlacement;
+import com.smallmanseries.farlandstraveler.common.worldgen.structures.placement.FixedStructurePlacement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -22,8 +22,8 @@ import java.util.Set;
 public class ChunkGeneratorMixin {
     @Inject(method = "findNearestMapStructure", at = @At(value = "INVOKE", target = "Ljava/util/Map$Entry;getKey()Ljava/lang/Object;"), cancellable = true)
     private void fixedPlacement(ServerLevel level, HolderSet<Structure> structure, BlockPos pos, int searchRadius, boolean skipKnownStructures, CallbackInfoReturnable<Pair<BlockPos, Holder<Structure>>> cir, @Local Map.Entry<StructurePlacement, Set<Holder<Structure>>> entry) {
-        for (Holder<Structure> holder : entry.getValue()) {
-            if (entry.getKey() instanceof FixedStructurePlacement placement) {
+        if (entry.getKey() instanceof FixedStructurePlacement placement) {
+            for (Holder<Structure> holder : entry.getValue()) {
                 cir.setReturnValue(Pair.of(placement.getPos(), holder));
             }
         }
