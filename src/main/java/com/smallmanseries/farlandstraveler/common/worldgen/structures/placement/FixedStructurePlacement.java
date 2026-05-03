@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.common.worldgen.structure.placement;
+package com.smallmanseries.farlandstraveler.common.worldgen.structures.placement;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

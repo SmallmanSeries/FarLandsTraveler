@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.common.worldgen.structure;
+package com.smallmanseries.farlandstraveler.common.worldgen.structures;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import net.minecraft.core.registries.Registries;

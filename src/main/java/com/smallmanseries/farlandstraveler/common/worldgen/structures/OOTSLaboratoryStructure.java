@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.common.worldgen.structure;
+package com.smallmanseries.farlandstraveler.common.worldgen.structures;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
