@@ -82,32 +82,41 @@ public class DataInjectors {
     }
 
     /**
+     * 用于包装生物群系源，使得边境之地能生成自定义生物群系
+     * @param generator 需要包装的生物群系源的上一级（一般是generator字段），一个JSON对象
+     * @param biomeSource 需要包装的生物群系源，一个JSON元素
+     */
+    public static void setBiomeSource(JsonObject generator, JsonElement biomeSource) {
+        if (!biomeSource.isJsonNull()) {
+            int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
+            JsonObject biomeSourceNew = new JsonObject();
+            biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
+            biomeSourceNew.addProperty("origin_x", -dist * 4);
+            biomeSourceNew.addProperty("origin_y", -6275412);
+            biomeSourceNew.addProperty("origin_z", -dist * 4);
+            biomeSourceNew.addProperty("extend_x", dist * 8);
+            biomeSourceNew.addProperty("extend_y", 12550824);
+            biomeSourceNew.addProperty("extend_z", dist * 8);
+            biomeSourceNew.add("inside", biomeSource);
+            biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
+            generator.add("biome_source", biomeSourceNew);
+        }
+    }
+
+    /**
      * 用于包装世界预设文件中的生物群系源，使得边境之地能生成自定义生物群系
      * @param path 世界预设文件的路径
      * @param name MixsonEvent的名称（随便取）
      */
     public static void worldPresentInjector(String path, String name) {
         Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace(path).toString(), name, (context) -> {
-            JsonObject normalOverworld = context.getFile().getAsJsonObject()
+            JsonObject generator = context.getFile().getAsJsonObject()
                     .getAsJsonObject("dimensions")
                     .getAsJsonObject(ResourceLocation.withDefaultNamespace("overworld").toString())
                     .getAsJsonObject("generator");
-            JsonElement biomeSource = normalOverworld.get("biome_source");
+            JsonElement biomeSource = generator.get("biome_source");
 
-            if (!biomeSource.isJsonNull()) {
-                int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
-                JsonObject biomeSourceNew = new JsonObject();
-                biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
-                biomeSourceNew.addProperty("origin_x", -dist * 4);
-                biomeSourceNew.addProperty("origin_y", -6275412);
-                biomeSourceNew.addProperty("origin_z", -dist * 4);
-                biomeSourceNew.addProperty("extend_x", dist * 8);
-                biomeSourceNew.addProperty("extend_y", 12550824);
-                biomeSourceNew.addProperty("extend_z", dist * 8);
-                biomeSourceNew.add("inside", biomeSource);
-                biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
-                normalOverworld.add("biome_source", biomeSourceNew);
-            }
+            setBiomeSource(generator, biomeSource);
         }, false);
     }
 
@@ -118,24 +127,11 @@ public class DataInjectors {
      */
     public static void dimensionInjector(String path, String name) {
         Mixson.registerEvent(0, ResourceLocation.withDefaultNamespace(path).toString(), name, (context) -> {
-            JsonObject normalOverworld = context.getFile().getAsJsonObject()
+            JsonObject generator = context.getFile().getAsJsonObject()
                     .getAsJsonObject("generator");
-            JsonElement biomeSource = normalOverworld.get("biome_source");
-            String type = biomeSource.getAsJsonObject().getAsJsonObject("type").getAsString();
-            if (!biomeSource.isJsonNull() && type.contains("multi_noise")) {
-                int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
-                JsonObject biomeSourceNew = new JsonObject();
-                biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
-                biomeSourceNew.addProperty("origin_x", -dist * 4);
-                biomeSourceNew.addProperty("origin_y", -6275412);
-                biomeSourceNew.addProperty("origin_z", -dist * 4);
-                biomeSourceNew.addProperty("extend_x", dist * 8);
-                biomeSourceNew.addProperty("extend_y", 12550824);
-                biomeSourceNew.addProperty("extend_z", dist * 8);
-                biomeSourceNew.add("inside", biomeSource);
-                biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
-                normalOverworld.add("biome_source", biomeSourceNew);
-            }
+            JsonElement biomeSource = generator.get("biome_source");
+
+            setBiomeSource(generator, biomeSource);
         }, false);
     }
 }
