@@ -28,7 +28,7 @@ public class OOTSLaboratoryStructure extends Structure {
     public static final MapCodec<OOTSLaboratoryStructure> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
                     settingsCodec(instance),
-                            BlockPos.CODEC.fieldOf("pos").forGetter(ins -> ins.pos),
+                    BlockPos.CODEC.fieldOf("pos").forGetter(ins -> ins.pos),
                     Codec.STRING.fieldOf("part").forGetter(ins -> ins.part)
                     ).apply(instance, OOTSLaboratoryStructure::new)
     );

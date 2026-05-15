@@ -1,6 +1,6 @@
 {
   "type": "minecraft:jigsaw",
-  "biomes": "farlandstraveler:far_lands",
+  "biomes": "#farlandstraveler:has_structure/explorer_base/indev_cobblestone",
   "max_distance_from_center": 6,
   "size": 1,
   "spawn_overrides": {},
