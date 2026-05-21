@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 75368186,
+    "separation": 8,
+    "spacing": 34
+  },
+  "structures": [
+    {
+      "structure": "farlandstraveler:abandoned_village_normal",
+      "weight": 1
+    }
+  ]
+}

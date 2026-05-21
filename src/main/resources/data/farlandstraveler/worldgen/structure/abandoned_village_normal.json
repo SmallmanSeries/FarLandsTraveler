@@ -1,0 +1,9 @@
+{
+  "type": "farlandstraveler:abandoned_village",
+  "biomes": "#farlandstraveler:has_structure/abandoned_village/normal",
+  "size": 10,
+  "preset": {},
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "none"
+}
