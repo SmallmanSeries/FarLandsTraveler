@@ -9,26 +9,27 @@ import net.minecraft.world.level.levelgen.DensityFunction;
 /**
  * 选择一个圆形区域并进行径向渐变，也可以当圆形选区使用
  * <p>
- *     {
- *     <p>
- *         "type": "farlandstraveler:radial_gradient",
- *         <p>
- *         "center_x": 圆心的x坐标,
- *         <p>
- *         "center_z": 圆心的z坐标,
- *         <p>
- *         "inner_radius": 内径/内色标的位置,
- *         <p>
- *         "outer_radius": 外径/外色标的位置,
- *         <p>
- *         "inner_value": 内色标的值,
- *         <p>
- *         "outer_value": 外色标的值
- *         <p>
- *     }
+ * {
+ * <p>
+ * "type": "farlandstraveler:radial_gradient",
+ * <p>
+ * "center_x": 圆心的x坐标,
+ * <p>
+ * "center_z": 圆心的z坐标,
+ * <p>
+ * "inner_radius": 内径/内色标的位置,
+ * <p>
+ * "outer_radius": 外径/外色标的位置,
+ * <p>
+ * "inner_value": 内色标的值,
+ * <p>
+ * "outer_value": 外色标的值
+ * <p>
+ * }
  */
 
-public record RadialGradientFunction(double centerX, double centerZ, double innerRadius, double outerRadius, double innerValue, double outerValue) implements DensityFunction.SimpleFunction {
+public record RadialGradientFunction(double centerX, double centerZ, double innerRadius, double outerRadius,
+                                     double innerValue, double outerValue) implements DensityFunction.SimpleFunction {
     private static final Codec<Double> INPUT_RANGE = Codec.doubleRange(0.0, Double.MAX_VALUE);
     public static final MapCodec<RadialGradientFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(

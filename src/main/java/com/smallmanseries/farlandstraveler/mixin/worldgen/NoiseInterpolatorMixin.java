@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(NoiseChunk.NoiseInterpolator.class)
 public abstract class NoiseInterpolatorMixin {
-    
+
     // 生成天空网格
     @Redirect(method = "updateForX", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;lerp(DDD)D"))
     private static double lerpX(double delta, double start, double end) {

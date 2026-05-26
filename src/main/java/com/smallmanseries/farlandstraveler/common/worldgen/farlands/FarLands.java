@@ -14,8 +14,8 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 /**
  * 边境之地数据驱动文件
  *
- * @param dimension 应用维度（暂未实现）
- * @param settings 噪声设置
+ * @param dimension   应用维度（暂未实现）
+ * @param settings    噪声设置
  * @param biomeSource 生物群系源
  */
 
@@ -35,11 +35,11 @@ public record FarLands(
         }
      */
     public static final Codec<FarLands> CODEC = RecordCodecBuilder.create(
-        farLandsInstance -> farLandsInstance.group(
-                Codec.STRING.fieldOf("dimension").forGetter(FarLands::dimension),
-                NoiseGeneratorSettings.CODEC.fieldOf("settings").forGetter(FarLands::settings),
-                BiomeSourceHolder.HOLDER_CODEC.fieldOf("biome_source").forGetter(FarLands::biomeSource)
-        ).apply(farLandsInstance, farLandsInstance.stable(FarLands::new))
+            farLandsInstance -> farLandsInstance.group(
+                    Codec.STRING.fieldOf("dimension").forGetter(FarLands::dimension),
+                    NoiseGeneratorSettings.CODEC.fieldOf("settings").forGetter(FarLands::settings),
+                    BiomeSourceHolder.HOLDER_CODEC.fieldOf("biome_source").forGetter(FarLands::biomeSource)
+            ).apply(farLandsInstance, farLandsInstance.stable(FarLands::new))
     );
 
     public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "far_lands"));

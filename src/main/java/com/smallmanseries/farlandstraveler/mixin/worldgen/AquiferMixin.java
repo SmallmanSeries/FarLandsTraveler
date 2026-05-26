@@ -21,11 +21,11 @@ public abstract class AquiferMixin {
 
     // 替换硬编码的岩浆层
     @Inject(method = "computeSubstance", at = @At("HEAD"), cancellable = true)
-    private void replaceLavaLayers(DensityFunction.FunctionContext context, double substance, CallbackInfoReturnable<BlockState> cir){
+    private void replaceLavaLayers(DensityFunction.FunctionContext context, double substance, CallbackInfoReturnable<BlockState> cir) {
         int x = context.blockX();
         int y = context.blockY();
         int z = context.blockZ();
-        if((Math.max(x, z) >= (Config.FAR_LANDS_DISTANCE.getAsInt() - 3) || Math.min(x, z) <= -Config.FAR_LANDS_DISTANCE.getAsInt()) && substance <= 0.0 && this.globalFluidPicker.computeFluid(x, y, z).at(y).is(Blocks.LAVA)) {
+        if ((Math.max(x, z) >= (Config.FAR_LANDS_DISTANCE.getAsInt() - 3) || Math.min(x, z) <= -Config.FAR_LANDS_DISTANCE.getAsInt()) && substance <= 0.0 && this.globalFluidPicker.computeFluid(x, y, z).at(y).is(Blocks.LAVA)) {
             cir.setReturnValue(Blocks.WATER.defaultBlockState());
         }
     }

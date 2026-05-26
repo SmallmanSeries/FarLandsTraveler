@@ -9,30 +9,31 @@ import net.minecraft.world.level.levelgen.DensityFunction;
 /**
  * 框选一个区域
  * <p>
- *     {
- *     <p>
- *         "type": "farlandstraveler:box_select",
- *         <p>
- *         "invert": （可选，默认为false）是否反转选区,
- *         <p>
- *         "origin_x": 选区起始方块的x坐标,
- *         <p>
- *         "origin_y": 选区起始方块的y坐标,
- *         <p>
- *         "origin_z": 选区起始方块的z坐标,
- *         <p>
- *         "extend_x": 选区长度,
- *         <p>
- *         "extend_y": 选区高度,
- *         <p>
- *         "extend_z": 选区宽度
- *         <p>
- *     }
- *     <p>
+ * {
+ * <p>
+ * "type": "farlandstraveler:box_select",
+ * <p>
+ * "invert": （可选，默认为false）是否反转选区,
+ * <p>
+ * "origin_x": 选区起始方块的x坐标,
+ * <p>
+ * "origin_y": 选区起始方块的y坐标,
+ * <p>
+ * "origin_z": 选区起始方块的z坐标,
+ * <p>
+ * "extend_x": 选区长度,
+ * <p>
+ * "extend_y": 选区高度,
+ * <p>
+ * "extend_z": 选区宽度
+ * <p>
+ * }
+ * <p>
  * 当坐标在选区内时，返回1，否则返回0
  */
 
-public record BoxSelectFunction(boolean invert, int originX, int originY, int originZ, int extendX, int extendY, int extendZ) implements DensityFunction.SimpleFunction {
+public record BoxSelectFunction(boolean invert, int originX, int originY, int originZ, int extendX, int extendY,
+                                int extendZ) implements DensityFunction.SimpleFunction {
     private static final Codec<Integer> INPUT_RANGE = Codec.intRange(0, Integer.MAX_VALUE);
     public static final MapCodec<BoxSelectFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
@@ -54,8 +55,8 @@ public record BoxSelectFunction(boolean invert, int originX, int originY, int or
         int endY = originY + extendY;
         int endZ = originZ + extendZ;
         if (functionContext.blockX() >= originX && functionContext.blockX() < endX
-         && functionContext.blockY() >= originY && functionContext.blockY() < endY
-         && functionContext.blockZ() >= originZ && functionContext.blockZ() < endZ){
+                && functionContext.blockY() >= originY && functionContext.blockY() < endY
+                && functionContext.blockZ() >= originZ && functionContext.blockZ() < endZ) {
             return invert ? 0 : 1;
         }
         return invert ? 1 : 0;

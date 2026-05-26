@@ -76,20 +76,20 @@ public class FLTBlocks {
 
 
     // 注册
-    private static <T extends Block> DeferredBlock<T> RegisterBlockItem(String name, Function<Block.Properties, T> function, BlockBehaviour.Properties prop){
+    private static <T extends Block> DeferredBlock<T> RegisterBlockItem(String name, Function<Block.Properties, T> function, BlockBehaviour.Properties prop) {
         DeferredBlock<T> obj = BLOCKS.register(name, (key) -> function.apply(prop.setId(ResourceKey.create(Registries.BLOCK, key))));
         FLTItems.ITEMS.register(name, (key) -> new BlockItem(obj.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).useBlockDescriptionPrefix()));
         return obj;
     }
 
-    public static void registerPots(){
+    public static void registerPots() {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
         pot.addPlant(BuiltInRegistries.BLOCK.getKey(FAR_LANDS_ROSE.get()), POTTED_FAR_LANDS_ROSE);
         pot.addPlant(BuiltInRegistries.BLOCK.getKey(CYAN_FAR_LANDS_ROSE.get()), POTTED_CYAN_FAR_LANDS_ROSE);
         pot.addPlant(BuiltInRegistries.BLOCK.getKey(FAR_LANDS_PAEONIA.get()), POTTED_FAR_LANDS_PAEONIA);
     }
 
-    public static void registerFlammability(){
+    public static void registerFlammability() {
         FireBlock fire = (FireBlock) Blocks.FIRE;
         fire.setFlammable(FAR_LANDS_ROSE.get(), 60, 100);
         fire.setFlammable(CYAN_FAR_LANDS_ROSE.get(), 60, 100);

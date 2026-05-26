@@ -31,7 +31,7 @@ public abstract class ChunkMapMixin {
 
     // 应用世界生成器
     @ModifyArgs(method = "applyStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/chunk/status/ChunkStep;apply(Lnet/minecraft/world/level/chunk/status/WorldGenContext;Lnet/minecraft/util/StaticCache2D;Lnet/minecraft/world/level/chunk/ChunkAccess;)Ljava/util/concurrent/CompletableFuture;"))
-    private void modifyGenerator(Args args){
+    private void modifyGenerator(Args args) {
         // 获取一些必要的数据
         WorldGenContext context = args.get(0);
         ChunkAccess chunk = args.get(2);
@@ -45,7 +45,7 @@ public abstract class ChunkMapMixin {
                         || Math.min(chunk.getPos().getMinBlockX(), chunk.getPos().getMinBlockZ()) <= -(Config.FAR_LANDS_DISTANCE.getAsInt()))) {
 
             generator = new NoiseBasedChunkGenerator(
-                   // level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).biomeSource(),
+                    // level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).biomeSource(),
                     context.generator().getBiomeSource(),
                     level.registryAccess().lookupOrThrow(DataRegister.FAR_LANDS).getValueOrThrow(FarLands.FAR_LANDS).settings()
             );

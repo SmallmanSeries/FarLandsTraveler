@@ -35,7 +35,7 @@ import java.util.Optional;
  * @author Osloras Ki
  * @author INF32768
  */
-public class BlendedNoiseCustomizable extends BlendedNoise{
+public class BlendedNoiseCustomizable extends BlendedNoise {
     protected static final Codec<Double> SCALE_RANGE = Codec.doubleRange(0.001, Double.MAX_VALUE);
     private static final Codec<Integer> POSITIVE_INT_RANGE = Codec.intRange(1, Integer.MAX_VALUE);
     public static final MapCodec<BlendedNoiseCustomizable> DATA_CODEC = RecordCodecBuilder.mapCodec(
@@ -114,6 +114,7 @@ public class BlendedNoiseCustomizable extends BlendedNoise{
 
     /**
      * 计算指定坐标处的噪声值。实际上只是将计算的坐标修改为循环模式下的坐标，并调用原版的 {@link BlendedNoise#compute(FunctionContext)} 的方法计算。
+     *
      * @param context 计算上下文，由密度函数调用器提供
      * @return 指定坐标处的噪声值
      */

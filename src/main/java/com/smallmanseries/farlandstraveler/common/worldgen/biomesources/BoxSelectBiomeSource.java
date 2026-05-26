@@ -65,7 +65,7 @@ public class BoxSelectBiomeSource extends BiomeSource {
         int endZ = originZ + extendZ;
         if (x >= originX && x < endX
                 && y >= originY && y < endY
-                && z >= originZ && z < endZ){
+                && z >= originZ && z < endZ) {
             return this.inside.value().getNoiseBiome(x, y, z, sampler);
         }
         return this.outside.value().getNoiseBiome(x, y, z, sampler);
@@ -78,7 +78,7 @@ public class BoxSelectBiomeSource extends BiomeSource {
         int endZ = originZ + extendZ;
         if (pos.getX() >= originX && pos.getX() < endX
                 && pos.getY() >= originY && pos.getY() < endY
-                && pos.getZ() >= originZ && pos.getZ() < endZ){
+                && pos.getZ() >= originZ && pos.getZ() < endZ) {
             this.inside.value().addDebugInfo(info, pos, sampler);
         } else {
             this.outside.value().addDebugInfo(info, pos, sampler);

@@ -59,7 +59,7 @@ public class AbandonedVillagePieces {
     }
 
     private static Piece createPieceFromClass(Start start, PieceWeight weight, StructurePieceAccessor structurePieces, RandomSource rand, int structureMinX, int structureMinY, int structureMinZ, Direction direction, int genDepth) {
-        Class <? extends Piece > pieceClass = weight.pieceClass;
+        Class<? extends Piece> pieceClass = weight.pieceClass;
 
         if (pieceClass == Cottage.class) {
             return Cottage.createPiece(start, structurePieces, structureMinX, structureMinY, structureMinZ, direction, genDepth, rand);
@@ -315,10 +315,10 @@ public class AbandonedVillagePieces {
         }
 
         public void addChildren(StructurePiece piece, StructurePieceAccessor pieces, RandomSource rand) {
-            AbandonedVillagePieces.generateAndAddRoadPiece((Start)piece, pieces, rand, this.boundingBox.minX() - 1, this.boundingBox.maxY() - 4, this.boundingBox.minZ() + 1, Direction.WEST, this.getGenDepth());
-            AbandonedVillagePieces.generateAndAddRoadPiece((Start)piece, pieces, rand, this.boundingBox.maxX() + 1, this.boundingBox.maxY() - 4, this.boundingBox.minZ() + 1, Direction.EAST, this.getGenDepth());
-            AbandonedVillagePieces.generateAndAddRoadPiece((Start)piece, pieces, rand, this.boundingBox.minX() + 1, this.boundingBox.maxY() - 4, this.boundingBox.minZ() - 1, Direction.NORTH, this.getGenDepth());
-            AbandonedVillagePieces.generateAndAddRoadPiece((Start)piece, pieces, rand, this.boundingBox.minX() + 1, this.boundingBox.maxY() - 4, this.boundingBox.maxZ() + 1, Direction.SOUTH, this.getGenDepth());
+            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX() - 1, this.boundingBox.maxY() - 4, this.boundingBox.minZ() + 1, Direction.WEST, this.getGenDepth());
+            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.maxX() + 1, this.boundingBox.maxY() - 4, this.boundingBox.minZ() + 1, Direction.EAST, this.getGenDepth());
+            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX() + 1, this.boundingBox.maxY() - 4, this.boundingBox.minZ() - 1, Direction.NORTH, this.getGenDepth());
+            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX() + 1, this.boundingBox.maxY() - 4, this.boundingBox.maxZ() + 1, Direction.SOUTH, this.getGenDepth());
         }
 
         @Override
@@ -474,13 +474,13 @@ public class AbandonedVillagePieces {
 
     public static class Cottage extends Piece {
         private final boolean isRoofAccessible;
-        
+
         public Cottage(Start start, int genDepth, BoundingBox boundingBox, Direction direction, RandomSource rand) {
             super(start, FLTStructurePieceType.ABANDONED_VILLAGE_COTTAGE.get(), genDepth, boundingBox);
             this.setOrientation(direction);
             this.isRoofAccessible = rand.nextBoolean();
         }
-        
+
         public Cottage(CompoundTag tag) {
             super(FLTStructurePieceType.ABANDONED_VILLAGE_COTTAGE.get(), tag);
             this.isRoofAccessible = tag.getBooleanOr("G", false);
@@ -1303,14 +1303,14 @@ public class AbandonedVillagePieces {
         public void addChildren(StructurePiece piece, StructurePieceAccessor pieces, RandomSource rand) {
             boolean flag = false;
             for (int i = rand.nextInt(5); i < this.length - 8; i += 2 + rand.nextInt(5)) {
-                StructurePiece piece1 = this.getNextPiece((Start)piece, pieces, rand, 0, i);
+                StructurePiece piece1 = this.getNextPiece((Start) piece, pieces, rand, 0, i);
                 if (piece1 != null) {
                     i += Math.max(piece1.getBoundingBox().getXSpan(), piece1.getBoundingBox().getZSpan());
                     flag = true;
                 }
             }
             for (int j = rand.nextInt(5); j < this.length - 8; j += 2 + rand.nextInt(5)) {
-                StructurePiece piece2 = this.getNextPieceOtherSide((Start)piece, pieces, rand, 0, j);
+                StructurePiece piece2 = this.getNextPieceOtherSide((Start) piece, pieces, rand, 0, j);
                 if (piece2 != null) {
                     j += Math.max(piece2.getBoundingBox().getXSpan(), piece2.getBoundingBox().getZSpan());
                     flag = true;
@@ -1320,19 +1320,27 @@ public class AbandonedVillagePieces {
             Direction direction = this.getOrientation();
             if (flag && rand.nextInt(3) > 0 && direction != null) {
                 switch (direction) {
-                    case SOUTH -> AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX() - 1, this.boundingBox.minY(), this.boundingBox.maxZ() - 2, Direction.WEST, this.getGenDepth());
-                    case WEST -> AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX(), this.boundingBox.minY(), this.boundingBox.minZ() - 1, Direction.NORTH, this.getGenDepth());
-                    case EAST -> AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.maxX() - 2, this.boundingBox.minY(), this.boundingBox.minZ() - 1, Direction.NORTH, this.getGenDepth());
-                    default -> AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX() - 1, this.boundingBox.minY(), this.boundingBox.minZ(), Direction.WEST, this.getGenDepth());
+                    case SOUTH ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX() - 1, this.boundingBox.minY(), this.boundingBox.maxZ() - 2, Direction.WEST, this.getGenDepth());
+                    case WEST ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX(), this.boundingBox.minY(), this.boundingBox.minZ() - 1, Direction.NORTH, this.getGenDepth());
+                    case EAST ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.maxX() - 2, this.boundingBox.minY(), this.boundingBox.minZ() - 1, Direction.NORTH, this.getGenDepth());
+                    default ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX() - 1, this.boundingBox.minY(), this.boundingBox.minZ(), Direction.WEST, this.getGenDepth());
                 }
             }
 
             if (flag && rand.nextInt(3) > 0 && direction != null) {
                 switch (direction) {
-                    case SOUTH -> AbandonedVillagePieces.generateAndAddRoadPiece((Start)piece, pieces, rand, this.boundingBox.maxX() + 1, this.boundingBox.minY(), this.boundingBox.maxZ() - 2, Direction.EAST, this.getGenDepth());
-                    case WEST -> AbandonedVillagePieces.generateAndAddRoadPiece((Start)piece, pieces, rand, this.boundingBox.minX(), this.boundingBox.minY(), this.boundingBox.maxZ() + 1, Direction.SOUTH, this.getGenDepth());
-                    case EAST -> AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.maxX() - 2, this.boundingBox.minY(), this.boundingBox.maxZ() + 1, Direction.SOUTH, this.getGenDepth());
-                    default -> AbandonedVillagePieces.generateAndAddRoadPiece((Start)piece, pieces, rand, this.boundingBox.maxX() + 1, this.boundingBox.minY(), this.boundingBox.minZ(), Direction.EAST, this.getGenDepth());
+                    case SOUTH ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.maxX() + 1, this.boundingBox.minY(), this.boundingBox.maxZ() - 2, Direction.EAST, this.getGenDepth());
+                    case WEST ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.minX(), this.boundingBox.minY(), this.boundingBox.maxZ() + 1, Direction.SOUTH, this.getGenDepth());
+                    case EAST ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.maxX() - 2, this.boundingBox.minY(), this.boundingBox.maxZ() + 1, Direction.SOUTH, this.getGenDepth());
+                    default ->
+                            AbandonedVillagePieces.generateAndAddRoadPiece((Start) piece, pieces, rand, this.boundingBox.maxX() + 1, this.boundingBox.minY(), this.boundingBox.minZ(), Direction.EAST, this.getGenDepth());
                 }
             }
         }

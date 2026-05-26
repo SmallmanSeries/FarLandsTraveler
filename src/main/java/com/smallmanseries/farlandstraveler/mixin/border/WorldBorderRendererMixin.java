@@ -14,7 +14,7 @@ public abstract class WorldBorderRendererMixin {
     // 取消世界边界渲染
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     private void render(WorldBorder worldBorder, Vec3 cameraPosition, double renderDistance, double farPlaneDepth, CallbackInfo ci) {
-        if(Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
+        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
             ci.cancel();
         }
     }

@@ -15,15 +15,15 @@ import java.util.Optional;
 
 public class FixedStructurePlacement extends StructurePlacement {
     public static final MapCodec<FixedStructurePlacement> CODEC = RecordCodecBuilder.mapCodec(
-                    instance -> placementCodec(instance)
-                            .and(
-                                    instance.group(
-                                            Codec.INT.fieldOf("x").forGetter(ins -> ins.x),
-                                            Codec.INT.fieldOf("z").forGetter(ins -> ins.z)
-                                    )
+            instance -> placementCodec(instance)
+                    .and(
+                            instance.group(
+                                    Codec.INT.fieldOf("x").forGetter(ins -> ins.x),
+                                    Codec.INT.fieldOf("z").forGetter(ins -> ins.z)
                             )
-                            .apply(instance, FixedStructurePlacement::new)
-            );
+                    )
+                    .apply(instance, FixedStructurePlacement::new)
+    );
     private final int x;
     private final int z;
     private final ChunkPos pos;

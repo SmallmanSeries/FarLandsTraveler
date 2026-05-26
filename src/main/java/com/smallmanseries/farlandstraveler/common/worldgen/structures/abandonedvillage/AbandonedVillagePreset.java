@@ -7,17 +7,18 @@ import net.minecraft.world.level.block.state.BlockState;
 
 /**
  * 用于存储村庄建筑方块替换列表（即预设）的数据类
- * @param blockCobble 除教堂、铁匠铺外的圆石（随生物群系变化，例如在冰原沙漠是砂岩）
- * @param blockCobble2 教堂、铁匠铺的圆石（不随生物群系变化）
- * @param blockStairsCobble 圆石楼梯，一般用于房子前面的楼梯
- * @param blockStairsWood 木楼梯，一般用于屋顶和房屋内部的椅子
- * @param blockPlanks 木板
- * @param blockLog 原木
- * @param blockFence 栅栏
- * @param blockDoor 门
+ *
+ * @param blockCobble        除教堂、铁匠铺外的圆石（随生物群系变化，例如在冰原沙漠是砂岩）
+ * @param blockCobble2       教堂、铁匠铺的圆石（不随生物群系变化）
+ * @param blockStairsCobble  圆石楼梯，一般用于房子前面的楼梯
+ * @param blockStairsWood    木楼梯，一般用于屋顶和房屋内部的椅子
+ * @param blockPlanks        木板
+ * @param blockLog           原木
+ * @param blockFence         栅栏
+ * @param blockDoor          门
  * @param blockPressurePlate 木制压力板，用于部分房屋中的桌子。虽然压力板生成的很少，但它是橡木质的，如果边境之地中没有橡木的话也要更换
- * @param blockLadder 梯子。虽然原版只有一种梯子，但那很明显是橡木质的梯子。如果边境之地中没有橡木的话，这个梯子也要更换
- * @param blockGravel 沙砾，用于道路
+ * @param blockLadder        梯子。虽然原版只有一种梯子，但那很明显是橡木质的梯子。如果边境之地中没有橡木的话，这个梯子也要更换
+ * @param blockGravel        沙砾，用于道路
  */
 public record AbandonedVillagePreset(
         BlockState blockCobble,

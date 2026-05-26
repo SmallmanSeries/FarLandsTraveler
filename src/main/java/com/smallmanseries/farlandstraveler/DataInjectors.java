@@ -12,9 +12,10 @@ import net.ramixin.mixson.inline.Mixson;
 public class DataInjectors {
     /**
      * 用于包装密度函数
+     *
      * @param initial 原始密度函数
-     * @param dist 框选的边界，可以理解为边境之地距离
-     * @param path 边境之地对应的密度函数的文件是<命名空间>/density_function/far_lands中的哪个文件
+     * @param dist    框选的边界，可以理解为边境之地距离
+     * @param path    边境之地对应的密度函数的文件是<命名空间>/density_function/far_lands中的哪个文件
      * @return 一个JSON对象，即包装好的密度函数定义
      */
     private static JsonObject getDensity(JsonElement initial, int dist, String path) {
@@ -39,6 +40,7 @@ public class DataInjectors {
 
     /**
      * 用于包装噪声设置定义文件中的noise_router中的各个密度函数，使得其能够在指定坐标切换密度函数
+     *
      * @param path 噪声设置文件的路径
      * @param name MixsonEvent的名称（随便取）
      */
@@ -83,7 +85,8 @@ public class DataInjectors {
 
     /**
      * 用于包装生物群系源，使得边境之地能生成自定义生物群系
-     * @param generator 需要包装的生物群系源的上一级（一般是generator字段），一个JSON对象
+     *
+     * @param generator   需要包装的生物群系源的上一级（一般是generator字段），一个JSON对象
      * @param biomeSource 需要包装的生物群系源，一个JSON元素
      */
     public static void setBiomeSource(JsonObject generator, JsonElement biomeSource) {
@@ -98,13 +101,14 @@ public class DataInjectors {
             biomeSourceNew.addProperty("extend_y", 12550824);
             biomeSourceNew.addProperty("extend_z", dist * 8);
             biomeSourceNew.add("inside", biomeSource);
-            biomeSourceNew.addProperty("outside","farlandstraveler:far_lands");
+            biomeSourceNew.addProperty("outside", "farlandstraveler:far_lands");
             generator.add("biome_source", biomeSourceNew);
         }
     }
 
     /**
      * 用于包装世界预设文件中的生物群系源，使得边境之地能生成自定义生物群系
+     *
      * @param path 世界预设文件的路径
      * @param name MixsonEvent的名称（随便取）
      */
@@ -122,6 +126,7 @@ public class DataInjectors {
 
     /**
      * 用于包装维度定义文件中的生物群系源，使得边境之地能生成自定义生物群系。其中只有当生物群系源的类型是多噪声型时才会应用。（备用方案，仅在使用其他数据包修改主世界维度时有效，其他情况使用世界预设注入器）
+     *
      * @param path 维度定义文件的路径
      * @param name MixsonEvent的名称（随便取）
      */

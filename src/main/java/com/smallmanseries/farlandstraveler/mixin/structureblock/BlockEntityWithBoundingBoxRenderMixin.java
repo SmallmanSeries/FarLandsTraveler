@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BlockEntityWithBoundingBoxRenderer.class)
 public class BlockEntityWithBoundingBoxRenderMixin {
     @Inject(method = "getViewDistance", at = @At("HEAD"), cancellable = true)
-    private void viewDistance(CallbackInfoReturnable<Integer> cir){
+    private void viewDistance(CallbackInfoReturnable<Integer> cir) {
         cir.setReturnValue(512);
     }
 }

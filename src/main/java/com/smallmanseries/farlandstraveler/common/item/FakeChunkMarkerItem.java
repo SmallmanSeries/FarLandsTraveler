@@ -23,7 +23,7 @@ public class FakeChunkMarkerItem extends Item {
 
         if (!level.isClientSide) {
             LevelChunk chunk = level.getChunkAt(pos);
-            if(chunk.getData(FLTAttachments.FAKE_CHUNK)) {
+            if (chunk.getData(FLTAttachments.FAKE_CHUNK)) {
                 chunk.setData(FLTAttachments.FAKE_CHUNK, false);
                 if (player != null) {
                     player.displayClientMessage(Component.translatable("message.farlandstraveler.fake_chunk_unmarked"), true);
@@ -35,8 +35,6 @@ public class FakeChunkMarkerItem extends Item {
                 }
             }
         }
-
         return InteractionResult.SUCCESS;
     }
-
 }
