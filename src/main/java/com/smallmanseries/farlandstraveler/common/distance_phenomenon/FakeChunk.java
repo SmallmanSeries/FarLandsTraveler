@@ -39,12 +39,20 @@ public class FakeChunk {
      * @return 布尔值，是否取消碰撞
      */
     public static boolean shouldDisableCollision(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        // 对实体的判断
-        if (context instanceof EntityCollisionContext entityContext) {
-            Entity entity = entityContext.getEntity();
-            if (entity != null && isInFakeChunk(entity.level(), pos) && !state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
+        if (getter instanceof Level level && isInFakeChunk(level, pos)) {
+            // 对方块的判断 - 忽略“去固体效应”无效化的方块
+            if (state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
+                return false;
+            }
+            // 对实体的判断
+            if (context instanceof EntityCollisionContext entityContext) {
+                Entity entity = entityContext.getEntity();
+                // 空实体，直接取消
+                if (entity == null) {
+                    return true;
+                }
                 // 忽略免疫“去固体效应”的实体
-                if (entity.getType().is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)){
+                if (entity.getType().is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
                     return false;
                 }
                 // 对生物实体的判断
@@ -56,8 +64,8 @@ public class FakeChunk {
                             || living.getItemBySlot(EquipmentSlot.FEET).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
                             || living.hasEffect(MobEffects.LUCK)); // 忽略带有特定药水效果的实体，此处先设为幸运效果
                 }
-                return true;
             }
+            return true;
         }
         return false;
     }
