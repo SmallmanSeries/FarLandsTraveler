@@ -10,6 +10,7 @@
     "border.ServerGamePacketListenerImplMixin",
     "border.WorldBorderMixin",
     "fakechunk.BlockStateBaseMixin",
+    "fakechunk.ExplosionDamageCalculatorMixin",
     "structureblock.ServerboundSetStructureBlockPacketMixin",
     "structureblock.StructureBlockEntityMixin",
     "worldgen.AquiferMixin",
