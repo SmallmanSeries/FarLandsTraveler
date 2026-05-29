@@ -11,6 +11,7 @@
     "border.WorldBorderMixin",
     "fakechunk.BlockStateBaseMixin",
     "fakechunk.ExplosionDamageCalculatorMixin",
+    "fakechunk.IBlockStateExtensionMixin",
     "structureblock.ServerboundSetStructureBlockPacketMixin",
     "structureblock.StructureBlockEntityMixin",
     "worldgen.AquiferMixin",
