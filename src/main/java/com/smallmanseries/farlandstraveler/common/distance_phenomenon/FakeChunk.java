@@ -35,7 +35,34 @@ public class FakeChunk {
     }
 
     /**
-     * 判断是否需要取消实体碰撞，用于{@link com.smallmanseries.farlandstraveler.mixin.fakechunk.BlockStateBaseMixin}
+     * 判断该实体是否免疫假区块
+     *
+     * @param entity 输入一个实体
+     * @return 该实体是否免疫假区块
+     */
+    public static boolean isEntityNotImmune(Entity entity) {
+        // 空实体，直接取消
+        if (entity == null) {
+            return true;
+        }
+        // 忽略免疫“去固体效应”的实体
+        if (entity.getType().is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
+            return false;
+        }
+        // 对生物实体的判断
+        if (entity instanceof LivingEntity living) {
+            return !(living.getItemBySlot(EquipmentSlot.BODY).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE) // 忽略穿着减免“去固体效应”的装备的实体
+                    || living.getItemBySlot(EquipmentSlot.HEAD).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE) // Todo 这一段以后做探境装备的时候再细化
+                    || living.getItemBySlot(EquipmentSlot.CHEST).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
+                    || living.getItemBySlot(EquipmentSlot.LEGS).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
+                    || living.getItemBySlot(EquipmentSlot.FEET).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
+                    || living.hasEffect(MobEffects.LUCK)); // 忽略带有特定药水效果的实体，此处先设为幸运效果
+        }
+        return true;
+    }
+
+    /**
+     * 判断是否需要取消碰撞，用于{@link com.smallmanseries.farlandstraveler.mixin.fakechunk.BlockStateBaseMixin}
      *
      * @param state   方块状态，判断该方块是否不受假区块影响
      * @param getter  方块获取器，一般是level，目前没有作用
@@ -52,23 +79,7 @@ public class FakeChunk {
             // 对实体的判断
             if (context instanceof EntityCollisionContext entityContext) {
                 Entity entity = entityContext.getEntity();
-                // 空实体，直接取消
-                if (entity == null) {
-                    return true;
-                }
-                // 忽略免疫“去固体效应”的实体
-                if (entity.getType().is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
-                    return false;
-                }
-                // 对生物实体的判断
-                if (entity instanceof LivingEntity living) {
-                    return !(living.getItemBySlot(EquipmentSlot.BODY).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE) // 忽略穿着减免“去固体效应”的装备的实体
-                            || living.getItemBySlot(EquipmentSlot.HEAD).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE) // Todo 这一段以后做探境装备的时候再细化
-                            || living.getItemBySlot(EquipmentSlot.CHEST).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
-                            || living.getItemBySlot(EquipmentSlot.LEGS).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
-                            || living.getItemBySlot(EquipmentSlot.FEET).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
-                            || living.hasEffect(MobEffects.LUCK)); // 忽略带有特定药水效果的实体，此处先设为幸运效果
-                }
+                return isEntityNotImmune(entity);
             }
             return true;
         }
