@@ -85,4 +85,31 @@ public class FakeChunk {
         }
         return false;
     }
+
+    public static boolean shouldDisableInteraction(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+        if (getter instanceof Level level && isInFakeChunk(level, pos)) {
+            // 对方块的判断 - 忽略“去固体效应”无效化的方块
+            if (state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
+                return false;
+            }
+            // 对实体的判断
+            if (context instanceof EntityCollisionContext entityContext) {
+                Entity entity = entityContext.getEntity();
+                // 空实体，直接取消
+                if (entity == null) {
+                    return true;
+                }
+                // 忽略免疫“去固体效应”的实体
+                if (entity.getType().is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
+                    return false;
+                }
+                // 对生物实体的判断
+                if (entity instanceof LivingEntity living) {
+                    return !(living.getItemBySlot(EquipmentSlot.MAINHAND).is(FLTTags.Items.DESOLID_EFFECT_NO_EFFECT)); // 忽略手持带有特定标签的物品的实体
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 }
