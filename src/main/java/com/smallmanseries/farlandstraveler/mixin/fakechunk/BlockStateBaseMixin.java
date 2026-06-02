@@ -56,7 +56,6 @@ public abstract class BlockStateBaseMixin {
     private void modifyEntityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, CallbackInfo ci) {
         if (FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT) && FakeChunk.isEntityNotImmune(entity)) {
             ci.cancel();
-
         }
     }
 }
