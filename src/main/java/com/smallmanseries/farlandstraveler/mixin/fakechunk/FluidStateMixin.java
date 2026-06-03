@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FluidState.class)
-public class FluidStateMixin {
+public abstract class FluidStateMixin {
 
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
     private void modifyEntityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, CallbackInfo ci) {

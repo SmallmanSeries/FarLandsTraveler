@@ -12,6 +12,7 @@
     "fakechunk.BlockStateBaseMixin",
     "fakechunk.EntityMixin",
     "fakechunk.ExplosionDamageCalculatorMixin",
+    "fakechunk.FlowingFluidMixin",
     "fakechunk.FluidStateMixin",
     "fakechunk.IBlockStateExtensionMixin",
     "structureblock.ServerboundSetStructureBlockPacketMixin",
