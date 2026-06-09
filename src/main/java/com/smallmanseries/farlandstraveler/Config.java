@@ -37,6 +37,11 @@ public class Config {
             .comment("Enable the generation of The Order Of The Stone Laboratory")
             .define("generate_oots_laboratory", true);
 
+    public static final ModConfigSpec.IntValue STRIPE_LANDS_DISTANCE = BUILDER
+            .comment("The distance between the rendered location of the Stripe Lands and the origin of the world")
+            .comment("Set to -1 to disable the simulation of Stripe Lands")
+            .defineInRange("stripe_lands_distance", 16777216, -1, 33554432);
+
     // </配置文件正文>
 
     static final ModConfigSpec SPEC = BUILDER.build();

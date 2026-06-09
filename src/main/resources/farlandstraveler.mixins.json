@@ -32,6 +32,9 @@
   },
   "client": [
     "border.WorldBorderRendererMixin",
+    "renderer.BlockEntityRendererDispatcherMixin",
+    "renderer.LiquidBlockRendererMixin",
+    "renderer.ModelBlockRendererMixin",
     "structureblock.BlockEntityWithBoundingBoxRenderMixin"
   ]
 }
