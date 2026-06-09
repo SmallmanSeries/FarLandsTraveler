@@ -82,7 +82,7 @@ dependencies {
             prefer "${project.mixson_version}"
         }
     }
-    runtimeOnly "maven.modrinth:sodium:mc1.21.8-0.7.3-neoforge"
+    compileOnly "maven.modrinth:sodium:mc1.21.8-0.7.3-neoforge"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
