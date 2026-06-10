@@ -35,6 +35,10 @@
     "renderer.BlockEntityRendererDispatcherMixin",
     "renderer.LiquidBlockRendererMixin",
     "renderer.ModelBlockRendererMixin",
+    "sodium.BlockRendererMixin",
+    "sodium.FluidRendererImplMixin",
+    "sodium.SodiumWorldRendererMixin",
     "structureblock.BlockEntityWithBoundingBoxRenderMixin"
-  ]
+  ],
+  "plugin": "com.smallmanseries.farlandstraveler.MixinConfigPlugin"
 }
