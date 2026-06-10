@@ -27,7 +27,7 @@ public class EventHandler {
     // Todo 该机制尚不完善，未来进行修改
     @SubscribeEvent
     public static void cancelPistonMove(PistonEvent.Pre event) {
-        if(event.getLevel().isClientSide()){
+        if (event.getLevel().isClientSide()) {
             return;
         }
         PistonStructureResolver resolver = event.getStructureHelper();

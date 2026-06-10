@@ -19,6 +19,7 @@ public abstract class FluidRendererImplMixin {
     private void modifyRenderer(LevelSlice level, BlockState blockState, FluidState fluidState, BlockPos blockPos, BlockPos offset, TranslucentGeometryCollector collector, ChunkBuildBuffers buffers, CallbackInfo ci) {
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();
         if (stripeLandsDistance == -1) return;
-        if (Math.abs(blockPos.getX()) >= stripeLandsDistance && (blockPos.getX() & 1) == 1 || Math.abs(blockPos.getZ()) >= stripeLandsDistance && (blockPos.getZ() & 1) == 1) ci.cancel();
+        if (Math.abs(blockPos.getX()) >= stripeLandsDistance && (blockPos.getX() & 2) == 2 || Math.abs(blockPos.getZ()) >= stripeLandsDistance && (blockPos.getZ() & 2) == 2)
+            ci.cancel();
     }
 }

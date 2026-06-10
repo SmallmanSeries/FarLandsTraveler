@@ -18,6 +18,7 @@ public abstract class LiquidBlockRendererMixin {
     private void modifyTesselating(BlockAndTintGetter level, BlockPos pos, VertexConsumer buffer, BlockState blockState, FluidState fluidState, CallbackInfo ci) {
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();
         if (stripeLandsDistance == -1) return;
-        if (Math.abs(pos.getX()) >= stripeLandsDistance && (pos.getX() & 1) == 1 || Math.abs(pos.getZ()) >= stripeLandsDistance && (pos.getZ() & 1) == 1) ci.cancel();
+        if (Math.abs(pos.getX()) >= stripeLandsDistance && (pos.getX() & 2) == 2 || Math.abs(pos.getZ()) >= stripeLandsDistance && (pos.getZ() & 2) == 2)
+            ci.cancel();
     }
 }

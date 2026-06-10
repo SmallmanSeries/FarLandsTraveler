@@ -18,6 +18,7 @@ public abstract class BlockEntityRendererDispatcherMixin<E extends BlockEntity> 
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();
         if (stripeLandsDistance == -1) return;
         BlockPos pos = blockEntity.getBlockPos();
-        if (Math.abs(pos.getX()) >= stripeLandsDistance && (pos.getX() & 1) == 1 || Math.abs(pos.getZ()) >= stripeLandsDistance && (pos.getZ() & 1) == 1) ci.cancel();
+        if (Math.abs(pos.getX()) >= stripeLandsDistance && (pos.getX() & 2) == 2 || Math.abs(pos.getZ()) >= stripeLandsDistance && (pos.getZ() & 2) == 2)
+            ci.cancel();
     }
 }

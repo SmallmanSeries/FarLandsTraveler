@@ -23,6 +23,7 @@ public abstract class ModelBlockRendererMixin {
     private void modifyTesselating(BlockAndTintGetter p_234380_, List<BlockModelPart> p_410025_, BlockState p_234382_, BlockPos p_234383_, PoseStack p_234384_, Function<ChunkSectionLayer, VertexConsumer> bufferLookup, boolean p_234386_, int p_234389_, CallbackInfo ci) {
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();
         if (stripeLandsDistance == -1) return;
-        if (Math.abs(p_234383_.getX()) >= stripeLandsDistance && (p_234383_.getX() & 1) == 1 || Math.abs(p_234383_.getZ()) >= stripeLandsDistance && (p_234383_.getZ() & 1) == 1) ci.cancel();
+        if (Math.abs(p_234383_.getX()) >= stripeLandsDistance && (p_234383_.getX() & 2) == 2 || Math.abs(p_234383_.getZ()) >= stripeLandsDistance && (p_234383_.getZ() & 2) == 2)
+            ci.cancel();
     }
 }
