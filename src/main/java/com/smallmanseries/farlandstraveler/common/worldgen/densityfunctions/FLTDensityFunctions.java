@@ -16,5 +16,6 @@ public class FLTDensityFunctions {
         FUNCTIONS.register("box_select", () -> BoxSelectFunction.DATA_CODEC);
         FUNCTIONS.register("nan_converter", () -> NaNConverterFunction.DATA_CODEC);
         FUNCTIONS.register("radial_gradient", () -> RadialGradientFunction.DATA_CODEC);
+        FUNCTIONS.register("random_factory", RandomFactoryFunction.CODEC::codec);
     }
 }
