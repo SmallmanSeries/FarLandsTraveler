@@ -60,12 +60,9 @@ public class BoxSelectBiomeSource extends BiomeSource {
 
     @Override
     public Holder<Biome> getNoiseBiome(int x, int y, int z, Climate.Sampler sampler) {
-        int endX = originX + extendX;
-        int endY = originY + extendY;
-        int endZ = originZ + extendZ;
-        if (x >= originX && x < endX
-                && y >= originY && y < endY
-                && z >= originZ && z < endZ) {
+        if (x >= originX && x < originX + extendX
+                && y >= originY && y < originY + extendY
+                && z >= originZ && z < originZ + extendZ) {
             return this.inside.value().getNoiseBiome(x, y, z, sampler);
         }
         return this.outside.value().getNoiseBiome(x, y, z, sampler);
@@ -73,12 +70,9 @@ public class BoxSelectBiomeSource extends BiomeSource {
 
     @Override
     public void addDebugInfo(List<String> info, BlockPos pos, Climate.Sampler sampler) {
-        int endX = originX + extendX;
-        int endY = originY + extendY;
-        int endZ = originZ + extendZ;
-        if (pos.getX() >= originX && pos.getX() < endX
-                && pos.getY() >= originY && pos.getY() < endY
-                && pos.getZ() >= originZ && pos.getZ() < endZ) {
+        if (pos.getX() >= originX && pos.getX() < originX + extendX
+                && pos.getY() >= originY && pos.getY() < originY + extendY
+                && pos.getZ() >= originZ && pos.getZ() < originZ + extendZ) {
             this.inside.value().addDebugInfo(info, pos, sampler);
         } else {
             this.outside.value().addDebugInfo(info, pos, sampler);

@@ -51,12 +51,9 @@ public record BoxSelectFunction(boolean invert, int originX, int originY, int or
 
     @Override
     public double compute(FunctionContext functionContext) {
-        int endX = originX + extendX;
-        int endY = originY + extendY;
-        int endZ = originZ + extendZ;
-        if (functionContext.blockX() >= originX && functionContext.blockX() < endX
-                && functionContext.blockY() >= originY && functionContext.blockY() < endY
-                && functionContext.blockZ() >= originZ && functionContext.blockZ() < endZ) {
+        if (functionContext.blockX() >= originX && functionContext.blockX() < originX + extendX
+                && functionContext.blockY() >= originY && functionContext.blockY() < originY + extendY
+                && functionContext.blockZ() >= originZ && functionContext.blockZ() < originZ + extendZ) {
             return invert ? 0 : 1;
         }
         return invert ? 1 : 0;

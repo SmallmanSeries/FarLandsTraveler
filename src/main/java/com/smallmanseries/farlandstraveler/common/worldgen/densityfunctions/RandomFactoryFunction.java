@@ -27,9 +27,11 @@ import java.util.Objects;
  * "name": 随机数源的名称，如 {@code minecraft:bedrock_floor} 是基岩底板所用的随机数源
  * <p>
  * }
+ *
  * @author INF32768
  */
-public record RandomFactoryFunction(ResourceKey<Level> dimension, ResourceLocation name) implements DensityFunction.SimpleFunction {
+public record RandomFactoryFunction(ResourceKey<Level> dimension,
+                                    ResourceLocation name) implements DensityFunction.SimpleFunction {
     static final KeyDispatchDataCodec<RandomFactoryFunction> CODEC = KeyDispatchDataCodec.of(
             RecordCodecBuilder.mapCodec(
                     instance -> instance.group(

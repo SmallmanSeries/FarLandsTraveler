@@ -1,7 +1,6 @@
 {
-  "aaa" : "ahahah",
-  "bbb" : "A Smallman Fell From Sky!!!!!!!!!!",
-
+  "aaa": "ahahah",
+  "bbb": "A Smallman Fell From Sky!!!!!!!!!!",
   "itemGroup.farlandstraveler.flt_building_blocks": "FLT: Building Blocks",
   "itemGroup.farlandstraveler.flt_natural_blocks": "FLT: Natural Blocks",
   "itemGroup.farlandstraveler.flt_functional_blocks": "FLT: Functional Blocks",
@@ -11,25 +10,21 @@
   "itemGroup.farlandstraveler.flt_supplies": "FLT: Exploration Supplies",
   "itemGroup.farlandstraveler.flt_spawn_eggs": "FLT: Spawn Eggs",
   "itemGroup.farlandstraveler.flt_test": "FLT: Test Only",
-
-  "block.farlandstraveler.test_block" : "asd",
-  "block.farlandstraveler.glowing_obsidian" : "Glowing Obsidian",
-  "block.farlandstraveler.far_lands_rose" : "Far Lands Rose",
-  "block.farlandstraveler.cyan_far_lands_rose" : "Cyan Far Lands Rose",
-  "block.farlandstraveler.far_lands_paeonia" : "Far Lands Paeonia",
-
-  "item.farlandstraveler.test_item" : "placeholder",
-  "item.farlandstraveler.fake_chunk_marker" : "Fake Chunk Marker",
-
+  "block.farlandstraveler.test_block": "asd",
+  "block.farlandstraveler.glowing_obsidian": "Glowing Obsidian",
+  "block.farlandstraveler.far_lands_rose": "Far Lands Rose",
+  "block.farlandstraveler.cyan_far_lands_rose": "Cyan Far Lands Rose",
+  "block.farlandstraveler.far_lands_paeonia": "Far Lands Paeonia",
+  "item.farlandstraveler.test_item": "placeholder",
+  "item.farlandstraveler.fake_chunk_marker": "Fake Chunk Marker",
   "message.farlandstraveler.fake_chunk_marked": "Current chunk has been marked as a §cFake Chunk",
   "message.farlandstraveler.fake_chunk_unmarked": "Current chunk has been marked as a normal chunk",
-
-  "farlandstraveler.configuration.remove_world_border" : "Remove world border",
-  "farlandstraveler.configuration.remove_coordinate_limits" : "Remove coordinate limits",
-  "farlandstraveler.configuration.enable_far_lands" : "Enable Far Lands (Deprecated)",
-  "farlandstraveler.configuration.enable_sky_grid" : "Enable Sky Grid",
-  "farlandstraveler.configuration.force_sky_grid" : "Force generate Sky Grid",
-  "farlandstraveler.configuration.far_lands_distance" : "Far Lands Distance",
-  "farlandstraveler.configuration.generate_oots_laboratory" : "Generate The Order Of The Stone Laboratory",
-  "farlandstraveler.configuration.stripe_lands_distance" : "Stripe Lands Distance"
+  "farlandstraveler.configuration.remove_world_border": "Remove world border",
+  "farlandstraveler.configuration.remove_coordinate_limits": "Remove coordinate limits",
+  "farlandstraveler.configuration.enable_far_lands": "Enable Far Lands (Deprecated)",
+  "farlandstraveler.configuration.enable_sky_grid": "Enable Sky Grid",
+  "farlandstraveler.configuration.force_sky_grid": "Force generate Sky Grid",
+  "farlandstraveler.configuration.far_lands_distance": "Far Lands Distance",
+  "farlandstraveler.configuration.generate_oots_laboratory": "Generate The Order Of The Stone Laboratory",
+  "farlandstraveler.configuration.stripe_lands_distance": "Stripe Lands Distance"
 }

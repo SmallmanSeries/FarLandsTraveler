@@ -1,7 +1,6 @@
 {
-  "aaa" : "啊啊啊",
-  "bbb" : "一个小人掉下来了！！！！！！！！！！！！！！！！！！！！！！！！！！！",
-
+  "aaa": "啊啊啊",
+  "bbb": "一个小人掉下来了！！！！！！！！！！！！！！！！！！！！！！！！！！！",
   "itemGroup.farlandstraveler.flt_building_blocks": "边境旅者：建筑方块",
   "itemGroup.farlandstraveler.flt_natural_blocks": "边境旅者：自然方块",
   "itemGroup.farlandstraveler.flt_functional_blocks": "边境旅者：功能方块",
@@ -11,25 +10,21 @@
   "itemGroup.farlandstraveler.flt_supplies": "边境旅者：探境补给品",
   "itemGroup.farlandstraveler.flt_spawn_eggs": "边境旅者：刷怪蛋",
   "itemGroup.farlandstraveler.flt_test": "边境旅者：测试用品",
-
-  "block.farlandstraveler.test_block" : "asd",
-  "block.farlandstraveler.glowing_obsidian" : "发光的黑曜石",
-  "block.farlandstraveler.far_lands_rose" : "边境玫瑰",
-  "block.farlandstraveler.cyan_far_lands_rose" : "青边境玫瑰",
-  "block.farlandstraveler.far_lands_paeonia" : "边境芍药",
-
-  "item.farlandstraveler.test_item" : "占位符",
-  "item.farlandstraveler.fake_chunk_marker" : "假区块标记器",
-
+  "block.farlandstraveler.test_block": "asd",
+  "block.farlandstraveler.glowing_obsidian": "发光的黑曜石",
+  "block.farlandstraveler.far_lands_rose": "边境玫瑰",
+  "block.farlandstraveler.cyan_far_lands_rose": "青边境玫瑰",
+  "block.farlandstraveler.far_lands_paeonia": "边境芍药",
+  "item.farlandstraveler.test_item": "占位符",
+  "item.farlandstraveler.fake_chunk_marker": "假区块标记器",
   "message.farlandstraveler.fake_chunk_marked": "当前区块已被标记为§c假区块",
   "message.farlandstraveler.fake_chunk_unmarked": "当前区块已被标记为正常区块",
-
-  "farlandstraveler.configuration.remove_world_border" : "移除世界边界",
-  "farlandstraveler.configuration.remove_coordinate_limits" : "移除世界界限",
-  "farlandstraveler.configuration.enable_far_lands" : "启用边境之地（已废弃）",
-  "farlandstraveler.configuration.enable_sky_grid" : "启用天空网格",
-  "farlandstraveler.configuration.force_sky_grid" : "强制生成天空网格",
-  "farlandstraveler.configuration.far_lands_distance" : "边境之地距离",
-  "farlandstraveler.configuration.generate_oots_laboratory" : "生成岩石之令实验室",
-  "farlandstraveler.configuration.stripe_lands_distance" : "条纹之地距离"
+  "farlandstraveler.configuration.remove_world_border": "移除世界边界",
+  "farlandstraveler.configuration.remove_coordinate_limits": "移除世界界限",
+  "farlandstraveler.configuration.enable_far_lands": "启用边境之地（已废弃）",
+  "farlandstraveler.configuration.enable_sky_grid": "启用天空网格",
+  "farlandstraveler.configuration.force_sky_grid": "强制生成天空网格",
+  "farlandstraveler.configuration.far_lands_distance": "边境之地距离",
+  "farlandstraveler.configuration.generate_oots_laboratory": "生成岩石之令实验室",
+  "farlandstraveler.configuration.stripe_lands_distance": "条纹之地距离"
 }

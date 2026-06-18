@@ -25,6 +25,7 @@ public class ChunkGeneratorMixin {
         if (entry.getKey() instanceof FixedStructurePlacement placement) {
             for (Holder<Structure> holder : entry.getValue()) {
                 cir.setReturnValue(Pair.of(placement.getPos(), holder));
+                return;
             }
         }
     }

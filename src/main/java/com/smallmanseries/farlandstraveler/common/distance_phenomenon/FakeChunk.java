@@ -65,7 +65,7 @@ public class FakeChunk {
      * 判断是否需要取消碰撞，用于{@link com.smallmanseries.farlandstraveler.mixin.fakechunk.BlockStateBaseMixin}
      *
      * @param state   方块状态，判断该方块是否不受假区块影响
-     * @param getter  方块获取器，一般是level，目前没有作用
+     * @param getter  方块获取器，一般是level
      * @param pos     方块坐标
      * @param context 碰撞上下文
      * @return 布尔值，是否取消碰撞
@@ -86,6 +86,15 @@ public class FakeChunk {
         return false;
     }
 
+    /**
+     * 判断是否需要取消互动，用于{@link com.smallmanseries.farlandstraveler.mixin.fakechunk.BlockStateBaseMixin}
+     *
+     * @param state   方块状态，判断该方块是否不受假区块影响
+     * @param getter  方块获取器，一般是level
+     * @param pos     方块坐标
+     * @param context 碰撞上下文
+     * @return 布尔值，是否取消互动
+     */
     public static boolean shouldDisableInteraction(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         if (getter instanceof Level level && isInFakeChunk(level, pos)) {
             // 对方块的判断 - 忽略“去固体效应”无效化的方块

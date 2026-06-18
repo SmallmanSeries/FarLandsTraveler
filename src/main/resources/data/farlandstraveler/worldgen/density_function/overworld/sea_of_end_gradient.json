@@ -26,7 +26,7 @@
     },
     "min_inclusive": 0,
     "max_exclusive": 1,
-    "when_in_range":{
+    "when_in_range": {
       "type": "minecraft:range_choice",
       "input": {
         "type": "farlandstraveler:box_select",

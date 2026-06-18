@@ -5,6 +5,7 @@ import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.piston.PistonStructureResolver;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -36,16 +37,17 @@ public class EventHandler {
             List<BlockPos> blockList = Lists.newArrayList();
             blockList.addAll(resolver.getToPush());
             blockList.addAll(resolver.getToDestroy());
-            if (FakeChunk.isInFakeChunk(event.getLevel(), event.getPos())) {
+            LevelAccessor level = event.getLevel();
+            if (FakeChunk.isInFakeChunk(level, event.getPos())) {
                 for (BlockPos blockpos : blockList) {
-                    if (!FakeChunk.isInFakeChunk(event.getLevel(), blockpos)) {
+                    if (!FakeChunk.isInFakeChunk(level, blockpos)) {
                         event.setCanceled(true);
                         return;
                     }
                 }
             } else {
                 for (BlockPos blockpos : blockList) {
-                    if (FakeChunk.isInFakeChunk(event.getLevel(), blockpos)) {
+                    if (FakeChunk.isInFakeChunk(level, blockpos)) {
                         event.setCanceled(true);
                         return;
                     }

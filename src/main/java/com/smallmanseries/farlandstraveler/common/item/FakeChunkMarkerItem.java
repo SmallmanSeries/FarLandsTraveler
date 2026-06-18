@@ -18,11 +18,10 @@ public class FakeChunkMarkerItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Player player = context.getPlayer();
-
         if (!level.isClientSide) {
+            BlockPos pos = context.getClickedPos();
             LevelChunk chunk = level.getChunkAt(pos);
+            Player player = context.getPlayer();
             if (chunk.getData(FLTAttachments.FAKE_CHUNK)) {
                 chunk.setData(FLTAttachments.FAKE_CHUNK, false);
                 if (player != null) {
