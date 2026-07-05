@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.121'
+    id 'net.neoforged.moddev' version '2.0.141'
     id 'idea'
 }
 
@@ -13,19 +13,24 @@ tasks.named('wrapper', Wrapper).configure {
 version = mod_version
 group = mod_group_id
 
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude("**/*.bbmodel")
+    exclude("src/generated/**/.cache")
+}
+
+repositories {
+    maven { url 'https://api.modrinth.com/maven/' }
+}
+
 base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     version = project.neo_version
-
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
 
     accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -65,24 +70,17 @@ neoForge {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
 configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
-repositories {
-    maven { url 'https://api.modrinth.com/maven/' }
-    maven { url 'https://jitpack.io' }
-}
-
 dependencies {
-    jarJar(implementation "com.github.ramixin:mixson-neoforge:${project.mixson_version}") {
+    jarJar(implementation "maven.modrinth:mixson:${project.mixson_version}") {
         version {
             prefer "${project.mixson_version}"
         }
     }
-    compileOnly "maven.modrinth:sodium:mc1.21.8-0.7.3-neoforge"
+    // compileOnly "maven.modrinth:sodium:mc1.21.8-0.7.3-neoforge"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
