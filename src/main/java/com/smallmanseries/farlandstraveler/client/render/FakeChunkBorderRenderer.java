@@ -15,13 +15,7 @@ import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
-public class FakeChunkBorderRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private final Minecraft minecraft;
-
-    public FakeChunkBorderRenderer(Minecraft minecraft) {
-        this.minecraft = minecraft;
-    }
-
+public record FakeChunkBorderRenderer(Minecraft minecraft) implements DebugRenderer.SimpleDebugRenderer {
     @Override
     public void emitGizmos(double camX, double camY, double camZ, DebugValueAccess debugValueAccess, Frustum frustum, float partialTicks) {
         int renderDistance = this.minecraft.options.getEffectiveRenderDistance();
@@ -43,11 +37,9 @@ public class FakeChunkBorderRenderer implements DebugRenderer.SimpleDebugRendere
                             chunk.getPos().getMaxBlockX() + 1,
                             chunk.getMaxY() + 1,
                             chunk.getPos().getMaxBlockZ() + 1
-                    ), GizmoStyle.stroke(ARGB.color(255,255,0,0), 1.0F));
+                    ), GizmoStyle.stroke(ARGB.color(255, 255, 0, 0), 1.0F));
                 }
             }
         }
     }
-
-
 }
