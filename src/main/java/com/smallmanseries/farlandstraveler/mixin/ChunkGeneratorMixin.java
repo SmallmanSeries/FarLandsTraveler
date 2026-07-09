@@ -21,7 +21,7 @@ import java.util.Set;
 @Mixin(ChunkGenerator.class)
 public class ChunkGeneratorMixin {
     @Inject(method = "findNearestMapStructure", at = @At(value = "INVOKE", target = "Ljava/util/Map$Entry;getKey()Ljava/lang/Object;"), cancellable = true)
-    private void fixedPlacement(ServerLevel level, HolderSet<Structure> structure, BlockPos pos, int searchRadius, boolean skipKnownStructures, CallbackInfoReturnable<Pair<BlockPos, Holder<Structure>>> cir, @Local Map.Entry<StructurePlacement, Set<Holder<Structure>>> entry) {
+    private void fixedPlacement(ServerLevel level, HolderSet<Structure> wantedStructures, BlockPos pos, int maxSearchRadius, boolean createReference, CallbackInfoReturnable<Pair<BlockPos, Holder<Structure>>> cir, @Local Map.Entry<StructurePlacement, Set<Holder<Structure>>> entry) {
         if (entry.getKey() instanceof FixedStructurePlacement placement) {
             for (Holder<Structure> holder : entry.getValue()) {
                 cir.setReturnValue(Pair.of(placement.getPos(), holder));

@@ -2,7 +2,7 @@ package com.smallmanseries.farlandstraveler.client.sound;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -18,6 +18,6 @@ public class FLTSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_HOLY_MOSS_FALL = register("block.holy_moss.fall");
 
     public static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
-        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, name)));
+        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name)));
     }
 }

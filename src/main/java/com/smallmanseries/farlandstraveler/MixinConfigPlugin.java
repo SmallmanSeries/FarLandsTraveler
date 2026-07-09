@@ -1,6 +1,6 @@
 package com.smallmanseries.farlandstraveler;
 
-import net.neoforged.fml.loading.LoadingModList;
+import net.neoforged.fml.loading.FMLLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -21,7 +21,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         // 仅在 Sodium 有安装时加载相关 Mixins
-        return !mixinClassName.contains("sodium") || LoadingModList.get().getModFileById("sodium") != null;
+        return !mixinClassName.contains("sodium") || FMLLoader.getCurrent().getLoadingModList().getModFileById("sodium") != null;
     }
 
     @Override

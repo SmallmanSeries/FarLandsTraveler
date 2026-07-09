@@ -28,7 +28,7 @@ public abstract class FlowingFluidMixin {
     }
 
     @Inject(method = "spreadTo", at = @At("HEAD"), cancellable = true)
-    private void cancelSpread(LevelAccessor level, BlockPos pos, BlockState blockState, Direction direction, FluidState fluidState, CallbackInfo ci) {
+    private void cancelSpread(LevelAccessor level, BlockPos pos, BlockState state, Direction direction, FluidState fluidState, CallbackInfo ci) {
         BlockPos initialPos = pos.relative(direction.getOpposite());
         if ((FakeChunk.isInFakeChunk(level, initialPos) && !FakeChunk.isInFakeChunk(level, pos))
                 || (!FakeChunk.isInFakeChunk(level, initialPos) && FakeChunk.isInFakeChunk(level, pos))

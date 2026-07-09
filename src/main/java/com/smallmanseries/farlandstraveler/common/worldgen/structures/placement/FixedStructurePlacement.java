@@ -37,7 +37,7 @@ public class FixedStructurePlacement extends StructurePlacement {
 
     @Override
     protected boolean isPlacementChunk(ChunkGeneratorStructureState chunkGeneratorStructureState, int x, int z) {
-        return this.pos.x == x && this.pos.z == z;
+        return this.pos.x() == x && this.pos.z() == z;
     }
 
     public BlockPos getPos() {

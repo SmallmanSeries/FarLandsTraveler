@@ -24,12 +24,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
 @Mixin(BlockBehaviour.BlockStateBase.class)
 public abstract class BlockStateBaseMixin {
 
+
     @Shadow
-    public abstract boolean is(TagKey<Block> tag);
+    public abstract boolean is(TagKey<Block> tag, Predicate<BlockBehaviour.BlockStateBase> predicate);
 
     // 取消实体（玩家、末影人等）互动
     @Inject(method = "getShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
@@ -57,16 +59,16 @@ public abstract class BlockStateBaseMixin {
 
     // 使方块不可被炸坏
     @Inject(method = "onExplosionHit", at = @At("HEAD"), cancellable = true)
-    private void modifyExplosionHit(ServerLevel level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer, CallbackInfo ci) {
-        if (FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
+    private void modifyExplosionHit(ServerLevel level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> onHit, CallbackInfo ci) {
+        if (FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true)) {
             ci.cancel();
         }
     }
 
     // 使方块不对其中的实体产生特殊效果
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
-    private void modifyEntityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, CallbackInfo ci) {
-        if (FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT) && FakeChunk.isEntityNotImmune(entity)) {
+    private void modifyEntityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise, CallbackInfo ci) {
+        if (FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true) && FakeChunk.isEntityNotImmune(entity)) {
             ci.cancel();
         }
     }

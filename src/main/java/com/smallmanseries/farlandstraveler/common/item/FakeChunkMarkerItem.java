@@ -18,19 +18,19 @@ public class FakeChunkMarkerItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             BlockPos pos = context.getClickedPos();
             LevelChunk chunk = level.getChunkAt(pos);
             Player player = context.getPlayer();
             if (chunk.getData(FLTAttachments.FAKE_CHUNK)) {
                 chunk.setData(FLTAttachments.FAKE_CHUNK, false);
                 if (player != null) {
-                    player.displayClientMessage(Component.translatable("message.farlandstraveler.fake_chunk_unmarked"), true);
+                    player.sendOverlayMessage(Component.translatable("message.farlandstraveler.fake_chunk_unmarked"));
                 }
             } else {
                 chunk.setData(FLTAttachments.FAKE_CHUNK, true);
                 if (player != null) {
-                    player.displayClientMessage(Component.translatable("message.farlandstraveler.fake_chunk_marked"), true);
+                    player.sendOverlayMessage(Component.translatable("message.farlandstraveler.fake_chunk_marked"));
                 }
             }
         }

@@ -4,12 +4,14 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "ChunkGeneratorMixin",
+    "accessor.IFireBlockAccessor",
     "border.EntityMixin",
     "border.LevelMixin",
     "border.PlayerMixin",
     "border.ServerGamePacketListenerImplMixin",
     "border.WorldBorderMixin",
     "fakechunk.BlockStateBaseMixin",
+    "fakechunk.EntityFluidInteractionMixin",
     "fakechunk.EntityMixin",
     "fakechunk.ExplosionDamageCalculatorMixin",
     "fakechunk.FlowingFluidMixin",
@@ -33,11 +35,8 @@
   "client": [
     "border.WorldBorderRendererMixin",
     "renderer.BlockEntityRendererDispatcherMixin",
-    "renderer.LiquidBlockRendererMixin",
+    "renderer.FluidRendererMixin",
     "renderer.ModelBlockRendererMixin",
-    "sodium.BlockRendererMixin",
-    "sodium.FluidRendererImplMixin",
-    "sodium.SodiumWorldRendererMixin",
     "structureblock.BlockEntityWithBoundingBoxRenderMixin"
   ],
   "plugin": "com.smallmanseries.farlandstraveler.MixinConfigPlugin"

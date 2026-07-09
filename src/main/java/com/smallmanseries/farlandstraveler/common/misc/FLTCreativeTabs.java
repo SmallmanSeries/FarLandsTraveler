@@ -5,7 +5,7 @@ import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
@@ -23,7 +23,7 @@ public class FLTCreativeTabs {
             .title(Component.translatable("itemGroup.farlandstraveler.flt_test"))
             .icon(() -> new ItemStack(FLTBlocks.TEST_BLOCK.get()))
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-            // .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_blocks"))
+            // .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_blocks"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
                 output.accept(FLTItems.FAKE_CHUNK_MARKER);
@@ -35,7 +35,7 @@ public class FLTCreativeTabs {
             .title(Component.translatable("itemGroup.farlandstraveler.flt_building_blocks"))
             .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
             }))
@@ -44,8 +44,8 @@ public class FLTCreativeTabs {
     public static final Supplier<CreativeModeTab> FLT_NATURAL_BLOCKS = TABS.register("flt_natural_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_natural_blocks"))
             .icon(() -> new ItemStack(FLTBlocks.FAR_LANDS_ROSE.get()))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_building_blocks"))
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_building_blocks"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTBlocks.FAR_LANDS_ROSE);
                 output.accept(FLTBlocks.CYAN_FAR_LANDS_ROSE);
@@ -57,8 +57,8 @@ public class FLTCreativeTabs {
     public static final Supplier<CreativeModeTab> FLT_FUNCTIONAL_BLOCKS = TABS.register("flt_functional_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_functional_blocks"))
             .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_natural_blocks"))
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_natural_blocks"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
             }))
@@ -67,8 +67,8 @@ public class FLTCreativeTabs {
     public static final Supplier<CreativeModeTab> FLT_ITEMS = TABS.register("flt_items", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_items"))
             .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_functional_blocks"))
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_functional_blocks"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
             }))
@@ -77,8 +77,8 @@ public class FLTCreativeTabs {
     public static final Supplier<CreativeModeTab> FLT_TOOLS = TABS.register("flt_tools", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_tools"))
             .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_items"))
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_items"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
             }))
@@ -87,8 +87,8 @@ public class FLTCreativeTabs {
     public static final Supplier<CreativeModeTab> FLT_EQUIPMENTS = TABS.register("flt_equipments", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_equipments"))
             .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_tools"))
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_tools"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
             }))
@@ -97,8 +97,8 @@ public class FLTCreativeTabs {
     public static final Supplier<CreativeModeTab> FLT_SUPPLIES = TABS.register("flt_supplies", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_supplies"))
             .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_equipments"))
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_equipments"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
             }))
@@ -107,8 +107,8 @@ public class FLTCreativeTabs {
     public static final Supplier<CreativeModeTab> FLT_SPAWN_EGGS = TABS.register("flt_spawn_eggs", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_spawn_eggs"))
             .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_supplies"))
-            .withTabsAfter(ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
+            .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_supplies"))
+            .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
             }))

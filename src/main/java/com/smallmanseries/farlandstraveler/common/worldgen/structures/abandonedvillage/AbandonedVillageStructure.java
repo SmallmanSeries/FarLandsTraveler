@@ -38,7 +38,7 @@ public class AbandonedVillageStructure extends Structure {
     private void generatePieces(StructurePiecesBuilder builder, Structure.GenerationContext context) {
         RandomSource rand = context.random();
         List<AbandonedVillagePieces.PieceWeight> list = AbandonedVillagePieces.getStructureVillageWeightedPieceList(rand, size);
-        AbandonedVillagePieces.Start structurevillagepieces$start = new AbandonedVillagePieces.Start(this.preset, rand, (context.chunkPos().x << 4) + 2, (context.chunkPos().z << 4) + 2, list, size);
+        AbandonedVillagePieces.Start structurevillagepieces$start = new AbandonedVillagePieces.Start(this.preset, rand, (context.chunkPos().x() << 4) + 2, (context.chunkPos().z() << 4) + 2, list, size);
         builder.addPiece(structurevillagepieces$start);
         structurevillagepieces$start.addChildren(structurevillagepieces$start, builder, rand);
         List<StructurePiece> roadList = structurevillagepieces$start.pendingRoads;

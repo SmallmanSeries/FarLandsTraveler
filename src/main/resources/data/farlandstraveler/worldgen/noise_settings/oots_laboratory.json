@@ -40,7 +40,7 @@
       "xz_scale": 1,
       "y_scale": 0.7142857142857143
     },
-    "initial_density_without_jaggedness": "farlandstraveler:far_lands/initial_density_without_jaggedness",
+    "preliminary_surface_level": "farlandstraveler:far_lands/preliminary_surface_level",
     "lava": {
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_lava",

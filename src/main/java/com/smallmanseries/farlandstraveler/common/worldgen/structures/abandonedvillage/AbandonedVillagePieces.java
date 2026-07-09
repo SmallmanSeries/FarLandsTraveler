@@ -967,7 +967,7 @@ public class AbandonedVillagePieces {
             }
 
             BlockState blockLog = this.getSpecificBlockState(Blocks.OAK_LOG.defaultBlockState());
-            BlockState blockFarm = this.getSpecificBlockState(Blocks.FARMLAND.defaultBlockState()).setValue(FarmBlock.MOISTURE, 7);
+            BlockState blockFarm = this.getSpecificBlockState(Blocks.FARMLAND.defaultBlockState()).setValue(FarmlandBlock.MOISTURE, 7);
             BlockState blockDirt = this.getSpecificBlockState(Blocks.DIRT.defaultBlockState());
             this.generateAirBox(level, boundingBox, 0, 1, 0, 12, 4, 8);
             this.generateBox(level, boundingBox, 1, 0, 1, 2, 0, 7, blockFarm, blockFarm, false);
@@ -1022,7 +1022,7 @@ public class AbandonedVillagePieces {
             }
 
             BlockState blockLog = this.getSpecificBlockState(Blocks.OAK_LOG.defaultBlockState());
-            BlockState blockFarm = this.getSpecificBlockState(Blocks.FARMLAND.defaultBlockState()).setValue(FarmBlock.MOISTURE, 7);
+            BlockState blockFarm = this.getSpecificBlockState(Blocks.FARMLAND.defaultBlockState()).setValue(FarmlandBlock.MOISTURE, 7);
             BlockState blockDirt = this.getSpecificBlockState(Blocks.DIRT.defaultBlockState());
             this.generateAirBox(level, boundingBox, 0, 1, 0, 6, 4, 8);
             this.generateBox(level, boundingBox, 1, 0, 1, 2, 0, 7, blockFarm, blockFarm, false);

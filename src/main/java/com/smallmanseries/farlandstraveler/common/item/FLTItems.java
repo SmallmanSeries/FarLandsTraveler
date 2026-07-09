@@ -10,6 +10,6 @@ public class FLTItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(FarLandsTraveler.MODID);
 
     // 物品列表
-    public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerItem("test_item", Item::new, new Item.Properties());
-    public static final DeferredItem<Item> FAKE_CHUNK_MARKER = ITEMS.registerItem("fake_chunk_marker", FakeChunkMarkerItem::new, new Item.Properties());
+    public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerItem("test_item", Item::new, Item.Properties::new);
+    public static final DeferredItem<Item> FAKE_CHUNK_MARKER = ITEMS.registerItem("fake_chunk_marker", FakeChunkMarkerItem::new, Item.Properties::new);
 }

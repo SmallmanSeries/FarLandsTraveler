@@ -185,66 +185,7 @@
       "xz_scale": 1,
       "y_scale": 0.7142857142857143
     },
-    "initial_density_without_jaggedness": {
-      "type": "minecraft:add",
-      "argument1": 0.1171875,
-      "argument2": {
-        "type": "minecraft:mul",
-        "argument1": {
-          "type": "minecraft:y_clamped_gradient",
-          "from_value": 0,
-          "from_y": -64,
-          "to_value": 1,
-          "to_y": -40
-        },
-        "argument2": {
-          "type": "minecraft:add",
-          "argument1": -0.1171875,
-          "argument2": {
-            "type": "minecraft:add",
-            "argument1": -0.078125,
-            "argument2": {
-              "type": "minecraft:mul",
-              "argument1": {
-                "type": "minecraft:y_clamped_gradient",
-                "from_value": 1,
-                "from_y": 26,
-                "to_value": 0,
-                "to_y": 62
-              },
-              "argument2": {
-                "type": "minecraft:add",
-                "argument1": 0.078125,
-                "argument2": {
-                  "type": "minecraft:clamp",
-                  "input": {
-                    "type": "minecraft:add",
-                    "argument1": -0.703125,
-                    "argument2": {
-                      "type": "minecraft:mul",
-                      "argument1": 4,
-                      "argument2": {
-                        "type": "minecraft:quarter_negative",
-                        "argument": {
-                          "type": "minecraft:mul",
-                          "argument1": "minecraft:overworld/depth",
-                          "argument2": {
-                            "type": "minecraft:cache_2d",
-                            "argument": "minecraft:overworld/factor"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "max": 64,
-                  "min": -64
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+    "preliminary_surface_level": "farlandstraveler:far_lands/preliminary_surface_level",
     "lava": {
       "type": "minecraft:noise",
       "noise": "minecraft:aquifer_lava",

@@ -33,43 +33,43 @@ public abstract class BlendedNoiseMixin {
     @Final
     private double yMultiplier;
 
-    @ModifyVariable(method = "compute", at = @At("STORE"), ordinal = 0)
-    private double setXMain(double original, @Local(argsOnly = true) DensityFunction.FunctionContext context) {
+    @ModifyVariable(method = "compute", at = @At("STORE"), name = "limitX")
+    private double setXMain(double limitX, @Local(argsOnly = true, name = "context") DensityFunction.FunctionContext context) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
             return (context.blockX() + noise.xShift) * this.xzMultiplier;
         }
-        return original;
+        return limitX;
     }
 
-    @ModifyVariable(method = "compute", at = @At("STORE"), ordinal = 1)
-    private double setYMain(double original, @Local(argsOnly = true) DensityFunction.FunctionContext context) {
+    @ModifyVariable(method = "compute", at = @At("STORE"), name = "limitY")
+    private double setYMain(double limitY, @Local(argsOnly = true, name = "context") DensityFunction.FunctionContext context) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
             return (context.blockY() + noise.yShift) * this.yMultiplier;
         }
-        return original;
+        return limitY;
     }
 
-    @ModifyVariable(method = "compute", at = @At("STORE"), ordinal = 2)
-    private double setZMain(double original, @Local(argsOnly = true) DensityFunction.FunctionContext context) {
+    @ModifyVariable(method = "compute", at = @At("STORE"), name = "limitZ")
+    private double setZMain(double limitZ, @Local(argsOnly = true, name = "context") DensityFunction.FunctionContext context) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
             return (context.blockZ() + noise.zShift) * noise.zMultiplier;
         }
-        return original;
+        return limitZ;
     }
 
-    @ModifyVariable(method = "compute", at = @At("STORE"), ordinal = 5)
-    private double setZSelector(double original) {
+    @ModifyVariable(method = "compute", at = @At("STORE"), name = "mainZ")
+    private double setZSelector(double mainZ) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
-            return (original * this.xzFactor) / noise.zFactor;
+            return (mainZ * this.xzFactor) / noise.zFactor;
         }
-        return original;
+        return mainZ;
     }
 
     @Redirect(method = "compute", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/synth/PerlinNoise;wrap(D)D"))
-    private double redirectWrap(double value) {
+    private double redirectWrap(double x) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
-            return noise.overflowable ? value : PerlinNoise.wrap(value);
+            return noise.overflowable ? x : PerlinNoise.wrap(x);
         }
-        return PerlinNoise.wrap(value);
+        return PerlinNoise.wrap(x);
     }
 }

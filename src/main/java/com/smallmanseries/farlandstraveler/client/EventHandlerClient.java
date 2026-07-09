@@ -6,7 +6,7 @@ import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.phys.Vec3;
@@ -19,22 +19,22 @@ import org.joml.Matrix4f;
 @EventBusSubscriber(modid = FarLandsTraveler.MODID, value = Dist.CLIENT)
 public class EventHandlerClient {
     @SubscribeEvent
-    public static void onRenderLevel(RenderLevelStageEvent.AfterTripwireBlocks event) {
+    public static void onRenderLevel(RenderLevelStageEvent.AfterWeather event) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.level == null || mc.player == null) return;
         if (!mc.player.getMainHandItem().is(FLTItems.FAKE_CHUNK_MARKER)) return;
         PoseStack stack = event.getPoseStack();
-        Vec3 camera = event.getCamera().getPosition();
-        VertexConsumer consumer = mc.renderBuffers().bufferSource().getBuffer(RenderType.debugLineStrip(1.0));
+        Vec3 camera = event.getLevelRenderState().cameraRenderState.pos;
+        VertexConsumer consumer = mc.renderBuffers().bufferSource().getBuffer(RenderTypes.lines());
         int renderDistance = mc.options.getEffectiveRenderDistance();
-        ChunkPos pos = new ChunkPos(mc.player.blockPosition());
+        ChunkPos pos = ChunkPos.containing(mc.player.blockPosition());
 
         Matrix4f matrix4f = stack.last().pose();
 
         for (int dx = -renderDistance; dx <= renderDistance; dx++) {
             for (int dz = -renderDistance; dz <= renderDistance; dz++) {
-                int chunkX = pos.x + dx;
-                int chunkZ = pos.z + dz;
+                int chunkX = pos.x() + dx;
+                int chunkZ = pos.z() + dz;
                 ChunkAccess chunk = mc.level.getChunk(chunkX, chunkZ);
                 if (chunk.getData(FLTAttachments.FAKE_CHUNK)) {
                     double minX = chunk.getPos().getMinBlockX() - camera.x();

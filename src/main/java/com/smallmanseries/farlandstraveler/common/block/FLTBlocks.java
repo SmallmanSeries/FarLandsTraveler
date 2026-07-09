@@ -3,13 +3,17 @@ package com.smallmanseries.farlandstraveler.common.block;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundTypes;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
+import com.smallmanseries.farlandstraveler.mixin.accessor.IFireBlockAccessor;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -66,9 +70,9 @@ public class FLTBlocks {
     // 巨型菌类
 
     // 小型花盆栽
-    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_ROSE, prop), Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
-    public static final DeferredBlock<FlowerPotBlock> POTTED_CYAN_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_cyan_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, CYAN_FAR_LANDS_ROSE, prop), Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
-    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_PAEONIA = BLOCKS.registerBlock("potted_far_lands_paeonia", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_PAEONIA, prop), Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
+    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
+    public static final DeferredBlock<FlowerPotBlock> POTTED_CYAN_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_cyan_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, CYAN_FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
+    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_PAEONIA = BLOCKS.registerBlock("potted_far_lands_paeonia", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_PAEONIA, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
 
     // 树苗盆栽
 
@@ -90,10 +94,10 @@ public class FLTBlocks {
     }
 
     public static void registerFlammability() {
-        FireBlock fire = (FireBlock) Blocks.FIRE;
-        fire.setFlammable(FAR_LANDS_ROSE.get(), 60, 100);
-        fire.setFlammable(CYAN_FAR_LANDS_ROSE.get(), 60, 100);
-        fire.setFlammable(FAR_LANDS_PAEONIA.get(), 60, 100);
+        IFireBlockAccessor fire = (IFireBlockAccessor) Blocks.FIRE;
+        fire.invokeSetFlammable(FAR_LANDS_ROSE.get(), 60, 100);
+        fire.invokeSetFlammable(CYAN_FAR_LANDS_ROSE.get(), 60, 100);
+        fire.invokeSetFlammable(FAR_LANDS_PAEONIA.get(), 60, 100);
 
     }
 }

@@ -19,10 +19,10 @@ import java.util.Optional;
 @Mixin(ExplosionDamageCalculator.class)
 public abstract class ExplosionDamageCalculatorMixin {
     @Inject(method = "getBlockExplosionResistance", at = @At("RETURN"), cancellable = true)
-    private void modifyExplosionResistance(Explosion explosion, BlockGetter reader, BlockPos pos, BlockState state, FluidState fluid, CallbackInfoReturnable<Optional<Float>> cir) {
-        if (reader instanceof Level level
-                && FakeChunk.isInFakeChunk(level, pos)
-                && !(state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT))) {
+    private void modifyExplosionResistance(Explosion explosion, BlockGetter level, BlockPos pos, BlockState block, FluidState fluid, CallbackInfoReturnable<Optional<Float>> cir) {
+        if (level instanceof Level
+                && FakeChunk.isInFakeChunk((Level) level, pos)
+                && !(block.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT))) {
             cir.setReturnValue(Optional.empty());
         }
     }

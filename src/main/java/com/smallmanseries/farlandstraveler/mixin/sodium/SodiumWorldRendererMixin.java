@@ -1,5 +1,5 @@
 package com.smallmanseries.farlandstraveler.mixin.sodium;
-
+/*
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.smallmanseries.farlandstraveler.Config;
@@ -30,3 +30,6 @@ public abstract class SodiumWorldRendererMixin {
             ci.cancel();
     }
 }
+
+
+ */

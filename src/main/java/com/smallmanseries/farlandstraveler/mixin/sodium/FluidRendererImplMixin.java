@@ -1,5 +1,5 @@
 package com.smallmanseries.farlandstraveler.mixin.sodium;
-
+/*
 import com.smallmanseries.farlandstraveler.Config;
 import net.caffeinemc.mods.sodium.client.render.chunk.compile.ChunkBuildBuffers;
 import net.caffeinemc.mods.sodium.client.render.chunk.translucent_sorting.TranslucentGeometryCollector;
@@ -23,3 +23,6 @@ public abstract class FluidRendererImplMixin {
             ci.cancel();
     }
 }
+
+
+ */

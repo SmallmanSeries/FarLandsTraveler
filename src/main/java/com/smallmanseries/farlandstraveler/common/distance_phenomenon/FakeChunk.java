@@ -35,10 +35,20 @@ public class FakeChunk {
     }
 
     /**
-     * 判断该实体是否免疫假区块
+     * 判断方块是否免疫假区块。该函数等效于state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)，用于特殊情况
+     *
+     * @param state 方块状态
+     * @return 布尔值 该方块是否免疫假区块
+     */
+    public static boolean isBlockImmune(BlockState state) {
+        return state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT);
+    }
+
+    /**
+     * 判断该实体是否不免疫假区块
      *
      * @param entity 输入一个实体
-     * @return 该实体是否免疫假区块
+     * @return 布尔值 该实体是否*不*免疫假区块
      */
     public static boolean isEntityNotImmune(Entity entity) {
         // 空实体，直接取消
@@ -46,7 +56,7 @@ public class FakeChunk {
             return true;
         }
         // 忽略免疫“去固体效应”的实体
-        if (entity.getType().is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
+        if (entity.is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
             return false;
         }
         // 对生物实体的判断
@@ -109,7 +119,7 @@ public class FakeChunk {
                     return true;
                 }
                 // 忽略免疫“去固体效应”的实体
-                if (entity.getType().is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
+                if (entity.is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
                     return false;
                 }
                 // 对生物实体的判断

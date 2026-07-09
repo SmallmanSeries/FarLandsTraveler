@@ -7,7 +7,7 @@ import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Mirror;
@@ -32,14 +32,14 @@ public class OOTSLaboratoryStructure extends Structure {
                     Codec.STRING.fieldOf("part").forGetter(ins -> ins.part)
             ).apply(instance, OOTSLaboratoryStructure::new)
     );
-    private static final ResourceLocation EXTERIOR = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/exterior");
-    private static final ResourceLocation GATE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/gate");
-    private static final ResourceLocation MAZE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze");
-    private static final ResourceLocation MAZE_WALLPIECE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze_wallpiece");
-    private static final ResourceLocation MAZE_STONEFALL = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze_stonefall");
-    private static final ResourceLocation COTTAGE = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/cottage");
-    private static final ResourceLocation BASEMENT = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/basement");
-    private static final ResourceLocation ENCHANTED_BOOK = ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/enchanted_book");
+    private static final Identifier EXTERIOR = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/exterior");
+    private static final Identifier GATE = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/gate");
+    private static final Identifier MAZE = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze");
+    private static final Identifier MAZE_WALLPIECE = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze_wallpiece");
+    private static final Identifier MAZE_STONEFALL = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/maze_stonefall");
+    private static final Identifier COTTAGE = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/cottage");
+    private static final Identifier BASEMENT = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/basement");
+    private static final Identifier ENCHANTED_BOOK = Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory/enchanted_book");
 
     public final BlockPos pos;
     public final String part;
@@ -88,7 +88,7 @@ public class OOTSLaboratoryStructure extends Structure {
 
         private BlockPos pos;
 
-        public Piece(StructureTemplateManager manager, ResourceLocation location, BlockPos pos) {
+        public Piece(StructureTemplateManager manager, Identifier location, BlockPos pos) {
             super(FLTStructurePieceType.OOTS_LABORATORY_MAZE.get(), 0, manager, location, location.toString(), makeSettings(), pos);
         }
 

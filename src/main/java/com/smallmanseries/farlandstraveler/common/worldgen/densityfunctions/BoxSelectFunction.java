@@ -32,12 +32,12 @@ import net.minecraft.world.level.levelgen.DensityFunction;
  * 当坐标在选区内时，返回1，否则返回0
  */
 
-public record BoxSelectFunction(boolean invert, int originX, int originY, int originZ, int extendX, int extendY,
+public record BoxSelectFunction(boolean invertValue, int originX, int originY, int originZ, int extendX, int extendY,
                                 int extendZ) implements DensityFunction.SimpleFunction {
     private static final Codec<Integer> INPUT_RANGE = Codec.intRange(0, Integer.MAX_VALUE);
     public static final MapCodec<BoxSelectFunction> DATA_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                            Codec.BOOL.optionalFieldOf("invert", false).forGetter(BoxSelectFunction::invert),
+                            Codec.BOOL.optionalFieldOf("invert", false).forGetter(BoxSelectFunction::invertValue),
                             Codec.INT.fieldOf("origin_x").forGetter(BoxSelectFunction::originX),
                             Codec.INT.fieldOf("origin_y").forGetter(BoxSelectFunction::originY),
                             Codec.INT.fieldOf("origin_z").forGetter(BoxSelectFunction::originZ),
@@ -54,9 +54,9 @@ public record BoxSelectFunction(boolean invert, int originX, int originY, int or
         if (functionContext.blockX() >= originX && functionContext.blockX() < originX + extendX
                 && functionContext.blockY() >= originY && functionContext.blockY() < originY + extendY
                 && functionContext.blockZ() >= originZ && functionContext.blockZ() < originZ + extendZ) {
-            return invert ? 0 : 1;
+            return invertValue ? 0 : 1;
         }
-        return invert ? 1 : 0;
+        return invertValue ? 1 : 0;
     }
 
     @Override

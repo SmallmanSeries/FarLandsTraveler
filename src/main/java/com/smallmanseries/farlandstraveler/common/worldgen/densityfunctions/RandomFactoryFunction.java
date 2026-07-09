@@ -2,8 +2,8 @@ package com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions;
 
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.KeyDispatchDataCodec;
@@ -31,12 +31,12 @@ import java.util.Objects;
  * @author INF32768
  */
 public record RandomFactoryFunction(ResourceKey<Level> dimension,
-                                    ResourceLocation name) implements DensityFunction.SimpleFunction {
+                                    Identifier name) implements DensityFunction.SimpleFunction {
     static final KeyDispatchDataCodec<RandomFactoryFunction> CODEC = KeyDispatchDataCodec.of(
             RecordCodecBuilder.mapCodec(
                     instance -> instance.group(
                                     ResourceKey.codec(Registries.DIMENSION).fieldOf("dimension").forGetter(RandomFactoryFunction::dimension),
-                                    ResourceLocation.CODEC.fieldOf("name").forGetter(RandomFactoryFunction::name)
+                                    Identifier.CODEC.fieldOf("name").forGetter(RandomFactoryFunction::name)
                             )
                             .apply(instance, RandomFactoryFunction::new)
             )

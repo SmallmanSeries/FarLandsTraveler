@@ -6,8 +6,8 @@ import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.DataRegister;
 import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.BiomeSourceHolder;
 import net.minecraft.core.Holder;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
@@ -42,7 +42,7 @@ public record FarLands(
             ).apply(farLandsInstance, farLandsInstance.stable(FarLands::new))
     );
 
-    public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "far_lands"));
-    public static final ResourceKey<FarLands> OOTS_LABORATORY = ResourceKey.create(DataRegister.FAR_LANDS, ResourceLocation.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory"));
+    public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "far_lands"));
+    public static final ResourceKey<FarLands> OOTS_LABORATORY = ResourceKey.create(DataRegister.FAR_LANDS, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory"));
 
 }

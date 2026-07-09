@@ -53,8 +53,8 @@ public record VirtualDensityFunction(Holder<NoiseGeneratorSettings> settings,
             case "erosion" -> output = this.settings.value().noiseRouter().erosion().compute(functionContext);
             case "depth" -> output = this.settings.value().noiseRouter().depth().compute(functionContext);
             case "ridges" -> output = this.settings.value().noiseRouter().ridges().compute(functionContext);
-            case "initial_density_without_jaggedness" ->
-                    output = this.settings.value().noiseRouter().initialDensityWithoutJaggedness().compute(functionContext);
+            case "preliminary_surface_level" ->
+                    output = this.settings.value().noiseRouter().preliminarySurfaceLevel().compute(functionContext);
             case "final_density" ->
                     output = this.settings.value().noiseRouter().finalDensity().compute(functionContext);
             case "vein_toggle" -> output = this.settings.value().noiseRouter().veinToggle().compute(functionContext);
@@ -80,8 +80,8 @@ public record VirtualDensityFunction(Holder<NoiseGeneratorSettings> settings,
             case "erosion" -> output = this.settings.value().noiseRouter().erosion().minValue();
             case "depth" -> output = this.settings.value().noiseRouter().depth().minValue();
             case "ridges" -> output = this.settings.value().noiseRouter().ridges().minValue();
-            case "initial_density_without_jaggedness" ->
-                    output = this.settings.value().noiseRouter().initialDensityWithoutJaggedness().minValue();
+            case "preliminary_surface_level" ->
+                    output = this.settings.value().noiseRouter().preliminarySurfaceLevel().minValue();
             case "final_density" -> output = this.settings.value().noiseRouter().finalDensity().minValue();
             case "vein_toggle" -> output = this.settings.value().noiseRouter().veinToggle().minValue();
             case "vein_ridged" -> output = this.settings.value().noiseRouter().veinRidged().minValue();
@@ -106,8 +106,8 @@ public record VirtualDensityFunction(Holder<NoiseGeneratorSettings> settings,
             case "erosion" -> output = this.settings.value().noiseRouter().erosion().maxValue();
             case "depth" -> output = this.settings.value().noiseRouter().depth().maxValue();
             case "ridges" -> output = this.settings.value().noiseRouter().ridges().maxValue();
-            case "initial_density_without_jaggedness" ->
-                    output = this.settings.value().noiseRouter().initialDensityWithoutJaggedness().maxValue();
+            case "preliminary_surface_level" ->
+                    output = this.settings.value().noiseRouter().preliminarySurfaceLevel().maxValue();
             case "final_density" -> output = this.settings.value().noiseRouter().finalDensity().maxValue();
             case "vein_toggle" -> output = this.settings.value().noiseRouter().veinToggle().maxValue();
             case "vein_ridged" -> output = this.settings.value().noiseRouter().veinRidged().maxValue();

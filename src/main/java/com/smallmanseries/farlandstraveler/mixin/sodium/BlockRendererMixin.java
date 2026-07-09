@@ -1,5 +1,5 @@
 package com.smallmanseries.farlandstraveler.mixin.sodium;
-
+/*
 import com.smallmanseries.farlandstraveler.Config;
 import net.caffeinemc.mods.sodium.client.render.chunk.compile.pipeline.BlockRenderer;
 import net.minecraft.client.renderer.block.model.BlockStateModel;
@@ -20,3 +20,6 @@ public abstract class BlockRendererMixin {
             ci.cancel();
     }
 }
+
+
+ */
