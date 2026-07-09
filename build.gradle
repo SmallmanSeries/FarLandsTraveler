@@ -20,7 +20,8 @@ sourceSets.main.resources {
 }
 
 repositories {
-    maven { url 'https://api.modrinth.com/maven/' }
+    maven { url "https://api.modrinth.com/maven/" }
+    maven { url "https://maven.caffeinemc.net/releases" }
 }
 
 base {
@@ -80,7 +81,7 @@ dependencies {
             prefer "${project.mixson_version}"
         }
     }
-    // compileOnly "maven.modrinth:sodium:mc1.21.8-0.7.3-neoforge"
+    compileOnly "net.caffeinemc:sodium-neoforge-mod:0.8.12+mc26.1.2"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
