@@ -1,23 +1,22 @@
 package com.smallmanseries.farlandstraveler.client;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import com.smallmanseries.farlandstraveler.common.item.FLTItems;
-import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.phys.Vec3;
+import com.smallmanseries.farlandstraveler.client.render.FakeChunkBorderRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
-import org.joml.Matrix4f;
+import net.neoforged.neoforge.client.event.RegisterDebugRenderersEvent;
 
 @EventBusSubscriber(modid = FarLandsTraveler.MODID, value = Dist.CLIENT)
 public class EventHandlerClient {
+
+    // 注册调试渲染器
+    @SubscribeEvent
+    public static void registerDebugRenderer(RegisterDebugRenderersEvent event){
+        event.register(FakeChunkBorderRenderer::new);
+    }
+
+    /*
     @SubscribeEvent
     public static void onRenderLevel(RenderLevelStageEvent.AfterWeather event) {
         Minecraft mc = Minecraft.getInstance();
@@ -65,4 +64,6 @@ public class EventHandlerClient {
         }
         mc.renderBuffers().bufferSource().endBatch();
     }
+
+     */
 }
