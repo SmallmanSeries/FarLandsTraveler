@@ -27,11 +27,13 @@ public class FakeChunk {
      * @return 布尔值，是否位于假区块
      */
     public static boolean isInFakeChunk(Level level, BlockPos pos) {
-        return level.getChunkAt(pos).getData(FLTAttachments.FAKE_CHUNK);
+        if(level.getChunkAt(pos).hasData(FLTAttachments.FAKE_CHUNK)) return level.getChunkAt(pos).getData(FLTAttachments.FAKE_CHUNK);
+        return false;
     }
 
     public static boolean isInFakeChunk(LevelReader level, BlockPos pos) {
-        return level.getChunk(pos).getData(FLTAttachments.FAKE_CHUNK);
+        if(level.getChunk(pos).hasData(FLTAttachments.FAKE_CHUNK)) return level.getChunk(pos).getData(FLTAttachments.FAKE_CHUNK);
+        return false;
     }
 
     /**
