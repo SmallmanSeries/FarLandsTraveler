@@ -35,16 +35,6 @@ public class FakeChunk {
     }
 
     /**
-     * 判断方块是否免疫假区块。该函数等效于state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)，用于特殊情况
-     *
-     * @param state 方块状态
-     * @return 布尔值 该方块是否免疫假区块
-     */
-    public static boolean isBlockImmune(BlockState state) {
-        return state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT);
-    }
-
-    /**
      * 判断该实体是否不免疫假区块
      *
      * @param entity 输入一个实体
