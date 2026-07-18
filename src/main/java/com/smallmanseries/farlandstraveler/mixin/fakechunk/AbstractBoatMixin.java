@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AbstractBoat.class)
 public class AbstractBoatMixin {
-    @Redirect(method = {"getWaterLevelAbove", "checkInWater", "isUnderWater", "checkFallDamage"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;"))
+    @Redirect(method = {"getWaterLevelAbove", "checkInWater", "isUnderwater", "checkFallDamage"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;"))
     private FluidState modifyFluid(Level level, BlockPos pos) {
         if (FakeChunk.isInFakeChunk(level, pos)) { // Todo 模组新增免疫去固体效应的船？
             return Fluids.EMPTY.defaultFluidState();
