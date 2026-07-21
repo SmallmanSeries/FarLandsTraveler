@@ -1,12 +1,25 @@
 {
   "type": "farlandstraveler:cascade",
   "config": {
+    "root_block": {
+      "Name":"minecraft:cherry_log"
+    },
     "cascade_block": {
       "Name":"minecraft:cherry_leaves",
       "Properties": {
         "persistent": "true",
         "waterlogged": "false"
       }
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 2.4,
+      "max_exclusive": 3.0
+    },
+    "y_factor":{
+      "type": "minecraft:uniform",
+      "min_inclusive": 0.1,
+      "max_exclusive": 0.2
     }
   }
 }

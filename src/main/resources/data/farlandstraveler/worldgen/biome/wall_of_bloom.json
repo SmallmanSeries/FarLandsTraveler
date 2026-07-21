@@ -79,9 +79,8 @@
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass_2",
       "minecraft:patch_grass_plain",
-      "farlandstraveler:cherry_cascade",
       "minecraft:flower_cherry",
-      "minecraft:trees_cherry"
+      "farlandstraveler:cherry_cascade"
     ],
     [
       "minecraft:freeze_top_layer"
