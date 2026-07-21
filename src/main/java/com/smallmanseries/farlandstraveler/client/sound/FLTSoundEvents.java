@@ -1,7 +1,6 @@
 package com.smallmanseries.farlandstraveler.client.sound;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
