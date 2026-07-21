@@ -1,0 +1,12 @@
+{
+  "type": "farlandstraveler:cascade",
+  "config": {
+    "cascade_block": {
+      "Name":"minecraft:cherry_leaves",
+      "Properties": {
+        "persistent": "true",
+        "waterlogged": "false"
+      }
+    }
+  }
+}
