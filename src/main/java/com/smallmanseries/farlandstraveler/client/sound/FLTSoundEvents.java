@@ -2,13 +2,14 @@ package com.smallmanseries.farlandstraveler.client.sound;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class FLTSoundEvents {
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, FarLandsTraveler.MODID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, FarLandsTraveler.MODID);
 
     // 方块音效
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_HOLY_MOSS_BREAK = register("block.holy_moss.break");
