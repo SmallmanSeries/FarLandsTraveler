@@ -40,7 +40,7 @@
         "extend_z": 6275416,
         "inside": {
           "type": "fixed",
-          "biome": "farlandstraveler:wall_of_bloom"
+          "biome": "farlandstraveler:wall_of_green"
         },
         "outside": {
           "type": "fixed",

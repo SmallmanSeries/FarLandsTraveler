@@ -1,0 +1,16 @@
+{
+  "feature": "farlandstraveler:wall_of_green_trees",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 20
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
