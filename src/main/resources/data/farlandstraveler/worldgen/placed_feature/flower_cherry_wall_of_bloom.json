@@ -1,0 +1,19 @@
+{
+  "feature": "minecraft:flower_cherry",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 26
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_block_tag",
+        "tag": "minecraft:air"
+      }
+    }
+  ]
+}

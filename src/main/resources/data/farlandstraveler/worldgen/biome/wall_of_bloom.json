@@ -72,14 +72,15 @@
       "minecraft:ore_infested"
     ],
     [
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:spring_water"
     ],
     [
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass_2",
       "minecraft:patch_grass_plain",
       "minecraft:flower_cherry",
+      "farlandstraveler:vines_wall_of_bloom",
+      "farlandstraveler:flower_cherry_wall_of_bloom",
       "farlandstraveler:cherry_cascade"
     ],
     [
