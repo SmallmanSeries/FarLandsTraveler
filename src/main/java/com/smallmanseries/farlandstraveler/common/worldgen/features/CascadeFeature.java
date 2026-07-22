@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
@@ -33,21 +34,34 @@ public class CascadeFeature extends Feature<CascadeConfiguration> {
 
         // 偏移原点至边境之地边缘
         int farLandsDist = Config.FAR_LANDS_DISTANCE.get();
-        if (origin.getX() > farLandsDist - 3) {
-            origin = origin.offset(-(origin.getX() - farLandsDist + 3), 0, 0);
+        if (origin.getX() > farLandsDist - 4) {
+            origin = origin.offset(-(origin.getX() - farLandsDist + 4), 0, 0);
         }
         if (origin.getX() < -farLandsDist) {
             origin = origin.offset(-(origin.getX() + farLandsDist), 0, 0);
         }
-        if (origin.getZ() > farLandsDist - 3) {
-            origin = origin.offset(0, 0, -(origin.getZ() - farLandsDist + 3));
+        if (origin.getZ() > farLandsDist - 4) {
+            origin = origin.offset(0, 0, -(origin.getZ() - farLandsDist + 4));
         }
         if (origin.getZ() < -farLandsDist) {
             origin = origin.offset(0, 0, -(origin.getZ() + farLandsDist));
         }
 
+        // 检查本格是不是没有流体
+        if (!level.getFluidState(origin).isEmpty()) {
+            return false;
+        }
+
         // 检查下方的方块
-        if (!config.canPlaceOn().test(level, origin.below())) {
+        boolean flag = false;
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (config.canPlaceOn().test(level, new BlockPos(origin.getX() + i, origin.getY() - 1, origin.getZ() + j))) {
+                    flag = true;
+                }
+            }
+        }
+        if (!flag) {
             return false;
         }
 
@@ -74,7 +88,7 @@ public class CascadeFeature extends Feature<CascadeConfiguration> {
                     }
 
                     if (density > 0.5 || (i == 0 && j == 0 && k >= radiusPow - height)) {
-                        this.safeSetBlock(level, origin.offset(new BlockPos(i, k, j)), config.cascadeBlock(), Feature.isReplaceable(BlockTags.FEATURES_CANNOT_REPLACE));
+                        this.safeSetBlock(level, origin.offset(new BlockPos(i, k, j)), config.cascadeBlock(), BlockBehaviour.BlockStateBase::canBeReplaced);
                     }
                 }
             }
