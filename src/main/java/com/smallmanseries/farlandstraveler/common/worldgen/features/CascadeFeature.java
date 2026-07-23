@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.CascadeConfiguration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockBehaviour;
