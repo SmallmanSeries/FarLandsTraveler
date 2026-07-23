@@ -34,17 +34,10 @@ public class CascadeFeature extends Feature<CascadeConfiguration> {
 
         // 偏移原点至边境之地边缘
         int farLandsDist = Config.FAR_LANDS_DISTANCE.get();
-        if (origin.getX() > farLandsDist - 4) {
-            origin = origin.offset(-(origin.getX() - farLandsDist + 4), 0, 0);
-        }
-        if (origin.getX() < -farLandsDist) {
-            origin = origin.offset(-(origin.getX() + farLandsDist), 0, 0);
-        }
-        if (origin.getZ() > farLandsDist - 4) {
-            origin = origin.offset(0, 0, -(origin.getZ() - farLandsDist + 4));
-        }
-        if (origin.getZ() < -farLandsDist) {
-            origin = origin.offset(0, 0, -(origin.getZ() + farLandsDist));
+        int clampedX = Math.clamp(origin.getX(), -farLandsDist, farLandsDist - 4);
+        int clampedZ = Math.clamp(origin.getZ(), -farLandsDist, farLandsDist - 4);
+        if (clampedX != origin.getX() || clampedZ != origin.getZ()) {
+            origin = new BlockPos(clampedX, origin.getY(), clampedZ);
         }
 
         // 检查本格是不是没有流体
@@ -54,10 +47,11 @@ public class CascadeFeature extends Feature<CascadeConfiguration> {
 
         // 检查下方的方块
         boolean flag = false;
-        for (int i = -1; i <= 1; i++) {
+        for (int i = -1; i <= 1 && !flag; i++) {
             for (int j = -1; j <= 1; j++) {
                 if (config.canPlaceOn().test(level, new BlockPos(origin.getX() + i, origin.getY() - 1, origin.getZ() + j))) {
                     flag = true;
+                    break;
                 }
             }
         }
@@ -80,12 +74,7 @@ public class CascadeFeature extends Feature<CascadeConfiguration> {
             for (int j = -size; j <= size; j++) {
                 distancePow = i * i + j * j;
                 for (int k = size; k >= -height; k--) {
-                    if (k >= 0) {
-                        density = baseProb((distancePow + k * k), radiusPow) - random.nextDouble() * 0.6;
-
-                    } else {
-                        density = baseProb((distancePow + k * k * yFactor * yFactor), radiusPow) - random.nextDouble() * 0.6;
-                    }
+                    density = baseProb((distancePow + k * k * (k >= 0 ? 1 : (yFactor * yFactor))), radiusPow) - random.nextDouble() * 0.6;
 
                     if (density > 0.5 || (i == 0 && j == 0 && k >= radiusPow - height)) {
                         this.safeSetBlock(level, origin.offset(new BlockPos(i, k, j)), config.cascadeBlock(), BlockBehaviour.BlockStateBase::canBeReplaced);
