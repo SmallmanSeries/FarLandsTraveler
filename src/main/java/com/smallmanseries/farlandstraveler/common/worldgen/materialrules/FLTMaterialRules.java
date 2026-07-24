@@ -3,7 +3,6 @@ package com.smallmanseries.farlandstraveler.common.worldgen.materialrules;
 import com.mojang.serialization.MapCodec;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.neoforge.registries.DeferredRegister;
 

@@ -85,7 +85,8 @@ public class DataInjectors {
                     finalDensityModified.add("when_in_range", overflowCheck);
                     finalDensityModified.addProperty("when_out_of_range", "farlandstraveler:far_lands/final_density");
 
-                    //应用修改后的noise_router
+                    // 应用修改后的noise_router
+                    // Todo 26.3之后noise_router定义大改，这里需要加以改动
                     noiseRouterOverworld.add("final_density", finalDensityModified);
                     noiseRouterOverworld.add("preliminary_surface_level", getDensity(noiseRouterOverworld.get("preliminary_surface_level"), dist, "preliminary_surface_level"));
                     noiseRouterOverworld.add("fluid_level_floodedness", getDensity(noiseRouterOverworld.get("fluid_level_floodedness"), dist, "fluid_level_floodedness"));
@@ -93,7 +94,13 @@ public class DataInjectors {
                 });
     }
 
-    public static void surfaceRuleInjector(String path, String name){
+    /**
+     * 用于在噪声设置的表面规则序列中插入新的表面规则
+     *
+     * @param path 噪声设置文件的路径
+     * @param name MixsonEvent的名称（随便取）
+     */
+    public static void surfaceRuleInjector(String path, String name) {
         Mixson.registerEvent(
                 0,
                 Lifetime.PERSISTENT,
