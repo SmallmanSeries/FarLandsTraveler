@@ -77,8 +77,9 @@
     [
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass_2",
-      "minecraft:patch_grass_plain",
+      "farlandstraveler:wall_of_bloom_grass",
       "minecraft:flower_cherry",
+      "farlandstraveler:wall_of_bloom_bush",
       "farlandstraveler:wall_of_bloom_vines",
       "farlandstraveler:flower_cherry_wall_of_bloom",
       "farlandstraveler:wall_of_bloom_cherry_cascade"
