@@ -1,9 +1,9 @@
 {
-  "feature": "farlandstraveler:wall_of_green_mega_vine",
+  "feature": "minecraft:vines",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 64
+      "count": 255
     },
     {
       "type": "minecraft:in_square"
@@ -11,12 +11,12 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "type": "minecraft:biased_to_bottom",
         "max_inclusive": {
           "absolute": 250
         },
         "min_inclusive": {
-          "absolute": 64
+          "absolute": 63
         }
       }
     },

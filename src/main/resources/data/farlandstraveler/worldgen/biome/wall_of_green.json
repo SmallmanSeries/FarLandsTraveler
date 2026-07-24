@@ -37,13 +37,13 @@
     [
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite_upper",
       "minecraft:ore_granite_lower",
       "minecraft:ore_diorite_upper",
       "minecraft:ore_diorite_lower",
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
       "minecraft:ore_tuff",
+      "farlandstraveler:wall_of_green_moss",
       "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
       "minecraft:ore_iron_upper",
@@ -81,7 +81,7 @@
       "minecraft:patch_sugar_cane",
       "minecraft:patch_firefly_bush_near_water",
       "farlandstraveler:wall_of_green_mega_vine",
-      "farlandstraveler:far_lands_vines",
+      "farlandstraveler:wall_of_green_vines",
       "minecraft:patch_melon"
     ],
     [
