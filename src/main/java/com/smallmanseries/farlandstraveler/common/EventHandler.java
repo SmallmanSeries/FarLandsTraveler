@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.piston.PistonStructureResolver;
+import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.PistonEvent;
@@ -22,6 +23,8 @@ public class EventHandler {
     public static void registerData(DataPackRegistryEvent.NewRegistry event) {
         event.dataPackRegistry(DataRegister.FAR_LANDS, FarLands.CODEC);
         event.dataPackRegistry(DataRegister.BIOME_SOURCE, BiomeSource.CODEC);
+        // Todo 26.3及以后的版本，原版自带材料规则功能，本模组的此功能可以删除
+        event.dataPackRegistry(DataRegister.MATERIAL_RULE, SurfaceRules.RuleSource.CODEC);
     }
 
     // 当活塞移动的方块跨过假区块边界时，取消本次移动。

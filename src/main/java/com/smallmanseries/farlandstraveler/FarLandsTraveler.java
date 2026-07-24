@@ -9,6 +9,7 @@ import com.smallmanseries.farlandstraveler.common.misc.FLTCreativeTabs;
 import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.FLTBiomeSources;
 import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.FLTDensityFunctions;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.FLTFeatures;
+import com.smallmanseries.farlandstraveler.common.worldgen.materialrules.FLTMaterialRules;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.FLTStructurePieceType;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.FLTStructures;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.placement.FLTStructurePlacements;
@@ -38,12 +39,18 @@ public class FarLandsTraveler {
         FLTStructures.STRUCTURES.register(modEventBus);
         FLTStructurePieceType.STRUCTURE_PIECES.register(modEventBus);
         FLTFeatures.FEATURES.register(modEventBus);
+        // Todo 26.3及以后的版本，原版自带材料规则功能，本模组的此功能可以删除
+        FLTMaterialRules.MATERIAL_RULES.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         DataInjectors.noiseRouterInjector("worldgen/noise_settings/overworld", "noiseRouterInjectorNormal");
         // DataInjectors.noiseRouterInjector("worldgen/noise_settings/amplified", "noiseRouterInjectorAmplified");
         // DataInjectors.noiseRouterInjector("worldgen/noise_settings/large_biomes", "noiseRouterInjectorLargeBiomes");
+
+        DataInjectors.surfaceRuleInjector("worldgen/noise_settings/overworld", "surfaceRuleInjectorNormal");
+        // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/amplified", "surfaceRuleInjectorAmplified");
+        // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/large_biomes", "surfaceRuleInjectorLargeBiomes");
 
         DataInjectors.worldPresentInjector("worldgen/world_preset/normal", "worldPresentInjectorNormal");
         // DataInjectors.worldPresentInjector("worldgen/world_preset/amplified", "biomeSourceInjectorAmplified");

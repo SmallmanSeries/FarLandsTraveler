@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.core.SectionPos;
@@ -89,6 +90,25 @@ public class DataInjectors {
                     noiseRouterOverworld.add("preliminary_surface_level", getDensity(noiseRouterOverworld.get("preliminary_surface_level"), dist, "preliminary_surface_level"));
                     noiseRouterOverworld.add("fluid_level_floodedness", getDensity(noiseRouterOverworld.get("fluid_level_floodedness"), dist, "fluid_level_floodedness"));
                     noiseRouterOverworld.add("barrier", getDensity(noiseRouterOverworld.get("barrier"), dist, "barrier"));
+                });
+    }
+
+    public static void surfaceRuleInjector(String path, String name){
+        Mixson.registerEvent(
+                0,
+                Lifetime.PERSISTENT,
+                ErrorPolicy.THROW,
+                name,
+                index -> index.idEquals(new Index(path)),
+                context -> {
+                    // 获取surface_rule
+                    JsonObject surfaceRule = context.getFile().getAsJsonObject().getAsJsonObject("surface_rule");
+                    JsonArray sequence = surfaceRule.getAsJsonArray("sequence");
+
+                    JsonObject holder = new JsonObject();
+                    holder.addProperty("type", "farlandstraveler:holder");
+                    holder.addProperty("rule", "farlandstraveler:far_lands");
+                    sequence.add(holder);
                 });
     }
 
