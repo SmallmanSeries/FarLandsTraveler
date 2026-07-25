@@ -25,7 +25,7 @@ public abstract class AquiferMixin {
         int x = context.blockX();
         int y = context.blockY();
         int z = context.blockZ();
-        if ((Math.max(x, z) >= (Config.FAR_LANDS_DISTANCE.getAsInt() - 3) || Math.min(x, z) <= -Config.FAR_LANDS_DISTANCE.getAsInt()) && density <= 0.0 && this.globalFluidPicker.computeFluid(x, y, z).at(y).is(Blocks.LAVA)) {
+        if ((Math.max(x, z) > (Config.FAR_LANDS_DISTANCE.getAsInt() - 4) || Math.min(x, z) < -Config.FAR_LANDS_DISTANCE.getAsInt()) && density <= 0.0 && this.globalFluidPicker.computeFluid(x, y, z).at(y).is(Blocks.LAVA)) {
             cir.setReturnValue(Blocks.WATER.defaultBlockState());
         }
     }

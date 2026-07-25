@@ -5,6 +5,7 @@
   "mixins": [
     "ChunkGeneratorMixin",
     "accessor.IFireBlockAccessor",
+    "biome.SurfaceSystemMixin",
     "border.EntityMixin",
     "border.LevelMixin",
     "border.PlayerMixin",
