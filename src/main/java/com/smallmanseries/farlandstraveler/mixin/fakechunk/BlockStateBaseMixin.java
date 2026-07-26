@@ -37,7 +37,7 @@ public abstract class BlockStateBaseMixin {
     // 取消实体（玩家、末影人等）互动
     @Inject(method = "getShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
     private void modifyShape(BlockGetter level, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (Config.FC_DISABLE_BLOCK_INTERACTION.getAsBoolean() && FakeChunk.shouldDisableInteraction(level.getBlockState(pos), level, pos, context) && !context.equals(CollisionContext.empty())) {
+        if (FakeChunk.shouldDisableInteraction(level.getBlockState(pos), level, pos, context) && !context.equals(CollisionContext.empty())) {
             cir.setReturnValue(Shapes.empty());
         }
     }
@@ -45,7 +45,7 @@ public abstract class BlockStateBaseMixin {
     // 防止读取缓存的碰撞体积
     @Inject(method = "getCollisionShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
     private void modifyCollision(BlockGetter level, BlockPos pos, CallbackInfoReturnable<VoxelShape> cir) {
-        if (Config.FC_DISABLE_BLOCK_COLLISION.getAsBoolean() && FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, CollisionContext.empty())) {
+        if (FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, CollisionContext.empty())) {
             cir.setReturnValue(Shapes.empty());
         }
     }
@@ -53,7 +53,7 @@ public abstract class BlockStateBaseMixin {
     // 取消方块的碰撞体积
     @Inject(method = "getCollisionShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
     private void modifyCollision(BlockGetter level, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (Config.FC_DISABLE_BLOCK_COLLISION.getAsBoolean() && FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, context)) {
+        if (FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, context)) {
             cir.setReturnValue(Shapes.empty());
         }
     }
