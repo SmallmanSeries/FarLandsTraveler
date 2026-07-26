@@ -13,7 +13,7 @@ public abstract class EntityMixin {
     // 允许实体出界
     @Redirect(method = "absSnapTo(DDD)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(DDD)D"))
     private double modifyClamp(double value, double min, double max) {
-        if (Config.REMOVE_COORDINATE_LIMITS.getAsBoolean()) {
+        if (Config.REMOVE_WORLD_BOUNDARY.getAsBoolean()) {
             return value;
         }
         return value < min ? min : Math.min(value, max);

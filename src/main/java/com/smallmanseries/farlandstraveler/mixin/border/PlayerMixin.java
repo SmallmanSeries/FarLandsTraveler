@@ -11,7 +11,7 @@ public abstract class PlayerMixin {
     // 允许玩家出界
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(DDD)D"))
     private double modifyClamp(double value, double min, double max) {
-        if (Config.REMOVE_COORDINATE_LIMITS.getAsBoolean()) {
+        if (Config.REMOVE_WORLD_BOUNDARY.getAsBoolean()) {
             return value;
         }
         return value < min ? min : Math.min(value, max);

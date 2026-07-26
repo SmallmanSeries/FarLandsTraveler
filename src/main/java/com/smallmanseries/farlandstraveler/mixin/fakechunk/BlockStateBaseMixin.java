@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.mixin.fakechunk;
 
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import com.smallmanseries.farlandstraveler.common.misc.FLTTags;
 import net.minecraft.core.BlockPos;
@@ -36,7 +37,7 @@ public abstract class BlockStateBaseMixin {
     // 取消实体（玩家、末影人等）互动
     @Inject(method = "getShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
     private void modifyShape(BlockGetter level, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (FakeChunk.shouldDisableInteraction(level.getBlockState(pos), level, pos, context) && !context.equals(CollisionContext.empty())) {
+        if (Config.FC_DISABLE_BLOCK_INTERACTION.getAsBoolean() && FakeChunk.shouldDisableInteraction(level.getBlockState(pos), level, pos, context) && !context.equals(CollisionContext.empty())) {
             cir.setReturnValue(Shapes.empty());
         }
     }
@@ -44,7 +45,7 @@ public abstract class BlockStateBaseMixin {
     // 防止读取缓存的碰撞体积
     @Inject(method = "getCollisionShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
     private void modifyCollision(BlockGetter level, BlockPos pos, CallbackInfoReturnable<VoxelShape> cir) {
-        if (FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, CollisionContext.empty())) {
+        if (Config.FC_DISABLE_BLOCK_COLLISION.getAsBoolean() && FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, CollisionContext.empty())) {
             cir.setReturnValue(Shapes.empty());
         }
     }
@@ -52,7 +53,7 @@ public abstract class BlockStateBaseMixin {
     // 取消方块的碰撞体积
     @Inject(method = "getCollisionShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
     private void modifyCollision(BlockGetter level, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
-        if (FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, context)) {
+        if (Config.FC_DISABLE_BLOCK_COLLISION.getAsBoolean() && FakeChunk.shouldDisableCollision(level.getBlockState(pos), level, pos, context)) {
             cir.setReturnValue(Shapes.empty());
         }
     }
@@ -60,7 +61,7 @@ public abstract class BlockStateBaseMixin {
     // 使方块不可被炸坏
     @Inject(method = "onExplosionHit", at = @At("HEAD"), cancellable = true)
     private void modifyExplosionHit(ServerLevel level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> onHit, CallbackInfo ci) {
-        if (FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true)) {
+        if (Config.FC_DISABLE_EXPLOSION_EFFECT.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true)) {
             ci.cancel();
         }
     }
@@ -68,7 +69,7 @@ public abstract class BlockStateBaseMixin {
     // 使方块不对其中的实体产生特殊效果
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
     private void modifyEntityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise, CallbackInfo ci) {
-        if (FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true) && FakeChunk.isEntityNotImmune(entity)) {
+        if (Config.FC_DISABLE_BLOCK_EFFECT.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true) && FakeChunk.isEntityNotImmune(entity)) {
             ci.cancel();
         }
     }

@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.mixin.fakechunk;
 
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +17,7 @@ public abstract class FluidStateMixin {
 
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
     private void modifyEntityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, CallbackInfo ci) {
-        if (FakeChunk.isInFakeChunk(level, pos) && FakeChunk.isEntityNotImmune(entity)) {
+        if (Config.FC_DISABLE_FLUID_COLLISION.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && FakeChunk.isEntityNotImmune(entity)) {
             ci.cancel();
         }
     }

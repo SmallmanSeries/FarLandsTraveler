@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.mixin.fakechunk;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -18,7 +19,7 @@ public abstract class EntityFluidInteractionMixin {
 
     @ModifyVariable(method = "update", at = @At("STORE"), name = "fluidState")
     private FluidState modifyFluid(FluidState fluidState, @Local(argsOnly = true, name = "entity") Entity entity, @Local(name = "level") BlockGetter level, @Local(name = "mutablePos") BlockPos.MutableBlockPos mutablePos) {
-        if (level instanceof Level && FakeChunk.isInFakeChunk((Level) level, mutablePos) && FakeChunk.isEntityNotImmune(entity)) {
+        if (Config.FC_DISABLE_FLUID_COLLISION.getAsBoolean() && level instanceof Level && FakeChunk.isInFakeChunk((Level) level, mutablePos) && FakeChunk.isEntityNotImmune(entity)) {
             return Fluids.EMPTY.defaultFluidState();
         }
         return fluidState;

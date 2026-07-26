@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.mixin.fakechunk;
 
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
@@ -14,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class AbstractBoatMixin {
     @Redirect(method = {"getWaterLevelAbove", "checkInWater", "isUnderwater", "checkFallDamage"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;"))
     private FluidState modifyFluid(Level level, BlockPos pos) {
-        if (FakeChunk.isInFakeChunk(level, pos)) { // Todo 模组新增免疫去固体效应的船？
+        if (Config.FC_DISABLE_FLUID_COLLISION.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos)) { // Todo 模组新增免疫去固体效应的船？
             return Fluids.EMPTY.defaultFluidState();
         }
         return level.getFluidState(pos);

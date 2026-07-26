@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.mixin.fakechunk;
 
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import com.smallmanseries.farlandstraveler.common.misc.FLTTags;
 import net.minecraft.core.BlockPos;
@@ -20,7 +21,7 @@ import java.util.Optional;
 public abstract class ExplosionDamageCalculatorMixin {
     @Inject(method = "getBlockExplosionResistance", at = @At("RETURN"), cancellable = true)
     private void modifyExplosionResistance(Explosion explosion, BlockGetter level, BlockPos pos, BlockState block, FluidState fluid, CallbackInfoReturnable<Optional<Float>> cir) {
-        if (level instanceof Level
+        if (Config.FC_DISABLE_EXPLOSION_EFFECT.getAsBoolean() && level instanceof Level
                 && FakeChunk.isInFakeChunk((Level) level, pos)
                 && !(block.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT))) {
             cir.setReturnValue(Optional.empty());

@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.mixin.fakechunk;
 
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,7 +23,7 @@ public abstract class FlowingFluidMixin {
 
     @Inject(method = "getShape", at = @At("RETURN"), cancellable = true)
     private void modifyShape(FluidState state, BlockGetter level, BlockPos pos, CallbackInfoReturnable<VoxelShape> cir) {
-        if (level instanceof Level && FakeChunk.isInFakeChunk((Level) level, pos)) {
+        if (Config.FC_DISABLE_FLUID_COLLISION.getAsBoolean() && level instanceof Level && FakeChunk.isInFakeChunk((Level) level, pos)) {
             cir.setReturnValue(Shapes.empty());
         }
     }
@@ -30,7 +31,7 @@ public abstract class FlowingFluidMixin {
     @Inject(method = "spreadTo", at = @At("HEAD"), cancellable = true)
     private void cancelSpread(LevelAccessor level, BlockPos pos, BlockState state, Direction direction, FluidState fluidState, CallbackInfo ci) {
         BlockPos initialPos = pos.relative(direction.getOpposite());
-        if ((FakeChunk.isInFakeChunk(level, initialPos) && !FakeChunk.isInFakeChunk(level, pos))
+        if (Config.FC_DISABLE_FLUID_FLOWING_BEHAVIOR.getAsBoolean() && (FakeChunk.isInFakeChunk(level, initialPos) && !FakeChunk.isInFakeChunk(level, pos))
                 || (!FakeChunk.isInFakeChunk(level, initialPos) && FakeChunk.isInFakeChunk(level, pos))
         ) {
             ci.cancel();
