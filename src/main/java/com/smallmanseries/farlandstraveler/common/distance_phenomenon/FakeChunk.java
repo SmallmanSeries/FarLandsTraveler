@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.common.distance_phenomenon;
 
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
 import com.smallmanseries.farlandstraveler.common.misc.FLTTags;
 import net.minecraft.core.BlockPos;
@@ -71,7 +72,7 @@ public class FakeChunk {
      * @return 布尔值，是否取消碰撞
      */
     public static boolean shouldDisableCollision(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        if (getter instanceof Level level && isInFakeChunk(level, pos)) {
+        if (getter instanceof Level level && Config.FC_DISABLE_BLOCK_COLLISION.getAsBoolean() && isInFakeChunk(level, pos)) {
             // 对方块的判断 - 忽略“去固体效应”无效化的方块
             if (state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
                 return false;
@@ -96,7 +97,7 @@ public class FakeChunk {
      * @return 布尔值，是否取消互动
      */
     public static boolean shouldDisableInteraction(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        if (getter instanceof Level level && isInFakeChunk(level, pos)) {
+        if (getter instanceof Level level && Config.FC_DISABLE_BLOCK_INTERACTION.getAsBoolean() && isInFakeChunk(level, pos)) {
             // 对方块的判断 - 忽略“去固体效应”无效化的方块
             if (state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
                 return false;

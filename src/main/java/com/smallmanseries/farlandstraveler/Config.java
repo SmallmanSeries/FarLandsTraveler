@@ -16,13 +16,13 @@ public class Config {
             .define("remove_world_boundary", true);
 
     public static final ModConfigSpec.BooleanValue REMOVE_COORDINATE_LIMITS = BUILDER
-            .comment("Remove all limits related to coordinates, including teleport command limitations")
+            .comment("Remove all limits related to coordinates, for example, teleport command limitations")
             .define("remove_coordinate_limits", true);
 
     // 【边境之地设置】
     public static final ModConfigSpec.IntValue FAR_LANDS_DISTANCE = BUILDER
             .comment("The distance between the generated location of the Far Lands and the origin of the world")
-            .comment("Actually, it's the location of the first switch to the world generator")
+            .comment("This setting is used for the determination of various mechanisms and does not affect terrain generation,")
             .defineInRange("far_lands_distance", 12550824, 0, Integer.MAX_VALUE);
 
     public static final ModConfigSpec.IntValue STRIPE_LANDS_DISTANCE = BUILDER
@@ -72,17 +72,17 @@ public class Config {
             .comment("Make the blocks within fake chunks immune to explosions and unable to block explosive rays")
             .define("fc_disable_explosion_effect", true);
 
-    public static final ModConfigSpec.BooleanValue FC_DISABLE_PISTON_BEHAVIOR = BUILDER
-            .comment("Prevent the piston in fake chunks from functioning properly")
-            .define("fc_disable_piston_behavior", true);
-
     public static final ModConfigSpec.BooleanValue FC_DISABLE_LADDER_BEHAVIOR = BUILDER
             .comment("Make ladder-like blocks in fake chunks unable to be climbed")
             .define("fc_disable_ladder_behavior", true);
 
+    public static final ModConfigSpec.BooleanValue FC_DISABLE_PISTON_BEHAVIOR = BUILDER
+            .comment("Prevent the piston in fake chunks from functioning properly")
+            .define("fc_disable_piston_behavior", true);
+
     // 【实验性设置】
     public static final ModConfigSpec.BooleanValue ENABLE_FAR_LANDS = BUILDER
-            .comment("Enable noises to overflow and create the Far Lands.")
+            .comment("Enable noises to overflow and create the Far Lands")
             .comment("Now deprecated.")
             .define("enable_far_lands", false);
 
