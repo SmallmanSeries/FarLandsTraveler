@@ -5,6 +5,7 @@ import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.MegaVineConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.MultifaceBlock;
@@ -95,19 +96,26 @@ public class MegaVineFeature extends Feature<MegaVineConfiguration> {
                 origin2 = origin2.relative(direction.getOpposite());
                 int dist = Math.abs(axis == Direction.Axis.X ? origin.getX() - origin2.getX() : origin.getZ() - origin2.getZ());
                 double sag = Math.max(2.0, dist / 4.0);
+                BlockPos pos;
                 for (int i = 0; i <= dist; i++) {
                     double t = (double) i / dist;
                     double yLinear = origin.getY() + (origin2.getY() - origin.getY()) * t;
                     double sagFactor = sag * (4.0 * t * (1.0 - t)); // 4t(1-t) 在 t=0.5 达到1
                     double y = yLinear - sagFactor;
 
+                    // 防止两条藤蔓穿过同一格
+                    pos = origin.relative(axis, i).relative(Direction.Axis.Y, (int) Math.round(y - origin.getY()));
+                    if (level.getBlockState(pos).is(BlockTags.LEAVES)) {
+                        pos = pos.relative(direction.getOpposite());
+                    }
+
                     // 放置藤蔓方块
-                    this.safeSetBlock(level, origin.relative(axis, i).relative(Direction.Axis.Y, (int) Math.round(y - origin.getY())), config.vineBlock(), BlockBehaviour.BlockStateBase::canBeReplaced);
+                    this.safeSetBlock(level, pos, config.vineBlock(), BlockBehaviour.BlockStateBase::canBeReplaced);
 
                     // 放置悬垂藤蔓
                     if (random.nextInt(2) == 1) {
                         for (int j = random.nextInt(3); j > 0; j--) {
-                            this.safeSetBlock(level, origin.relative(axis, i).relative(Direction.Axis.Y, (int) Math.round(y - origin.getY()) - j), config.vineBlock(), BlockBehaviour.BlockStateBase::canBeReplaced);
+                            this.safeSetBlock(level, pos.relative(Direction.Axis.Y, -j), config.vineBlock(), BlockBehaviour.BlockStateBase::canBeReplaced);
                         }
                     }
                 }
