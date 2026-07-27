@@ -43,5 +43,5 @@
     "renderer.ModelBlockRendererMixin",
     "structureblock.BlockEntityWithBoundingBoxRenderMixin"
   ],
-  "plugin": "com.smallmanseries.farlandstraveler.MixinConfigPlugin",
+  "plugin": "com.smallmanseries.farlandstraveler.MixinConfigPlugin"
 }

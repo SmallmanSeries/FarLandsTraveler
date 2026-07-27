@@ -11,7 +11,7 @@ public abstract class LevelMixin {
     // 使地形无限生成
     // 副作用：现在tp指令没有最大坐标限制了
     @ModifyReturnValue(method = "isInWorldBoundsHorizontal", at = @At("RETURN"))
-    private static boolean removeWorldBoundsHorizontal(boolean original){
+    private static boolean removeWorldBoundsHorizontal(boolean original) {
         if (Config.REMOVE_COORDINATE_LIMITS.getAsBoolean()) {
             return true;
         }
@@ -20,7 +20,7 @@ public abstract class LevelMixin {
 
     // 我去除边境之地的，把高度限制删了有什么用啊
     @ModifyReturnValue(method = "isOutsideSpawnableHeight", at = @At("RETURN"))
-    private static boolean removeWorldBoundsVertical(boolean original){
+    private static boolean removeWorldBoundsVertical(boolean original) {
         if (Config.REMOVE_COORDINATE_LIMITS.getAsBoolean()) {
             return false;
         }
