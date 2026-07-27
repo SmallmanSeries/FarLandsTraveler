@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.mixin.border;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.smallmanseries.farlandstraveler.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -15,67 +16,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(WorldBorder.class)
 public abstract class WorldBorderMixin {
     // 使世界边界碰撞检测失效
-    @Inject(method = "isWithinBounds(Lnet/minecraft/core/BlockPos;)Z", at = @At("HEAD"), cancellable = true)
-    public void isWithinBounds(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+    @ModifyReturnValue(method = "isWithinBounds(DDD)Z", at = @At("RETURN"))
+    private boolean disableWorldBorder(boolean original){
         if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(true);
+            return true;
         }
-    }
-
-    @Inject(method = "isWithinBounds(Lnet/minecraft/world/level/ChunkPos;)Z", at = @At("HEAD"), cancellable = true)
-    public void isWithinBounds(ChunkPos pos, CallbackInfoReturnable<Boolean> cir) {
-        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(method = "isWithinBounds(Lnet/minecraft/world/phys/Vec3;)Z", at = @At("HEAD"), cancellable = true)
-    public void isWithinBounds(Vec3 pos, CallbackInfoReturnable<Boolean> cir) {
-        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(method = "isWithinBounds(Lnet/minecraft/world/phys/AABB;)Z", at = @At("HEAD"), cancellable = true)
-    public void isWithinBounds(AABB box, CallbackInfoReturnable<Boolean> cir) {
-        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(method = "isWithinBounds(DD)Z", at = @At("HEAD"), cancellable = true)
-    public void isWithinBounds(double x, double z, CallbackInfoReturnable<Boolean> cir) {
-        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(method = "isWithinBounds(DDD)Z", at = @At("HEAD"), cancellable = true)
-    public void isWithinBounds(double x, double z, double offset, CallbackInfoReturnable<Boolean> cir) {
-        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(method = "isWithinBounds(DDDD)Z", at = @At("HEAD"), cancellable = true)
-    public void isWithinBounds(double x1, double z1, double x2, double z2, CallbackInfoReturnable<Boolean> cir) {
-        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(true);
-        }
+        return original;
     }
 
     // 使世界边界警告、扣血机制失效
-    @Inject(method = "getDistanceToBorder(Lnet/minecraft/world/entity/Entity;)D", at = @At("RETURN"), cancellable = true)
-    public void getDistanceToBorder(Entity entity, CallbackInfoReturnable<Double> cir) {
+    @ModifyReturnValue(method = "getDistanceToBorder(DD)D", at = @At("RETURN"))
+    private double disableBorderEffects(double original){
         if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(Double.MAX_VALUE);
+            return Double.MAX_VALUE;
         }
-    }
-
-    @Inject(method = "getDistanceToBorder(DD)D", at = @At("RETURN"), cancellable = true)
-    public void getDistanceToBorder(double x, double z, CallbackInfoReturnable<Double> cir) {
-        if (Config.REMOVE_WORLD_BORDER.getAsBoolean()) {
-            cir.setReturnValue(Double.MAX_VALUE);
-        }
+        return original;
     }
 }

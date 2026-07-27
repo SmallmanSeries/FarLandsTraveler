@@ -37,11 +37,11 @@
     "requireAnnotations": true
   },
   "client": [
-    "border.WorldBorderRendererMixin",
+    "border.LevelRendererMixin",
     "renderer.BlockEntityRendererDispatcherMixin",
     "renderer.FluidRendererMixin",
     "renderer.ModelBlockRendererMixin",
     "structureblock.BlockEntityWithBoundingBoxRenderMixin"
   ],
-  "plugin": "com.smallmanseries.farlandstraveler.MixinConfigPlugin"
+  "plugin": "com.smallmanseries.farlandstraveler.MixinConfigPlugin",
 }

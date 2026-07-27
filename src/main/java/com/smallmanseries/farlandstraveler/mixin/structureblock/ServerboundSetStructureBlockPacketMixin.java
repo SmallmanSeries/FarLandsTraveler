@@ -27,18 +27,18 @@ public abstract class ServerboundSetStructureBlockPacketMixin {
     private Vec3i size;
 
     @Inject(method = "<init>(Lnet/minecraft/network/FriendlyByteBuf;)V", at = {@At("RETURN")})
-    public void read(FriendlyByteBuf buf, CallbackInfo ci) {
-        this.offset = new BlockPos(Mth.clamp(buf.readVarInt(), Integer.MIN_VALUE, Integer.MAX_VALUE), Mth.clamp(buf.readVarInt(), Integer.MIN_VALUE, Integer.MAX_VALUE), Mth.clamp(buf.readVarInt(), Integer.MIN_VALUE, Integer.MAX_VALUE));
-        this.size = new BlockPos(Mth.clamp(buf.readVarInt(), 0, Integer.MAX_VALUE), Mth.clamp(buf.readVarInt(), 0, Integer.MAX_VALUE), Mth.clamp(buf.readVarInt(), 0, Integer.MAX_VALUE));
+    public void read(FriendlyByteBuf input, CallbackInfo ci) {
+        this.offset = new BlockPos(Mth.clamp(input.readVarInt(), Integer.MIN_VALUE, Integer.MAX_VALUE), Mth.clamp(input.readVarInt(), Integer.MIN_VALUE, Integer.MAX_VALUE), Mth.clamp(input.readVarInt(), Integer.MIN_VALUE, Integer.MAX_VALUE));
+        this.size = new BlockPos(Mth.clamp(input.readVarInt(), 0, Integer.MAX_VALUE), Mth.clamp(input.readVarInt(), 0, Integer.MAX_VALUE), Mth.clamp(input.readVarInt(), 0, Integer.MAX_VALUE));
     }
 
     @Inject(method = "write(Lnet/minecraft/network/FriendlyByteBuf;)V", at = @At("RETURN"))
-    public void write(FriendlyByteBuf buf, CallbackInfo ci) {
-        buf.writeVarInt(this.offset.getX());
-        buf.writeVarInt(this.offset.getY());
-        buf.writeVarInt(this.offset.getZ());
-        buf.writeVarInt(this.size.getX());
-        buf.writeVarInt(this.size.getY());
-        buf.writeVarInt(this.size.getZ());
+    public void write(FriendlyByteBuf output, CallbackInfo ci) {
+        output.writeVarInt(this.offset.getX());
+        output.writeVarInt(this.offset.getY());
+        output.writeVarInt(this.offset.getZ());
+        output.writeVarInt(this.size.getX());
+        output.writeVarInt(this.size.getY());
+        output.writeVarInt(this.size.getZ());
     }
 }
