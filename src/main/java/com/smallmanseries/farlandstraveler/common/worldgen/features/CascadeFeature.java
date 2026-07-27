@@ -31,7 +31,7 @@ public class CascadeFeature extends Feature<CascadeConfiguration> {
             return false;
         }
 
-        // 偏移原点至边境之地边缘
+        // 偏移原点至边境之地边缘 Todo 之后做天井的时候需要允许偏移到天井侧壁
         int farLandsDist = Config.FAR_LANDS_DISTANCE.get();
         int clampedX = Math.clamp(origin.getX(), -farLandsDist, farLandsDist - 4);
         int clampedZ = Math.clamp(origin.getZ(), -farLandsDist, farLandsDist - 4);

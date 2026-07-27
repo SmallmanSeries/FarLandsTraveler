@@ -5,7 +5,6 @@ import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.MegaVineConfiguration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.MultifaceBlock;
@@ -30,7 +29,7 @@ public class MegaVineFeature extends Feature<MegaVineConfiguration> {
             return false;
         }
 
-        // 偏移原点至边境之地边缘
+        // 偏移原点至边境之地边缘 Todo 之后做天井的时候需要允许偏移到天井侧壁
         int farLandsDist = Config.FAR_LANDS_DISTANCE.get();
         int clampedX = Math.clamp(origin.getX(), -farLandsDist, farLandsDist - 4);
         int clampedZ = Math.clamp(origin.getZ(), -farLandsDist, farLandsDist - 4);
@@ -105,7 +104,7 @@ public class MegaVineFeature extends Feature<MegaVineConfiguration> {
 
                     // 防止两条藤蔓穿过同一格
                     pos = origin.relative(axis, i).relative(Direction.Axis.Y, (int) Math.round(y - origin.getY()));
-                    if (level.getBlockState(pos).is(BlockTags.LEAVES)) {
+                    if (level.getBlockState(pos) == config.vineBlock()) {
                         pos = pos.relative(direction.getOpposite());
                     }
 
