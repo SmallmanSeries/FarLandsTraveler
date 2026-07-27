@@ -61,7 +61,7 @@ public abstract class BlockStateBaseMixin {
     // 使方块不可被炸坏
     @Inject(method = "onExplosionHit", at = @At("HEAD"), cancellable = true)
     private void modifyExplosionHit(ServerLevel level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> onHit, CallbackInfo ci) {
-        if (Config.FC_DISABLE_EXPLOSION_EFFECT.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true)) {
+        if (Config.FC_DISABLE_EXPLOSION_EFFECT.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.ILLUSION_EFFECT_NO_EFFECT, _ -> true)) {
             ci.cancel();
         }
     }
@@ -69,7 +69,7 @@ public abstract class BlockStateBaseMixin {
     // 使方块不对其中的实体产生特殊效果
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
     private void modifyEntityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise, CallbackInfo ci) {
-        if (Config.FC_DISABLE_BLOCK_EFFECT.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT, _ -> true) && FakeChunk.isEntityNotImmune(entity)) {
+        if (Config.FC_DISABLE_BLOCK_EFFECT.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !this.is(FLTTags.Blocks.ILLUSION_EFFECT_NO_EFFECT, _ -> true) && FakeChunk.isEntityNotImmune(entity)) {
             ci.cancel();
         }
     }

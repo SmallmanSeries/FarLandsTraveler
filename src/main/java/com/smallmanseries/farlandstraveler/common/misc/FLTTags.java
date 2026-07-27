@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.Block;
 
 public class FLTTags {
     public static class Items {
-        public static final TagKey<Item> DESOLID_EFFECT_NO_EFFECT = createTag("desolid_effect_no_effect"); // 手持打上此标签的物品可以与假区块中的方块正常交互
-        public static final TagKey<Item> DESOLID_EFFECT_IMMUNE = createTag("desolid_effect_immune"); // 生物穿戴打上此标签的物品后，将免疫假区块
+        public static final TagKey<Item> ILLUSION_EFFECT_NO_EFFECT = createTag("illusion_effect_no_effect"); // 手持打上此标签的物品可以与假区块中的方块正常交互
+        public static final TagKey<Item> ILLUSION_EFFECT_IMMUNE = createTag("illusion_effect_immune"); // 生物穿戴打上此标签的物品后，将免疫假区块
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -20,7 +20,7 @@ public class FLTTags {
     }
 
     public static class Blocks {
-        public static final TagKey<Block> DESOLID_EFFECT_NO_EFFECT = createTag("desolid_effect_no_effect"); // 打上此标签的方块不受假区块的影响，即使处在假区块中也依然有碰撞、遮挡光照、可以交互
+        public static final TagKey<Block> ILLUSION_EFFECT_NO_EFFECT = createTag("illusion_effect_no_effect"); // 打上此标签的方块不受假区块的影响，即使处在假区块中也依然有碰撞、遮挡光照、可以交互
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -28,7 +28,7 @@ public class FLTTags {
     }
 
     public static class EntityTypes {
-        public static final TagKey<EntityType<?>> DESOLID_EFFECT_IMMUNE = createTag("desolid_effect_immune"); // 打上此标签的实体免疫假区块。用于边境之地原生生物
+        public static final TagKey<EntityType<?>> ILLUSION_EFFECT_IMMUNE = createTag("illusion_effect_immune"); // 打上此标签的实体免疫假区块。用于边境之地原生生物
 
         private static TagKey<EntityType<?>> createTag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));

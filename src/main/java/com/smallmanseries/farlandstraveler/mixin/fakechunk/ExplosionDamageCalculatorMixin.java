@@ -23,7 +23,7 @@ public abstract class ExplosionDamageCalculatorMixin {
     private void modifyExplosionResistance(Explosion explosion, BlockGetter level, BlockPos pos, BlockState block, FluidState fluid, CallbackInfoReturnable<Optional<Float>> cir) {
         if (Config.FC_DISABLE_EXPLOSION_EFFECT.getAsBoolean() && level instanceof Level
                 && FakeChunk.isInFakeChunk((Level) level, pos)
-                && !(block.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT))) {
+                && !(block.is(FLTTags.Blocks.ILLUSION_EFFECT_NO_EFFECT))) {
             cir.setReturnValue(Optional.empty());
         }
     }

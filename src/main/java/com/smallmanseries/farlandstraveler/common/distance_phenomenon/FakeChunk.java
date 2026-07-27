@@ -47,16 +47,16 @@ public class FakeChunk {
             return true;
         }
         // 忽略免疫“去固体效应”的实体
-        if (entity.is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
+        if (entity.is(FLTTags.EntityTypes.ILLUSION_EFFECT_IMMUNE)) {
             return false;
         }
         // 对生物实体的判断
         if (entity instanceof LivingEntity living) {
-            return !(living.getItemBySlot(EquipmentSlot.BODY).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE) // 忽略穿着减免“去固体效应”的装备的实体
-                    || living.getItemBySlot(EquipmentSlot.HEAD).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE) // Todo 这一段以后做探境装备的时候再细化
-                    || living.getItemBySlot(EquipmentSlot.CHEST).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
-                    || living.getItemBySlot(EquipmentSlot.LEGS).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
-                    || living.getItemBySlot(EquipmentSlot.FEET).is(FLTTags.Items.DESOLID_EFFECT_IMMUNE)
+            return !(living.getItemBySlot(EquipmentSlot.BODY).is(FLTTags.Items.ILLUSION_EFFECT_IMMUNE) // 忽略穿着减免“去固体效应”的装备的实体
+                    || living.getItemBySlot(EquipmentSlot.HEAD).is(FLTTags.Items.ILLUSION_EFFECT_IMMUNE) // Todo 这一段以后做探境装备的时候再细化
+                    || living.getItemBySlot(EquipmentSlot.CHEST).is(FLTTags.Items.ILLUSION_EFFECT_IMMUNE)
+                    || living.getItemBySlot(EquipmentSlot.LEGS).is(FLTTags.Items.ILLUSION_EFFECT_IMMUNE)
+                    || living.getItemBySlot(EquipmentSlot.FEET).is(FLTTags.Items.ILLUSION_EFFECT_IMMUNE)
                     || living.hasEffect(MobEffects.LUCK)); // 忽略带有特定药水效果的实体，此处先设为幸运效果
         }
         return true;
@@ -74,7 +74,7 @@ public class FakeChunk {
     public static boolean shouldDisableCollision(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         if (getter instanceof Level level && Config.FC_DISABLE_BLOCK_COLLISION.getAsBoolean() && isInFakeChunk(level, pos)) {
             // 对方块的判断 - 忽略“去固体效应”无效化的方块
-            if (state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
+            if (state.is(FLTTags.Blocks.ILLUSION_EFFECT_NO_EFFECT)) {
                 return false;
             }
             // 对实体的判断
@@ -99,7 +99,7 @@ public class FakeChunk {
     public static boolean shouldDisableInteraction(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         if (getter instanceof Level level && Config.FC_DISABLE_BLOCK_INTERACTION.getAsBoolean() && isInFakeChunk(level, pos)) {
             // 对方块的判断 - 忽略“去固体效应”无效化的方块
-            if (state.is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT)) {
+            if (state.is(FLTTags.Blocks.ILLUSION_EFFECT_NO_EFFECT)) {
                 return false;
             }
             // 对实体的判断
@@ -110,12 +110,12 @@ public class FakeChunk {
                     return true;
                 }
                 // 忽略免疫“去固体效应”的实体
-                if (entity.is(FLTTags.EntityTypes.DESOLID_EFFECT_IMMUNE)) {
+                if (entity.is(FLTTags.EntityTypes.ILLUSION_EFFECT_IMMUNE)) {
                     return false;
                 }
                 // 对生物实体的判断
                 if (entity instanceof LivingEntity living) {
-                    return !(living.getItemBySlot(EquipmentSlot.MAINHAND).is(FLTTags.Items.DESOLID_EFFECT_NO_EFFECT)); // 忽略手持带有特定标签的物品的实体
+                    return !(living.getItemBySlot(EquipmentSlot.MAINHAND).is(FLTTags.Items.ILLUSION_EFFECT_NO_EFFECT)); // 忽略手持带有特定标签的物品的实体
                 }
             }
             return true;

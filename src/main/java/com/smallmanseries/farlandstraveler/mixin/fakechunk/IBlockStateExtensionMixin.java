@@ -18,7 +18,7 @@ public interface IBlockStateExtensionMixin {
 
     @Inject(method = "isLadder", at = @At("RETURN"), cancellable = true)
     private void modifyLadder(LevelReader level, BlockPos pos, LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
-        if (Config.FC_DISABLE_LADDER_BEHAVIOR.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !((BlockState) this).is(FLTTags.Blocks.DESOLID_EFFECT_NO_EFFECT) && FakeChunk.isEntityNotImmune(entity)) {
+        if (Config.FC_DISABLE_LADDER_BEHAVIOR.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !((BlockState) this).is(FLTTags.Blocks.ILLUSION_EFFECT_NO_EFFECT) && FakeChunk.isEntityNotImmune(entity)) {
             cir.setReturnValue(false);
         }
     }
