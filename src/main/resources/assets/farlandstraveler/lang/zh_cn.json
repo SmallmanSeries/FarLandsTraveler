@@ -16,6 +16,7 @@
   "block.farlandstraveler.cyan_far_lands_rose": "青边境玫瑰",
   "block.farlandstraveler.far_lands_paeonia": "边境芍药",
   "block.farlandstraveler.ancient_grass_block": "远古草方块",
+  "block.farlandstraveler.ancient_grass_block.lore": "虽然名为“草方块”，但它其实是一种苔藓",
   "block.farlandstraveler.ancient_stone": "远古石头",
   "item.farlandstraveler.test_item": "占位符",
   "item.farlandstraveler.fake_chunk_marker": "假区块标记器",

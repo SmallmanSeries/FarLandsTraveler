@@ -2,6 +2,7 @@ package com.smallmanseries.farlandstraveler.common.block;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundTypes;
+import com.smallmanseries.farlandstraveler.common.item.BlockItemWithLore;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.mixin.accessor.IFireBlockAccessor;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,8 +31,7 @@ public class FLTBlocks {
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
-                    .strength(1346237208F, 30071926F)
-                    .sound(FLTSoundTypes.CLASSIC_GRASS));
+                    .strength(1346237208F, 30071926F));
 
     // 地表方块
     public static final DeferredBlock<Block> GLOWING_OBSIDIAN = registerBlockItem("glowing_obsidian", Block::new,
@@ -44,7 +44,7 @@ public class FLTBlocks {
                     .strength(50.0F, 1200.0F)
                     .sound(FLTSoundTypes.PE_STONE));
 
-    public static final DeferredBlock<Block> ANCIENT_GRASS_BLOCK = registerBlockItem("ancient_grass_block", Block::new,
+    public static final DeferredBlock<Block> ANCIENT_GRASS_BLOCK = registerBlockItemWithLore("ancient_grass_block", Block::new,
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.GRASS)
                     .strength(0.6F)
@@ -96,6 +96,12 @@ public class FLTBlocks {
     private static <T extends Block> DeferredBlock<T> registerBlockItem(String name, Function<Block.Properties, T> function, BlockBehaviour.Properties prop) {
         DeferredBlock<T> obj = BLOCKS.register(name, (key) -> function.apply(prop.setId(ResourceKey.create(Registries.BLOCK, key))));
         FLTItems.ITEMS.register(name, (key) -> new BlockItem(obj.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).useBlockDescriptionPrefix()));
+        return obj;
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerBlockItemWithLore(String name, Function<Block.Properties, T> function, BlockBehaviour.Properties prop) {
+        DeferredBlock<T> obj = BLOCKS.register(name, (key) -> function.apply(prop.setId(ResourceKey.create(Registries.BLOCK, key))));
+        FLTItems.ITEMS.register(name, (key) -> new BlockItemWithLore(obj.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).useBlockDescriptionPrefix()));
         return obj;
     }
 
