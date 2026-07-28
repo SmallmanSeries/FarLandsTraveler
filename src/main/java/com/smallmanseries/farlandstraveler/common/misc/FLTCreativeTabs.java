@@ -51,6 +51,8 @@ public class FLTCreativeTabs {
                 output.accept(FLTBlocks.CYAN_FAR_LANDS_ROSE);
                 output.accept(FLTBlocks.FAR_LANDS_PAEONIA);
                 output.accept(FLTBlocks.GLOWING_OBSIDIAN);
+                output.accept(FLTBlocks.ANCIENT_GRASS_BLOCK);
+                output.accept(FLTBlocks.ANCIENT_STONE);
             }))
             .build());
     // 功能方块

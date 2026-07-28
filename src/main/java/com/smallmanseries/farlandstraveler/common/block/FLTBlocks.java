@@ -10,10 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FlowerBlock;
-import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -34,7 +31,7 @@ public class FLTBlocks {
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
                     .strength(1346237208F, 30071926F)
-                    .sound(FLTSoundTypes.HOLY_MOSS));
+                    .sound(FLTSoundTypes.CLASSIC_GRASS));
 
     // 地表方块
     public static final DeferredBlock<Block> GLOWING_OBSIDIAN = registerBlockItem("glowing_obsidian", Block::new,
@@ -44,7 +41,23 @@ public class FLTBlocks {
                     .requiresCorrectToolForDrops()
                     .lightLevel((state) -> 12)
                     .pushReaction(PushReaction.BLOCK)
-                    .strength(50.0F, 1200.0F));
+                    .strength(50.0F, 1200.0F)
+                    .sound(FLTSoundTypes.PE_STONE));
+
+    public static final DeferredBlock<Block> ANCIENT_GRASS_BLOCK = registerBlockItem("ancient_grass_block", Block::new,
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.GRASS)
+                    .strength(0.6F)
+                    .sound(FLTSoundTypes.CLASSIC_GRASS));
+
+    public static final DeferredBlock<Block> ANCIENT_STONE = registerBlockItem("ancient_stone", Block::new,
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(1.5F, 6.0F)
+                    .sound(FLTSoundTypes.CLASSIC_STONE));
+
 
     // 地底方块
 

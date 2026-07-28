@@ -1,5 +1,5 @@
 {
-  "block.holy_moss.break": {
+  "block.classic_grass.break": {
     "sounds": [
       "minecraft:dig/grass1",
       "minecraft:dig/grass2",
@@ -8,7 +8,7 @@
     ],
     "subtitle": "subtitles.block.generic.break"
   },
-  "block.holy_moss.fall": {
+  "block.classic_grass.fall": {
     "sounds": [
       "minecraft:dig/grass1",
       "minecraft:dig/grass2",
@@ -17,7 +17,7 @@
     ],
     "subtitle": "subtitles.block.generic.fall"
   },
-  "block.holy_moss.hit": {
+  "block.classic_grass.hit": {
     "sounds": [
       "minecraft:dig/grass1",
       "minecraft:dig/grass2",
@@ -26,7 +26,7 @@
     ],
     "subtitle": "subtitles.block.generic.hit"
   },
-  "block.holy_moss.place": {
+  "block.classic_grass.place": {
     "sounds": [
       "minecraft:dig/grass1",
       "minecraft:dig/grass2",
@@ -35,7 +35,7 @@
     ],
     "subtitle": "subtitles.block.generic.place"
   },
-  "block.holy_moss.step": {
+  "block.classic_grass.step": {
     "sounds": [
       "minecraft:dig/grass1",
       "minecraft:dig/grass2",
@@ -43,5 +43,132 @@
       "minecraft:dig/grass4"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.classic_stone.break": {
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3",
+      "minecraft:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.classic_stone.fall": {
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3",
+      "minecraft:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.classic_stone.hit": {
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3",
+      "minecraft:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.classic_stone.place": {
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3",
+      "minecraft:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.classic_stone.step": {
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3",
+      "minecraft:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.pe_stone.break": {
+    "sounds": [
+      {
+        "name":"minecraft:dig/stone1",
+        "pitch": 1.25
+      },
+      {
+        "name":"minecraft:dig/stone2",
+        "pitch": 1.25
+      },
+      {
+        "name":"minecraft:dig/stone3",
+        "pitch": 1.25
+      },
+      {
+        "name":"minecraft:dig/stone4",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.pe_stone.fall": {
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3",
+      "minecraft:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.pe_stone.hit": {
+    "sounds": [
+      {
+        "name":"minecraft:dig/stone1",
+        "pitch": 2
+      },
+      {
+        "name":"minecraft:dig/stone2",
+        "pitch": 2
+      },
+      {
+        "name":"minecraft:dig/stone3",
+        "pitch": 2
+      },
+      {
+        "name":"minecraft:dig/stone4",
+        "pitch": 2
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.pe_stone.place": {
+    "sounds": [
+      {
+        "name":"minecraft:dig/stone1",
+        "pitch": 1.25
+      },
+      {
+        "name":"minecraft:dig/stone2",
+        "pitch": 1.25
+      },
+      {
+        "name":"minecraft:dig/stone3",
+        "pitch": 1.25
+      },
+      {
+        "name":"minecraft:dig/stone4",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.pe_stone.step": {
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3",
+      "minecraft:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
+  
 }

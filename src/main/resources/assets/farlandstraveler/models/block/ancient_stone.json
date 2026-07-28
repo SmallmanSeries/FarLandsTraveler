@@ -1,0 +1,6 @@
+{
+  "parent": "farlandstraveler:block/cube_ancient",
+  "textures": {
+    "all": "farlandstraveler:block/ancient_stone"
+  }
+}
