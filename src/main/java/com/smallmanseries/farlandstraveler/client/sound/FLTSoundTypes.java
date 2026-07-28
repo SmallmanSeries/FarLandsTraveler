@@ -12,7 +12,7 @@ public class FLTSoundTypes {
             FLTSoundEvents.BLOCK_CLASSIC_GRASS_PLACE,
             FLTSoundEvents.BLOCK_CLASSIC_GRASS_HIT,
             FLTSoundEvents.BLOCK_CLASSIC_GRASS_FALL);
-    
+
     public static final SoundType CLASSIC_STONE = new DeferredSoundType(
             2.0F,
             1.0F,

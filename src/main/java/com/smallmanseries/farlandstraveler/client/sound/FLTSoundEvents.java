@@ -17,14 +17,14 @@ public class FLTSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_GRASS_PLACE = register("block.classic_grass.place");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_GRASS_HIT = register("block.classic_grass.hit");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_GRASS_FALL = register("block.classic_grass.fall");
-    
+
     // 经典石头
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_STONE_BREAK = register("block.classic_stone.break");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_STONE_STEP = register("block.classic_stone.step");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_STONE_PLACE = register("block.classic_stone.place");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_STONE_HIT = register("block.classic_stone.hit");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_CLASSIC_STONE_FALL = register("block.classic_stone.fall");
-    
+
     // 携带版石头
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_PE_STONE_BREAK = register("block.pe_stone.break");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_PE_STONE_STEP = register("block.pe_stone.step");
