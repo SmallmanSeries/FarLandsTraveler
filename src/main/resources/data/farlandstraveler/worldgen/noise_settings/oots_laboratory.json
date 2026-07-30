@@ -190,10 +190,6 @@
     "type": "minecraft:sequence",
     "sequence": [
       {
-        "type": "farlandstraveler:holder",
-        "rule": "farlandstraveler:far_lands"
-      },
-      {
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:vertical_gradient",
@@ -229,7 +225,7 @@
             "false_at_and_above": {
               "absolute": 89
             },
-            "random_name": "minecraft:deepslate",
+            "random_name": "farlandstraveler:oots_laboratory_roof",
             "true_at_and_below": {
               "absolute": 88
             }
@@ -244,6 +240,10 @@
             }
           }
         }
+      },
+      {
+        "type": "farlandstraveler:holder",
+        "rule": "farlandstraveler:far_lands"
       },
       {
         "type": "minecraft:condition",

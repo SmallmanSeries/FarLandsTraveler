@@ -335,10 +335,6 @@
     "type": "minecraft:sequence",
     "sequence": [
       {
-        "type": "farlandstraveler:holder",
-        "rule": "farlandstraveler:far_lands"
-      },
-      {
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:vertical_gradient",
@@ -356,6 +352,10 @@
             "Name": "minecraft:bedrock"
           }
         }
+      },
+      {
+        "type": "farlandstraveler:holder",
+        "rule": "farlandstraveler:far_lands"
       },
       {
         "type": "minecraft:condition",

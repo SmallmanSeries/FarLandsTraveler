@@ -111,11 +111,14 @@ public class DataInjectors {
                     // 获取surface_rule
                     JsonObject surfaceRule = context.getFile().getAsJsonObject().getAsJsonObject("surface_rule");
                     JsonArray sequence = surfaceRule.getAsJsonArray("sequence");
-
                     JsonObject holder = new JsonObject();
                     holder.addProperty("type", "farlandstraveler:holder");
                     holder.addProperty("rule", "farlandstraveler:far_lands");
-                    sequence.add(holder);
+                    JsonArray newSequence = new JsonArray();
+                    newSequence.add(sequence.remove(0));
+                    newSequence.add(holder);
+                    newSequence.addAll(sequence);
+                    surfaceRule.add("sequence", newSequence);
                 });
     }
 
