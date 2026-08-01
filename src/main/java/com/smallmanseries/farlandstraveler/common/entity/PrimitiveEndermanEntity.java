@@ -2,7 +2,6 @@ package com.smallmanseries.farlandstraveler.common.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -57,17 +56,28 @@ public class PrimitiveEndermanEntity extends EnderMan {
         private final Level level;
         private Vec3 safePlace;
         private boolean escaping;
+        private boolean dangerous;
 
         public EscapeWaterGoal(PrimitiveEndermanEntity priman) {
             this.priman = priman;
             this.level = priman.level();
             this.safePlace = null;
             this.escaping = false;
+            this.dangerous = false;
         }
 
         @Override
         public boolean canUse() {
             if (!this.priman.isInWater()) {
+                if (this.dangerous && this.priman.onGround()) {
+                    this.dangerous = false;
+                }
+                return false;
+            }
+            if (this.priman.isUnderWater()) {
+                return false;
+            }
+            if (this.dangerous) {
                 return false;
             }
             if (this.priman.getTarget() != null) {
@@ -77,21 +87,14 @@ public class PrimitiveEndermanEntity extends EnderMan {
         }
 
         private boolean findSafePlace() {
-            if (this.safePlace != null) {
-                return true;
-            }
-
-            RandomSource random = this.priman.getRandom();
             BlockPos pos = this.priman.blockPosition();
-            BlockPos randomPos;
-
-            for (int i = 0; i < 10; i++) {
-                randomPos = pos.offset(random.nextInt(32) - 16, 0, random.nextInt(32) - 16);
-                if (this.level.getBlockState(randomPos).getFluidState().isEmpty()) {
-                    this.safePlace = Vec3.atBottomCenterOf(randomPos);
+            for (BlockPos checkPos : BlockPos.withinManhattan(pos, 16, 0, 16)) {
+                if (this.level.getBlockState(checkPos).getFluidState().isEmpty()) {
+                    this.safePlace = Vec3.atBottomCenterOf(checkPos);
                     return true;
                 }
             }
+            this.dangerous = true;
             return false;
         }
 
