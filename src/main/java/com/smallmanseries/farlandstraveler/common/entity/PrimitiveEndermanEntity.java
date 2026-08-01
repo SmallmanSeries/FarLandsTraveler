@@ -5,6 +5,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.level.Level;
@@ -22,7 +23,7 @@ public class PrimitiveEndermanEntity extends EnderMan {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return EnderMan.createAttributes().add(NeoForgeMod.SWIM_SPEED, 2.5);
+        return EnderMan.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.4).add(NeoForgeMod.SWIM_SPEED, 2.5);
     }
 
     @Override
