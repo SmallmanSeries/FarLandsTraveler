@@ -129,7 +129,7 @@ public class DataInjectors {
      * @param biomeSource 需要包装的生物群系源，一个JSON元素
      */
     public static void setBiomeSource(JsonObject generator, JsonElement biomeSource) {
-        if (!biomeSource.isJsonNull()) {
+        if (biomeSource != null && !biomeSource.isJsonNull()) {
             int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
             JsonObject biomeSourceNew = new JsonObject();
             biomeSourceNew.addProperty("type", "farlandstraveler:box_select");
