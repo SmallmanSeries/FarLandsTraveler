@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
+import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
+import com.smallmanseries.farlandstraveler.common.entity.PrimitiveEndermanEntity;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
@@ -12,6 +14,7 @@ import net.minecraft.world.level.block.piston.PistonStructureResolver;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
@@ -19,6 +22,12 @@ import java.util.List;
 
 @EventBusSubscriber(modid = FarLandsTraveler.MODID)
 public class EventHandler {
+    // 注册实体属性
+    @SubscribeEvent
+    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        event.put(FLTEntityTypes.PRIMITIVE_ENDERMAN.get(), PrimitiveEndermanEntity.createAttributes().build());
+    }
+
     // 注册边境之地数据驱动文件
     @SubscribeEvent
     public static void registerData(DataPackRegistryEvent.NewRegistry event) {

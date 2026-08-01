@@ -11,6 +11,7 @@
     "border.PlayerMixin",
     "border.ServerGamePacketListenerImplMixin",
     "border.WorldBorderMixin",
+    "entity.EnderManMixin",
     "fakechunk.AbstractBoatMixin",
     "fakechunk.BlockStateBaseMixin",
     "fakechunk.EntityFluidInteractionMixin",

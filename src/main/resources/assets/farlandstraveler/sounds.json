@@ -92,19 +92,19 @@
   "block.pe_stone.break": {
     "sounds": [
       {
-        "name":"minecraft:dig/stone1",
+        "name": "minecraft:dig/stone1",
         "pitch": 1.25
       },
       {
-        "name":"minecraft:dig/stone2",
+        "name": "minecraft:dig/stone2",
         "pitch": 1.25
       },
       {
-        "name":"minecraft:dig/stone3",
+        "name": "minecraft:dig/stone3",
         "pitch": 1.25
       },
       {
-        "name":"minecraft:dig/stone4",
+        "name": "minecraft:dig/stone4",
         "pitch": 1.25
       }
     ],
@@ -122,19 +122,19 @@
   "block.pe_stone.hit": {
     "sounds": [
       {
-        "name":"minecraft:dig/stone1",
+        "name": "minecraft:dig/stone1",
         "pitch": 2
       },
       {
-        "name":"minecraft:dig/stone2",
+        "name": "minecraft:dig/stone2",
         "pitch": 2
       },
       {
-        "name":"minecraft:dig/stone3",
+        "name": "minecraft:dig/stone3",
         "pitch": 2
       },
       {
-        "name":"minecraft:dig/stone4",
+        "name": "minecraft:dig/stone4",
         "pitch": 2
       }
     ],
@@ -143,19 +143,19 @@
   "block.pe_stone.place": {
     "sounds": [
       {
-        "name":"minecraft:dig/stone1",
+        "name": "minecraft:dig/stone1",
         "pitch": 1.25
       },
       {
-        "name":"minecraft:dig/stone2",
+        "name": "minecraft:dig/stone2",
         "pitch": 1.25
       },
       {
-        "name":"minecraft:dig/stone3",
+        "name": "minecraft:dig/stone3",
         "pitch": 1.25
       },
       {
-        "name":"minecraft:dig/stone4",
+        "name": "minecraft:dig/stone4",
         "pitch": 1.25
       }
     ],
@@ -170,5 +170,4 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   }
-  
 }

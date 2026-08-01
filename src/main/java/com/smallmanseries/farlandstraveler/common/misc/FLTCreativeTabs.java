@@ -108,11 +108,11 @@ public class FLTCreativeTabs {
     // 刷怪蛋
     public static final Supplier<CreativeModeTab> FLT_SPAWN_EGGS = TABS.register("flt_spawn_eggs", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_spawn_eggs"))
-            .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
+            .icon(() -> new ItemStack(FLTItems.PRIMITIVE_ENDERMAN_SPAWN_EGG.get()))
             .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_supplies"))
             .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
-                output.accept(FLTItems.TEST_ITEM);
+                output.accept(FLTItems.PRIMITIVE_ENDERMAN_SPAWN_EGG);
             }))
             .build());
 

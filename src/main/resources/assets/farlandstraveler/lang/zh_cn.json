@@ -20,9 +20,9 @@
   "block.farlandstraveler.ancient_stone": "远古石头",
   "item.farlandstraveler.test_item": "占位符",
   "item.farlandstraveler.fake_chunk_marker": "假区块标记器",
+  "item.farlandstraveler.primitive_enderman_spawn_egg": "原始末影人刷怪蛋",
   "message.farlandstraveler.fake_chunk_marked": "当前区块已被标记为§c假区块",
   "message.farlandstraveler.fake_chunk_unmarked": "当前区块已被标记为正常区块",
-
   "farlandstraveler.configuration.title": "边境旅者 模组配置",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml": "边境旅者通用配置",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml.title": "边境旅者 通用配置",

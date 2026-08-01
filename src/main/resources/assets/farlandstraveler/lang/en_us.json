@@ -20,9 +20,9 @@
   "block.farlandstraveler.ancient_stone": "Ancient Stone",
   "item.farlandstraveler.test_item": "placeholder",
   "item.farlandstraveler.fake_chunk_marker": "Fake Chunk Marker",
+  "item.farlandstraveler.primitive_enderman_spawn_egg": "Primitive Enderman Spawn Egg",
   "message.farlandstraveler.fake_chunk_marked": "Current chunk has been marked as a §cFake Chunk",
   "message.farlandstraveler.fake_chunk_unmarked": "Current chunk has been marked as a normal chunk",
-
   "farlandstraveler.configuration.title": "Far Lands Traveler Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml": "Far Lands Traveler Common Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml.title": "Far Lands Traveler Common Configuration",

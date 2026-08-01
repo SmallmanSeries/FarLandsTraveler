@@ -3,6 +3,7 @@ package com.smallmanseries.farlandstraveler;
 import com.mojang.logging.LogUtils;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
+import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
 import com.smallmanseries.farlandstraveler.common.misc.FLTCreativeTabs;
@@ -29,6 +30,7 @@ public class FarLandsTraveler {
         modEventBus.addListener(this::commonSetup);
 
         FLTBlocks.BLOCKS.register(modEventBus);
+        FLTEntityTypes.ENTITY_TYPES.register(modEventBus);
         FLTItems.ITEMS.register(modEventBus);
         FLTCreativeTabs.TABS.register(modEventBus);
         FLTDensityFunctions.FUNCTIONS.register(modEventBus);
