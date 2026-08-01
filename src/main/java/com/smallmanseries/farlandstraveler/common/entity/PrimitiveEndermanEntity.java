@@ -5,10 +5,12 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.NeoForgeMod;
 
 public class PrimitiveEndermanEntity extends EnderMan {
     public PrimitiveEndermanEntity(EntityType<? extends EnderMan> type, Level level) {
@@ -18,6 +20,10 @@ public class PrimitiveEndermanEntity extends EnderMan {
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(3, new EscapeWaterGoal(this));
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        return EnderMan.createAttributes().add(NeoForgeMod.SWIM_SPEED, 2.5);
     }
 
     @Override
@@ -42,25 +48,26 @@ public class PrimitiveEndermanEntity extends EnderMan {
     }
 
     @Override
-    protected boolean teleportTowards(Entity entity){
+    protected boolean teleportTowards(Entity entity) {
         return false;
     }
 
     private static class EscapeWaterGoal extends Goal {
         private final PrimitiveEndermanEntity priman;
         private final Level level;
-        private Vec3 safePlace = null;
+        private Vec3 safePlace;
         private boolean escaping;
 
-        public EscapeWaterGoal(PrimitiveEndermanEntity priman){
+        public EscapeWaterGoal(PrimitiveEndermanEntity priman) {
             this.priman = priman;
             this.level = priman.level();
+            this.safePlace = null;
             this.escaping = false;
         }
 
         @Override
         public boolean canUse() {
-            if(!this.priman.isInWater()){
+            if (!this.priman.isInWater()) {
                 return false;
             }
             if (this.priman.getTarget() != null) {
@@ -69,8 +76,8 @@ public class PrimitiveEndermanEntity extends EnderMan {
             return findSafePlace();
         }
 
-        private boolean findSafePlace(){
-            if(this.safePlace != null){
+        private boolean findSafePlace() {
+            if (this.safePlace != null) {
                 return true;
             }
 
@@ -78,8 +85,8 @@ public class PrimitiveEndermanEntity extends EnderMan {
             BlockPos pos = this.priman.blockPosition();
             BlockPos randomPos;
 
-            for(int i = 0; i < 10; i++) {
-                randomPos = pos.offset(random.nextInt(64) - 32, 0, random.nextInt(64) - 32);
+            for (int i = 0; i < 10; i++) {
+                randomPos = pos.offset(random.nextInt(32) - 16, 0, random.nextInt(32) - 16);
                 if (this.level.getBlockState(randomPos).getFluidState().isEmpty()) {
                     this.safePlace = Vec3.atBottomCenterOf(randomPos);
                     return true;
@@ -96,17 +103,15 @@ public class PrimitiveEndermanEntity extends EnderMan {
         @Override
         public void start() {
             this.escaping = true;
-            System.out.println("ks");
             this.priman.getNavigation().moveTo(this.safePlace.x(), this.safePlace.y(), this.safePlace.z(), 1.0);
         }
 
         @Override
-        public void tick(){
-            if(this.escaping && this.priman.onGround() && !this.priman.isInWater()){
-                if(!this.priman.getNavigation().isDone()){
+        public void tick() {
+            if (this.escaping && this.priman.onGround() && !this.priman.isInWater()) {
+                if (!this.priman.getNavigation().isDone()) {
                     this.priman.getNavigation().stop();
                 }
-                System.out.println("tz");
                 this.escaping = false;
             }
         }
