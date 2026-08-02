@@ -29,6 +29,7 @@
   "message.farlandstraveler.fake_chunk_unmarked": "Current chunk has been marked as a normal chunk",
   "subtitles.farlandstraveler.item.primitive_ender_core.use": "Primitive Ender Core Uses",
   "subtitles.farlandstraveler.item.primitive_ender_core.break": "Primitive Ender Core Breaks",
+  "subtitles.farlandstraveler.weather.some_noise": "Some Noise",
   "farlandstraveler.configuration.title": "Far Lands Traveler Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml": "Far Lands Traveler Common Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml.title": "Far Lands Traveler Common Configuration",

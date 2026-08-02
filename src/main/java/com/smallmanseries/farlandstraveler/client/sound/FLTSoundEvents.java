@@ -39,6 +39,10 @@ public class FLTSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_PRIMITIVE_ENDER_CORE_USE_FAR = register("item.primitive_ender_core.use_far");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_PRIMITIVE_ENDER_CORE_BREAK_FAR = register("item.primitive_ender_core.break_far");
 
+    // 效果音效
+    public static final DeferredHolder<SoundEvent, SoundEvent> EFFECT_PRECISION_LOSS_FAILURE = register("effect.precision_loss.failure");
+
+
     public static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name)));
     }

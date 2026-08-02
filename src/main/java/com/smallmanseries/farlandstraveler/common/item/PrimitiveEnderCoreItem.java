@@ -3,6 +3,7 @@ package com.smallmanseries.farlandstraveler.common.item;
 import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.effect.FLTMobEffects;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -46,6 +47,20 @@ public class PrimitiveEnderCoreItem extends Item {
                     0.6F,
                     level.getRandom().nextFloat() * 0.2F + 0.9F
             );
+
+            if (level.isClientSide()) {
+                for (int i = 0; i < 16; i++) {
+                    level.addParticle(
+                            ParticleTypes.LARGE_SMOKE,
+                            player.getRandomX(0.5),
+                            player.getRandomY(),
+                            player.getRandomZ(0.5),
+                            0,
+                            0,
+                            0
+                    );
+                }
+            }
 
             if (player.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
                 MobEffectInstance effect = player.getEffect(FLTMobEffects.PRECISION_LOSS);

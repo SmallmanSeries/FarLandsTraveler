@@ -197,5 +197,11 @@
       "farlandstraveler:item/primitive_ender_core/break_far3"
     ],
     "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
+  },
+  "effect.precision_loss.failure": {
+    "sounds": [
+      "farlandstraveler:mob_effect/precision_loss_failure"
+    ],
+    "subtitle": "subtitles.farlandstraveler.weather.some_noise"
   }
 }
