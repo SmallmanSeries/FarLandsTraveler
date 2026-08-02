@@ -63,7 +63,7 @@ public class FakeChunk {
     }
 
     /**
-     * 判断是否需要取消碰撞，用于{@link com.smallmanseries.farlandstraveler.mixin.fakechunk.BlockStateBaseMixin}
+     * 判断是否需要取消碰撞，用于{@link com.smallmanseries.farlandstraveler.mixin.phenomenon.fakechunk.BlockStateBaseMixin}
      *
      * @param state   方块状态，判断该方块是否不受假区块影响
      * @param getter  方块获取器，一般是level
@@ -88,7 +88,7 @@ public class FakeChunk {
     }
 
     /**
-     * 判断是否需要取消互动，用于{@link com.smallmanseries.farlandstraveler.mixin.fakechunk.BlockStateBaseMixin}
+     * 判断是否需要取消互动，用于{@link com.smallmanseries.farlandstraveler.mixin.phenomenon.fakechunk.BlockStateBaseMixin}
      *
      * @param state   方块状态，判断该方块是否不受假区块影响
      * @param getter  方块获取器，一般是level

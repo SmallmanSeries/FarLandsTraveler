@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.mixin.sodium;
+package com.smallmanseries.farlandstraveler.mixin.renderer.sodium;
 
 import com.smallmanseries.farlandstraveler.Config;
 import net.caffeinemc.mods.sodium.client.render.chunk.compile.ChunkBuildBuffers;

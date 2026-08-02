@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.mixin.fakechunk;
+package com.smallmanseries.farlandstraveler.mixin.phenomenon.fakechunk;
 
 import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;

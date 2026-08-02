@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.mixin.sodium;
+package com.smallmanseries.farlandstraveler.mixin.renderer.sodium;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.smallmanseries.farlandstraveler.Config;

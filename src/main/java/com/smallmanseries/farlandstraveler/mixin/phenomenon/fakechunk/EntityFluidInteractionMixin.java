@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.mixin.fakechunk;
+package com.smallmanseries.farlandstraveler.mixin.phenomenon.fakechunk;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.smallmanseries.farlandstraveler.Config;

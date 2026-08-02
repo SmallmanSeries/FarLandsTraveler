@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.mixin.biome;
+package com.smallmanseries.farlandstraveler.mixin.worldgen.biome;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.smallmanseries.farlandstraveler.Config;
