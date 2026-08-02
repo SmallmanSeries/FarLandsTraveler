@@ -68,11 +68,11 @@ public class FLTCreativeTabs {
     // 物品
     public static final Supplier<CreativeModeTab> FLT_ITEMS = TABS.register("flt_items", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.farlandstraveler.flt_items"))
-            .icon(() -> new ItemStack(FLTItems.TEST_ITEM.get()))
+            .icon(() -> new ItemStack(FLTItems.PRIMITIVE_ENDER_CORE.get()))
             .withTabsBefore(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_functional_blocks"))
             .withTabsAfter(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "flt_test"))
             .displayItems(((itemDisplayParameters, output) -> {
-                output.accept(FLTItems.TEST_ITEM);
+                output.accept(FLTItems.PRIMITIVE_ENDER_CORE);
             }))
             .build());
     // 探境工具

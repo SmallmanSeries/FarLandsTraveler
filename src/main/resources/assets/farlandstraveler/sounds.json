@@ -169,5 +169,33 @@
       "minecraft:dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "item.primitive_ender_core.use": {
+    "sounds": [
+      "farlandstraveler:item/primitive_ender_core/use"
+    ],
+    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.use"
+  },
+  "item.primitive_ender_core.use_far": {
+    "sounds": [
+      "farlandstraveler:item/primitive_ender_core/use_far"
+    ],
+    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.use"
+  },
+  "item.primitive_ender_core.break": {
+    "sounds": [
+      "farlandstraveler:item/primitive_ender_core/break1",
+      "farlandstraveler:item/primitive_ender_core/break2",
+      "farlandstraveler:item/primitive_ender_core/break3"
+    ],
+    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
+  },
+  "item.primitive_ender_core.break_far": {
+    "sounds": [
+      "farlandstraveler:item/primitive_ender_core/break_far1",
+      "farlandstraveler:item/primitive_ender_core/break_far2",
+      "farlandstraveler:item/primitive_ender_core/break_far3"
+    ],
+    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
   }
 }

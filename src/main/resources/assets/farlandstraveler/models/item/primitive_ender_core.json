@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "farlandstraveler:item/primitive_ender_core"
+  }
+}

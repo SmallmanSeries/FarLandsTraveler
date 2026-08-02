@@ -12,8 +12,11 @@ public class FLTItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(FarLandsTraveler.MODID);
 
     // 物品列表
+    // 物品
+    public static final DeferredItem<Item> PRIMITIVE_ENDER_CORE = ITEMS.registerItem("primitive_ender_core", PrimitiveEnderCoreItem::new, () -> new Item.Properties().stacksTo(16).useCooldown(1.0F));
+
     // 刷怪蛋（边境之地原生生物的刷怪蛋叫“生成 XXX”，其他刷怪蛋叫“XXX刷怪蛋”）
-    public static final DeferredItem<SpawnEggItem> PRIMITIVE_ENDERMAN_SPAWN_EGG = ITEMS.registerItem("primitive_enderman_spawn_egg", SpawnEggItem::new, () -> new Item.Properties().spawnEgg(FLTEntityTypes.PRIMITIVE_ENDERMAN.get()));
+    public static final DeferredItem<Item> PRIMITIVE_ENDERMAN_SPAWN_EGG = ITEMS.registerItem("primitive_enderman_spawn_egg", SpawnEggItem::new, () -> new Item.Properties().spawnEgg(FLTEntityTypes.PRIMITIVE_ENDERMAN.get()));
 
     // 测试物品
     public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerItem("test_item", Item::new, Item.Properties::new);

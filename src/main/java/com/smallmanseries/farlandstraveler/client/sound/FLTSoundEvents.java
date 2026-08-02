@@ -32,6 +32,13 @@ public class FLTSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_PE_STONE_HIT = register("block.pe_stone.hit");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_PE_STONE_FALL = register("block.pe_stone.fall");
 
+    // 物品音效
+    // 原始末影核心
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_PRIMITIVE_ENDER_CORE_USE = register("item.primitive_ender_core.use");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_PRIMITIVE_ENDER_CORE_BREAK = register("item.primitive_ender_core.break");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_PRIMITIVE_ENDER_CORE_USE_FAR = register("item.primitive_ender_core.use_far");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_PRIMITIVE_ENDER_CORE_BREAK_FAR = register("item.primitive_ender_core.break_far");
+
     public static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name)));
     }
