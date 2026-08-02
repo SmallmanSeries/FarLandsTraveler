@@ -2,6 +2,7 @@ package com.smallmanseries.farlandstraveler.common.worldgen.farlands;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.DataRegister;
 import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.BiomeSourceHolder;
@@ -45,4 +46,16 @@ public record FarLands(
     public static final ResourceKey<FarLands> FAR_LANDS = ResourceKey.create(DataRegister.FAR_LANDS, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "far_lands"));
     public static final ResourceKey<FarLands> OOTS_LABORATORY = ResourceKey.create(DataRegister.FAR_LANDS, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "oots_laboratory"));
 
+    /**
+     * 判断一个位置是否在边境之地内部
+     *
+     * @param x             x坐标
+     * @param y             y坐标
+     * @param z             z坐标
+     * @param positiveShift 一般情况下，正半轴的边境之地地形会比负半轴提前生成几格。这个数值用于抵消掉提前的这几格。
+     * @return 布尔值，该位置是否位于边境之地
+     */
+    public static boolean isInFarLands(double x, double y, double z, int positiveShift) {
+        return Math.max(x, z) > (Config.FAR_LANDS_DISTANCE.getAsInt() - positiveShift) || Math.min(x, z) < -Config.FAR_LANDS_DISTANCE.getAsInt();
+    }
 }

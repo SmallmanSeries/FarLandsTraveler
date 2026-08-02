@@ -1,7 +1,7 @@
 package com.smallmanseries.farlandstraveler.common.effect;
 
-import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
+import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
@@ -15,7 +15,7 @@ public class PrecisionLossEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(ServerLevel serverLevel, LivingEntity mob, int amplification) {
-        if (Math.max(mob.position().x(), mob.position().z()) > (Config.FAR_LANDS_DISTANCE.getAsInt() - 3) || Math.min(mob.position().x(), mob.position().z()) < -Config.FAR_LANDS_DISTANCE.getAsInt()) {
+        if (FarLands.isInFarLands(mob.getX(), mob.getY(), mob.getZ(), 3)) {
             serverLevel.playSound(
                     null,
                     mob.getX(),

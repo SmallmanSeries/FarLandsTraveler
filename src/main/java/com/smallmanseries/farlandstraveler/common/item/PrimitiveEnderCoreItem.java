@@ -1,8 +1,8 @@
 package com.smallmanseries.farlandstraveler.common.item;
 
-import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.effect.FLTMobEffects;
+import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -23,7 +23,7 @@ public class PrimitiveEnderCoreItem extends Item {
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        if (Math.max(player.position().x(), player.position().z()) > (Config.FAR_LANDS_DISTANCE.getAsInt() - 3) || Math.min(player.position().x(), player.position().z()) < -Config.FAR_LANDS_DISTANCE.getAsInt()) {
+        if (FarLands.isInFarLands(player.getX(), player.getY(), player.getZ(), 3)) {
             level.playSound(
                     null,
                     player.getX(),
