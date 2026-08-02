@@ -23,6 +23,7 @@
   "item.farlandstraveler.primitive_enderman_spawn_egg": "Primitive Enderman Spawn Egg",
   "item.farlandstraveler.primitive_ender_core": "Primitive Ender Core",
   "entity.farlandstraveler.primitive_enderman": "Primitive Enderman",
+  "effect.farlandstraveler.precision_loss": "§oPrecision Loss",
   "message.farlandstraveler.wip": "Working In Progress",
   "message.farlandstraveler.fake_chunk_marked": "Current chunk has been marked as a §cFake Chunk",
   "message.farlandstraveler.fake_chunk_unmarked": "Current chunk has been marked as a normal chunk",
