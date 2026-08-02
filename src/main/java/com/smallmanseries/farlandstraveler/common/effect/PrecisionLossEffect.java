@@ -26,10 +26,10 @@ public class PrecisionLossEffect extends MobEffect {
                     1.0F,
                     1.0F
             );
-        }
 
-        // Todo 切换成穿墙效果
-        mob.removeEffect(FLTMobEffects.PRECISION_LOSS);
+            // Todo 切换成穿墙效果
+            mob.removeEffect(FLTMobEffects.PRECISION_LOSS);
+        }
 
         return true;
     }
