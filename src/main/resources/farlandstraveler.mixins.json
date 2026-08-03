@@ -10,6 +10,7 @@
     "border.PlayerMixin",
     "border.ServerGamePacketListenerImplMixin",
     "border.WorldBorderMixin",
+    "craft.anvil.FallingBlockEntityMixin",
     "entity.EnderManMixin",
     "phenomenon.fakechunk.AbstractBoatMixin",
     "phenomenon.fakechunk.BlockStateBaseMixin",
