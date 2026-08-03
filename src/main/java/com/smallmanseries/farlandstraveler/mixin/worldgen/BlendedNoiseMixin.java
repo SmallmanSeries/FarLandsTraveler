@@ -33,6 +33,7 @@ public abstract class BlendedNoiseMixin {
     @Final
     private double yMultiplier;
 
+    // 偏移采样点的x坐标
     @ModifyVariable(method = "compute", at = @At("STORE"), name = "limitX")
     private double setXMain(double limitX, @Local(argsOnly = true, name = "context") DensityFunction.FunctionContext context) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
@@ -41,6 +42,7 @@ public abstract class BlendedNoiseMixin {
         return limitX;
     }
 
+    // 偏移采样点的y坐标
     @ModifyVariable(method = "compute", at = @At("STORE"), name = "limitY")
     private double setYMain(double limitY, @Local(argsOnly = true, name = "context") DensityFunction.FunctionContext context) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
@@ -49,6 +51,7 @@ public abstract class BlendedNoiseMixin {
         return limitY;
     }
 
+    // 偏移采样点的z坐标
     @ModifyVariable(method = "compute", at = @At("STORE"), name = "limitZ")
     private double setZMain(double limitZ, @Local(argsOnly = true, name = "context") DensityFunction.FunctionContext context) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
@@ -57,6 +60,7 @@ public abstract class BlendedNoiseMixin {
         return limitZ;
     }
 
+    // 设置独立的z轴噪声差异值
     @ModifyVariable(method = "compute", at = @At("STORE"), name = "mainZ")
     private double setZSelector(double mainZ) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {
@@ -65,6 +69,7 @@ public abstract class BlendedNoiseMixin {
         return mainZ;
     }
 
+    // 修改包装机制，使坐标可以溢出
     @Redirect(method = "compute", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/synth/PerlinNoise;wrap(D)D"))
     private double redirectWrap(double x) {
         if (((BlendedNoise) (Object) this) instanceof BlendedNoiseCustomizable noise) {

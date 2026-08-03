@@ -25,10 +25,11 @@ public class MathUtil {
 
     /**
      * 丢失坐标的精度
+     * <p> 由于过程中将坐标转换成了浮点数，所以除了“主动精度丢失”外，还会附加上类似基岩版高坐标距离现象的“被动精度丢失”。
      *
      * @param pos  输入坐标
-     * @param lose 丢失指数（坐标将丢失 5 - lose 个二进制位）
-     * @return 丢失精度后的坐标
+     * @param lose 丢失指数（该指数每增加1，就会多丢失一位；指数为5时，数值的小数部分全部丢失）
+     * @return 丢失精度后的坐标。
      */
     public static Vec3 losePrecision(Vec3 pos, int lose) {
         return new Vec3(
@@ -39,10 +40,10 @@ public class MathUtil {
     }
 
     /**
-     * 丢失数值的精度
+     * 丢失浮点数数值的精度
      *
      * @param original 输入数值
-     * @param lose     丢失指数（坐标将丢失 5 - lose 个二进制位）
+     * @param lose     丢失指数（该指数每增加1，就会多丢失一位；指数为5时，数值的小数部分全部丢失）
      * @return 丢失精度后的坐标
      */
     public static float losePrecision(float original, int lose) {

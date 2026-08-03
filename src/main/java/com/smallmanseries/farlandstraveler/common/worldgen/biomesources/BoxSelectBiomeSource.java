@@ -55,11 +55,13 @@ public class BoxSelectBiomeSource extends BiomeSource {
 
     @Override
     public Stream<Holder<Biome>> collectPossibleBiomes() {
+        // 将框内、框外的所有生物群系都收集出来
         return Stream.concat(this.inside.value().collectPossibleBiomes(), this.outside.value().collectPossibleBiomes());
     }
 
     @Override
     public Holder<Biome> getNoiseBiome(int x, int y, int z, Climate.Sampler sampler) {
+        // 在框内和框外使用不同的生物群系源进行采样
         if (x >= originX && x < originX + extendX
                 && y >= originY && y < originY + extendY
                 && z >= originZ && z < originZ + extendZ) {
@@ -70,6 +72,7 @@ public class BoxSelectBiomeSource extends BiomeSource {
 
     @Override
     public void addDebugInfo(List<String> info, BlockPos pos, Climate.Sampler sampler) {
+        // 在框内和框外使用不同的生物群系源来添加调试信息
         if (pos.getX() >= originX && pos.getX() < originX + extendX
                 && pos.getY() >= originY && pos.getY() < originY + extendY
                 && pos.getZ() >= originZ && pos.getZ() < originZ + extendZ) {

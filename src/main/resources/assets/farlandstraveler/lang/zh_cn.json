@@ -24,7 +24,7 @@
   "item.farlandstraveler.primitive_ender_core": "原始末影核心",
   "entity.farlandstraveler.primitive_enderman": "原始末影人",
   "effect.farlandstraveler.precision_loss": "「精度丢失」",
-  "effect.farlandstraveler.precision_loss.255": "「精度丢失」§4level.255.name",
+  "effect.farlandstraveler.precision_loss.255": "「精度丢失」 §4level.255.name",
   "message.farlandstraveler.fake_chunk_marked": "当前区块已被标记为§c假区块",
   "message.farlandstraveler.fake_chunk_unmarked": "当前区块已被标记为正常区块",
   "message.farlandstraveler.wip": "未完成",

@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FlowingFluid.class)
 public abstract class FlowingFluidMixin {
 
+    // 取消假区块中流体的碰撞
     @Inject(method = "getShape", at = @At("RETURN"), cancellable = true)
     private void modifyShape(FluidState state, BlockGetter level, BlockPos pos, CallbackInfoReturnable<VoxelShape> cir) {
         if (Config.FC_DISABLE_FLUID_COLLISION.getAsBoolean() && level instanceof Level && FakeChunk.isInFakeChunk((Level) level, pos)) {
@@ -28,6 +29,7 @@ public abstract class FlowingFluidMixin {
         }
     }
 
+    // 使流体无法主动扩散越过假区块边界
     @Inject(method = "spreadTo", at = @At("HEAD"), cancellable = true)
     private void cancelSpread(LevelAccessor level, BlockPos pos, BlockState state, Direction direction, FluidState target, CallbackInfo ci) {
         BlockPos initialPos = pos.relative(direction.getOpposite());

@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FluidRenderer.class)
 public abstract class FluidRendererMixin {
+
+    // 取消一部分流体的渲染，以模拟条纹之地的效果
     @Inject(method = "tesselate", at = @At("HEAD"), cancellable = true)
     private void modifyTesselating(BlockAndTintGetter level, BlockPos pos, FluidRenderer.Output output, BlockState blockState, FluidState fluidState, CallbackInfo ci) {
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();

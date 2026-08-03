@@ -103,10 +103,12 @@ public class BlendedNoiseCustomizable extends BlendedNoise {
         this.zShift = zShift;
     }
 
+    // 制作一个混合噪声模板
     public static BlendedNoiseCustomizable createUnseeded(double xScale, double yScale, double zScale, double xFactor, double yFactor, double zFactor, double smearScaleMultiplier, boolean overflowable, Optional<Integer> repeatStart, Optional<Integer> repeatLength, Optional<Integer> repeatCount, double xShift, double yShift, double zShift) {
         return new BlendedNoiseCustomizable(new XoroshiroRandomSource(0L), xScale, yScale, zScale, xFactor, yFactor, zFactor, smearScaleMultiplier, overflowable, repeatStart, repeatLength, repeatCount, xShift, yShift, zShift);
     }
 
+    // 基于模板，制作带种子的混合噪声
     @Override
     public BlendedNoiseCustomizable withNewRandom(RandomSource random) {
         return new BlendedNoiseCustomizable(random, this.xzScale, this.yScale, this.zScale, this.xzFactor, this.yFactor, this.zFactor, this.smearScaleMultiplier, this.overflowable, this.repeatStart, this.repeatLength, this.repeatCount, this.xShift, this.yShift, this.zShift);
@@ -120,11 +122,13 @@ public class BlendedNoiseCustomizable extends BlendedNoise {
      */
     @Override
     public double compute(FunctionContext context) {
+        // 实现循环效果
         if (this.repeatStart.isPresent() && this.repeatLength.isPresent() && this.repeatCount.isPresent()) {
             int repeatStart = this.repeatStart.get();
             int repeatLength = this.repeatLength.get();
             int sectionLength = repeatLength * this.repeatCount.get();
 
+            // x轴循环：采样点坐标超过【循环起点】后，就在【循环节长度】内不断循环，直到循环【循环次数】次之后进入下一个循环区域。
             int x = Math.abs(context.blockX());
             if (x >= repeatStart) {
                 int a = x - repeatStart;
@@ -132,6 +136,7 @@ public class BlendedNoiseCustomizable extends BlendedNoise {
             }
             x *= context.blockX() < 0 ? -1 : 1;
 
+            // y轴循环，同上
             int y = Math.abs(context.blockY());
             if (y > repeatStart) {
                 int a = y - repeatStart;
@@ -139,6 +144,7 @@ public class BlendedNoiseCustomizable extends BlendedNoise {
             }
             y *= context.blockY() < 0 ? -1 : 1;
 
+            // z轴循环，同上
             int z = Math.abs(context.blockZ());
             if (z > repeatStart) {
                 int a = z - repeatStart;

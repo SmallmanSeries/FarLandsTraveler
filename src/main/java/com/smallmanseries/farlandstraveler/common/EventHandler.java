@@ -26,6 +26,7 @@ import net.neoforged.neoforge.event.level.PistonEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
 import java.util.List;
+import java.util.Objects;
 
 @EventBusSubscriber(modid = FarLandsTraveler.MODID)
 public class EventHandler {
@@ -76,6 +77,7 @@ public class EventHandler {
         }
     }
 
+    // 检测爆炸，为一些特殊的爆炸影响到的实体添加效果。
     @SubscribeEvent
     public static void addEffectsWhenExplode(ExplosionEvent.Detonate event) {
         Entity source = event.getExplosion().getDirectSourceEntity();
@@ -83,17 +85,25 @@ public class EventHandler {
             return;
         }
 
-        boolean sourceFar = FarLands.isInFarLands(source.getX(), source.getY(), source.getZ(), 3);
+        // 爆炸源是【原始末影核心】物品实体，为所有影响到的实体添加效果。如果爆炸源和实体都在正常世界，添加精度丢失效果。如果爆炸源和实体都在边境之地，添加穿墙效果。否则什么也不做。
         if (source instanceof ItemEntity itemEntity && itemEntity.getItem().is(FLTItems.PRIMITIVE_ENDER_CORE)) {
+
+            // 判断爆炸源是否在边境之地
+            boolean sourceFar = FarLands.isInFarLands(source.getX(), source.getY(), source.getZ(), 3);
+
             for (Entity entity : event.getAffectedEntities()) {
                 if (entity instanceof LivingEntity living) {
+
+                    // 判断受影响的实体是否在边境之地
                     if (FarLands.isInFarLands(living.getX(), living.getY(), living.getZ(), 3)) {
                         if (sourceFar) {
                             // Todo 穿墙效果
                         }
                     } else if (!sourceFar) {
+
+                        // 如果玩家身上没有精度丢失效果，就为玩家添加时长50秒的255级的精度丢失效果；否则将玩家的精度丢失效果等级增加到255级，时长增加50秒。
                         if (living.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
-                            living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, living.getEffect(FLTMobEffects.PRECISION_LOSS).getDuration() + 1000, 255, false, false, true));
+                            living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, Objects.requireNonNull(living.getEffect(FLTMobEffects.PRECISION_LOSS)).getDuration() + 1000, 255, false, false, true));
                         } else {
                             living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, 1000, 255, false, false, true));
                         }

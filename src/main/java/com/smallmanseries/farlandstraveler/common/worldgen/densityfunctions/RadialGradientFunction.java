@@ -46,6 +46,7 @@ public record RadialGradientFunction(double centerX, double centerZ, double inne
 
     @Override
     public double compute(FunctionContext functionContext) {
+        // 径向渐变
         double innerRadiusPow = innerRadius * innerRadius;
         double outerRadiusPow = outerRadius * outerRadius;
         double dp = (functionContext.blockX() - centerX) * (functionContext.blockX() - centerX) + (functionContext.blockZ() - centerZ) * (functionContext.blockZ() - centerZ);

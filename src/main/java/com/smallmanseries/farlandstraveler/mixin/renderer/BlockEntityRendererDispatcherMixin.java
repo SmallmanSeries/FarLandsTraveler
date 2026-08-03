@@ -15,6 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BlockEntityRenderDispatcher.class)
 public abstract class BlockEntityRendererDispatcherMixin<E extends BlockEntity, S extends BlockEntityRenderState> {
+
+    // 取消一部分方块实体的渲染，以模拟条纹之地的效果
     @Inject(method = "tryExtractRenderState(Lnet/minecraft/world/level/block/entity/BlockEntity;FLnet/minecraft/client/renderer/feature/ModelFeatureRenderer$CrumblingOverlay;Lnet/minecraft/client/renderer/culling/Frustum;)Lnet/minecraft/client/renderer/blockentity/state/BlockEntityRenderState;", at = @At("HEAD"), cancellable = true)
     private void modifyRenderer(E blockEntity, float partialTicks, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress, @Nullable Frustum frustum, CallbackInfoReturnable<S> cir) {
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();

@@ -22,6 +22,7 @@ public class FakeChunkMarkerItem extends Item {
             BlockPos pos = context.getClickedPos();
             LevelChunk chunk = level.getChunkAt(pos);
             Player player = context.getPlayer();
+            // 切换当前区块的“假区块”属性。
             if (chunk.getData(FLTAttachments.FAKE_CHUNK)) {
                 chunk.setData(FLTAttachments.FAKE_CHUNK, false);
                 if (player != null) {

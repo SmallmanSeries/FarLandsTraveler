@@ -20,6 +20,10 @@ import java.util.Set;
 
 @Mixin(ChunkGenerator.class)
 public class ChunkGeneratorMixin {
+
+    /**
+     * 添加对{@link FixedStructurePlacement}（“固定”放置类型）的特殊判断，使locate指令能正确定位（虽然定位结果常常因整数溢出而不完全准确）
+     */
     @Inject(method = "findNearestMapStructure", at = @At(value = "INVOKE", target = "Ljava/util/Map$Entry;getKey()Ljava/lang/Object;"), cancellable = true)
     private void fixedPlacement(ServerLevel level, HolderSet<Structure> wantedStructures, BlockPos pos, int maxSearchRadius, boolean createReference, CallbackInfoReturnable<Pair<BlockPos, Holder<Structure>>> cir, @Local Map.Entry<StructurePlacement, Set<Holder<Structure>>> entry) {
         if (entry.getKey() instanceof FixedStructurePlacement placement) {

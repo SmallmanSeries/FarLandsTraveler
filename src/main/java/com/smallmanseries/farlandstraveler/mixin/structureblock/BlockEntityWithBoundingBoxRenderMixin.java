@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(BlockEntityWithBoundingBoxRenderer.class)
 public class BlockEntityWithBoundingBoxRenderMixin {
+
     @ModifyReturnValue(method = "getViewDistance", at = @At("RETURN"))
     private int viewDistance(int original) {
         return 512;

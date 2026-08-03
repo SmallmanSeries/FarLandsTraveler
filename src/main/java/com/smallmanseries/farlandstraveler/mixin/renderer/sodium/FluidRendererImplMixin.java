@@ -15,6 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FluidRendererImpl.class)
 public abstract class FluidRendererImplMixin {
+
+    // 取消一部分流体的渲染，以模拟条纹之地的效果
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     private void modifyRenderer(LevelSlice level, BlockState blockState, FluidState fluidState, BlockPos blockPos, BlockPos offset, TranslucentGeometryCollector collector, ChunkBuildBuffers buffers, CallbackInfo ci) {
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();

@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(EntityFluidInteraction.class)
 public abstract class EntityFluidInteractionMixin {
 
+    // 使实体在假区块中无法与流体碰撞
     @ModifyVariable(method = "update", at = @At("STORE"), name = "fluidState")
     private FluidState modifyFluid(FluidState fluidState, @Local(argsOnly = true, name = "entity") Entity entity, @Local(name = "level") BlockGetter level, @Local(name = "mutablePos") BlockPos.MutableBlockPos mutablePos) {
         if (Config.FC_DISABLE_FLUID_COLLISION.getAsBoolean() && level instanceof Level && FakeChunk.isInFakeChunk((Level) level, mutablePos) && FakeChunk.isEntityNotImmune(entity)) {

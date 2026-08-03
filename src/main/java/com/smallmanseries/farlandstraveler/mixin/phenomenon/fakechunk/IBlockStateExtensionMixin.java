@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(IBlockStateExtension.class)
 public interface IBlockStateExtensionMixin {
 
+    // 使假区块中的梯子类方块不能攀爬
     @Inject(method = "isLadder", at = @At("RETURN"), cancellable = true)
     private void modifyLadder(LevelReader level, BlockPos pos, LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
         if (Config.FC_DISABLE_LADDER_BEHAVIOR.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos) && !((BlockState) this).is(FLTTags.Blocks.ILLUSION_EFFECT_NO_EFFECT) && FakeChunk.isEntityNotImmune(entity)) {

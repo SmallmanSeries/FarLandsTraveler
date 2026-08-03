@@ -24,6 +24,7 @@ public class PrimitiveEnderCoreItem extends Item {
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
         if (FarLands.isInFarLands(player.getX(), player.getY(), player.getZ(), 3)) {
+            // 在边境之地中使用原始末影核心
             level.playSound(
                     null,
                     player.getX(),
@@ -37,6 +38,7 @@ public class PrimitiveEnderCoreItem extends Item {
 
             player.sendOverlayMessage(Component.translatable("message.farlandstraveler.wip"));
         } else {
+            // 在正常世界使用原始末影核心：先播放音效，然后生成黑烟，然后给予使用者精度丢失效果
             level.playSound(
                     null,
                     player.getX(),
@@ -62,6 +64,7 @@ public class PrimitiveEnderCoreItem extends Item {
                 }
             }
 
+            // 如果玩家身上没有精度丢失效果，就为玩家添加1级、10秒的精度丢失效果；否则给玩家的精度丢失效果增加一级，时长增加10秒，最高到10级。
             if (player.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
                 MobEffectInstance effect = player.getEffect(FLTMobEffects.PRECISION_LOSS);
                 player.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, effect.getDuration() + 200, Math.min(effect.getAmplifier() + 1, 9), false, false, true));

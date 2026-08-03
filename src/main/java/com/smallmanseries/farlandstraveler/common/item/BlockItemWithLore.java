@@ -11,6 +11,9 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.function.Consumer;
 
+/**
+ * 带工具提示的方块物品。工具提示的翻译键是方块的翻译键加上“.lore”
+ */
 public class BlockItemWithLore extends BlockItem {
     public BlockItemWithLore(Block block, Properties properties) {
         super(block, properties);

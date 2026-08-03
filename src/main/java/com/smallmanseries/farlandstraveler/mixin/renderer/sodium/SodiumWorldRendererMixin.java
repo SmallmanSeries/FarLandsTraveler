@@ -18,6 +18,8 @@ import java.util.SortedSet;
 
 @Mixin(SodiumWorldRenderer.class)
 public abstract class SodiumWorldRendererMixin {
+
+    // 取消一部分方块实体的渲染，以模拟条纹之地的效果
     @Inject(method = "extractBlockEntity", at = @At("HEAD"), cancellable = true)
     private static void modifyRenderer(BlockEntity blockEntity, PoseStack poseStack, Camera camera, float tickDelta, Long2ObjectMap<SortedSet<BlockDestructionProgress>> progression, LevelRenderState levelRenderState, CallbackInfo ci) {
         int stripeLandsDistance = Config.STRIPE_LANDS_DISTANCE.getAsInt();

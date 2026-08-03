@@ -28,10 +28,13 @@ import java.util.function.Predicate;
 @Mixin(FallingBlockEntity.class)
 public class FallingBlockEntityMixin {
 
+    // 铁砧砸击合成
     @WrapOperation(method = "lambda$causeFallDamage$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)V"))
     private static void anvilCraft(Entity entity, DamageSource source, float damage, Operation<Void> original) {
         if (entity instanceof ItemEntity itemEntity) {
             ItemStack item = itemEntity.getItem();
+
+            // 原始末影核心的合成：铁砧砸击原始末影核心，消耗一个该物品，产生物品碎裂的粒子效果和冲击波效果，产生一个无伤害且不破坏方块的爆炸。
             if (item.is(FLTItems.PRIMITIVE_ENDER_CORE)) {
                 itemEntity.level().explode(
                         itemEntity,
@@ -92,6 +95,7 @@ public class FallingBlockEntityMixin {
         original.call(entity, source, damage);
     }
 
+    // 修改爆炸的实体选择器，使其能选中部分物品实体
     @ModifyExpressionValue(method = "causeFallDamage", at = @At(value = "INVOKE", target = "Ljava/util/function/Predicate;and(Ljava/util/function/Predicate;)Ljava/util/function/Predicate;"))
     private <T> Predicate<T> modifyEntitySelector(Predicate<T> original) {
         return original.or(entity -> entity instanceof ItemEntity item && item.getItem().is(FLTItems.PRIMITIVE_ENDER_CORE));

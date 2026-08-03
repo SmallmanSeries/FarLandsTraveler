@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AbstractBoat.class)
 public class AbstractBoatMixin {
+
+    // 使船在假区块内检测不到流体
     @Redirect(method = {"getWaterLevelAbove", "checkInWater", "isUnderwater", "checkFallDamage"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;"))
     private FluidState modifyFluid(Level level, BlockPos pos) {
         if (Config.FC_DISABLE_FLUID_COLLISION.getAsBoolean() && FakeChunk.isInFakeChunk(level, pos)) { // Todo 模组新增免疫去固体效应的船？

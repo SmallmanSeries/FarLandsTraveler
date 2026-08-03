@@ -64,6 +64,5 @@ public abstract class ChunkMapMixin {
         // 应用生成器
         WorldGenContext modifiedContext = new WorldGenContext(level, generator, context.structureManager(), context.lightEngine(), context.mainThreadExecutor(), context.unsavedListener());
         args.set(0, modifiedContext);
-
     }
 }

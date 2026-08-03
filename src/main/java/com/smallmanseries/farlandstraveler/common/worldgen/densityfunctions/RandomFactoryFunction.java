@@ -24,7 +24,7 @@ import java.util.Objects;
  * <p>
  * "dimension": 随机数源的源维度
  * <p>
- * "name": 随机数源的名称，如 {@code minecraft:bedrock_floor} 是基岩底板所用的随机数源
+ * "name": 随机数源的名称，相当于种子。如 {@code minecraft:bedrock_floor} 是基岩底板所用的随机数源
  * <p>
  * }
  *

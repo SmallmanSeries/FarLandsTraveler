@@ -23,7 +23,7 @@ public record FakeChunkBorderRenderer(Minecraft minecraft) implements DebugRende
         if (!this.minecraft.player.getMainHandItem().is(FLTItems.FAKE_CHUNK_MARKER)) return;
         Vec3 camera = new Vec3(camX, camY, camZ);
         ChunkPos pos = ChunkPos.containing(BlockPos.containing(camera));
-
+        // 在玩家的渲染距离范围内搜索假区块，如果搜索到了就在这个区块上渲染一个红色的线框
         for (int dx = -renderDistance; dx <= renderDistance; dx++) {
             for (int dz = -renderDistance; dz <= renderDistance; dz++) {
                 int chunkX = pos.x() + dx;

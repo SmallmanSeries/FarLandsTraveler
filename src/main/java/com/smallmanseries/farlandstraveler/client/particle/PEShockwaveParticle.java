@@ -30,7 +30,7 @@ public class PEShockwaveParticle extends SingleQuadParticle {
     @Override
     public void extract(QuadParticleRenderState particleTypeRenderState, Camera camera, float partialTickTime) {
         Quaternionf rotation = new Quaternionf();
-
+        // 设置旋转方向
         switch (this.direction) {
             case UP -> rotation.rotateX((float) -Math.PI * 0.5F);
             case DOWN -> rotation.rotateX((float) Math.PI * 0.5F);
@@ -46,6 +46,7 @@ public class PEShockwaveParticle extends SingleQuadParticle {
 
     @Override
     public int getLightCoords(float a) {
+        // 设置粒子发光，15级方块光照
         return LightCoordsUtil.withBlock(super.getLightCoords(a), 15);
     }
 
@@ -56,6 +57,7 @@ public class PEShockwaveParticle extends SingleQuadParticle {
 
     @Override
     public float getQuadSize(float a) {
+        // 冲击波扩散动画
         float s = ((float) this.age + a) / (float) this.lifetime;
         return this.quadSize * s * s;
     }
@@ -63,6 +65,7 @@ public class PEShockwaveParticle extends SingleQuadParticle {
     @Override
     public void tick() {
         super.tick();
+        // 粒子淡出动画
         this.alpha -= 0.9F / this.lifetime;
         System.out.println(this.alpha);
     }
@@ -80,7 +83,7 @@ public class PEShockwaveParticle extends SingleQuadParticle {
                     level,
                     x, y, z,
                     xa, ya, za,
-                    this.sprite().get(FarLands.isInFarLands(x, y, z, 3) ? 1 : 0, 1),
+                    this.sprite().get(FarLands.isInFarLands(x, y, z, 3) ? 1 : 0, 1), // 根据粒子所在的位置决定用哪个精灵图
                     options.size(),
                     options.direction()
             );

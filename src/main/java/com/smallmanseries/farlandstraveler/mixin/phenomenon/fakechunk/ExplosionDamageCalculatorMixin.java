@@ -19,6 +19,8 @@ import java.util.Optional;
 
 @Mixin(ExplosionDamageCalculator.class)
 public abstract class ExplosionDamageCalculatorMixin {
+
+    // 使假区块中的方块不阻挡爆炸射线
     @Inject(method = "getBlockExplosionResistance", at = @At("RETURN"), cancellable = true)
     private void modifyExplosionResistance(Explosion explosion, BlockGetter level, BlockPos pos, BlockState block, FluidState fluid, CallbackInfoReturnable<Optional<Float>> cir) {
         if (Config.FC_DISABLE_EXPLOSION_EFFECT.getAsBoolean() && level instanceof Level

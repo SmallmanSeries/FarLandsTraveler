@@ -33,7 +33,7 @@ public abstract class BlockStateBaseMixin {
     @Shadow
     public abstract boolean is(TagKey<Block> tag, Predicate<BlockBehaviour.BlockStateBase> predicate);
 
-    // 取消实体（玩家、末影人等）互动
+    // 取消实体（玩家、末影人等）与假区块中的方块的互动
     @Inject(method = "getShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;", at = @At("RETURN"), cancellable = true)
     private void modifyShape(BlockGetter level, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
         if (FakeChunk.shouldDisableInteraction(level.getBlockState(pos), level, pos, context) && !context.equals(CollisionContext.empty())) {
