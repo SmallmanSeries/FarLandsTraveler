@@ -5,7 +5,9 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
+import com.smallmanseries.farlandstraveler.common.particle.PEShockwaveParticleOptions;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -28,7 +30,7 @@ public class FallingBlockEntityMixin {
         if (entity instanceof ItemEntity itemEntity) {
             ItemStack item = itemEntity.getItem();
             if (item.is(FLTItems.PRIMITIVE_ENDER_CORE)) {
-                if(FarLands.isInFarLands(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 3)) {
+                if (FarLands.isInFarLands(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 3)) {
                     itemEntity.playSound(FLTSoundEvents.ITEM_PRIMITIVE_ENDER_CORE_BREAK_FAR.get(), 1.0F, 1.0F);
 
                 } else {
@@ -36,17 +38,28 @@ public class FallingBlockEntityMixin {
                 }
 
                 if (itemEntity.level() instanceof ServerLevel server) {
-                        server.sendParticles(
-                                new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item)),
-                                itemEntity.getBlockX() + 0.5,
-                                itemEntity.getY()+0.1,
-                                itemEntity.getBlockZ() + 0.5,
-                                16,
-                                0.2,
-                                0.05,
-                                0.2,
-                                0.1
-                        );
+                    server.sendParticles(
+                            new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item)),
+                            itemEntity.getBlockX() + 0.5,
+                            itemEntity.getY() + 0.1,
+                            itemEntity.getBlockZ() + 0.5,
+                            20,
+                            0.2,
+                            0.05,
+                            0.2,
+                            0.1
+                    );
+                    server.sendParticles(
+                            new PEShockwaveParticleOptions(Direction.UP, 10, 10),
+                            itemEntity.getBlockX() + 0.5,
+                            itemEntity.getY() + 0.1,
+                            itemEntity.getBlockZ() + 0.5,
+                            1,
+                            0,
+                            0,
+                            0,
+                            0
+                    );
                 }
 
                 item.setCount(item.getCount() - 1);

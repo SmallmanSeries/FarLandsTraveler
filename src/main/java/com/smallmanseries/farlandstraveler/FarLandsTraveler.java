@@ -8,6 +8,7 @@ import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;
 import com.smallmanseries.farlandstraveler.common.misc.FLTCreativeTabs;
+import com.smallmanseries.farlandstraveler.common.particle.FLTParticleTypes;
 import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.FLTBiomeSources;
 import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.FLTDensityFunctions;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.FLTFeatures;
@@ -35,6 +36,7 @@ public class FarLandsTraveler {
         FLTItems.ITEMS.register(modEventBus);
         FLTCreativeTabs.TABS.register(modEventBus);
         FLTMobEffects.EFFECTS.register(modEventBus);
+        FLTParticleTypes.PARTICLE_TYPES.register(modEventBus);
         FLTDensityFunctions.FUNCTIONS.register(modEventBus);
         FLTBiomeSources.BIOME_SOURCES.register(modEventBus);
         FLTAttachments.ATTACHMENT_TYPES.register(modEventBus);

@@ -1,14 +1,17 @@
 package com.smallmanseries.farlandstraveler.client;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
+import com.smallmanseries.farlandstraveler.client.particle.PEShockwaveParticle;
 import com.smallmanseries.farlandstraveler.client.render.FakeChunkBorderRenderer;
 import com.smallmanseries.farlandstraveler.client.render.entity.PrimitiveEndermanRender;
 import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
+import com.smallmanseries.farlandstraveler.common.particle.FLTParticleTypes;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterDebugRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
 @EventBusSubscriber(modid = FarLandsTraveler.MODID, value = Dist.CLIENT)
 public class EventHandlerClient {
@@ -25,5 +28,11 @@ public class EventHandlerClient {
     @SubscribeEvent
     public static void registerDebugRenderer(RegisterDebugRenderersEvent event) {
         event.register(FakeChunkBorderRenderer::new);
+    }
+
+    // 注册粒子提供器
+    @SubscribeEvent
+    public static void registerParticleProvider(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(FLTParticleTypes.PRIMITIVE_ENDER_SHOCKWAVE.get(), PEShockwaveParticle.Provider::new);
     }
 }
