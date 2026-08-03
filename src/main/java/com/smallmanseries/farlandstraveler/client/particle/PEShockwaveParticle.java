@@ -16,7 +16,7 @@ import net.minecraft.util.RandomSource;
 import org.joml.Quaternionf;
 
 public class PEShockwaveParticle extends SingleQuadParticle {
-    private Direction direction;
+    private final Direction direction;
 
     public PEShockwaveParticle(ClientLevel level, double x, double y, double z, double xa, double ya, double za, TextureAtlasSprite sprite, float size, Direction direction) {
         super(level, x, y, z, xa, ya, za, sprite);

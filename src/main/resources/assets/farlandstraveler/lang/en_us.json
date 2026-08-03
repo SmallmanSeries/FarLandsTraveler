@@ -24,6 +24,7 @@
   "item.farlandstraveler.primitive_ender_core": "Primitive Ender Core",
   "entity.farlandstraveler.primitive_enderman": "Primitive Enderman",
   "effect.farlandstraveler.precision_loss": "§oPrecision Loss",
+  "effect.farlandstraveler.precision_loss.255": "§oPrecision Loss §r§4level.255.name",
   "message.farlandstraveler.wip": "Working In Progress",
   "message.farlandstraveler.fake_chunk_marked": "Current chunk has been marked as a §cFake Chunk",
   "message.farlandstraveler.fake_chunk_unmarked": "Current chunk has been marked as a normal chunk",
