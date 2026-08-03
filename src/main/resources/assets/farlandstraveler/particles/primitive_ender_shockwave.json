@@ -1,5 +1,6 @@
 {
   "textures": [
-    "farlandstraveler:primitive_ender_shockwave"
+    "farlandstraveler:primitive_ender_shockwave",
+    "farlandstraveler:primitive_ender_shockwave_far"
   ]
 }

@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.client.particle;
 
 import com.smallmanseries.farlandstraveler.common.particle.PEShockwaveParticleOptions;
+import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
@@ -75,7 +76,14 @@ public class PEShockwaveParticle extends SingleQuadParticle {
                 double xa, double ya, double za,
                 RandomSource random
         ) {
-            PEShockwaveParticle particle = new PEShockwaveParticle(level, x, y, z, xa, ya, za, this.sprite().get(random), options.size(), options.direction());
+            PEShockwaveParticle particle = new PEShockwaveParticle(
+                    level,
+                    x, y, z,
+                    xa, ya, za,
+                    this.sprite().get(FarLands.isInFarLands(x, y, z, 3) ? 1 : 0, 1),
+                    options.size(),
+                    options.direction()
+            );
             particle.setLifetime(options.life());
             particle.setParticleSpeed(xa, ya, za);
 
