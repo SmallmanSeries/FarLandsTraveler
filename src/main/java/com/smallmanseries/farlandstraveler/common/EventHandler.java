@@ -4,10 +4,16 @@ import com.google.common.collect.Lists;
 import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
+import com.smallmanseries.farlandstraveler.common.effect.FLTMobEffects;
 import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
 import com.smallmanseries.farlandstraveler.common.entity.PrimitiveEndermanEntity;
+import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.piston.PistonStructureResolver;
@@ -15,6 +21,7 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.level.ExplosionEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
@@ -67,5 +74,33 @@ public class EventHandler {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void addEffectsWhenExplode(ExplosionEvent.Detonate event) {
+        Entity source = event.getExplosion().getDirectSourceEntity();
+        if (source == null) {
+            return;
+        }
+
+        boolean sourceFar = FarLands.isInFarLands(source.getX(), source.getY(), source.getZ(), 3);
+        if (source instanceof ItemEntity itemEntity && itemEntity.getItem().is(FLTItems.PRIMITIVE_ENDER_CORE)) {
+            for (Entity entity : event.getAffectedEntities()) {
+                if (entity instanceof LivingEntity living) {
+                    if (FarLands.isInFarLands(living.getX(), living.getY(), living.getZ(), 3)) {
+                        if (sourceFar) {
+                            // Todo 穿墙效果
+                        }
+                    } else if (!sourceFar) {
+                        if (living.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
+                            living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, living.getEffect(FLTMobEffects.PRECISION_LOSS).getDuration() + 1000, 255, false, false, true));
+                        } else {
+                            living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, 1000, 255, false, false, true));
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

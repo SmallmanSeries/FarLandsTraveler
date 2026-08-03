@@ -184,17 +184,41 @@
   },
   "item.primitive_ender_core.break": {
     "sounds": [
-      "farlandstraveler:item/primitive_ender_core/break1",
-      "farlandstraveler:item/primitive_ender_core/break2",
-      "farlandstraveler:item/primitive_ender_core/break3"
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break1",
+        "volume": 0.25,
+        "pitch": 1.25
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break2",
+        "volume": 0.25,
+        "pitch": 1.25
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break3",
+        "volume": 0.25,
+        "pitch": 1.25
+      }
     ],
     "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
   },
   "item.primitive_ender_core.break_far": {
     "sounds": [
-      "farlandstraveler:item/primitive_ender_core/break_far1",
-      "farlandstraveler:item/primitive_ender_core/break_far2",
-      "farlandstraveler:item/primitive_ender_core/break_far3"
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break_far1",
+        "volume": 0.4,
+        "pitch": 1.25
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break_far2",
+        "volume": 0.4,
+        "pitch": 1.25
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break_far3",
+        "volume": 0.4,
+        "pitch": 1.25
+      }
     ],
     "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
   },
