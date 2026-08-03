@@ -63,7 +63,8 @@ public class PrimitiveEnderCoreItem extends Item {
             }
 
             if (player.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
-                player.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, player.getEffect(FLTMobEffects.PRECISION_LOSS).getDuration() + 200, 0, false, false, true));
+                MobEffectInstance effect = player.getEffect(FLTMobEffects.PRECISION_LOSS);
+                player.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, effect.getDuration() + 200, Math.min(effect.getAmplifier() + 1, 9), false, false, true));
             } else {
                 player.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, 200, 0, false, false, true));
             }
