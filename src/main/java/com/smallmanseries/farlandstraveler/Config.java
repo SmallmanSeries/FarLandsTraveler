@@ -5,6 +5,11 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    // 【主要玩法设置】
+    public static final ModConfigSpec.DoubleValue PE_TELEPORT_THRESHOLD = BUILDER
+            .comment("When a player has the \"Precision Loss\" Lv.255 effect and their horizontal speed's square exceeds this threshold, a teleportation will be triggered")
+            .defineInRange("pe_teleport_threshold", 100, 0, Double.MAX_VALUE);
+
     // 【世界边界设置】
     public static final ModConfigSpec.BooleanValue REMOVE_WORLD_BORDER = BUILDER
             .comment("Remove the world border")

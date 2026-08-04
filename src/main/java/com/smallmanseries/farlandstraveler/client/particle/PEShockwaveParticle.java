@@ -67,7 +67,6 @@ public class PEShockwaveParticle extends SingleQuadParticle {
         super.tick();
         // 粒子淡出动画
         this.alpha -= 0.9F / this.lifetime;
-        System.out.println(this.alpha);
     }
 
     public record Provider(SpriteSet sprite) implements ParticleProvider<PEShockwaveParticleOptions> {
