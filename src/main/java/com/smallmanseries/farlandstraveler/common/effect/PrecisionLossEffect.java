@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.common.effect;
 
+import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.network.chat.Component;
@@ -8,6 +9,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.NonNull;
 
 public class PrecisionLossEffect extends MobEffect {
     private boolean max;
@@ -64,5 +67,22 @@ public class PrecisionLossEffect extends MobEffect {
             return Component.translatable(this.getDescriptionId() + ".255");
         }
         return Component.translatable(this.getDescriptionId());
+    }
+
+    /**
+     * 计算精度丢失255级触发传送的目的地
+     *
+     * @param living 实体
+     * @param x      实体的x坐标
+     * @param z      实体的z坐标
+     * @return 目的地位置
+     */
+    public static @NonNull Vec3 calculateDest(LivingEntity living, double x, double z) {
+        int dest = Config.PE_TELEPORT_DEST.getAsInt();
+        double dx = living.getDeltaMovement().x();
+        double dz = living.getDeltaMovement().z();
+        double t = Math.min(((dx > 0 ? dest : -dest) - x) / dx, ((dz > 0 ? dest : -dest) - z) / dz);
+
+        return new Vec3(x + t * dx, living.getY(), z + t * dz);
     }
 }

@@ -67,6 +67,8 @@ public class FallingBlockEntityMixin {
                     );
                     server.sendParticles(
                             new PEShockwaveParticleOptions(Direction.UP, 10, 10),
+                            true,
+                            true,
                             itemEntity.getBlockX() + 0.5,
                             itemEntity.getY() + 0.1,
                             itemEntity.getBlockZ() + 0.5,
@@ -78,6 +80,8 @@ public class FallingBlockEntityMixin {
                     );
                     server.sendParticles(
                             new PEShockwaveParticleOptions(Direction.DOWN, 10, 10),
+                            true,
+                            true,
                             itemEntity.getBlockX() + 0.5,
                             itemEntity.getY() + 0.1,
                             itemEntity.getBlockZ() + 0.5,

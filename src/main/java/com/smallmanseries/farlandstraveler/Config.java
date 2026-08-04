@@ -7,8 +7,13 @@ public class Config {
 
     // 【主要玩法设置】
     public static final ModConfigSpec.DoubleValue PE_TELEPORT_THRESHOLD = BUILDER
-            .comment("When a player has the \"Precision Loss\" Lv.255 effect and their horizontal speed's square exceeds this threshold, a teleportation will be triggered")
+            .comment("When an entity has the \"Precision Loss\" Lv.255 effect and it's horizontal speed's square exceeds this threshold, a teleportation will be triggered")
             .defineInRange("pe_teleport_threshold", 100, 0, Double.MAX_VALUE);
+
+    public static final ModConfigSpec.IntValue PE_TELEPORT_DEST = BUILDER
+            .comment("The coordinates to which an entity is teleported after triggering the \"Precision Loss\" Lv.255 teleportation")
+            .comment("(The specific location depends on the velocity direction gained by the entity)")
+            .defineInRange("pe_teleport_dest", 12550000, 0, Integer.MAX_VALUE);
 
     // 【世界边界设置】
     public static final ModConfigSpec.BooleanValue REMOVE_WORLD_BORDER = BUILDER

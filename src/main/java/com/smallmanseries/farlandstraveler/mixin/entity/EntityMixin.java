@@ -1,6 +1,5 @@
 package com.smallmanseries.farlandstraveler.mixin.entity;
 
-import com.llamalad7.mixinextras.sugar.Cancellable;
 import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.MathUtil;
 import com.smallmanseries.farlandstraveler.common.effect.FLTMobEffects;
@@ -10,6 +9,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +21,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(Entity.class)
@@ -29,30 +29,50 @@ public abstract class EntityMixin {
     @Shadow
     private Vec3 position;
 
+    @Shadow
+    public abstract Vec3 getDeltaMovement();
 
     @Shadow
-    public abstract void setDeltaMovement(double xd, double yd, double zd);
+    public abstract void setDeltaMovement(Vec3 deltaMovement);
 
     /**
      * 当生物的身上有{@link PrecisionLossEffect}（【精度丢失】状态效果）时，根据效果等级降低生物的坐标精度
      */
     @ModifyArgs(method = "setPosRaw", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/Vec3;<init>(DDD)V"))
-    private void handleLosePrecision(Args args, @Cancellable CallbackInfo ci) {
+    private void handleLosePrecision(Args args) {
         if (((Entity) (Object) this) instanceof LivingEntity living && living.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
             MobEffectInstance effect = living.getEffect(FLTMobEffects.PRECISION_LOSS);
             if (effect != null) {
 
                 if (effect.getAmplifier() >= 255) {
-                    // 精度丢失255级：检测实体的水平速度，速度够大则触发传送，否则定在原地不动
-                    if (living.getDeltaMovement().horizontalDistanceSqr() > Config.PE_TELEPORT_THRESHOLD.getAsDouble()) {
-                        // 先去除精度丢失效果。下面的传送会递归调用本函数，防止无限递归
+                    // 精度丢失255级：检测实体的水平速度，速度够大则触发传送，否则定在原地不动。只有在离边境之地足够远的位置（具体由配置文件定义）才能触发传送
+                    if (living.getDeltaMovement().horizontalDistanceSqr() > Config.PE_TELEPORT_THRESHOLD.getAsDouble() && Math.max(Math.abs(living.getX()), Math.abs(living.getZ())) < Config.PE_TELEPORT_DEST.getAsInt()) {
+                        // 先去除【精度丢失255】效果。下面的传送会递归调用本函数，防止无限递归
+                        // 精度丢失退化到1级，持续时间不变
+                        int duration = effect.getDuration();
                         living.removeEffect(FLTMobEffects.PRECISION_LOSS);
+                        living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, duration, 0, false, false, true));
                         if (living.level() instanceof ServerLevel level) {
+                            double x = living.getX();
+                            double y = living.getY();
+                            double z = living.getZ();
+
+                            // 音效、粒子特效
+                            level.playSound(
+                                    null,
+                                    x,
+                                    y,
+                                    z,
+                                    SoundEvents.GLASS_BREAK,
+                                    SoundSource.WEATHER,
+                                    4.0F,
+                                    0.5F
+                            );
                             level.sendParticles(
                                     new BlockParticleOption(ParticleTypes.BLOCK, Blocks.BEDROCK.defaultBlockState()),
-                                    living.position().x,
-                                    living.position().y,
-                                    living.position().z,
+                                    x,
+                                    y,
+                                    z,
                                     32,
                                     living.getBoundingBox().getXsize(),
                                     living.getBoundingBox().getYsize(),
@@ -60,10 +80,12 @@ public abstract class EntityMixin {
                                     0
                             );
                             level.sendParticles(
-                                    new PEShockwaveParticleOptions(Direction.UP, 10, 10),
-                                    living.position().x,
-                                    living.position().y,
-                                    living.position().z,
+                                    new PEShockwaveParticleOptions(Direction.UP, 12, 20),
+                                    true,
+                                    true,
+                                    x,
+                                    y,
+                                    z,
                                     1,
                                     0,
                                     0,
@@ -71,10 +93,12 @@ public abstract class EntityMixin {
                                     0
                             );
                             level.sendParticles(
-                                    new PEShockwaveParticleOptions(Direction.DOWN, 10, 10),
-                                    living.position().x,
-                                    living.position().y,
-                                    living.position().z,
+                                    new PEShockwaveParticleOptions(Direction.DOWN, 12, 20),
+                                    true,
+                                    true,
+                                    x,
+                                    y,
+                                    z,
                                     1,
                                     0,
                                     0,
@@ -82,12 +106,16 @@ public abstract class EntityMixin {
                                     0
                             );
 
-                            // 计算目的地
-                            Vec3 dest = new Vec3(0, -50, 0);
-
                             // 传送
                             LivingEntity newEntity = (LivingEntity) living.teleport(
-                                    new TeleportTransition(level, dest, Vec3.ZERO, living.getYRot(), living.getXRot(), TeleportTransition.PLACE_PORTAL_TICKET)
+                                    new TeleportTransition(
+                                            level,
+                                            PrecisionLossEffect.calculateDest(living, x, z),
+                                            Vec3.ZERO,
+                                            living.getYRot(),
+                                            living.getXRot(),
+                                            TeleportTransition.PLACE_PORTAL_TICKET
+                                    )
                             );
                             if (newEntity != null) {
                                 newEntity.resetFallDistance();
@@ -96,11 +124,11 @@ public abstract class EntityMixin {
                         }
                     }
 
-                    // 使实体定在原地，并失去所有速度
+                    // 使实体定在原地，并失去所有垂直速度
                     args.set(0, this.position.x);
                     args.set(1, this.position.y);
                     args.set(2, this.position.z);
-                    this.setDeltaMovement(0, 0, 0);
+                    this.setDeltaMovement(this.getDeltaMovement().multiply(1, 0, 1));
                 } else {
                     // 非255级：丢失坐标参数的精度
                     int lose = 5 - effect.getAmplifier();
