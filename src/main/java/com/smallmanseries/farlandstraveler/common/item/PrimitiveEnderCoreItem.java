@@ -13,9 +13,19 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.SimpleExplosionDamageCalculator;
+
+import java.util.Optional;
 
 public class PrimitiveEnderCoreItem extends Item {
+    public static final ExplosionDamageCalculator EXPLOSION_DAMAGE_CALCULATOR = new SimpleExplosionDamageCalculator(
+            false,
+            false,
+            Optional.empty(),
+            Optional.empty());
+
     public PrimitiveEnderCoreItem(Properties properties) {
         super(properties);
     }

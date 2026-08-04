@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
+import com.smallmanseries.farlandstraveler.common.item.PrimitiveEnderCoreItem;
 import com.smallmanseries.farlandstraveler.common.particle.PEShockwaveParticleOptions;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.Direction;
@@ -18,7 +19,6 @@ import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,7 +39,7 @@ public class FallingBlockEntityMixin {
                 itemEntity.level().explode(
                         itemEntity,
                         null,
-                        new ExplosionDamageCalculator(),
+                        PrimitiveEnderCoreItem.EXPLOSION_DAMAGE_CALCULATOR,
                         itemEntity.getBlockX() + 0.5,
                         itemEntity.getY() + 0.5,
                         itemEntity.getBlockZ() + 0.5,
