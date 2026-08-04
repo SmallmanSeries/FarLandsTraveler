@@ -79,7 +79,7 @@ public abstract class EntityMixin {
                             );
 
                             // 计算目的地
-                            Vec3 dest = new Vec3(0, 10, 0);
+                            Vec3 dest = new Vec3(0, -50, 0);
 
                             // 传送
                             LivingEntity newEntity = (LivingEntity) living.teleport(
@@ -90,7 +90,6 @@ public abstract class EntityMixin {
                                 newEntity.resetCurrentImpulseContext();
                             }
                         }
-                        return;
                     }
 
                     // 使实体定在原地
