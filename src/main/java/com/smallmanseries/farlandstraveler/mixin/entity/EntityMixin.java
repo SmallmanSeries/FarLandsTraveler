@@ -29,6 +29,10 @@ public abstract class EntityMixin {
     @Shadow
     private Vec3 position;
 
+
+    @Shadow
+    public abstract void setDeltaMovement(double xd, double yd, double zd);
+
     /**
      * 当生物的身上有{@link PrecisionLossEffect}（【精度丢失】状态效果）时，根据效果等级降低生物的坐标精度
      */
@@ -92,10 +96,11 @@ public abstract class EntityMixin {
                         }
                     }
 
-                    // 使实体定在原地
+                    // 使实体定在原地，并失去所有速度
                     args.set(0, this.position.x);
                     args.set(1, this.position.y);
                     args.set(2, this.position.z);
+                    this.setDeltaMovement(0, 0, 0);
                 } else {
                     // 非255级：丢失坐标参数的精度
                     int lose = 5 - effect.getAmplifier();
