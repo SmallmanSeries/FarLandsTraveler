@@ -110,7 +110,7 @@ public abstract class EntityMixin {
                             LivingEntity newEntity = (LivingEntity) living.teleport(
                                     new TeleportTransition(
                                             level,
-                                            PrecisionLossEffect.calculateDest(living, x, z),
+                                            PrecisionLossEffect.calculateDest(living, x, y, z, level),
                                             Vec3.ZERO,
                                             living.getYRot(),
                                             living.getXRot(),
