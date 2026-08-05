@@ -11,11 +11,11 @@ public class Config {
             .defineInRange("pem_spawn_weight", 10, 1, Integer.MAX_VALUE);
 
     public static final ModConfigSpec.DoubleValue PE_TELEPORT_THRESHOLD = BUILDER
-            .comment("When an entity has the \"Precision Loss\" Lv.255 effect and it's horizontal speed's square exceeds this threshold, a teleportation will be triggered")
+            .comment("When an entity has the \"Precision Loss\" Lv.256 effect and it's horizontal speed's square exceeds this threshold, a teleportation will be triggered")
             .defineInRange("pe_teleport_threshold", 163.84, 0, Double.MAX_VALUE);
 
     public static final ModConfigSpec.IntValue PE_TELEPORT_DEST = BUILDER
-            .comment("The coordinates to which an entity is teleported after triggering the \"Precision Loss\" Lv.255 teleportation")
+            .comment("The coordinates to which an entity is teleported after triggering the \"Precision Loss\" Lv.256 teleportation")
             .comment("(The specific location depends on the velocity direction gained by the entity)")
             .defineInRange("pe_teleport_dest", 12550000, 0, Integer.MAX_VALUE);
 

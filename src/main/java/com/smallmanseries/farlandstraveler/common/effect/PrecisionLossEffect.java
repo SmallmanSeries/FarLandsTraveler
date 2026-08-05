@@ -20,7 +20,7 @@ public class PrecisionLossEffect extends MobEffect {
     }
 
     /**
-     * 计算精度丢失255级触发传送的目的地
+     * 计算精度丢失256级触发传送的目的地
      *
      * @param living 实体
      * @param x      实体的x坐标

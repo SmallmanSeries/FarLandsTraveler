@@ -115,7 +115,7 @@ public class EventHandler {
                         }
                     } else if (!sourceFar) {
 
-                        // 如果玩家身上没有精度丢失效果，就为玩家添加时长50秒的255级的精度丢失效果；否则将玩家的精度丢失效果等级增加到255级，时长增加50秒。
+                        // 如果玩家身上没有精度丢失效果，就为玩家添加时长50秒的256级的精度丢失效果；否则将玩家的精度丢失效果等级增加到256级，时长增加50秒。
                         if (living.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
                             living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, Objects.requireNonNull(living.getEffect(FLTMobEffects.PRECISION_LOSS)).getDuration() + 1000, 255, false, false, true));
                         } else {

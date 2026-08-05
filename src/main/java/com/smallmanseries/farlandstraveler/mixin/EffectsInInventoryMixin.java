@@ -14,12 +14,12 @@ import org.spongepowered.asm.mixin.injection.At;
 public class EffectsInInventoryMixin {
 
     /**
-     * {@link PrecisionLossEffect}（【精度丢失】状态效果）255级的特殊显示
+     * {@link PrecisionLossEffect}（【精度丢失】状态效果）256级的特殊显示
      */
     @ModifyReturnValue(method = "getEffectName", at = @At("RETURN"))
-    private Component getLv255Description(Component original, @Local(argsOnly = true, name = "effect") MobEffectInstance effect) {
+    private Component getLv256Description(Component original, @Local(argsOnly = true, name = "effect") MobEffectInstance effect) {
         if (effect.is(FLTMobEffects.PRECISION_LOSS) && effect.getAmplifier() >= 255) {
-            return Component.translatable("effect.farlandstraveler.precision_loss.255");
+            return Component.translatable("effect.farlandstraveler.precision_loss.256");
         }
         return original;
     }
