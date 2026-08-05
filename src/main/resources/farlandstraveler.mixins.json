@@ -40,6 +40,7 @@
     "requireAnnotations": true
   },
   "client": [
+    "EffectsInInventoryMixin",
     "border.LevelRendererMixin",
     "entity.GameRendererMixin",
     "renderer.BlockEntityRendererDispatcherMixin",
