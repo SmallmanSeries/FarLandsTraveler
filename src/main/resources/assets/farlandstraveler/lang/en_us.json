@@ -34,6 +34,8 @@
   "farlandstraveler.configuration.title": "Far Lands Traveler Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml": "Far Lands Traveler Common Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml.title": "Far Lands Traveler Common Configuration",
+  "farlandstraveler.configuration.pem_spawn_weight": "Primitive Enderman spawn probability fraction",
+  "farlandstraveler.configuration.pem_spawn_weight.tooltip": "The spawn probability of Primitive Enderman at the world center is 1/N of its spawn probability near the Far Lands",
   "farlandstraveler.configuration.pe_teleport_threshold": "§oPrecision Loss §r255 teleport threshold",
   "farlandstraveler.configuration.pe_teleport_threshold.tooltip": "When an entity has the §oPrecision Loss §rLv.255 effect and it's horizontal speed's square exceeds this threshold, a teleportation will be triggered",
   "farlandstraveler.configuration.pe_teleport_dest": "§oPrecision Loss §r255 teleport destination",

@@ -6,6 +6,10 @@ public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     // 【主要玩法设置】
+    public static final ModConfigSpec.IntValue PEMAN_SPAWN_WEIGHT = BUILDER
+            .comment("The spawn probability of Primitive Enderman at the world center is 1/N of its spawn probability near the Far Lands")
+            .defineInRange("peman_spawn_weight", 10, 1, Integer.MAX_VALUE);
+
     public static final ModConfigSpec.DoubleValue PE_TELEPORT_THRESHOLD = BUILDER
             .comment("When an entity has the \"Precision Loss\" Lv.255 effect and it's horizontal speed's square exceeds this threshold, a teleportation will be triggered")
             .defineInRange("pe_teleport_threshold", 100, 0, Double.MAX_VALUE);

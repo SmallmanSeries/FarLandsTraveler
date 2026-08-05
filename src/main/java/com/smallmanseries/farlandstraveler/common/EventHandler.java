@@ -13,14 +13,17 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.piston.PistonStructureResolver;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.level.ExplosionEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
@@ -34,6 +37,17 @@ public class EventHandler {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(FLTEntityTypes.PRIMITIVE_ENDERMAN.get(), PrimitiveEndermanEntity.createAttributes().build());
+    }
+
+    // 注册实体生成
+    @SubscribeEvent
+    public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+        event.register(
+                FLTEntityTypes.PRIMITIVE_ENDERMAN.get(),
+                SpawnPlacementTypes.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                PrimitiveEndermanEntity::checkMonsterSpawnRules,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     // 注册边境之地数据驱动文件

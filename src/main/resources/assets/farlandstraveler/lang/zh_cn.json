@@ -34,6 +34,8 @@
   "farlandstraveler.configuration.title": "边境旅者 模组配置",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml": "边境旅者通用配置",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml.title": "边境旅者 通用配置",
+  "farlandstraveler.configuration.pem_spawn_weight": "原始末影人生成概率分数",
+  "farlandstraveler.configuration.pem_spawn_weight.tooltip": "原始末影人在世界中心的生成概率是其在边境之地附近的生成概率的几分之一",
   "farlandstraveler.configuration.pe_teleport_threshold": "「精度丢失」255传送阈值",
   "farlandstraveler.configuration.pe_teleport_threshold.tooltip": "当实体身上有「精度丢失」255级效果，并且水平速度的平方超过该阈值时，将会触发传送",
   "farlandstraveler.configuration.pe_teleport_dest": "「精度丢失」255传送目的地",

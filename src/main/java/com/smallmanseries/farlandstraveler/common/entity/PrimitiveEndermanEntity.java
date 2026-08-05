@@ -1,15 +1,22 @@
 package com.smallmanseries.farlandstraveler.common.entity;
 
+import com.smallmanseries.farlandstraveler.Config;
+import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import com.smallmanseries.farlandstraveler.mixin.entity.EnderManMixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
 
@@ -26,6 +33,23 @@ public class PrimitiveEndermanEntity extends EnderMan {
     public static AttributeSupplier.Builder createAttributes() {
         // 原始末影人不会瞬移，这算是一大削弱，所以提升了它们的移动速度和游泳速度
         return EnderMan.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.4).add(NeoForgeMod.SWIM_SPEED, 2.5);
+    }
+
+    /**
+     * 检查原始末影人能否生成。当然也可以是其他生物用原始末影人的生成规则。
+     * <p>原始末影人只能生成在正常世界，且从世界中心开始，越靠近边境之地生成概率越大，具体由配置文件决定
+     * @param type 实体种类
+     * @param level 存档
+     * @param spawnReason 实体是如何生成的
+     * @param pos 生成位置
+     * @param random 随机数源
+     * @return 布尔值，生物能否生成
+     */
+    public static boolean checkMonsterSpawnRules(EntityType<? extends Mob> type, ServerLevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random) {
+        int far = Config.FAR_LANDS_DISTANCE.getAsInt();
+        return Monster.checkMonsterSpawnRules(type, level, spawnReason, pos, random)
+                && !FarLands.isInFarLands(pos.getX(), pos.getY(), pos.getZ(), 0)
+                && random.nextInt(Math.ceilDiv(far - Math.max(Math.abs(pos.getX()), Math.abs(pos.getZ())), far / Config.PEMAN_SPAWN_WEIGHT.getAsInt())) == 0;
     }
 
     /**

@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#farlandstraveler:spawns_primitive_enderman",
+  "spawners": [
+    {
+      "type": "farlandstraveler:primitive_enderman",
+      "weight": 26,
+      "minCount": 1,
+      "maxCount": 4
+    }
+  ]
+}
