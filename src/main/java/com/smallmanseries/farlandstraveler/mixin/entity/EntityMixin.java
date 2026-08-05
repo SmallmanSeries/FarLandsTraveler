@@ -43,16 +43,15 @@ public abstract class EntityMixin {
         if (((Entity) (Object) this) instanceof LivingEntity living && living.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
             MobEffectInstance effect = living.getEffect(FLTMobEffects.PRECISION_LOSS);
             if (effect != null) {
-
                 if (effect.getAmplifier() >= 255) {
                     // 精度丢失255级：检测实体的水平速度，速度够大则触发传送，否则定在原地不动。只有在离边境之地足够远的位置（具体由配置文件定义）才能触发传送
-                    if (living.getDeltaMovement().horizontalDistanceSqr() > Config.PE_TELEPORT_THRESHOLD.getAsDouble() && Math.max(Math.abs(living.getX()), Math.abs(living.getZ())) < Config.PE_TELEPORT_DEST.getAsInt()) {
-                        // 先去除【精度丢失255】效果。下面的传送会递归调用本函数，防止无限递归
-                        // 精度丢失退化到1级，持续时间不变
-                        int duration = effect.getDuration();
-                        living.removeEffect(FLTMobEffects.PRECISION_LOSS);
-                        living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, duration, 0, false, false, true));
-                        if (living.level() instanceof ServerLevel level) {
+                    if (living.level() instanceof ServerLevel level) { // 副作用：实体无法靠自己（客户端速度）触发传送，只能依靠外力（服务端速度）
+                        if (living.getDeltaMovement().horizontalDistanceSqr() > Config.PE_TELEPORT_THRESHOLD.getAsDouble() && Math.max(Math.abs(living.getX()), Math.abs(living.getZ())) < Config.PE_TELEPORT_DEST.getAsInt()) {
+                            // 先去除【精度丢失255】效果。下面的传送会递归调用本函数，防止无限递归
+                            // 精度丢失退化到1级，持续时间不变
+                            int duration = effect.getDuration();
+                            living.removeEffect(FLTMobEffects.PRECISION_LOSS);
+                            living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, duration, 0, false, false, true));
                             double x = living.getX();
                             double y = living.getY();
                             double z = living.getZ();
