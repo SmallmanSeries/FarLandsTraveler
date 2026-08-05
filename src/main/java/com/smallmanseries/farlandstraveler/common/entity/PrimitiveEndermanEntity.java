@@ -38,18 +38,19 @@ public class PrimitiveEndermanEntity extends EnderMan {
     /**
      * 检查原始末影人能否生成。当然也可以是其他生物用原始末影人的生成规则。
      * <p>原始末影人只能生成在正常世界，且从世界中心开始，越靠近边境之地生成概率越大，具体由配置文件决定
-     * @param type 实体种类
-     * @param level 存档
+     *
+     * @param type        实体种类
+     * @param level       存档
      * @param spawnReason 实体是如何生成的
-     * @param pos 生成位置
-     * @param random 随机数源
+     * @param pos         生成位置
+     * @param random      随机数源
      * @return 布尔值，生物能否生成
      */
     public static boolean checkMonsterSpawnRules(EntityType<? extends Mob> type, ServerLevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random) {
         int far = Config.FAR_LANDS_DISTANCE.getAsInt();
         return Monster.checkMonsterSpawnRules(type, level, spawnReason, pos, random)
                 && !FarLands.isInFarLands(pos.getX(), pos.getY(), pos.getZ(), 0)
-                && random.nextInt(Math.ceilDiv(far - Math.max(Math.abs(pos.getX()), Math.abs(pos.getZ())), far / Config.PEMAN_SPAWN_WEIGHT.getAsInt())) == 0;
+                && random.nextInt(Math.ceilDiv(far - Math.max(Math.abs(pos.getX()), Math.abs(pos.getZ())), far / Config.PEM_SPAWN_WEIGHT.getAsInt())) == 0;
     }
 
     /**
