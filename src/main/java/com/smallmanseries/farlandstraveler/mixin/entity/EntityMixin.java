@@ -2,6 +2,7 @@ package com.smallmanseries.farlandstraveler.mixin.entity;
 
 import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.common.MathUtil;
+import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
 import com.smallmanseries.farlandstraveler.common.effect.FLTMobEffects;
 import com.smallmanseries.farlandstraveler.common.effect.PrecisionLossEffect;
 import com.smallmanseries.farlandstraveler.common.particle.PEShockwaveParticleOptions;
@@ -14,7 +15,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
@@ -69,7 +69,7 @@ public abstract class EntityMixin {
                                     0.5F
                             );
                             level.sendParticles(
-                                    new BlockParticleOption(ParticleTypes.BLOCK, Blocks.BEDROCK.defaultBlockState()),
+                                    new BlockParticleOption(ParticleTypes.BLOCK, FLTBlocks.INVALID_BLOCK.get().defaultBlockState()),
                                     x,
                                     y,
                                     z,

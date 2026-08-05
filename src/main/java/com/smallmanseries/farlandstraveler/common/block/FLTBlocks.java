@@ -36,6 +36,8 @@ public class FLTBlocks {
                     .requiresCorrectToolForDrops()
                     .strength(1346237208F, 30071926F));
 
+    public static final DeferredBlock<Block> INVALID_BLOCK = BLOCKS.registerBlock("invalid_block", Block::new);
+
     // 地表方块
     public static final DeferredBlock<Block> GLOWING_OBSIDIAN = registerBlockItem("glowing_obsidian", Block::new,
             BlockBehaviour.Properties.of()
