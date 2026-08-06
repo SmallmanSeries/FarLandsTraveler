@@ -14,6 +14,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -31,7 +32,7 @@ public class FallingBlockEntityMixin {
     // 铁砧砸击合成
     @WrapOperation(method = "lambda$causeFallDamage$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)V"))
     private static void anvilCraft(Entity entity, DamageSource source, float damage, Operation<Void> original) {
-        if (entity instanceof ItemEntity itemEntity) {
+        if (source.is(DamageTypes.FALLING_ANVIL) && entity instanceof ItemEntity itemEntity) {
             ItemStack item = itemEntity.getItem();
 
             // 原始末影核心的合成：铁砧砸击原始末影核心，消耗一个该物品，产生物品碎裂的粒子效果和冲击波效果，产生一个无伤害且不破坏方块的爆炸。
