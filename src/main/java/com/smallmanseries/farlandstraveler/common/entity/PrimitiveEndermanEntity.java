@@ -34,7 +34,7 @@ public class PrimitiveEndermanEntity extends EnderMan {
     // 防止寻路到雨中
     @Override
     public float getWalkTargetValue(BlockPos pos, LevelReader level) {
-        return this.level().isRainingAt(pos) ? 0.0F : -1.0F;
+        return this.level().isRainingAt(pos) ? -1.0F : 0.0F;
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -193,7 +193,7 @@ public class PrimitiveEndermanEntity extends EnderMan {
 
             for(int i = 0; i < 10; ++i) {
                 BlockPos randomPos = pos.offset(random.nextInt(32) - 16, random.nextInt(6) - 3, random.nextInt(32) - 16);
-                if (!this.level.isRainingAt(randomPos) && this.mob.getWalkTargetValue(randomPos) < 0.0F) {
+                if (!this.level.isRainingAt(randomPos)) {
                     return Vec3.atBottomCenterOf(randomPos);
                 }
             }
