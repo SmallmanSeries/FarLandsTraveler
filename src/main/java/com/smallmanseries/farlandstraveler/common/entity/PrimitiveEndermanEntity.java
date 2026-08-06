@@ -6,19 +6,19 @@ import com.smallmanseries.farlandstraveler.mixin.entity.EnderManMixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FleeSunGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import org.jspecify.annotations.Nullable;
 
 public class PrimitiveEndermanEntity extends EnderMan {
     public PrimitiveEndermanEntity(EntityType<? extends EnderMan> type, Level level) {
@@ -28,6 +28,13 @@ public class PrimitiveEndermanEntity extends EnderMan {
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(3, new EscapeWaterGoal(this));
+        this.goalSelector.addGoal(3, new FleeRainGoal(this));
+    }
+
+    // 防止寻路到雨中
+    @Override
+    public float getWalkTargetValue(BlockPos pos, LevelReader level) {
+        return this.level().isRainingAt(pos) ? 0.0F : -1.0F;
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -83,18 +90,18 @@ public class PrimitiveEndermanEntity extends EnderMan {
         return false; // 禁用原始末影人的瞬移能力
     }
 
+    // 逃离水。话说现代末影人碰到水瞬移其实只是一种受到伤害的应激反应，它们并不知道水会对它们造成伤害。
+    // 而原始末影人不仅知道水会造成伤害，还知道如何正确地逃离水域。这可是一千多年来刻进本能的教训。
     private static class EscapeWaterGoal extends Goal {
         private final PrimitiveEndermanEntity priman;
         private final Level level;
         private Vec3 safePlace;
-        private boolean escaping;
         private boolean dangerous; // 危险标记，当原始末影人周围16格没有陆地时启用
 
         public EscapeWaterGoal(PrimitiveEndermanEntity priman) {
             this.priman = priman;
             this.level = priman.level();
             this.safePlace = null;
-            this.escaping = false;
             this.dangerous = false;
         }
 
@@ -115,10 +122,7 @@ public class PrimitiveEndermanEntity extends EnderMan {
                 return false;
             }
             // 原始末影人追逐玩家的优先级高于逃离水域
-            if (this.priman.getTarget() != null) {
-                return false;
-            }
-            return findSafePlace();
+            return this.priman.getTarget() == null && this.findSafePlace();
         }
 
         private boolean findSafePlace() {
@@ -144,19 +148,72 @@ public class PrimitiveEndermanEntity extends EnderMan {
         @Override
         public void start() {
             // 开始逃离，寻路到findSafePlace()找到的陆地安全位置
-            this.escaping = true; // “正在逃跑”标记，用于tick()检测是否正在逃跑
             this.priman.getNavigation().moveTo(this.safePlace.x(), this.safePlace.y(), this.safePlace.z(), 1.0);
         }
 
         @Override
         public void tick() {
             // 一旦成功上岸，就不继续寻路了，停在原地
-            if (this.escaping && this.priman.onGround() && !this.priman.isInWater()) {
+            if (this.priman.onGround() && !this.priman.isInWater()) {
                 if (!this.priman.getNavigation().isDone()) {
                     this.priman.getNavigation().stop();
                 }
-                this.escaping = false;
             }
+        }
+    }
+
+    // 逃离雨。原始末影人虽然没有高等智慧，但一千多年的生存也让它们学会了避雨（或者说是自然选择淘汰掉了那些不会避雨的）。
+    // 而现代的末影人在末地/下界这样的无水环境待得太久，已经完全忘记了雨是什么东西。
+    private static class FleeRainGoal extends FleeSunGoal {
+
+        public FleeRainGoal(PathfinderMob mob) {
+            super(mob, 1.0);
+        }
+
+        // 逃离雨水触发条件：生物没有正在追逐的目标，且维度正在下雨，且生物目前正在雨中。
+        @Override
+        public boolean canUse() {
+            if (this.mob.getTarget() != null) {
+                return false;
+            }
+            if (!this.level.isRaining()) {
+                return false;
+            }
+            if (!isInRain()) {
+                return false;
+            }
+
+            return this.setWantedPos();
+        }
+
+        @Override
+        protected @Nullable Vec3 getHidePos() {
+            RandomSource random = this.mob.getRandom();
+            BlockPos pos = this.mob.blockPosition();
+
+            for(int i = 0; i < 10; ++i) {
+                BlockPos randomPos = pos.offset(random.nextInt(32) - 16, random.nextInt(6) - 3, random.nextInt(32) - 16);
+                if (!this.level.isRainingAt(randomPos) && this.mob.getWalkTargetValue(randomPos) < 0.0F) {
+                    return Vec3.atBottomCenterOf(randomPos);
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        public void tick() {
+            // 一旦成功避雨，就不继续寻路了，停在原地
+            if (!isInRain()) {
+                if (!this.mob.getNavigation().isDone()) {
+                    this.mob.getNavigation().stop();
+                }
+            }
+        }
+
+        // 相当于Entity的私有函数isInRain()
+        private boolean isInRain(){
+            return (this.level.isRainingAt(this.mob.blockPosition()) || this.level.isRainingAt(BlockPos.containing(this.mob.getX(), this.mob.getBoundingBox().maxY, this.mob.getZ())));
         }
     }
 }
