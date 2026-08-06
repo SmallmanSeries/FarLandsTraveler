@@ -39,6 +39,7 @@ public class FLTTags {
         public static final TagKey<Biome> HAS_STRUCTURE_ABANDONED_VILLAGE_NORMAL = createTag("has_structure/abandoned_village/normal");
         public static final TagKey<Biome> HAS_STRUCTURE_EXPLORER_BASE_INDEV_COBBLESTONE = createTag("has_structure/explorer_base/indev_cobblestone");
         public static final TagKey<Biome> HAS_STRUCTURE_EXPLORER_BASE_INDEV_WOOD = createTag("has_structure/explorer_base/indev_wood");
+        public static final TagKey<Biome> SPAWNS_PRIMITIVE_ENDERMAN = createTag("spawns_primitive_enderman");
 
         private static TagKey<Biome> createTag(String name) {
             return TagKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
