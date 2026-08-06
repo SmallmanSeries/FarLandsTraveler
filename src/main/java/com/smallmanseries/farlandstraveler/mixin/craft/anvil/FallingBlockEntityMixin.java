@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.smallmanseries.farlandstraveler.client.sound.FLTSoundEvents;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.item.PrimitiveEnderCoreItem;
+import com.smallmanseries.farlandstraveler.common.misc.FLTTags;
 import com.smallmanseries.farlandstraveler.common.particle.PEShockwaveParticleOptions;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.Direction;
@@ -32,77 +33,80 @@ public class FallingBlockEntityMixin {
     // 铁砧砸击合成
     @WrapOperation(method = "lambda$causeFallDamage$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)V"))
     private static void anvilCraft(Entity entity, DamageSource source, float damage, Operation<Void> original) {
-        if (source.is(DamageTypes.FALLING_ANVIL) && entity instanceof ItemEntity itemEntity) {
-            ItemStack item = itemEntity.getItem();
+        if (entity instanceof ItemEntity itemEntity) {
+            if (source.is(DamageTypes.FALLING_ANVIL)) {
+                ItemStack item = itemEntity.getItem();
 
-            // 原始末影核心的合成：铁砧砸击原始末影核心，消耗一个该物品，产生物品碎裂的粒子效果和冲击波效果，产生一个无伤害且不破坏方块的爆炸。
-            if (item.is(FLTItems.PRIMITIVE_ENDER_CORE)) {
-                itemEntity.level().explode(
-                        itemEntity,
-                        null,
-                        PrimitiveEnderCoreItem.EXPLOSION_DAMAGE_CALCULATOR,
-                        itemEntity.getBlockX() + 0.5,
-                        itemEntity.getY() + 0.5,
-                        itemEntity.getBlockZ() + 0.5,
-                        1.5F,
-                        false,
-                        Level.ExplosionInteraction.NONE,
-                        ParticleTypes.SMOKE,
-                        ParticleTypes.LARGE_SMOKE,
-                        WeightedList.of(),
-                        FarLands.isInFarLands(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 3) ?
-                                FLTSoundEvents.ITEM_PRIMITIVE_ENDER_CORE_BREAK_FAR : FLTSoundEvents.ITEM_PRIMITIVE_ENDER_CORE_BREAK
-                );
+                // 原始末影核心的合成：铁砧砸击原始末影核心，消耗一个该物品，产生物品碎裂的粒子效果和冲击波效果，产生一个无伤害且不破坏方块的爆炸。
+                if (item.is(FLTItems.PRIMITIVE_ENDER_CORE)) {
+                    itemEntity.level().explode(
+                            itemEntity,
+                            null,
+                            PrimitiveEnderCoreItem.EXPLOSION_DAMAGE_CALCULATOR,
+                            itemEntity.getX(),
+                            itemEntity.getY(0.5),
+                            itemEntity.getZ(),
+                            1.5F,
+                            false,
+                            Level.ExplosionInteraction.NONE,
+                            ParticleTypes.SMOKE,
+                            ParticleTypes.LARGE_SMOKE,
+                            WeightedList.of(),
+                            FarLands.isInFarLands(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), 3) ?
+                                    FLTSoundEvents.ITEM_PRIMITIVE_ENDER_CORE_BREAK_FAR : FLTSoundEvents.ITEM_PRIMITIVE_ENDER_CORE_BREAK
+                    );
 
-                if (itemEntity.level() instanceof ServerLevel server) {
-                    server.sendParticles(
-                            new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item)),
-                            itemEntity.getBlockX() + 0.5,
-                            itemEntity.getY() + 0.1,
-                            itemEntity.getBlockZ() + 0.5,
-                            20,
-                            0.2,
-                            0.05,
-                            0.2,
-                            0.1
-                    );
-                    server.sendParticles(
-                            new PEShockwaveParticleOptions(Direction.UP, 10, 10),
-                            true,
-                            true,
-                            itemEntity.getBlockX() + 0.5,
-                            itemEntity.getY() + 0.1,
-                            itemEntity.getBlockZ() + 0.5,
-                            1,
-                            0,
-                            0,
-                            0,
-                            0
-                    );
-                    server.sendParticles(
-                            new PEShockwaveParticleOptions(Direction.DOWN, 10, 10),
-                            true,
-                            true,
-                            itemEntity.getBlockX() + 0.5,
-                            itemEntity.getY() + 0.1,
-                            itemEntity.getBlockZ() + 0.5,
-                            1,
-                            0,
-                            0,
-                            0,
-                            0
-                    );
+                    if (itemEntity.level() instanceof ServerLevel server) {
+                        server.sendParticles(
+                                new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item)),
+                                itemEntity.getX(),
+                                itemEntity.getY(0.5),
+                                itemEntity.getZ(),
+                                32,
+                                itemEntity.getBoundingBox().getXsize(),
+                                itemEntity.getBoundingBox().getYsize(),
+                                itemEntity.getBoundingBox().getZsize(),
+                                0.1
+                        );
+                        server.sendParticles(
+                                new PEShockwaveParticleOptions(Direction.UP, 10, 10),
+                                true,
+                                true,
+                                itemEntity.getX(),
+                                itemEntity.getY() + 0.1,
+                                itemEntity.getZ(),
+                                1,
+                                0,
+                                0,
+                                0,
+                                0
+                        );
+                        server.sendParticles(
+                                new PEShockwaveParticleOptions(Direction.DOWN, 10, 10),
+                                true,
+                                true,
+                                itemEntity.getX(),
+                                itemEntity.getY() + 0.1,
+                                itemEntity.getZ(),
+                                1,
+                                0,
+                                0,
+                                0,
+                                0
+                        );
+                    }
+
+                    item.setCount(item.getCount() - 1);
                 }
-
-                item.setCount(item.getCount() - 1);
             }
+        } else {
+            original.call(entity, source, damage);
         }
-        original.call(entity, source, damage);
     }
 
-    // 修改爆炸的实体选择器，使其能选中部分物品实体
+    // 修改砸击的实体选择器，使其能选中部分物品实体
     @ModifyExpressionValue(method = "causeFallDamage", at = @At(value = "INVOKE", target = "Ljava/util/function/Predicate;and(Ljava/util/function/Predicate;)Ljava/util/function/Predicate;"))
     private <T> Predicate<T> modifyEntitySelector(Predicate<T> original) {
-        return original.or(entity -> entity instanceof ItemEntity item && item.getItem().is(FLTItems.PRIMITIVE_ENDER_CORE));
+        return original.or(entity -> entity instanceof ItemEntity item && item.getItem().is(FLTTags.Items.ANVIL_SQUASHABLE));
     }
 }

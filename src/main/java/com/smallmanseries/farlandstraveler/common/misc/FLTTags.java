@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 
 public class FLTTags {
     public static class Items {
+        public static final TagKey<Item> ANVIL_SQUASHABLE = createTag("anvil_squashable"); // 铁砧可以砸到的物品，一般是用于铁砧合成的（比如原始末影核心）
         public static final TagKey<Item> ILLUSION_EFFECT_NO_EFFECT = createTag("illusion_effect_no_effect"); // 手持打上此标签的物品可以与假区块中的方块正常交互
         public static final TagKey<Item> ILLUSION_EFFECT_IMMUNE = createTag("illusion_effect_immune"); // 生物穿戴打上此标签的物品后，将免疫假区块
 
