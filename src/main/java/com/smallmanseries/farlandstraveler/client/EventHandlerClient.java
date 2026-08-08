@@ -1,11 +1,15 @@
 package com.smallmanseries.farlandstraveler.client;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
+import com.smallmanseries.farlandstraveler.client.model.entity.TestEntityModel;
 import com.smallmanseries.farlandstraveler.client.particle.PEShockwaveParticle;
 import com.smallmanseries.farlandstraveler.client.render.FakeChunkBorderRenderer;
+import com.smallmanseries.farlandstraveler.client.render.entity.FLTLayers;
 import com.smallmanseries.farlandstraveler.client.render.entity.PrimitiveEndermanRender;
+import com.smallmanseries.farlandstraveler.client.render.entity.TestEntityRender;
 import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
 import com.smallmanseries.farlandstraveler.common.particle.FLTParticleTypes;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -19,9 +23,14 @@ public class EventHandlerClient {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(FLTEntityTypes.PRIMITIVE_ENDERMAN.get(), PrimitiveEndermanRender::new);
+        event.registerEntityRenderer(FLTEntityTypes.TEST_ENTITY.get(), TestEntityRender::new);
     }
 
     // 注册实体模型层
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(FLTLayers.TEST_ENTITY, () -> TestEntityModel.createBodyLayer(CubeDeformation.NONE));
+    }
 
 
     // 注册调试渲染器

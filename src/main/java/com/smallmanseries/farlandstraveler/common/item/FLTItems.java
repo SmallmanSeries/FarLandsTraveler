@@ -21,4 +21,6 @@ public class FLTItems {
     // 测试物品
     public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerItem("test_item", Item::new, Item.Properties::new);
     public static final DeferredItem<Item> FAKE_CHUNK_MARKER = ITEMS.registerItem("fake_chunk_marker", FakeChunkMarkerItem::new, Item.Properties::new);
+    public static final DeferredItem<Item> SPAWN_TEST_ENTITY = ITEMS.registerItem("spawn_test_entity", SpawnTestEntityItem::new, () -> new Item.Properties().spawnEgg(FLTEntityTypes.TEST_ENTITY.get()));
+
 }

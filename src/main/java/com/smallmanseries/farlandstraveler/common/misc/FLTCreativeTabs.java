@@ -27,6 +27,7 @@ public class FLTCreativeTabs {
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(FLTItems.TEST_ITEM);
                 output.accept(FLTItems.FAKE_CHUNK_MARKER);
+                output.accept(FLTItems.SPAWN_TEST_ENTITY);
                 output.accept(FLTBlocks.TEST_BLOCK);
             }))
             .build());

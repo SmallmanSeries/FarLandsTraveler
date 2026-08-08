@@ -7,6 +7,7 @@ import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import com.smallmanseries.farlandstraveler.common.effect.FLTMobEffects;
 import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
 import com.smallmanseries.farlandstraveler.common.entity.PrimitiveEndermanEntity;
+import com.smallmanseries.farlandstraveler.common.entity.TestEntity;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.BlockPos;
@@ -37,6 +38,7 @@ public class EventHandler {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(FLTEntityTypes.PRIMITIVE_ENDERMAN.get(), PrimitiveEndermanEntity.createAttributes().build());
+        event.put(FLTEntityTypes.TEST_ENTITY.get(), TestEntity.createAttributes().build());
     }
 
     // 注册实体生成

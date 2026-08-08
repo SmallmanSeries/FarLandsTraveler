@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "farlandstraveler:item/spawn_test_entity"
+  }
+}
