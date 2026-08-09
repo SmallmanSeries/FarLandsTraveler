@@ -51,7 +51,6 @@ public abstract class EntityMixin {
                             // 精度丢失退化到1级，持续时间不变
                             int duration = effect.getDuration();
                             living.removeEffect(FLTMobEffects.PRECISION_LOSS);
-                            living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, duration, 0, false, false, true));
                             double x = living.getX();
                             double y = living.getY();
                             double z = living.getZ();
@@ -120,6 +119,9 @@ public abstract class EntityMixin {
                                 newEntity.resetFallDistance();
                                 newEntity.resetCurrentImpulseContext();
                             }
+
+                            // 再次给予精度丢失1级
+                            living.addEffect(new MobEffectInstance(FLTMobEffects.PRECISION_LOSS, duration, 0, false, false, true));
                         }
                     }
 
@@ -134,7 +136,6 @@ public abstract class EntityMixin {
                     args.set(0, MathUtil.losePrecision(args.get(0), lose));
                     args.set(1, MathUtil.losePrecision(args.get(1), lose));
                     args.set(2, MathUtil.losePrecision(args.get(2), lose));
-                    this.setDeltaMovement(this.getDeltaMovement().multiply(1, 0, 1));
                 }
             }
         }

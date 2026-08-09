@@ -41,7 +41,7 @@ public class PrecisionLossEffect extends MobEffect {
         y = Math.max(y, level
                 .getChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z))
                 .getHeight(Heightmap.Types.WORLD_SURFACE, (int) x, (int) z)
-                + 0.5);
+                + 1);
 
         return new Vec3(x, y, z);
     }
