@@ -134,6 +134,7 @@ public abstract class EntityMixin {
                     args.set(0, MathUtil.losePrecision(args.get(0), lose));
                     args.set(1, MathUtil.losePrecision(args.get(1), lose));
                     args.set(2, MathUtil.losePrecision(args.get(2), lose));
+                    this.setDeltaMovement(this.getDeltaMovement().multiply(1, 0, 1));
                 }
             }
         }

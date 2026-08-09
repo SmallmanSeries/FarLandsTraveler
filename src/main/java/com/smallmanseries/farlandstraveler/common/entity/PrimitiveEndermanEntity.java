@@ -191,7 +191,7 @@ public class PrimitiveEndermanEntity extends EnderMan {
             RandomSource random = this.mob.getRandom();
             BlockPos pos = this.mob.blockPosition();
 
-            for(int i = 0; i < 10; ++i) {
+            for (int i = 0; i < 10; ++i) {
                 BlockPos randomPos = pos.offset(random.nextInt(32) - 16, random.nextInt(6) - 3, random.nextInt(32) - 16);
                 if (!this.level.isRainingAt(randomPos)) {
                     return Vec3.atBottomCenterOf(randomPos);
@@ -212,7 +212,7 @@ public class PrimitiveEndermanEntity extends EnderMan {
         }
 
         // 相当于Entity的私有函数isInRain()
-        private boolean isInRain(){
+        private boolean isInRain() {
             return (this.level.isRainingAt(this.mob.blockPosition()) || this.level.isRainingAt(BlockPos.containing(this.mob.getX(), this.mob.getBoundingBox().maxY, this.mob.getZ())));
         }
     }
