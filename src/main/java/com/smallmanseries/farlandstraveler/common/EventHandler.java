@@ -9,6 +9,7 @@ import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
 import com.smallmanseries.farlandstraveler.common.entity.PrimitiveEndermanEntity;
 import com.smallmanseries.farlandstraveler.common.entity.TestEntity;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
+import com.smallmanseries.farlandstraveler.common.network.PopUpPacket;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -27,6 +28,8 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.level.ExplosionEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
 import java.util.List;
@@ -34,6 +37,18 @@ import java.util.Objects;
 
 @EventBusSubscriber(modid = FarLandsTraveler.MODID)
 public class EventHandler {
+    // 注册数据包负载
+    @SubscribeEvent
+    public static void registerPayloadHandler(RegisterPayloadHandlersEvent event) {
+        final PayloadRegistrar registrar = event.registrar("1");
+
+        registrar.playToClient(
+                PopUpPacket.TYPE,
+                PopUpPacket.STREAM_CODEC,
+                PopUpPacket::handle
+        );
+    }
+
     // 注册实体属性
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {

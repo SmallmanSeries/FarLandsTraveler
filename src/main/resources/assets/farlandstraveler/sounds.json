@@ -227,5 +227,11 @@
       "farlandstraveler:mob_effect/precision_loss_failure"
     ],
     "subtitle": "subtitles.farlandstraveler.weather.some_noise"
+  },
+  "entity.generic.wu": {
+    "sounds": [
+      "minecraft:random/classic_hurt"
+    ],
+    "subtitle": "subtitles.farlandstraveler.entity.wu"
   }
 }

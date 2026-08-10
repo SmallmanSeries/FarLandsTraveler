@@ -2,6 +2,7 @@ package com.smallmanseries.farlandstraveler.client.render.entity;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.client.model.entity.TestEntityModel;
+import com.smallmanseries.farlandstraveler.client.render.entity.layers.GlowLayer;
 import com.smallmanseries.farlandstraveler.common.entity.TestEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
@@ -13,6 +14,7 @@ public class TestEntityRender extends HumanoidMobRenderer<TestEntity, ZombieRend
 
     public TestEntityRender(EntityRendererProvider.Context context) {
         super(context, new TestEntityModel(context.bakeLayer(FLTLayers.TEST_ENTITY)), 0.5F);
+        this.addLayer(new GlowLayer<>(this, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "textures/entity/zombie_far_glow.png")));
     }
 
     @Override

@@ -42,6 +42,8 @@ public class FLTSoundEvents {
     // 效果音效
     public static final DeferredHolder<SoundEvent, SoundEvent> EFFECT_PRECISION_LOSS_FAILURE = register("effect.precision_loss.failure");
 
+    // 实体音效
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_GENERIC_WU = register("entity.generic.wu");
 
     public static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name)));

@@ -33,6 +33,7 @@
   "subtitles.farlandstraveler.item.primitive_ender_core.use": "Primitive Ender Core Uses",
   "subtitles.farlandstraveler.item.primitive_ender_core.break": "Primitive Ender Core Breaks",
   "subtitles.farlandstraveler.weather.some_noise": "Some Noise",
+  "subtitles.farlandstraveler.entity.wu": "Wu!",
   "farlandstraveler.configuration.title": "Far Lands Traveler Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml": "Far Lands Traveler Common Configuration",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml.title": "Far Lands Traveler Common Configuration",
@@ -75,5 +76,7 @@
   "farlandstraveler.configuration.fc_disable_piston_behavior": "Disable Piston Behavior In Fake Chunks (Experimental)",
   "farlandstraveler.configuration.fc_disable_piston_behavior.tooltip": "Prevent the piston in fake chunks from functioning properly\n§eThis function is currently not working properly",
   "farlandstraveler.configuration.enable_far_lands": "Enable Far Lands (Deprecated)",
-  "farlandstraveler.configuration.enable_far_lands.tooltip": "Enable noises to overflow and create the Far Lands\n§4Now deprecated."
+  "farlandstraveler.configuration.enable_far_lands.tooltip": "Enable noises to overflow and create the Far Lands\n§4Now deprecated.",
+  "metagame.farlandstraveler.title": "The unique pop-up window of metagames",
+  "metagame.farlandstraveler.content": "The unique username reading of metagames: %s"
 }
