@@ -4,7 +4,7 @@
   "spawners": [
     {
       "type": "farlandstraveler:primitive_enderman",
-      "weight": 26,
+      "weight": 32,
       "minCount": 1,
       "maxCount": 4
     }
