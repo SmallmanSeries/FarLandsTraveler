@@ -46,7 +46,8 @@ public abstract class EntityMixin {
                 if (effect.getAmplifier() >= 255) {
                     // 精度丢失256级：检测实体的水平速度，速度够大则触发传送，否则定在原地不动。只有在离边境之地足够远的位置（具体由配置文件定义）才能触发传送
                     if (living.level() instanceof ServerLevel level) { // 副作用：实体无法靠自己（客户端速度）触发传送，只能依靠外力（服务端速度）
-                        if (living.getDeltaMovement().horizontalDistanceSqr() > Config.PE_TELEPORT_THRESHOLD.getAsDouble() && Math.max(Math.abs(living.getX()), Math.abs(living.getZ())) < Config.PE_TELEPORT_DEST.getAsInt()) {
+                        // 当生物骑乘载具时，改为判定载具的速度
+                        if ((living.getVehicle() != null ? living.getVehicle().getKnownSpeed() : living.getDeltaMovement()).horizontalDistanceSqr() > Config.PE_TELEPORT_THRESHOLD.getAsDouble() && Math.max(Math.abs(living.getX()), Math.abs(living.getZ())) < Config.PE_TELEPORT_DEST.getAsInt()) {
                             // 先去除【精度丢失256】效果。下面的传送会递归调用本函数，防止无限递归
                             // 精度丢失退化到1级，持续时间不变
                             int duration = effect.getDuration();
@@ -105,6 +106,7 @@ public abstract class EntityMixin {
                             );
 
                             // 传送
+                            living.stopRiding();
                             LivingEntity newEntity = (LivingEntity) living.teleport(
                                     new TeleportTransition(
                                             level,
