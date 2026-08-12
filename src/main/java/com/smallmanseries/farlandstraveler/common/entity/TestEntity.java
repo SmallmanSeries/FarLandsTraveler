@@ -73,18 +73,27 @@ public class TestEntity extends Monster {
     }
 
     @Override
+    public boolean removeWhenFarAway(double distSqr) {
+        return false;
+    }
+
+    @Override
+    public void checkDespawn() {
+    }
+
+    @Override
     public @Nullable Component getCustomName() {
         return Component.translatable("entity.farlandstraveler.test_entity");
     }
 
     @Override
     public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
-        if(source.getEntity() instanceof Player player) {
+        if (source.getEntity() instanceof Player player) {
             if (player.getMainHandItem().is(FLTItems.SPAWN_TEST_ENTITY)) {
                 this.remove(RemovalReason.DISCARDED);
             } else {
                 player.sendOverlayMessage(Component.literal(String.valueOf(damage)));
-                if(player instanceof ServerPlayer && player.getMainHandItem().is(FLTItems.FAKE_CHUNK_MARKER)){
+                if (player instanceof ServerPlayer && player.getMainHandItem().is(FLTItems.FAKE_CHUNK_MARKER)) {
                     PacketDistributor.sendToPlayer((ServerPlayer) player,
                             new PopUpPacket(
                                     Component.translatable("metagame.farlandstraveler.title").getString(),
@@ -97,6 +106,7 @@ public class TestEntity extends Monster {
         this.dead = false;
         boolean result = super.hurtServer(level, source, 0);
         this.invulnerableTime = 0;
+        this.hurtTime = 0;
         return result;
     }
 }

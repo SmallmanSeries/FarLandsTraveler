@@ -3,6 +3,7 @@ package com.smallmanseries.farlandstraveler.client;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.client.model.entity.TestEntityModel;
 import com.smallmanseries.farlandstraveler.client.particle.PEShockwaveParticle;
+import com.smallmanseries.farlandstraveler.client.render.FLTRenderPipelines;
 import com.smallmanseries.farlandstraveler.client.render.debug.FakeChunkBorderRenderer;
 import com.smallmanseries.farlandstraveler.client.render.entity.FLTLayers;
 import com.smallmanseries.farlandstraveler.client.render.entity.PrimitiveEndermanRender;
@@ -16,9 +17,16 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterDebugRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.event.RegisterRenderPipelinesEvent;
 
 @EventBusSubscriber(modid = FarLandsTraveler.MODID, value = Dist.CLIENT)
 public class EventHandlerClient {
+    // 注册渲染管线
+    @SubscribeEvent
+    public static void registerRenderPipelines(RegisterRenderPipelinesEvent event) {
+        event.registerPipeline(FLTRenderPipelines.ENTITY_TV_NOISE);
+    }
+
     // 注册实体渲染器
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -31,7 +39,6 @@ public class EventHandlerClient {
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(FLTLayers.TEST_ENTITY, () -> TestEntityModel.createBodyLayer(CubeDeformation.NONE));
     }
-
 
     // 注册调试渲染器
     @SubscribeEvent
