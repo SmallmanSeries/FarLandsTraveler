@@ -1,4 +1,4 @@
-package com.smallmanseries.farlandstraveler.client.render;
+package com.smallmanseries.farlandstraveler.client.render.debug;
 
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.misc.FLTAttachments;

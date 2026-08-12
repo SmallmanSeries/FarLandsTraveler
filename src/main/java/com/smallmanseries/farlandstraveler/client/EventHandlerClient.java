@@ -3,7 +3,7 @@ package com.smallmanseries.farlandstraveler.client;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.client.model.entity.TestEntityModel;
 import com.smallmanseries.farlandstraveler.client.particle.PEShockwaveParticle;
-import com.smallmanseries.farlandstraveler.client.render.FakeChunkBorderRenderer;
+import com.smallmanseries.farlandstraveler.client.render.debug.FakeChunkBorderRenderer;
 import com.smallmanseries.farlandstraveler.client.render.entity.FLTLayers;
 import com.smallmanseries.farlandstraveler.client.render.entity.PrimitiveEndermanRender;
 import com.smallmanseries.farlandstraveler.client.render.entity.TestEntityRender;
