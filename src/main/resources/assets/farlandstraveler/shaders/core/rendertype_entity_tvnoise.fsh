@@ -2,13 +2,12 @@
 
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
+#moj_import <minecraft:globals.glsl>
 
 uniform sampler2D Sampler0;
 
 in float sphericalVertexDistance;
 in float cylindricalVertexDistance;
-in vec4 vertexPerFaceColorBack;
-in vec4 vertexPerFaceColorFront;
 
 #ifndef EMISSIVE
 in vec4 lightMapColor;
@@ -19,7 +18,7 @@ in vec2 texCoord0;
 out vec4 fragColor;
 
 float noise(vec2 coord) {
-    return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453);
+    return fract(sin(dot(coord + GameTime, vec2(12.9898, 78.233))) * 43758.5453);
 }
 
 void main() {
@@ -29,10 +28,7 @@ void main() {
         }
 
     vec4 newColor = vec4(noise(texCoord0), noise(texCoord0), noise(texCoord0), 0.72);
-
-
-    vec4 faceVertexColor = gl_FrontFacing ? vertexPerFaceColorFront : vertexPerFaceColorBack;
-    newColor *= faceVertexColor * ColorModulator;
+    newColor *= ColorModulator;
 
 #ifndef EMISSIVE
     newColor *= lightMapColor;

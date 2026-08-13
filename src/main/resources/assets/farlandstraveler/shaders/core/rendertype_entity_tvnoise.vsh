@@ -21,8 +21,6 @@ uniform sampler2D Sampler2;
 
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
-out vec4 vertexPerFaceColorBack;
-out vec4 vertexPerFaceColorFront;
 
 #ifndef EMISSIVE
 out vec4 lightMapColor;
@@ -35,10 +33,6 @@ void main() {
 
     sphericalVertexDistance = fog_spherical_distance(Position);
     cylindricalVertexDistance = fog_cylindrical_distance(Position);
-
-    vec2 light = minecraft_compute_light(Light0_Direction, Light1_Direction, Normal);
-    vertexPerFaceColorBack = minecraft_mix_light_separate(-light, Color);
-    vertexPerFaceColorFront = minecraft_mix_light_separate(light, Color);
 
 #ifndef EMISSIVE
     lightMapColor = sample_lightmap(Sampler2, UV2);
