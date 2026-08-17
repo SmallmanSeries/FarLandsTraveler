@@ -89,22 +89,29 @@ public class TestEntity extends Monster {
     @Override
     public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
         if (source.getEntity() instanceof Player player) {
+
+            // 使用测试生物生成器左键移除测试生物
             if (player.getMainHandItem().is(FLTItems.SPAWN_TEST_ENTITY)) {
                 this.remove(RemovalReason.DISCARDED);
             } else {
+                // 显示伤害
                 player.sendOverlayMessage(Component.literal(String.valueOf(damage)));
+
+                // 如果攻击者是玩家，且手持假区块标记器，向该玩家发送数据包，弹出meta游戏特有的弹窗
                 if (player instanceof ServerPlayer && player.getMainHandItem().is(FLTItems.FAKE_CHUNK_MARKER)) {
                     PacketDistributor.sendToPlayer((ServerPlayer) player,
                             new PopUpPacket(
-                                    Component.translatable("metagame.farlandstraveler.title").getString(),
-                                    Component.translatable("metagame.farlandstraveler.content").getString()
+                                    "metagame.farlandstraveler.title",
+                                    "metagame.farlandstraveler.content"
                             ));
                 }
             }
         }
 
         this.dead = false;
-        boolean result = super.hurtServer(level, source, 0);
+
+        // 取消无敌时间
+        boolean result = super.hurtServer(level, source, damage);
         this.invulnerableTime = 0;
         this.hurtTime = 0;
         return result;

@@ -78,5 +78,5 @@
   "farlandstraveler.configuration.enable_far_lands": "启用边境之地（已废弃）",
   "farlandstraveler.configuration.enable_far_lands.tooltip": "使噪声可以进行32位溢出\n§4该功能已废弃",
   "metagame.farlandstraveler.title": "meta游戏特有的弹窗",
-  "metagame.farlandstraveler.content": "meta游戏特有的读取用户名：%s"
+  "metagame.farlandstraveler.content": "meta游戏特有的知道你系统用户名（%s）"
 }

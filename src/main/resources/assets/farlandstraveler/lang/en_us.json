@@ -77,6 +77,6 @@
   "farlandstraveler.configuration.fc_disable_piston_behavior.tooltip": "Prevent the piston in fake chunks from functioning properly\n§eThis function is currently not working properly",
   "farlandstraveler.configuration.enable_far_lands": "Enable Far Lands (Deprecated)",
   "farlandstraveler.configuration.enable_far_lands.tooltip": "Enable noises to overflow and create the Far Lands\n§4Now deprecated.",
-  "metagame.farlandstraveler.title": "The unique pop-up window of metagames",
-  "metagame.farlandstraveler.content": "The unique username reading of metagames: %s"
+  "metagame.farlandstraveler.title": "Metagames' unique pop-up window",
+  "metagame.farlandstraveler.content": "Metagames' unique knowledge of your system username (%s)"
 }
