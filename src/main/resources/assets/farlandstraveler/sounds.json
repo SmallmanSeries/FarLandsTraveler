@@ -233,5 +233,19 @@
       "minecraft:random/classic_hurt"
     ],
     "subtitle": "subtitles.farlandstraveler.entity.wu"
+  },
+  "music.far_lands.universal": {
+    "sounds": [
+      {
+        "name": "farlandstraveler:music/the_far_lands_traveler",
+        "stream": true,
+        "volume": 0.4
+      },
+      {
+        "name": "farlandstraveler:music/deep_tunnel",
+        "stream": true,
+        "volume": 0.4
+      }
+    ]
   }
 }

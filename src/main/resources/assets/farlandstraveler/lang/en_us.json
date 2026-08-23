@@ -77,6 +77,8 @@
   "farlandstraveler.configuration.fc_disable_piston_behavior.tooltip": "Prevent the piston in fake chunks from functioning properly\n§eThis function is currently not working properly",
   "farlandstraveler.configuration.enable_far_lands": "Enable Far Lands (Deprecated)",
   "farlandstraveler.configuration.enable_far_lands.tooltip": "Enable noises to overflow and create the Far Lands\n§4Now deprecated.",
+  "farlandstraveler.music.the_far_lands_traveler": "冒险家岐哥 - 边境旅者",
+  "farlandstraveler.music.deep_tunnel": "冒险家岐哥 - 深邃孔洞",
   "metagame.farlandstraveler.title": "Metagames' unique pop-up window",
   "metagame.farlandstraveler.content": "Metagames' unique knowledge of your system username (%s)"
 }

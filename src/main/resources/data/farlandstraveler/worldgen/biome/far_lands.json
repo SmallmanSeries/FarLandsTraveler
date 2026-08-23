@@ -1,6 +1,14 @@
 {
   "attributes": {
-    "minecraft:visual/sky_color": "#78a7ff"
+    "minecraft:visual/sky_color": "#78a7ff",
+    "minecraft:audio/background_music": {
+      "default": {
+        "sound": "farlandstraveler:music.far_lands.universal",
+        "min_delay": 12000,
+        "max_delay": 24000,
+        "replace_current_music": true
+      }
+    }
   },
   "carvers": [
     "farlandstraveler:far_lands_cave",
