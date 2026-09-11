@@ -45,16 +45,17 @@ public class CascadeFeature extends Feature<CascadeConfiguration> {
         }
 
         // 检查下方的方块
-        boolean flag = false;
-        for (int i = -1; i <= 1 && !flag; i++) {
+        boolean flag = true;
+        check:
+        for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 if (config.canPlaceOn().test(level, new BlockPos(origin.getX() + i, origin.getY() - 1, origin.getZ() + j))) {
-                    flag = true;
-                    break;
+                    flag = false;
+                    break check;
                 }
             }
         }
-        if (!flag) {
+        if (flag) {
             return false;
         }
 

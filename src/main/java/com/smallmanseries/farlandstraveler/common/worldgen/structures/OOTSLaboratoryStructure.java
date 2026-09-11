@@ -86,8 +86,6 @@ public class OOTSLaboratoryStructure extends Structure {
 
     public static class Piece extends TemplateStructurePiece {
 
-        private BlockPos pos;
-
         public Piece(StructureTemplateManager manager, Identifier location, BlockPos pos) {
             super(FLTStructurePieceType.OOTS_LABORATORY_MAZE.get(), 0, manager, location, location.toString(), makeSettings(), pos);
         }

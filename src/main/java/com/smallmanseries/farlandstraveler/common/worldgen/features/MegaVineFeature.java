@@ -102,8 +102,10 @@ public class MegaVineFeature extends Feature<MegaVineConfiguration> {
                     double sagFactor = sag * (4.0 * t * (1.0 - t)); // 4t(1-t) 在 t=0.5 达到1
                     double y = yLinear - sagFactor;
 
-                    // 防止两条藤蔓穿过同一格
+                    // 移动坐标原点
                     pos = origin.relative(axis, i).relative(Direction.Axis.Y, (int) Math.round(y - origin.getY()));
+
+                    // 防止两条藤蔓穿过同一格
                     if (level.getBlockState(pos) == config.vineBlock()) {
                         pos = pos.relative(direction.getOpposite());
                     }
@@ -118,7 +120,6 @@ public class MegaVineFeature extends Feature<MegaVineConfiguration> {
                         }
                     }
                 }
-
                 return true;
             }
         }

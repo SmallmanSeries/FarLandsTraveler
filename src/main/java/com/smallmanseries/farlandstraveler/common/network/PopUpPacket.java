@@ -12,8 +12,8 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import javax.swing.*;
 
 public record PopUpPacket(
-    String title,
-    String content
+        String title,
+        String content
 ) implements CustomPacketPayload {
     public static final Type<PopUpPacket> TYPE = new Type<>(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "pop_up"));
 

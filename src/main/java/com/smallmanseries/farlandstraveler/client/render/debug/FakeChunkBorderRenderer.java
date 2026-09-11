@@ -18,9 +18,10 @@ import net.minecraft.world.phys.Vec3;
 public record FakeChunkBorderRenderer(Minecraft minecraft) implements DebugRenderer.SimpleDebugRenderer {
     @Override
     public void emitGizmos(double camX, double camY, double camZ, DebugValueAccess debugValueAccess, Frustum frustum, float partialTicks) {
-        int renderDistance = this.minecraft.options.getEffectiveRenderDistance();
         if (this.minecraft.level == null || this.minecraft.player == null) return;
         if (!this.minecraft.player.getMainHandItem().is(FLTItems.FAKE_CHUNK_MARKER)) return;
+
+        int renderDistance = this.minecraft.options.getEffectiveRenderDistance();
         Vec3 camera = new Vec3(camX, camY, camZ);
         ChunkPos pos = ChunkPos.containing(BlockPos.containing(camera));
         // 在玩家的渲染距离范围内搜索假区块，如果搜索到了就在这个区块上渲染一个红色的线框
