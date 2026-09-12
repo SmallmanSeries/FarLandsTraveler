@@ -1,14 +1,15 @@
 {
   "attributes": {
+    "minecraft:gameplay/increased_fire_burnout": true,
+    "minecraft:visual/sky_color": "#77a8ff",
     "minecraft:audio/background_music": {
       "default": {
-        "max_delay": 24000,
+        "sound": "farlandstraveler:music.far_lands.universal",
         "min_delay": 12000,
-        "sound": "minecraft:music.overworld.jungle"
+        "max_delay": 24000,
+        "replace_current_music": true
       }
-    },
-    "minecraft:gameplay/increased_fire_burnout": true,
-    "minecraft:visual/sky_color": "#77a8ff"
+    }
   },
   "carvers": [
     "minecraft:cave",

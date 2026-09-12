@@ -45,6 +45,9 @@ public class FLTSoundEvents {
     // 实体音效
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_GENERIC_WU = register("entity.generic.wu");
 
+    // 音乐
+    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_FAR_LANDS_UNIVERSAL = register("music.far_lands.universal");
+
     public static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name)));
     }

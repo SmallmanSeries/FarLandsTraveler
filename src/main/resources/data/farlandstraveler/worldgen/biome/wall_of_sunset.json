@@ -1,14 +1,15 @@
 {
   "attributes": {
+    "minecraft:gameplay/snow_golem_melts": true,
+    "minecraft:visual/sky_color": "#6eb1ff",
     "minecraft:audio/background_music": {
       "default": {
-        "max_delay": 24000,
+        "sound": "farlandstraveler:music.far_lands.universal",
         "min_delay": 12000,
-        "sound": "minecraft:music.overworld.badlands"
+        "max_delay": 24000,
+        "replace_current_music": true
       }
-    },
-    "minecraft:gameplay/snow_golem_melts": true,
-    "minecraft:visual/sky_color": "#6eb1ff"
+    }
   },
   "carvers": [
     "minecraft:cave",

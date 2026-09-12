@@ -30,10 +30,10 @@
   "message.farlandstraveler.wip": "未完成",
   "message.farlandstraveler.fake_chunk_marked": "当前区块已被标记为§c假区块",
   "message.farlandstraveler.fake_chunk_unmarked": "当前区块已被标记为正常区块",
-  "subtitles.farlandstraveler.entity.wu": "误！",
   "subtitles.farlandstraveler.item.primitive_ender_core.use": "原始末影核心：使用",
   "subtitles.farlandstraveler.item.primitive_ender_core.break": "原始末影核心：破碎",
   "subtitles.farlandstraveler.weather.some_noise": "某种噪音",
+  "subtitles.farlandstraveler.entity.wu": "误！",
   "farlandstraveler.configuration.title": "边境旅者 模组配置",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml": "边境旅者通用配置",
   "farlandstraveler.configuration.section.farlandstraveler.common.toml.title": "边境旅者 通用配置",
@@ -77,6 +77,8 @@
   "farlandstraveler.configuration.fc_disable_piston_behavior.tooltip": "使假区块中的活塞无法正常工作\n§e该功能目前无法正常工作",
   "farlandstraveler.configuration.enable_far_lands": "启用边境之地（已废弃）",
   "farlandstraveler.configuration.enable_far_lands.tooltip": "使噪声可以进行32位溢出\n§4该功能已废弃",
+  "farlandstraveler.music.the_far_lands_traveler": "冒险家岐哥 - 边境旅者",
+  "farlandstraveler.music.deep_tunnel": "冒险家岐哥 - 深邃孔洞",
   "metagame.farlandstraveler.title": "meta游戏特有的弹窗",
   "metagame.farlandstraveler.content": "meta游戏特有的知道你系统用户名（%s）"
 }
