@@ -42,7 +42,6 @@
   "client": [
     "EffectsInInventoryMixin",
     "border.LevelRendererMixin",
-    "entity.GameRendererMixin",
     "renderer.BlockEntityRendererDispatcherMixin",
     "renderer.FluidRendererMixin",
     "renderer.ModelBlockRendererMixin",
