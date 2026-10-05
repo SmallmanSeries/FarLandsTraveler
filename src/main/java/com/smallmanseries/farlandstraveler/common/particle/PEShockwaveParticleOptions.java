@@ -10,6 +10,13 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
+/**
+ * 原始末影冲击波粒子的设置
+ * @param direction 冲击波面向的方向
+ * @param life 冲击波的寿命，影响冲击波的扩散时间
+ * @param size 冲击波扩散的大小。冲击波会从0逐渐长到这么大，消耗的时间是<code>life</code>指定的时间。
+ * @see com.smallmanseries.farlandstraveler.client.particle.PEShockwaveParticle
+ */
 public record PEShockwaveParticleOptions(
         Direction direction,
         int life,

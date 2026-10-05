@@ -15,6 +15,11 @@ import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.util.RandomSource;
 import org.joml.Quaternionf;
 
+/**
+ * PE = Primitive Ender
+ * <p>生成一个原始末影冲击波
+ * @see PEShockwaveParticleOptions
+ */
 public class PEShockwaveParticle extends SingleQuadParticle {
     private final Direction direction;
 

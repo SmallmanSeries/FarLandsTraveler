@@ -11,6 +11,11 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import javax.swing.*;
 
+/**
+ * meta游戏特有的“弹窗”数据包。给一个玩家发送该数据包，这个玩家的电脑上就会弹出一个窗口。
+ * @param title 弹窗的标题，支持翻译键
+ * @param content 弹窗的内容，支持翻译键。使用%s以显示当前玩家的系统用户名（meta游戏特有的知道你系统用户名）
+ */
 public record PopUpPacket(
         String title,
         String content
