@@ -151,7 +151,7 @@ public class DataInjectors {
      * @param path 世界预设文件的路径
      * @param name MixsonEvent的名称（随便取）
      */
-    public static void worldPresentInjector(String path, String name) {
+    public static void worldPresetInjector(String path, String name) {
         Mixson.registerEvent(
                 0,
                 Lifetime.PERSISTENT,

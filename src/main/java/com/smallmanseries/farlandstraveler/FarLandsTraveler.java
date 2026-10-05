@@ -49,29 +49,26 @@ public class FarLandsTraveler {
         FLTMaterialRules.MATERIAL_RULES.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-
-        DataInjectors.noiseRouterInjector("worldgen/noise_settings/overworld", "noiseRouterInjectorNormal");
-        // DataInjectors.noiseRouterInjector("worldgen/noise_settings/amplified", "noiseRouterInjectorAmplified");
-        // DataInjectors.noiseRouterInjector("worldgen/noise_settings/large_biomes", "noiseRouterInjectorLargeBiomes");
-
-        DataInjectors.surfaceRuleInjector("worldgen/noise_settings/overworld", "surfaceRuleInjectorNormal");
-        // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/amplified", "surfaceRuleInjectorAmplified");
-        // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/large_biomes", "surfaceRuleInjectorLargeBiomes");
-
-        DataInjectors.worldPresentInjector("worldgen/world_preset/normal", "worldPresentInjectorNormal");
-        // DataInjectors.worldPresentInjector("worldgen/world_preset/amplified", "biomeSourceInjectorAmplified");
-        // DataInjectors.worldPresentInjector("worldgen/world_preset/large_biome", "biomeSourceInjectorLargeBiome");
-
-        DataInjectors.dimensionInjector("dimension/overworld", "dimensionInjectorNormal");
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-
         event.enqueueWork(() -> {
+            DataInjectors.noiseRouterInjector("worldgen/noise_settings/overworld", "noiseRouterInjectorNormal");
+            // DataInjectors.noiseRouterInjector("worldgen/noise_settings/amplified", "noiseRouterInjectorAmplified");
+            // DataInjectors.noiseRouterInjector("worldgen/noise_settings/large_biomes", "noiseRouterInjectorLargeBiomes");
+
+            DataInjectors.surfaceRuleInjector("worldgen/noise_settings/overworld", "surfaceRuleInjectorNormal");
+            // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/amplified", "surfaceRuleInjectorAmplified");
+            // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/large_biomes", "surfaceRuleInjectorLargeBiomes");
+
+            DataInjectors.worldPresetInjector("worldgen/world_preset/normal", "worldPresetInjectorNormal");
+            // DataInjectors.worldPresetInjector("worldgen/world_preset/amplified", "worldPresetInjectorAmplified");
+            // DataInjectors.worldPresetInjector("worldgen/world_preset/large_biome", "worldPresetInjectorLargeBiome");
+
+            DataInjectors.dimensionInjector("dimension/overworld", "dimensionInjectorNormal");
+
             FLTBlocks.registerPots();
             FLTBlocks.registerFlammability();
         });
-        //LOGGER.info("Far Lands Travelers, gather!");
     }
-
 }
