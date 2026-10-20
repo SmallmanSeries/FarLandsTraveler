@@ -2,6 +2,5 @@
   "parent": "minecraft:block/cross",
   "textures": {
     "cross": "farlandstraveler:block/far_lands_rose"
-  },
-  "render_type": "cutout"
+  }
 }

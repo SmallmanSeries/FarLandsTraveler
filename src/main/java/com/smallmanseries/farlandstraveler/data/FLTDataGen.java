@@ -1,5 +1,6 @@
 package com.smallmanseries.farlandstraveler.data;
 
+import com.smallmanseries.farlandstraveler.data.generators.FLTModelGen;
 import com.smallmanseries.farlandstraveler.data.generators.FLTRecipeGen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -18,6 +19,6 @@ public class FLTDataGen {
         generator.addProvider(true, new FLTRecipeGen.Runner(packOutput, lookupProvider));
 
         // client
-
+        generator.addProvider(true, new FLTModelGen(packOutput));
     }
 }
