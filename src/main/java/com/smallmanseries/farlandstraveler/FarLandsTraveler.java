@@ -16,6 +16,7 @@ import com.smallmanseries.farlandstraveler.common.worldgen.materialrules.FLTMate
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.FLTStructurePieceType;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.FLTStructures;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.placement.FLTStructurePlacements;
+import com.smallmanseries.farlandstraveler.data.FLTDataGen;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -30,6 +31,7 @@ public class FarLandsTraveler {
 
     public FarLandsTraveler(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(FLTDataGen::data);
 
         FLTBlocks.BLOCKS.register(modEventBus);
         FLTEntityTypes.ENTITY_TYPES.register(modEventBus);

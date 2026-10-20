@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "test",
+  "ingredients": [
+    "farlandstraveler:test_item"
+  ],
+  "result": {
+    "count": 64,
+    "id": "farlandstraveler:fake_chunk_marker"
+  }
+}
