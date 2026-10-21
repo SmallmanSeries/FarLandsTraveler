@@ -17,8 +17,11 @@ public class FLTModelGen extends ModelProvider {
 
     @Override
     public void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+        generateBlockModels(blockModels);
+        generateItemModels(itemModels);
+    }
 
-        // 方块
+    private void generateBlockModels(BlockModelGenerators blockModels) {
         // 测试方块
         blockModels.createTrivialCube(FLTBlocks.TEST_BLOCK.get());
         // 无效方块
@@ -32,7 +35,9 @@ public class FLTModelGen extends ModelProvider {
         blockModels.createPlantWithDefaultItem(FLTBlocks.FAR_LANDS_ROSE.get(), FLTBlocks.POTTED_FAR_LANDS_ROSE.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(FLTBlocks.CYAN_FAR_LANDS_ROSE.get(), FLTBlocks.POTTED_CYAN_FAR_LANDS_ROSE.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(FLTBlocks.FAR_LANDS_PAEONIA.get(), FLTBlocks.POTTED_FAR_LANDS_PAEONIA.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+    }
 
+    private void generateItemModels(ItemModelGenerators itemModels) {
         // 物品
         itemModels.generateFlatItem(FLTItems.PRIMITIVE_ENDER_CORE.get(), ModelTemplates.FLAT_ITEM);
         // 刷怪蛋
