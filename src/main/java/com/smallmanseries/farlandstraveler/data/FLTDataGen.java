@@ -3,6 +3,7 @@ package com.smallmanseries.farlandstraveler.data;
 import com.smallmanseries.farlandstraveler.data.generators.FLTModelGen;
 import com.smallmanseries.farlandstraveler.data.generators.FLTParticleGen;
 import com.smallmanseries.farlandstraveler.data.generators.FLTRecipeGen;
+import com.smallmanseries.farlandstraveler.data.generators.FLTSoundGen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -22,5 +23,6 @@ public class FLTDataGen {
         // client
         generator.addProvider(true, new FLTModelGen(packOutput));
         generator.addProvider(true, new FLTParticleGen(packOutput));
+        generator.addProvider(true, new FLTSoundGen(packOutput));
     }
 }

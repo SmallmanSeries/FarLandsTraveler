@@ -1,110 +1,110 @@
 {
   "block.classic_grass.break": {
     "sounds": [
-      "minecraft:dig/grass1",
-      "minecraft:dig/grass2",
-      "minecraft:dig/grass3",
-      "minecraft:dig/grass4"
+      "dig/grass1",
+      "dig/grass2",
+      "dig/grass3",
+      "dig/grass4"
     ],
     "subtitle": "subtitles.block.generic.break"
   },
   "block.classic_grass.fall": {
     "sounds": [
-      "minecraft:dig/grass1",
-      "minecraft:dig/grass2",
-      "minecraft:dig/grass3",
-      "minecraft:dig/grass4"
+      "dig/grass1",
+      "dig/grass2",
+      "dig/grass3",
+      "dig/grass4"
     ],
     "subtitle": "subtitles.block.generic.fall"
   },
   "block.classic_grass.hit": {
     "sounds": [
-      "minecraft:dig/grass1",
-      "minecraft:dig/grass2",
-      "minecraft:dig/grass3",
-      "minecraft:dig/grass4"
+      "dig/grass1",
+      "dig/grass2",
+      "dig/grass3",
+      "dig/grass4"
     ],
     "subtitle": "subtitles.block.generic.hit"
   },
   "block.classic_grass.place": {
     "sounds": [
-      "minecraft:dig/grass1",
-      "minecraft:dig/grass2",
-      "minecraft:dig/grass3",
-      "minecraft:dig/grass4"
+      "dig/grass1",
+      "dig/grass2",
+      "dig/grass3",
+      "dig/grass4"
     ],
     "subtitle": "subtitles.block.generic.place"
   },
   "block.classic_grass.step": {
     "sounds": [
-      "minecraft:dig/grass1",
-      "minecraft:dig/grass2",
-      "minecraft:dig/grass3",
-      "minecraft:dig/grass4"
+      "dig/grass1",
+      "dig/grass2",
+      "dig/grass3",
+      "dig/grass4"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
   "block.classic_stone.break": {
     "sounds": [
-      "minecraft:dig/stone1",
-      "minecraft:dig/stone2",
-      "minecraft:dig/stone3",
-      "minecraft:dig/stone4"
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.break"
   },
   "block.classic_stone.fall": {
     "sounds": [
-      "minecraft:dig/stone1",
-      "minecraft:dig/stone2",
-      "minecraft:dig/stone3",
-      "minecraft:dig/stone4"
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.fall"
   },
   "block.classic_stone.hit": {
     "sounds": [
-      "minecraft:dig/stone1",
-      "minecraft:dig/stone2",
-      "minecraft:dig/stone3",
-      "minecraft:dig/stone4"
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.hit"
   },
   "block.classic_stone.place": {
     "sounds": [
-      "minecraft:dig/stone1",
-      "minecraft:dig/stone2",
-      "minecraft:dig/stone3",
-      "minecraft:dig/stone4"
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.place"
   },
   "block.classic_stone.step": {
     "sounds": [
-      "minecraft:dig/stone1",
-      "minecraft:dig/stone2",
-      "minecraft:dig/stone3",
-      "minecraft:dig/stone4"
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
   "block.pe_stone.break": {
     "sounds": [
       {
-        "name": "minecraft:dig/stone1",
+        "name": "dig/stone1",
         "pitch": 1.25
       },
       {
-        "name": "minecraft:dig/stone2",
+        "name": "dig/stone2",
         "pitch": 1.25
       },
       {
-        "name": "minecraft:dig/stone3",
+        "name": "dig/stone3",
         "pitch": 1.25
       },
       {
-        "name": "minecraft:dig/stone4",
+        "name": "dig/stone4",
         "pitch": 1.25
       }
     ],
@@ -112,30 +112,30 @@
   },
   "block.pe_stone.fall": {
     "sounds": [
-      "minecraft:dig/stone1",
-      "minecraft:dig/stone2",
-      "minecraft:dig/stone3",
-      "minecraft:dig/stone4"
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.fall"
   },
   "block.pe_stone.hit": {
     "sounds": [
       {
-        "name": "minecraft:dig/stone1",
-        "pitch": 2
+        "name": "dig/stone1",
+        "pitch": 2.0
       },
       {
-        "name": "minecraft:dig/stone2",
-        "pitch": 2
+        "name": "dig/stone2",
+        "pitch": 2.0
       },
       {
-        "name": "minecraft:dig/stone3",
-        "pitch": 2
+        "name": "dig/stone3",
+        "pitch": 2.0
       },
       {
-        "name": "minecraft:dig/stone4",
-        "pitch": 2
+        "name": "dig/stone4",
+        "pitch": 2.0
       }
     ],
     "subtitle": "subtitles.block.generic.hit"
@@ -143,19 +143,19 @@
   "block.pe_stone.place": {
     "sounds": [
       {
-        "name": "minecraft:dig/stone1",
+        "name": "dig/stone1",
         "pitch": 1.25
       },
       {
-        "name": "minecraft:dig/stone2",
+        "name": "dig/stone2",
         "pitch": 1.25
       },
       {
-        "name": "minecraft:dig/stone3",
+        "name": "dig/stone3",
         "pitch": 1.25
       },
       {
-        "name": "minecraft:dig/stone4",
+        "name": "dig/stone4",
         "pitch": 1.25
       }
     ],
@@ -163,12 +163,64 @@
   },
   "block.pe_stone.step": {
     "sounds": [
-      "minecraft:dig/stone1",
-      "minecraft:dig/stone2",
-      "minecraft:dig/stone3",
-      "minecraft:dig/stone4"
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "effect.precision_loss.failure": {
+    "sounds": [
+      "farlandstraveler:mob_effect/precision_loss_failure"
+    ],
+    "subtitle": "subtitles.farlandstraveler.weather.some_noise"
+  },
+  "entity.generic.wu": {
+    "sounds": [
+      "random/classic_hurt"
+    ],
+    "subtitle": "subtitles.farlandstraveler.entity.wu"
+  },
+  "item.primitive_ender_core.break": {
+    "sounds": [
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break1",
+        "pitch": 1.25,
+        "volume": 0.4
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break2",
+        "pitch": 1.25,
+        "volume": 0.4
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break3",
+        "pitch": 1.25,
+        "volume": 0.4
+      }
+    ],
+    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
+  },
+  "item.primitive_ender_core.break_far": {
+    "sounds": [
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break_far1",
+        "pitch": 1.25,
+        "volume": 0.4
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break_far2",
+        "pitch": 1.25,
+        "volume": 0.4
+      },
+      {
+        "name": "farlandstraveler:item/primitive_ender_core/break_far3",
+        "pitch": 1.25,
+        "volume": 0.4
+      }
+    ],
+    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
   },
   "item.primitive_ender_core.use": {
     "sounds": [
@@ -181,58 +233,6 @@
       "farlandstraveler:item/primitive_ender_core/use_far"
     ],
     "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.use"
-  },
-  "item.primitive_ender_core.break": {
-    "sounds": [
-      {
-        "name": "farlandstraveler:item/primitive_ender_core/break1",
-        "volume": 0.25,
-        "pitch": 1.25
-      },
-      {
-        "name": "farlandstraveler:item/primitive_ender_core/break2",
-        "volume": 0.25,
-        "pitch": 1.25
-      },
-      {
-        "name": "farlandstraveler:item/primitive_ender_core/break3",
-        "volume": 0.25,
-        "pitch": 1.25
-      }
-    ],
-    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
-  },
-  "item.primitive_ender_core.break_far": {
-    "sounds": [
-      {
-        "name": "farlandstraveler:item/primitive_ender_core/break_far1",
-        "volume": 0.4,
-        "pitch": 1.25
-      },
-      {
-        "name": "farlandstraveler:item/primitive_ender_core/break_far2",
-        "volume": 0.4,
-        "pitch": 1.25
-      },
-      {
-        "name": "farlandstraveler:item/primitive_ender_core/break_far3",
-        "volume": 0.4,
-        "pitch": 1.25
-      }
-    ],
-    "subtitle": "subtitles.farlandstraveler.item.primitive_ender_core.break"
-  },
-  "effect.precision_loss.failure": {
-    "sounds": [
-      "farlandstraveler:mob_effect/precision_loss_failure"
-    ],
-    "subtitle": "subtitles.farlandstraveler.weather.some_noise"
-  },
-  "entity.generic.wu": {
-    "sounds": [
-      "minecraft:random/classic_hurt"
-    ],
-    "subtitle": "subtitles.farlandstraveler.entity.wu"
   },
   "music.far_lands.universal": {
     "sounds": [
