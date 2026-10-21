@@ -12,7 +12,7 @@ public class FLTParticleGen extends ParticleDescriptionProvider {
     }
 
     @Override
-    protected void addDescriptions() {
+    public void addDescriptions() {
         this.spriteSet(FLTParticleTypes.PRIMITIVE_ENDER_SHOCKWAVE.get(),
                 Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "primitive_ender_shockwave"),
                 Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "primitive_ender_shockwave_far"));

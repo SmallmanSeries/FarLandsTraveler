@@ -14,7 +14,7 @@ public class FLTRecipeGen extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes() {
+    public void buildRecipes() {
         this.oneToOneConversionRecipe(FLTItems.FAKE_CHUNK_MARKER, FLTItems.TEST_ITEM, "test", 64);
     }
 
