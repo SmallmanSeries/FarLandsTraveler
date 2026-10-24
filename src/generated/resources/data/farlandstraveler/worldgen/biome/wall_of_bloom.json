@@ -1,24 +1,26 @@
 {
   "attributes": {
-    "minecraft:gameplay/increased_fire_burnout": true,
-    "minecraft:visual/sky_color": "#77a8ff",
     "minecraft:audio/background_music": {
       "default": {
-        "sound": "farlandstraveler:music.far_lands.universal",
-        "min_delay": 12000,
         "max_delay": 24000,
-        "replace_current_music": true
+        "min_delay": 12000,
+        "replace_current_music": true,
+        "sound": "farlandstraveler:music.far_lands.universal"
       }
-    }
+    },
+    "minecraft:visual/sky_color": "#7ba4ff",
+    "minecraft:visual/water_fog_color": "#5db7ef"
   },
   "carvers": [
-    "minecraft:cave",
-    "minecraft:cave_extra_underground",
-    "minecraft:canyon"
+    "farlandstraveler:far_lands_cave",
+    "farlandstraveler:far_lands_cave_extra",
+    "farlandstraveler:far_lands_canyon"
   ],
-  "downfall": 0.9,
+  "downfall": 0.8,
   "effects": {
-    "water_color": "#3f76e4"
+    "foliage_color": "#b6db61",
+    "grass_color": "#b6db61",
+    "water_color": "#5db7ef"
   },
   "features": [
     [],
@@ -38,13 +40,13 @@
     [
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
       "minecraft:ore_granite_lower",
       "minecraft:ore_diorite_upper",
       "minecraft:ore_diorite_lower",
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
       "minecraft:ore_tuff",
-      "farlandstraveler:wall_of_green_moss",
       "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
       "minecraft:ore_iron_upper",
@@ -64,26 +66,24 @@
       "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "minecraft:disk_gravel",
+      "minecraft:ore_emerald"
     ],
-    [],
+    [
+      "minecraft:ore_infested"
+    ],
     [
       "minecraft:spring_water"
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:bamboo_light",
-      "farlandstraveler:wall_of_green_trees",
-      "minecraft:flower_warm",
-      "farlandstraveler:wall_of_green_grass",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_pumpkin",
-      "minecraft:patch_sugar_cane",
-      "minecraft:patch_firefly_bush_near_water",
-      "farlandstraveler:wall_of_green_mega_vine",
-      "farlandstraveler:wall_of_green_vines",
-      "minecraft:patch_melon"
+      "minecraft:patch_tall_grass_2",
+      "farlandstraveler:wall_of_bloom_grass",
+      "minecraft:flower_cherry",
+      "farlandstraveler:wall_of_bloom_bush",
+      "farlandstraveler:wall_of_bloom_vines",
+      "farlandstraveler:flower_cherry_wall_of_bloom",
+      "farlandstraveler:wall_of_bloom_cherry_cascade"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -103,46 +103,22 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
-      },
-      {
         "type": "minecraft:pig",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:cow",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:parrot",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 40
-      },
-      {
-        "type": "minecraft:panda",
         "maxCount": 2,
         "minCount": 1,
         "weight": 1
+      },
+      {
+        "type": "minecraft:rabbit",
+        "maxCount": 6,
+        "minCount": 2,
+        "weight": 2
+      },
+      {
+        "type": "minecraft:sheep",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 2
       }
     ],
     "misc": [],
@@ -194,12 +170,6 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
-      },
-      {
-        "type": "minecraft:ocelot",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 2
       }
     ],
     "underground_water_creature": [
@@ -213,5 +183,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.95
+  "temperature": 0.5
 }

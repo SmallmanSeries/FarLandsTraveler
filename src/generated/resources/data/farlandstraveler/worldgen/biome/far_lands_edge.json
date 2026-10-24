@@ -1,14 +1,14 @@
 {
   "attributes": {
-    "minecraft:visual/sky_color": "#78a7ff",
     "minecraft:audio/background_music": {
       "default": {
-        "sound": "farlandstraveler:music.far_lands.universal",
-        "min_delay": 12000,
         "max_delay": 24000,
-        "replace_current_music": true
+        "min_delay": 12000,
+        "replace_current_music": true,
+        "sound": "farlandstraveler:music.far_lands.universal"
       }
-    }
+    },
+    "minecraft:visual/sky_color": "#78a7ff"
   },
   "carvers": [
     "farlandstraveler:far_lands_cave",
@@ -75,7 +75,7 @@
       "minecraft:patch_tall_grass_2",
       "minecraft:patch_bush",
       "minecraft:trees_plains",
-      "farlandstraveler:flower/far_lands_plains",
+      "farlandstraveler:flower_far_lands_plains",
       "minecraft:patch_grass_plain",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",

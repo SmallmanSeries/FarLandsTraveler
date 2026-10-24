@@ -1,17 +1,22 @@
 {
   "attributes": {
-    "minecraft:visual/sky_color": "#78a7ff",
     "minecraft:audio/background_music": {
       "default": {
-        "sound": "farlandstraveler:music.far_lands.universal",
-        "min_delay": 12000,
         "max_delay": 24000,
-        "replace_current_music": true
+        "min_delay": 12000,
+        "replace_current_music": true,
+        "sound": "farlandstraveler:music.far_lands.universal"
       }
-    }
+    },
+    "minecraft:gameplay/increased_fire_burnout": true,
+    "minecraft:visual/sky_color": "#77a8ff"
   },
-  "carvers": [],
-  "downfall": 0.4,
+  "carvers": [
+    "farlandstraveler:far_lands_cave",
+    "farlandstraveler:far_lands_cave_extra",
+    "farlandstraveler:far_lands_canyon"
+  ],
+  "downfall": 0.9,
   "effects": {
     "water_color": "#3f76e4"
   },
@@ -40,6 +45,7 @@
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
       "minecraft:ore_tuff",
+      "farlandstraveler:wall_of_green_moss",
       "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
       "minecraft:ore_iron_upper",
@@ -63,21 +69,22 @@
     ],
     [],
     [
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:spring_water"
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
-      "minecraft:patch_bush",
-      "minecraft:trees_plains",
-      "farlandstraveler:flower/far_lands_plains",
-      "minecraft:patch_grass_plain",
+      "minecraft:bamboo_light",
+      "farlandstraveler:wall_of_green_trees",
+      "minecraft:flower_warm",
+      "farlandstraveler:wall_of_green_grass",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_pumpkin",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_firefly_bush_near_water"
+      "minecraft:patch_firefly_bush_near_water",
+      "farlandstraveler:wall_of_green_mega_vine",
+      "farlandstraveler:wall_of_green_vines",
+      "minecraft:patch_melon"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -96,6 +103,18 @@
     ],
     "axolotls": [],
     "creature": [
+      {
+        "type": "minecraft:parrot",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 40
+      },
+      {
+        "type": "minecraft:panda",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      },
       {
         "type": "minecraft:sheep",
         "maxCount": 4,
@@ -121,20 +140,20 @@
         "weight": 8
       },
       {
-        "type": "minecraft:horse",
-        "maxCount": 6,
-        "minCount": 2,
-        "weight": 5
-      },
-      {
-        "type": "minecraft:donkey",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
+        "type": "minecraft:chicken",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
       }
     ],
     "misc": [],
     "monster": [
+      {
+        "type": "minecraft:ocelot",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 2
+      },
       {
         "type": "minecraft:spider",
         "maxCount": 4,
@@ -145,16 +164,10 @@
         "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 90
+        "weight": 95
       },
       {
         "type": "minecraft:zombie_villager",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 5
-      },
-      {
-        "type": "minecraft:zombie_horse",
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
@@ -201,5 +214,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.95
 }

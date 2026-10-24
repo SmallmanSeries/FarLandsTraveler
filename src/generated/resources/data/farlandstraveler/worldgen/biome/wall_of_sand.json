@@ -1,26 +1,24 @@
 {
   "attributes": {
-    "minecraft:visual/sky_color": "#7ba4ff",
-    "minecraft:visual/water_fog_color": "#5db7ef",
     "minecraft:audio/background_music": {
       "default": {
-        "sound": "farlandstraveler:music.far_lands.universal",
-        "min_delay": 12000,
         "max_delay": 24000,
-        "replace_current_music": true
+        "min_delay": 12000,
+        "replace_current_music": true,
+        "sound": "farlandstraveler:music.far_lands.universal"
       }
-    }
+    },
+    "minecraft:gameplay/snow_golem_melts": true,
+    "minecraft:visual/sky_color": "#6eb1ff"
   },
   "carvers": [
-    "minecraft:cave",
-    "minecraft:cave_extra_underground",
-    "minecraft:canyon"
+    "farlandstraveler:far_lands_cave",
+    "farlandstraveler:far_lands_cave_extra",
+    "farlandstraveler:far_lands_canyon"
   ],
-  "downfall": 0.8,
+  "downfall": 0.0,
   "effects": {
-    "foliage_color": "#b6db61",
-    "grass_color": "#b6db61",
-    "water_color": "#5db7ef"
+    "water_color": "#3f76e4"
   },
   "features": [
     [],
@@ -32,10 +30,14 @@
       "minecraft:amethyst_geode"
     ],
     [
+      "minecraft:fossil_upper",
+      "minecraft:fossil_lower",
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+      "minecraft:desert_well"
+    ],
     [],
     [
       "minecraft:ore_dirt",
@@ -66,30 +68,30 @@
       "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:ore_emerald"
+      "minecraft:disk_gravel"
     ],
+    [],
     [
-      "minecraft:ore_infested"
-    ],
-    [
-      "minecraft:spring_water"
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
-      "farlandstraveler:wall_of_bloom_grass",
-      "minecraft:flower_cherry",
-      "farlandstraveler:wall_of_bloom_bush",
-      "farlandstraveler:wall_of_bloom_vines",
-      "farlandstraveler:flower_cherry_wall_of_bloom",
-      "farlandstraveler:wall_of_bloom_cherry_cascade"
+      "minecraft:flower_default",
+      "minecraft:patch_grass_badlands",
+      "minecraft:patch_dry_grass_desert",
+      "minecraft:patch_dead_bush_2",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal",
+      "minecraft:patch_sugar_cane_desert",
+      "minecraft:patch_pumpkin",
+      "minecraft:patch_cactus_desert"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -103,22 +105,16 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:pig",
-        "maxCount": 2,
+        "type": "minecraft:rabbit",
+        "maxCount": 3,
+        "minCount": 2,
+        "weight": 12
+      },
+      {
+        "type": "minecraft:camel",
+        "maxCount": 1,
         "minCount": 1,
         "weight": 1
-      },
-      {
-        "type": "minecraft:rabbit",
-        "maxCount": 6,
-        "minCount": 2,
-        "weight": 2
-      },
-      {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 2
       }
     ],
     "misc": [],
@@ -133,19 +129,19 @@
         "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 95
+        "weight": 19
       },
       {
         "type": "minecraft:zombie_villager",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 5
+        "weight": 1
       },
       {
         "type": "minecraft:skeleton",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 100
+        "weight": 50
       },
       {
         "type": "minecraft:creeper",
@@ -170,6 +166,18 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
+      },
+      {
+        "type": "minecraft:husk",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 80
+      },
+      {
+        "type": "minecraft:parched",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 50
       }
     ],
     "underground_water_creature": [
@@ -183,5 +191,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.5
+  "temperature": 2.0
 }

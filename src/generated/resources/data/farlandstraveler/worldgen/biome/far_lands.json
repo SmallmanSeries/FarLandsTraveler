@@ -1,22 +1,21 @@
 {
   "attributes": {
-    "minecraft:gameplay/snow_golem_melts": true,
-    "minecraft:visual/sky_color": "#6eb1ff",
     "minecraft:audio/background_music": {
       "default": {
-        "sound": "farlandstraveler:music.far_lands.universal",
-        "min_delay": 12000,
         "max_delay": 24000,
-        "replace_current_music": true
+        "min_delay": 12000,
+        "replace_current_music": true,
+        "sound": "farlandstraveler:music.far_lands.universal"
       }
-    }
+    },
+    "minecraft:visual/sky_color": "#78a7ff"
   },
   "carvers": [
-    "minecraft:cave",
-    "minecraft:cave_extra_underground",
-    "minecraft:canyon"
+    "farlandstraveler:far_lands_cave",
+    "farlandstraveler:far_lands_cave_extra",
+    "farlandstraveler:far_lands_canyon"
   ],
-  "downfall": 0.0,
+  "downfall": 0.4,
   "effects": {
     "water_color": "#3f76e4"
   },
@@ -30,14 +29,10 @@
       "minecraft:amethyst_geode"
     ],
     [
-      "minecraft:fossil_upper",
-      "minecraft:fossil_lower",
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [
-      "minecraft:desert_well"
-    ],
+    [],
     [],
     [
       "minecraft:ore_dirt",
@@ -77,21 +72,22 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:flower_default",
-      "minecraft:patch_grass_badlands",
-      "minecraft:patch_dry_grass_desert",
-      "minecraft:patch_dead_bush_2",
+      "minecraft:patch_tall_grass_2",
+      "minecraft:patch_bush",
+      "minecraft:trees_plains",
+      "farlandstraveler:flower_far_lands_plains",
+      "minecraft:patch_grass_plain",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane_desert",
       "minecraft:patch_pumpkin",
-      "minecraft:patch_cactus_desert"
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_firefly_bush_near_water"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "has_precipitation": false,
+  "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -105,14 +101,38 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:rabbit",
-        "maxCount": 3,
-        "minCount": 2,
+        "type": "minecraft:sheep",
+        "maxCount": 4,
+        "minCount": 4,
         "weight": 12
       },
       {
-        "type": "minecraft:camel",
-        "maxCount": 1,
+        "type": "minecraft:pig",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:chicken",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:cow",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 8
+      },
+      {
+        "type": "minecraft:horse",
+        "maxCount": 6,
+        "minCount": 2,
+        "weight": 5
+      },
+      {
+        "type": "minecraft:donkey",
+        "maxCount": 3,
         "minCount": 1,
         "weight": 1
       }
@@ -129,19 +149,25 @@
         "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 19
+        "weight": 90
       },
       {
         "type": "minecraft:zombie_villager",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 1
+        "weight": 5
+      },
+      {
+        "type": "minecraft:zombie_horse",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 5
       },
       {
         "type": "minecraft:skeleton",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 50
+        "weight": 100
       },
       {
         "type": "minecraft:creeper",
@@ -166,18 +192,6 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
-      },
-      {
-        "type": "minecraft:husk",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 80
-      },
-      {
-        "type": "minecraft:parched",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 50
       }
     ],
     "underground_water_creature": [
@@ -191,5 +205,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 2.0
+  "temperature": 0.8
 }
