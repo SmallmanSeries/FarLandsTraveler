@@ -2,6 +2,10 @@ package com.smallmanseries.farlandstraveler.data;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.data.generators.*;
+import com.smallmanseries.farlandstraveler.data.generators.tags.FLTBiomeTagGen;
+import com.smallmanseries.farlandstraveler.data.generators.tags.FLTBlockTagGen;
+import com.smallmanseries.farlandstraveler.data.generators.tags.FLTEntityTypeTagGen;
+import com.smallmanseries.farlandstraveler.data.generators.tags.FLTItemTagGen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -18,12 +22,13 @@ public class FLTDataGen {
         PackOutput packOutput = generator.getPackOutput();
 
         // server
-        generator.addProvider(true, new DatapackBuiltinEntriesProvider(
+        DatapackBuiltinEntriesProvider provider = new DatapackBuiltinEntriesProvider(
                 packOutput,
                 lookupProvider,
                 FLTRegistrySets.BUILDER,
                 Collections.singleton(FarLandsTraveler.MODID)
-        ));
+        );
+        generator.addProvider(true, provider);
         generator.addProvider(true, new FLTRecipeGen.Runner(packOutput, lookupProvider));
 
         // client
@@ -32,9 +37,10 @@ public class FLTDataGen {
         generator.addProvider(true, new FLTSoundGen(packOutput));
 
         // tags
-//        generator.addProvider(true, new FLTBiomeTagGen(packOutput, lookupProvider));
-//        generator.addProvider(true, new FLTBlockTagGen(packOutput, lookupProvider));
-//        generator.addProvider(true, new FLTEntityTypeTagGen(packOutput, lookupProvider));
-//        generator.addProvider(true, new FLTItemTagGen(packOutput, lookupProvider));
+        CompletableFuture<HolderLookup.Provider> registryProvider = provider.getRegistryProvider();
+        generator.addProvider(true, new FLTBiomeTagGen(packOutput, registryProvider));
+        generator.addProvider(true, new FLTBlockTagGen(packOutput, registryProvider));
+        generator.addProvider(true, new FLTEntityTypeTagGen(packOutput, registryProvider));
+        generator.addProvider(true, new FLTItemTagGen(packOutput, registryProvider));
     }
 }

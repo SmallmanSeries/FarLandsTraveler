@@ -1,0 +1,10 @@
+{
+  "remove": [
+    "minecraft:mushroom_fields",
+    "minecraft:deep_dark"
+  ],
+  "values": [
+    "#farlandstraveler:is_far_lands_edge",
+    "#minecraft:is_overworld"
+  ]
+}
