@@ -1,5 +1,5 @@
 {
-  "feature": "farlandstraveler:flower/far_lands_plains",
+  "feature": "farlandstraveler:flower_far_lands_plains",
   "placement": [
     {
       "type": "minecraft:noise_threshold_count",
