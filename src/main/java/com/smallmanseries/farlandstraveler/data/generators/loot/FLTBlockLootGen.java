@@ -42,6 +42,11 @@ public class FLTBlockLootGen extends BlockLootSubProvider {
         this.dropSelf(FLTBlocks.CYAN_FAR_LANDS_ROSE.get());
         this.dropSelf(FLTBlocks.FAR_LANDS_PAEONIA.get());
 
+        // 小型花盆栽
+        this.dropPottedContents(FLTBlocks.POTTED_FAR_LANDS_ROSE.get());
+        this.dropPottedContents(FLTBlocks.POTTED_CYAN_FAR_LANDS_ROSE.get());
+        this.dropPottedContents(FLTBlocks.POTTED_FAR_LANDS_PAEONIA.get());
+
     }
 
     @Override

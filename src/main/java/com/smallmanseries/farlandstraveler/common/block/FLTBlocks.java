@@ -91,9 +91,9 @@ public class FLTBlocks {
     // 巨型菌类
 
     // 小型花盆栽
-    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT).noLootTable());
-    public static final DeferredBlock<FlowerPotBlock> POTTED_CYAN_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_cyan_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, CYAN_FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT).noLootTable());
-    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_PAEONIA = BLOCKS.registerBlock("potted_far_lands_paeonia", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_PAEONIA, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT).noLootTable());
+    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
+    public static final DeferredBlock<FlowerPotBlock> POTTED_CYAN_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_cyan_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, CYAN_FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
+    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_PAEONIA = BLOCKS.registerBlock("potted_far_lands_paeonia", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_PAEONIA, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
 
     // 树苗盆栽
 
