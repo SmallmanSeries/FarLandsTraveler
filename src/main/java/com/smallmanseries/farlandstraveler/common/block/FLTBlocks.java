@@ -23,6 +23,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class FLTBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(FarLandsTraveler.MODID);
@@ -30,17 +31,19 @@ public class FLTBlocks {
     // 方块列表
     // 测试方块
     public static final DeferredBlock<Block> TEST_BLOCK = registerBlockItem("test_block", Block::new,
-            BlockBehaviour.Properties.of()
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
-                    .strength(1346237208F, 30071926F));
+                    .strength(1346237208F, 30071926F)
+                    .noLootTable());
 
-    public static final DeferredBlock<Block> INVALID_BLOCK = BLOCKS.registerBlock("invalid_block", Block::new);
+    public static final DeferredBlock<Block> INVALID_BLOCK = BLOCKS.registerBlock("invalid_block", Block::new,
+            () -> BlockBehaviour.Properties.of().noLootTable());
 
     // 地表方块
     public static final DeferredBlock<Block> GLOWING_OBSIDIAN = registerBlockItem("glowing_obsidian", Block::new,
-            BlockBehaviour.Properties.of()
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BLACK)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
@@ -50,13 +53,13 @@ public class FLTBlocks {
                     .sound(FLTSoundTypes.PE_STONE));
 
     public static final DeferredBlock<Block> ANCIENT_GRASS_BLOCK = registerBlockItemWithLore("ancient_grass_block", Block::new,
-            BlockBehaviour.Properties.of()
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.GRASS)
                     .strength(0.6F)
                     .sound(FLTSoundTypes.CLASSIC_GRASS));
 
     public static final DeferredBlock<Block> ANCIENT_STONE = registerBlockItem("ancient_stone", Block::new,
-            BlockBehaviour.Properties.of()
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
@@ -77,9 +80,9 @@ public class FLTBlocks {
 
     // 其他植物
     // 小型花
-    public static final DeferredBlock<Block> FAR_LANDS_ROSE = registerBlockItem("far_lands_rose", (prop) -> new FlowerBlock(MobEffects.NIGHT_VISION, 5.0F, prop), Block.Properties.ofFullCopy(Blocks.POPPY));
-    public static final DeferredBlock<Block> CYAN_FAR_LANDS_ROSE = registerBlockItem("cyan_far_lands_rose", (prop) -> new FlowerBlock(MobEffects.NIGHT_VISION, 5.0F, prop), Block.Properties.ofFullCopy(Blocks.POPPY));
-    public static final DeferredBlock<Block> FAR_LANDS_PAEONIA = registerBlockItem("far_lands_paeonia", (prop) -> new FlowerBlock(MobEffects.NIGHT_VISION, 5.0F, prop), Block.Properties.ofFullCopy(Blocks.POPPY));
+    public static final DeferredBlock<Block> FAR_LANDS_ROSE = registerBlockItem("far_lands_rose", (prop) -> new FlowerBlock(MobEffects.NIGHT_VISION, 5.0F, prop), () -> Block.Properties.ofFullCopy(Blocks.POPPY));
+    public static final DeferredBlock<Block> CYAN_FAR_LANDS_ROSE = registerBlockItem("cyan_far_lands_rose", (prop) -> new FlowerBlock(MobEffects.NIGHT_VISION, 5.0F, prop), () -> Block.Properties.ofFullCopy(Blocks.POPPY));
+    public static final DeferredBlock<Block> FAR_LANDS_PAEONIA = registerBlockItem("far_lands_paeonia", (prop) -> new FlowerBlock(MobEffects.NIGHT_VISION, 5.0F, prop), () -> Block.Properties.ofFullCopy(Blocks.POPPY));
 
     // 树苗
 
@@ -88,9 +91,9 @@ public class FLTBlocks {
     // 巨型菌类
 
     // 小型花盆栽
-    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
-    public static final DeferredBlock<FlowerPotBlock> POTTED_CYAN_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_cyan_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, CYAN_FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
-    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_PAEONIA = BLOCKS.registerBlock("potted_far_lands_paeonia", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_PAEONIA, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT));
+    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT).noLootTable());
+    public static final DeferredBlock<FlowerPotBlock> POTTED_CYAN_FAR_LANDS_ROSE = BLOCKS.registerBlock("potted_cyan_far_lands_rose", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, CYAN_FAR_LANDS_ROSE, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT).noLootTable());
+    public static final DeferredBlock<FlowerPotBlock> POTTED_FAR_LANDS_PAEONIA = BLOCKS.registerBlock("potted_far_lands_paeonia", (prop) -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FAR_LANDS_PAEONIA, prop), () -> Block.Properties.ofFullCopy(Blocks.FLOWER_POT).noLootTable());
 
     // 树苗盆栽
 
@@ -98,14 +101,14 @@ public class FLTBlocks {
 
 
     // 注册
-    private static <T extends Block> DeferredBlock<T> registerBlockItem(String name, Function<Block.Properties, T> function, BlockBehaviour.Properties prop) {
-        DeferredBlock<T> obj = BLOCKS.register(name, (key) -> function.apply(prop.setId(ResourceKey.create(Registries.BLOCK, key))));
+    private static <T extends Block> DeferredBlock<T> registerBlockItem(String name, Function<Block.Properties, T> function, Supplier<Block.Properties> prop) {
+        DeferredBlock<T> obj = BLOCKS.register(name, (key) -> function.apply(prop.get().setId(ResourceKey.create(Registries.BLOCK, key))));
         FLTItems.ITEMS.register(name, (key) -> new BlockItem(obj.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).useBlockDescriptionPrefix()));
         return obj;
     }
 
-    private static <T extends Block> DeferredBlock<T> registerBlockItemWithLore(String name, Function<Block.Properties, T> function, BlockBehaviour.Properties prop) {
-        DeferredBlock<T> obj = BLOCKS.register(name, (key) -> function.apply(prop.setId(ResourceKey.create(Registries.BLOCK, key))));
+    private static <T extends Block> DeferredBlock<T> registerBlockItemWithLore(String name, Function<Block.Properties, T> function, Supplier<Block.Properties> prop) {
+        DeferredBlock<T> obj = BLOCKS.register(name, (key) -> function.apply(prop.get().setId(ResourceKey.create(Registries.BLOCK, key))));
         FLTItems.ITEMS.register(name, (key) -> new BlockItemWithLore(obj.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, key)).useBlockDescriptionPrefix()));
         return obj;
     }

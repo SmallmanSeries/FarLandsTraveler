@@ -9,7 +9,7 @@
           "functions": [
             {
               "add": false,
-              "count": 1,
+              "count": 1.0,
               "function": "minecraft:set_count"
             },
             {
@@ -28,5 +28,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:entities/enderman"
+  "random_sequence": "farlandstraveler:entities/primitive_enderman"
 }

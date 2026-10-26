@@ -30,6 +30,7 @@ public class FLTDataGen {
         );
         generator.addProvider(true, provider);
         generator.addProvider(true, new FLTRecipeGen.Runner(packOutput, lookupProvider));
+        generator.addProvider(true, FLTLootGen.create(packOutput, lookupProvider));
 
         // client
         generator.addProvider(true, new FLTModelGen(packOutput));

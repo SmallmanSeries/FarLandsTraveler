@@ -1,0 +1,398 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:stone"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:grass_block"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:cobblestone"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:oak_planks"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:oak_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:bedrock"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:sand"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gravel"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_ore"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:iron_ore"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:coal_ore"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:oak_log"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:oak_leaves"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:sponge"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:glass"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:dandelion"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:poppy"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:red_mushroom"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_block"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:iron_block"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:smooth_stone_slab"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:bricks"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:tnt"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:bookshelf"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:mossy_cobblestone"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:obsidian"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:torch"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 99.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:chest"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 100.0,
+        "min": 1.0
+      }
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:white_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:black_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:blue_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:brown_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cyan_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gray_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:green_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:light_blue_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:light_gray_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lime_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:magenta_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:orange_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pink_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:purple_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:red_wool"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:yellow_wool"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 16.0,
+        "min": 8.0
+      }
+    }
+  ],
+  "random_sequence": "farlandstraveler:chests/explorer_base/indev_blocks"
+}
