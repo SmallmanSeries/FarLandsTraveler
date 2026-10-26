@@ -40,7 +40,17 @@ public abstract class EntityMixin {
      */
     @ModifyArgs(method = "setPosRaw", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/Vec3;<init>(DDD)V"))
     private void handleLosePrecision(Args args) {
-        if (((Entity) (Object) this) instanceof LivingEntity living && living.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
+        if (((Entity) (Object) this) instanceof LivingEntity living) {
+
+            // 某些生物在初始化时就会设置坐标（如潜影贝这样对齐网格的生物），因此获取效果列表时有可能抛出异常
+            try {
+                if (!living.hasEffect(FLTMobEffects.PRECISION_LOSS)) {
+                    return;
+                }
+            } catch (Throwable t) {
+                return;
+            }
+
             MobEffectInstance effect = living.getEffect(FLTMobEffects.PRECISION_LOSS);
             if (effect != null) {
                 if (effect.getAmplifier() >= 255) {
