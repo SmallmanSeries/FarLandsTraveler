@@ -10,6 +10,7 @@ import com.smallmanseries.farlandstraveler.common.entity.PrimitiveEndermanEntity
 import com.smallmanseries.farlandstraveler.common.entity.TestEntity;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.network.PopUpPacket;
+import com.smallmanseries.farlandstraveler.common.worldgen.biomes.BiomeInjectors;
 import com.smallmanseries.farlandstraveler.common.worldgen.farlands.FarLands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -28,6 +29,7 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.level.ExplosionEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
+import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
@@ -74,6 +76,12 @@ public class EventHandler {
         event.dataPackRegistry(DataRegister.BIOME_SOURCE, BiomeSource.CODEC);
         // Todo 26.3及以后的版本，原版自带材料规则功能，本模组的此功能可以删除
         event.dataPackRegistry(DataRegister.MATERIAL_RULE, SurfaceRules.RuleSource.CODEC);
+    }
+
+    // 为世界生成器注入边境之地生物群系
+    @SubscribeEvent
+    public static void onServerStart(ServerAboutToStartEvent event){
+        BiomeInjectors.injectFarBiomes(event.getServer());
     }
 
     // 当活塞移动的方块跨过假区块边界时，取消本次移动。

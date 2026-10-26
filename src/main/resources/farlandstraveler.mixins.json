@@ -31,6 +31,8 @@
     "worldgen.DensityFunctionsClampMixin",
     "worldgen.NoiseInterpolatorMixin",
     "worldgen.PerlinNoiseMixin",
+    "worldgen.biome.BiomeSourceMixin",
+    "worldgen.biome.MultiNoiseBiomeSourceMixin",
     "worldgen.biome.SurfaceSystemMixin"
   ],
   "injectors": {

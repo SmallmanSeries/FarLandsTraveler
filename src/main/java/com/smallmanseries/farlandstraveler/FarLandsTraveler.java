@@ -63,11 +63,11 @@ public class FarLandsTraveler {
             // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/amplified", "surfaceRuleInjectorAmplified");
             // DataInjectors.surfaceRuleInjector("worldgen/noise_settings/large_biomes", "surfaceRuleInjectorLargeBiomes");
 
-            DataInjectors.worldPresetInjector("worldgen/world_preset/normal", "worldPresetInjectorNormal");
+            // DataInjectors.worldPresetInjector("worldgen/world_preset/normal", "worldPresetInjectorNormal");
             // DataInjectors.worldPresetInjector("worldgen/world_preset/amplified", "worldPresetInjectorAmplified");
             // DataInjectors.worldPresetInjector("worldgen/world_preset/large_biome", "worldPresetInjectorLargeBiome");
 
-            DataInjectors.dimensionInjector("dimension/overworld", "dimensionInjectorNormal");
+            // DataInjectors.dimensionInjector("dimension/overworld", "dimensionInjectorNormal");
 
             FLTBlocks.registerPots();
             FLTBlocks.registerFlammability();

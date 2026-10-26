@@ -128,6 +128,7 @@ public class DataInjectors {
      * @param generator   需要包装的生物群系源的上一级（一般是generator字段），一个JSON对象
      * @param biomeSource 需要包装的生物群系源，一个JSON元素
      */
+    @Deprecated
     public static void setBiomeSource(JsonObject generator, JsonElement biomeSource) {
         if (!biomeSource.isJsonNull()) {
             int dist = SectionPos.blockToSectionCoord(Config.FAR_LANDS_DISTANCE.getAsInt());
@@ -151,6 +152,7 @@ public class DataInjectors {
      * @param path 世界预设文件的路径
      * @param name MixsonEvent的名称（随便取）
      */
+    @Deprecated
     public static void worldPresetInjector(String path, String name) {
         Mixson.registerEvent(
                 0,
@@ -175,6 +177,7 @@ public class DataInjectors {
      * @param path 维度定义文件的路径
      * @param name MixsonEvent的名称（随便取）
      */
+    @Deprecated
     public static void dimensionInjector(String path, String name) {
         Mixson.registerEvent(
                 0,
