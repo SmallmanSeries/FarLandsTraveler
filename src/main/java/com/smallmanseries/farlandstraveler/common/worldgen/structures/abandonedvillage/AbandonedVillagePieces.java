@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.common.worldgen.structures.abandonedvillage;
 
 import com.google.common.collect.Lists;
+import com.smallmanseries.farlandstraveler.common.misc.FLTLootTables;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.FLTStructurePieceType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,7 +24,6 @@ import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -1122,7 +1122,7 @@ public class AbandonedVillagePieces {
 
             if (!this.hasMadeChest && boundingBox.isInside(new BlockPos(this.getWorldX(5, 5), this.getWorldY(1), this.getWorldZ(5, 5)))) {
                 this.hasMadeChest = true;
-                this.createChest(level, boundingBox, rand, 5, 1, 5, BuiltInLootTables.VILLAGE_TOOLSMITH);
+                this.createChest(level, boundingBox, rand, 5, 1, 5, FLTLootTables.CHESTS_AV_NORMAL_BLACKSMITH);
             }
 
             for (int i = 6; i <= 8; ++i) {
