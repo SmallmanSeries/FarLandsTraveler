@@ -28,11 +28,15 @@ public class FixedStructurePlacement extends StructurePlacement {
     private final int z;
     private final ChunkPos pos;
 
-    protected FixedStructurePlacement(Vec3i locateOffset, FrequencyReductionMethod frequencyReductionMethod, float frequency, int salt, Optional<ExclusionZone> exclusionZone, int x, int z) {
+    public FixedStructurePlacement(Vec3i locateOffset, FrequencyReductionMethod frequencyReductionMethod, float frequency, int salt, Optional<ExclusionZone> exclusionZone, int x, int z) {
         super(locateOffset, frequencyReductionMethod, frequency, salt, exclusionZone);
         this.x = x;
         this.z = z;
         this.pos = new ChunkPos(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z));
+    }
+
+    public FixedStructurePlacement(int salt, int x, int z) {
+        this(Vec3i.ZERO, FrequencyReductionMethod.DEFAULT, 1.0F, salt, Optional.empty(), x, z);
     }
 
     @Override

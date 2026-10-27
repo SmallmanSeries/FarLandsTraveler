@@ -37,9 +37,9 @@ public class FLTTags {
     }
 
     public static class Biomes {
-        public static final TagKey<Biome> HAS_STRUCTURE_ABANDONED_VILLAGE_NORMAL = createTag("has_structure/abandoned_village/normal");
-        public static final TagKey<Biome> HAS_STRUCTURE_EXPLORER_BASE_INDEV_COBBLESTONE = createTag("has_structure/explorer_base/indev_cobblestone");
-        public static final TagKey<Biome> HAS_STRUCTURE_EXPLORER_BASE_INDEV_WOOD = createTag("has_structure/explorer_base/indev_wood");
+        public static final TagKey<Biome> HAS_STRUCTURE_AV_NORMAL = createTag("has_structure/abandoned_village/normal");
+        public static final TagKey<Biome> HAS_STRUCTURE_EB_INDEV_COBBLESTONE = createTag("has_structure/explorer_base/indev_cobblestone");
+        public static final TagKey<Biome> HAS_STRUCTURE_EB_INDEV_WOOD = createTag("has_structure/explorer_base/indev_wood");
         public static final TagKey<Biome> SPAWNS_PRIMITIVE_ENDERMAN = createTag("spawns_primitive_enderman");
         public static final TagKey<Biome> IS_FAR_LANDS_EDGE = createTag("is_far_lands_edge");
         public static final TagKey<Biome> IS_FAR_LANDS = createTag("is_far_lands");

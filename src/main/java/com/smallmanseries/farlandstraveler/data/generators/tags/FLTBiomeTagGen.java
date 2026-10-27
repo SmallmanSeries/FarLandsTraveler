@@ -21,13 +21,13 @@ public class FLTBiomeTagGen extends BiomeTagsProvider {
     public void addTags(HolderLookup.Provider registries) {
 
         // Far Lands Traveler
-        this.tag(FLTTags.Biomes.HAS_STRUCTURE_ABANDONED_VILLAGE_NORMAL).add(
+        this.tag(FLTTags.Biomes.HAS_STRUCTURE_AV_NORMAL).add(
                 FLTBiomes.FAR_LANDS
         );
-        this.tag(FLTTags.Biomes.HAS_STRUCTURE_EXPLORER_BASE_INDEV_COBBLESTONE).add(
+        this.tag(FLTTags.Biomes.HAS_STRUCTURE_EB_INDEV_COBBLESTONE).add(
                 FLTBiomes.FAR_LANDS
         );
-        this.tag(FLTTags.Biomes.HAS_STRUCTURE_EXPLORER_BASE_INDEV_WOOD).add(
+        this.tag(FLTTags.Biomes.HAS_STRUCTURE_EB_INDEV_WOOD).add(
                 FLTBiomes.FAR_LANDS
         );
         this.tag(FLTTags.Biomes.IS_FAR_LANDS).add(

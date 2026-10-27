@@ -1,13 +1,12 @@
 {
   "type": "farlandstraveler:oots_laboratory",
   "biomes": "farlandstraveler:oots_laboratory",
+  "part": "exterior",
   "pos": [
-    -12551187,
-    43,
-    -12550664
+    -12550829,
+    62,
+    -12550788
   ],
-  "part": "cottage",
   "spawn_overrides": {},
-  "step": "vegetal_decoration",
-  "terrain_adaptation": "none"
+  "step": "vegetal_decoration"
 }

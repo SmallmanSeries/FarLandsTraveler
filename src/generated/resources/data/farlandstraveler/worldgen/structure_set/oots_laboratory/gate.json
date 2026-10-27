@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "farlandstraveler:fixed",
+    "salt": 1346237208,
+    "x": -12550838,
+    "z": -12550788
+  },
+  "structures": [
+    {
+      "structure": "farlandstraveler:oots_laboratory/gate",
+      "weight": 1
+    }
+  ]
+}

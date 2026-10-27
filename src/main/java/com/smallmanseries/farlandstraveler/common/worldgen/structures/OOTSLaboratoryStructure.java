@@ -45,7 +45,7 @@ public class OOTSLaboratoryStructure extends Structure {
     public final String part;
 
 
-    protected OOTSLaboratoryStructure(StructureSettings settings, BlockPos pos, String part) {
+    public OOTSLaboratoryStructure(StructureSettings settings, BlockPos pos, String part) {
         super(settings);
         this.pos = pos;
         this.part = part;
@@ -91,7 +91,7 @@ public class OOTSLaboratoryStructure extends Structure {
         }
 
         public Piece(StructurePieceSerializationContext context, CompoundTag tag) {
-            super(FLTStructurePieceType.OOTS_LABORATORY_MAZE.get(), tag, context.structureTemplateManager(), id -> makeSettings());
+            super(FLTStructurePieceType.OOTS_LABORATORY_MAZE.get(), tag, context.structureTemplateManager(), _ -> makeSettings());
         }
 
         private static StructurePlaceSettings makeSettings() {

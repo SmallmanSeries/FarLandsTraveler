@@ -7,7 +7,7 @@
   },
   "structures": [
     {
-      "structure": "farlandstraveler:abandoned_village_normal",
+      "structure": "farlandstraveler:abandoned_village/normal",
       "weight": 1
     }
   ]
