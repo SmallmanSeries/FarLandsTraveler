@@ -51,14 +51,14 @@ public class MegaVineFeature extends Feature<MegaVineConfiguration> {
 
                 // 向左向右各检查16个方块的距离，选中找到的第一个可被替换的方块，作为两个原点。
                 for (int i = -1; i > -16; i--) {
-                    origin = origin.relative(axis, i);
-                    if (level.getBlockState(origin).canBeReplaced()) {
+                    if (level.getBlockState(origin.relative(axis, i)).canBeReplaced()) {
+                        origin = origin.relative(axis, i);
                         break;
                     }
                 }
                 for (int i = 1; i < 16; i++) {
-                    origin2 = origin2.relative(axis, i);
-                    if (level.getBlockState(origin2).canBeReplaced()) {
+                    if (level.getBlockState(origin2.relative(axis, i)).canBeReplaced()) {
+                        origin2 = origin2.relative(axis, i);
                         break;
                     }
                 }
