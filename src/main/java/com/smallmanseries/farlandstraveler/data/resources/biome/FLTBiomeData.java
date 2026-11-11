@@ -23,6 +23,18 @@ public class FLTBiomeData {
         context.register(FLTBiomes.WALL_OF_SUNSET, FarLandsBiomes.wallOfSunset(placedFeatures, carvers));
 
         context.register(FLTBiomes.FAR_LANDS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.WOOD_LANDS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.FLOATING_PLAINS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.STARLIT_PLAINS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.LEAFLESS_FOREST, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.SKY_REACHING_FOREST, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.FLOWER_LANDS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.ICE_DESERT, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.FREEZING_DESERT, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.HOLY_LANDS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.CRIMSON_STONE_FOREST, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.CUBE_WELLS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.MINERS_WELLS, FarLandsBiomes.farLands(placedFeatures, carvers));
 
         context.register(FLTBiomes.FRINGE_LANDS, FarLandsBiomes.fringeLands(placedFeatures, carvers));
     }
