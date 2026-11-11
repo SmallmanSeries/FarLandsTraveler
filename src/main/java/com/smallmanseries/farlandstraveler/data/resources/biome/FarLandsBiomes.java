@@ -238,6 +238,60 @@ public class FarLandsBiomes {
         return placeHolderBiome(generation).build();
     }
 
+    public static Biome woodLands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers,
+                                  boolean opal, // 是否为白玉森林
+                                  boolean oldGrowth // 是否为原始变种（边境森林和白玉森林都有原始变种）
+    ) {
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        globalOverworldGeneration(generation);
+        BiomeDefaultFeatures.addDefaultSprings(generation);
+        // todo 根据边境森林和白玉森林选择音乐，该功能暂时搁置
+        BackgroundMusic music = new BackgroundMusic(FLTSoundEvents.MUSIC_FAR_LANDS_UNIVERSAL);
+        // 包括芍药在内的花
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FOREST_FLOWERS);
+
+        // 矿物设置暂时与森林保持一致
+        BiomeDefaultFeatures.addDefaultOres(generation);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+
+        // 根据变种添加树类地物
+        if (opal) {
+            // 这里添加白玉森林专属的花。注：白玉花是跟着白玉树生成的，不应在这里添加。
+            if (oldGrowth) {
+                // 这里添加高白玉树
+            } else {
+                // 这里添加矮白玉树
+            }
+        } else {
+            if (oldGrowth) {
+                // 这里添加高密度的大型苍境树、大型苍境树上面叠一个小型苍境树、高苍境树、倒置的大苍境树（一个地物包办所有）
+            } else {
+                generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK_LEAF_LITTER);
+            }
+        }
+
+        // 其他设置暂时与森林保持一致
+        BiomeDefaultFeatures.addBushes(generation);
+        BiomeDefaultFeatures.addDefaultFlowers(generation);
+        BiomeDefaultFeatures.addForestGrass(generation);
+
+        BiomeDefaultFeatures.addDefaultMushrooms(generation);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(generation, true);
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.farmAnimals(mobs);
+        BiomeDefaultFeatures.commonSpawns(mobs);
+        if (!opal) {
+            mobs.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4));
+        }
+
+        return baseBiome(opal ? 0.6F : 0.8F, opal ? 0.6F : 0.8F)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, music)
+                .mobSpawnSettings(mobs.build())
+                .generationSettings(generation.build())
+                .build();
+    }
+
     // 遥远之地
 
     // 边缘之地
