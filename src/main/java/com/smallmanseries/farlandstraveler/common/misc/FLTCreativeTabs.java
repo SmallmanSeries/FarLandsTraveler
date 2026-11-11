@@ -29,6 +29,7 @@ public class FLTCreativeTabs {
                 output.accept(FLTItems.FAKE_CHUNK_MARKER);
                 output.accept(FLTItems.SPAWN_TEST_ENTITY);
                 output.accept(FLTBlocks.TEST_BLOCK);
+                output.accept(FLTBlocks.INVALID_BLOCK);
             }))
             .build());
     // 建筑方块

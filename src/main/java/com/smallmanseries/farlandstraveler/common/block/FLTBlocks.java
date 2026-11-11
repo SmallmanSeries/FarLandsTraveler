@@ -38,7 +38,7 @@ public class FLTBlocks {
                     .strength(1346237208F, 30071926F)
                     .noLootTable());
 
-    public static final DeferredBlock<Block> INVALID_BLOCK = BLOCKS.registerBlock("invalid_block", Block::new,
+    public static final DeferredBlock<Block> INVALID_BLOCK = registerBlockItem("invalid_block", Block::new,
             () -> BlockBehaviour.Properties.of().noLootTable());
 
     // 地表方块
