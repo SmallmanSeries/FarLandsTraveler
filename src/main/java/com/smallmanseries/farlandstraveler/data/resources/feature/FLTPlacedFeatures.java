@@ -102,7 +102,8 @@ public class FLTPlacedFeatures {
                 WALL_OF_BLOOM_GRASS,
                 grass,
                 CountOnEveryLayerPlacement.of(32),
-                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
+                BiomeFilter.biome()
         );
 
         PlacementUtils.register(
@@ -132,7 +133,8 @@ public class FLTPlacedFeatures {
                                 BlockPredicate.ONLY_IN_AIR_PREDICATE,
                                 BlockPredicate.not(BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.PODZOL))
                         )
-                )
+                ),
+                BiomeFilter.biome()
         );
 
         PlacementUtils.register(
