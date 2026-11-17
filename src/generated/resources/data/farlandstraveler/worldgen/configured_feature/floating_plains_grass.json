@@ -1,0 +1,11 @@
+{
+  "type": "farlandstraveler:floating_plant",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:short_grass"
+      }
+    }
+  }
+}

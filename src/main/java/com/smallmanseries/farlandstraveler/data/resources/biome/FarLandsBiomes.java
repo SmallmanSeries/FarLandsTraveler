@@ -301,6 +301,56 @@ public class FarLandsBiomes {
                 .build();
     }
 
+    // 飘浮草原 / 繁星草原（依靠starlit参数区分）
+    public static Biome floatingPlains(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers,
+                                       boolean starlit // 是否为繁星草原
+    ) {
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        globalOverworldGeneration(generation);
+        BiomeDefaultFeatures.addDefaultSprings(generation);
+
+        // 其他设置暂时与原版平原一致
+        BiomeDefaultFeatures.plainsSpawns(mobs);
+        BiomeDefaultFeatures.addDefaultOres(generation);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+        BiomeDefaultFeatures.addBushes(generation);
+        addFarPlainVegetation(generation);
+
+        // 浮空层叠草：成丛地摊在各自的高度平面上
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.FLOATING_PLAINS_GRASS);
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.FLOATING_PLAINS_TALL_GRASS);
+        // 浮空花：随机散布
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.FLOATING_PLAINS_FLOWERS);
+
+        // 浮空萤火虫灌木丛：繁星草原生成得更多
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                starlit ? FLTPlacedFeatures.STARLIT_PLAINS_FIREFLY_BUSH : FLTPlacedFeatures.FLOATING_PLAINS_FIREFLY_BUSH);
+
+        if (starlit) {
+            // 繁星：散布在天空中的荧石
+            generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.STARLIT_PLAINS_GLOWSTONE);
+        }
+
+        BiomeDefaultFeatures.addDefaultMushrooms(generation);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(generation, true);
+
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .waterColor(0x8FD8EA)
+                .grassColorOverride(0x93E3B7)
+                .foliageColorOverride(0x74D9C4)
+                .build();
+
+        return baseBiome(0.8F, 0.4F)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0xBFE6F5)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(FLTSoundEvents.MUSIC_FAR_LANDS_UNIVERSAL))
+                .specialEffects(effects)
+                .mobSpawnSettings(mobs.build())
+                .generationSettings(generation.build())
+                .build();
+    }
+
     // 遥远之地
 
     // 边缘之地

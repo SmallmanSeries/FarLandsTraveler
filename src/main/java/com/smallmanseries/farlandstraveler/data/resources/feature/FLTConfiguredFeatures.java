@@ -73,14 +73,21 @@ public class FLTConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WOOD_LANDS_TREE_ON_TREE = createKey("wood_lands_tree_on_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WOOD_LANDS_TREES = createKey("wood_lands_trees");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WOOD_LANDS_NORMAL_TREES = createKey("wood_lands_normal_trees");
-    public static final ResourceKey<ConfiguredFeature<?,?>> FALLEN_BOLDER_TREE = createKey("fallen_bolder_tree");
-    public static final ResourceKey<ConfiguredFeature<?,?>> FALLEN_OPAL_TREE = createKey("fallen_opal_tree");
-    public static final ResourceKey<ConfiguredFeature<?,?>> BOLDER_TREE_BEES_LEAF_LITTER = createKey("bolder_tree_bees_leaf_litter");
-    public static final ResourceKey<ConfiguredFeature<?,?>> OPAL_TREE_BEES_LEAF_LITTER = createKey("opal_tree_bees_leaf_litter");
-    public static final ResourceKey<ConfiguredFeature<?,?>> FANCY_BOLDER_TREE_BEES_LEAF_LITTER = createKey("fancy_bolder_tree_bees_leaf_litter");
-    public static final ResourceKey<ConfiguredFeature<?,?>> BOLDER_TREE = createKey("bolder_tree");
-    public static final ResourceKey<ConfiguredFeature<?,?>> FANCY_BOLDER_TREE = createKey("fancy_bolder_tree");
-    public static final ResourceKey<ConfiguredFeature<?,?>> OPAL_TREE = createKey("opal_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_BOLDER_TREE = createKey("fallen_bolder_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_OPAL_TREE = createKey("fallen_opal_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BOLDER_TREE_BEES_LEAF_LITTER = createKey("bolder_tree_bees_leaf_litter");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OPAL_TREE_BEES_LEAF_LITTER = createKey("opal_tree_bees_leaf_litter");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_BOLDER_TREE_BEES_LEAF_LITTER = createKey("fancy_bolder_tree_bees_leaf_litter");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BOLDER_TREE = createKey("bolder_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_BOLDER_TREE = createKey("fancy_bolder_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OPAL_TREE = createKey("opal_tree");
+
+    // 飘浮草原 / 繁星草原
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOATING_PLAINS_GRASS = createKey("floating_plains_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOATING_PLAINS_TALL_GRASS = createKey("floating_plains_tall_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOATING_PLAINS_FLOWERS = createKey("floating_plains_flowers");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOATING_PLAINS_FIREFLY_BUSH = createKey("floating_plains_firefly_bush");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STARLIT_PLAINS_GLOWSTONE = createKey("starlit_plains_glowstone");
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -121,32 +128,36 @@ public class FLTConfiguredFeatures {
                 150, 2, 2, new WeightedStateProvider(VegetationFeatures.leafLitterPatchBuilder(1, 4))
         );
 
+        // 边境平原花的配置
+        SimpleBlockConfiguration farFlowersConfig = new SimpleBlockConfiguration(
+                new NoiseThresholdProvider(
+                        1346237208L,
+                        new NormalNoise.NoiseParameters(0, 1.0),
+                        0.005F,
+                        -0.8F,
+                        0.33333334F,
+                        FLTBlocks.FAR_LANDS_ROSE.get().defaultBlockState(),
+                        List.of(
+                                Blocks.ORANGE_TULIP.defaultBlockState(),
+                                Blocks.RED_TULIP.defaultBlockState(),
+                                Blocks.PINK_TULIP.defaultBlockState(),
+                                Blocks.WHITE_TULIP.defaultBlockState()
+                        ),
+                        List.of(
+                                FLTBlocks.FAR_LANDS_ROSE.get().defaultBlockState(),
+                                FLTBlocks.CYAN_FAR_LANDS_ROSE.get().defaultBlockState(),
+                                Blocks.OXEYE_DAISY.defaultBlockState(), // 百变菊
+                                Blocks.CORNFLOWER.defaultBlockState()
+                        )
+                )
+        );
+
+        // 普通边境平原花
         FeatureUtils.register(
                 context,
                 FLOWER_FAR_LANDS_PLAINS,
                 Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(
-                        new NoiseThresholdProvider(
-                                1346237208L,
-                                new NormalNoise.NoiseParameters(0, 1.0),
-                                0.005F,
-                                -0.8F,
-                                0.33333334F,
-                                FLTBlocks.FAR_LANDS_ROSE.get().defaultBlockState(),
-                                List.of(
-                                        Blocks.ORANGE_TULIP.defaultBlockState(),
-                                        Blocks.RED_TULIP.defaultBlockState(),
-                                        Blocks.PINK_TULIP.defaultBlockState(),
-                                        Blocks.WHITE_TULIP.defaultBlockState()
-                                ),
-                                List.of(
-                                        FLTBlocks.FAR_LANDS_ROSE.get().defaultBlockState(),
-                                        FLTBlocks.CYAN_FAR_LANDS_ROSE.get().defaultBlockState(),
-                                        Blocks.OXEYE_DAISY.defaultBlockState(), // 百变菊
-                                        Blocks.CORNFLOWER.defaultBlockState()
-                                )
-                        )
-                )
+                farFlowersConfig
         );
 
         FeatureUtils.register(
@@ -424,12 +435,12 @@ public class FLTConfiguredFeatures {
                 FANCY_BOLDER_TREE_BEES_LEAF_LITTER,
                 Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
-                                BlockStateProvider.simple(Blocks.OAK_LOG),
-                                new FancyTrunkPlacer(3, 11, 0),
-                                BlockStateProvider.simple(Blocks.OAK_LEAVES),
-                                new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
-                                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
-                        )
+                        BlockStateProvider.simple(Blocks.OAK_LOG),
+                        new FancyTrunkPlacer(3, 11, 0),
+                        BlockStateProvider.simple(Blocks.OAK_LEAVES),
+                        new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
+                )
                         .ignoreVines().decorators(List.of(beehive0002, sparseLeafLitter, thickLeafLitter)).build()
         );
         FeatureUtils.register(
@@ -441,6 +452,47 @@ public class FLTConfiguredFeatures {
                         0,
                         2
                 ).ignoreVines().decorators(List.of(beehive0002, sparseLeafLitter, thickLeafLitter)).build()
+        );
+
+        // 浮空植物
+        // 矮草丛：成丛地长在同一个高度平面上
+        FeatureUtils.register(
+                context,
+                FLOATING_PLAINS_GRASS,
+                FLTFeatures.FLOATING_PLANT.get(),
+                new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.SHORT_GRASS))
+        );
+
+        // 高草丛
+        FeatureUtils.register(
+                context,
+                FLOATING_PLAINS_TALL_GRASS,
+                FLTFeatures.FLOATING_PLANT.get(),
+                new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.TALL_GRASS))
+        );
+
+        // 花，与普通边境花地物一样，只是地物类型改成飘浮植物
+        FeatureUtils.register(
+                context,
+                FLOATING_PLAINS_FLOWERS,
+                FLTFeatures.FLOATING_PLANT.get(),
+                farFlowersConfig
+        );
+
+        // 萤火虫灌木丛
+        FeatureUtils.register(
+                context,
+                FLOATING_PLAINS_FIREFLY_BUSH,
+                FLTFeatures.FLOATING_PLANT.get(),
+                new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.FIREFLY_BUSH))
+        );
+
+        // 繁星草原的荧石：实心方块，用原版简单方块地物即可
+        FeatureUtils.register(
+                context,
+                STARLIT_PLAINS_GLOWSTONE,
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.GLOWSTONE))
         );
 
     }

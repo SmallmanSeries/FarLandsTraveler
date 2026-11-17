@@ -1,0 +1,27 @@
+{
+  "feature": "farlandstraveler:floating_plains_firefly_bush",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 2
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "farlandstraveler:vertical_offset",
+      "offset": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 80,
+        "min_inclusive": 0
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -4,11 +4,10 @@
       "default": {
         "max_delay": 24000,
         "min_delay": 12000,
-        "replace_current_music": true,
         "sound": "farlandstraveler:music.far_lands.universal"
       }
     },
-    "minecraft:visual/sky_color": "#78a7ff"
+    "minecraft:visual/sky_color": "#bfe6f5"
   },
   "carvers": [
     "farlandstraveler:far_lands_cave",
@@ -17,7 +16,9 @@
   ],
   "downfall": 0.4,
   "effects": {
-    "water_color": "#3f76e4"
+    "foliage_color": "#74d9c4",
+    "grass_color": "#93e3b7",
+    "water_color": "#8fd8ea"
   },
   "features": [
     [],
@@ -72,11 +73,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
       "minecraft:patch_bush",
       "minecraft:trees_plains",
       "farlandstraveler:flower_far_lands_plains",
       "minecraft:patch_grass_plain",
+      "farlandstraveler:floating_plains_grass",
+      "farlandstraveler:floating_plains_tall_grass",
+      "farlandstraveler:floating_plains_flowers",
+      "farlandstraveler:starlit_plains_firefly_bush",
+      "farlandstraveler:starlit_plains_glowstone",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_pumpkin",

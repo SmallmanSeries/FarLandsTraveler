@@ -1,0 +1,14 @@
+{
+  "type": "farlandstraveler:floating_plant",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tall_grass",
+        "Properties": {
+          "half": "lower"
+        }
+      }
+    }
+  }
+}

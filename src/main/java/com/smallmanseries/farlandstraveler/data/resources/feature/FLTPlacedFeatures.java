@@ -12,6 +12,7 @@ import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ClampedInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -59,6 +60,14 @@ public class FLTPlacedFeatures {
     public static final ResourceKey<PlacedFeature> OPAL_TREE_BEES_LEAF_LITTER = createKey("opal_tree_bees_leaf_litter");
     public static final ResourceKey<PlacedFeature> FANCY_BOLDER_TREE_BEES_LEAF_LITTER = createKey("fancy_bolder_tree_bees_leaf_litter");
 
+    // 飘浮草原 / 繁星草原
+    public static final ResourceKey<PlacedFeature> FLOATING_PLAINS_GRASS = createKey("floating_plains_grass");
+    public static final ResourceKey<PlacedFeature> FLOATING_PLAINS_TALL_GRASS = createKey("floating_plains_tall_grass");
+    public static final ResourceKey<PlacedFeature> FLOATING_PLAINS_FLOWERS = createKey("floating_plains_flowers");
+    public static final ResourceKey<PlacedFeature> FLOATING_PLAINS_FIREFLY_BUSH = createKey("floating_plains_firefly_bush");
+    public static final ResourceKey<PlacedFeature> STARLIT_PLAINS_FIREFLY_BUSH = createKey("starlit_plains_firefly_bush");
+    public static final ResourceKey<PlacedFeature> STARLIT_PLAINS_GLOWSTONE = createKey("starlit_plains_glowstone");
+
 
     public static ResourceKey<PlacedFeature> createKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -97,6 +106,13 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> bolderTreeBeesLeafLitter = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BOLDER_TREE_BEES_LEAF_LITTER);
         Holder<ConfiguredFeature<?, ?>> opalTreeBeesLeafLitter = configuredFeatures.getOrThrow(FLTConfiguredFeatures.OPAL_TREE_BEES_LEAF_LITTER);
         Holder<ConfiguredFeature<?, ?>> fancyBolderTreeBeesLeafLitter = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FANCY_BOLDER_TREE_BEES_LEAF_LITTER);
+
+        // 飘浮草原/繁星草原
+        Holder<ConfiguredFeature<?, ?>> floatingPlainsGrass = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOATING_PLAINS_GRASS);
+        Holder<ConfiguredFeature<?, ?>> floatingPlainsTallGrass = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOATING_PLAINS_TALL_GRASS);
+        Holder<ConfiguredFeature<?, ?>> floatingPlainsFlowers = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOATING_PLAINS_FLOWERS);
+        Holder<ConfiguredFeature<?, ?>> floatingPlainsFireflyBush = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOATING_PLAINS_FIREFLY_BUSH);
+        Holder<ConfiguredFeature<?, ?>> starlitPlainsGlowstone = configuredFeatures.getOrThrow(FLTConfiguredFeatures.STARLIT_PLAINS_GLOWSTONE);
 
 
         PlacementUtils.register(
@@ -298,6 +314,86 @@ public class FLTPlacedFeatures {
                 context, FANCY_BOLDER_TREE_BEES_LEAF_LITTER, fancyBolderTreeBeesLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
         );
         PlacementUtils.register(context, OPAL_TREE_BEES_LEAF_LITTER, opalTreeBeesLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+
+        // 飘浮草原 / 繁星草原 --------------------------
+        // 草：层叠效果
+        PlacementUtils.register(
+                context,
+                FLOATING_PLAINS_GRASS,
+                floatingPlainsGrass,
+                CountPlacement.of(2),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                CountPlacement.of(14),
+                RandomOffsetPlacement.of(UniformInt.of(-3, 3), ConstantInt.of(0)),
+                BiomeFilter.biome()
+        );
+
+        // 高草丛：比草稀疏，丛也小一些
+        PlacementUtils.register(
+                context,
+                FLOATING_PLAINS_TALL_GRASS,
+                floatingPlainsTallGrass,
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                CountPlacement.of(4),
+                RandomOffsetPlacement.of(UniformInt.of(-4, 4), ConstantInt.of(0)),
+                BiomeFilter.biome()
+        );
+
+        // 花：参考占位符花地物（FLOWERS_FAR_LANDS_PLAINS）。一簇成火焰状下多上少的花簇
+        PlacementUtils.register(
+                context,
+                FLOATING_PLAINS_FLOWERS,
+                floatingPlainsFlowers,
+                NoiseThresholdCountPlacement.of(-0.8, 15, 4),
+                RarityFilter.onAverageOnceEvery(32),
+                InSquarePlacement.spread(),
+                CountPlacement.of(16),
+                PlacementUtils.HEIGHTMAP,
+                VerticalOffsetPlacement.of(BiasedToBottomInt.of(0, 72)),
+                BiomeFilter.biome(),
+                RandomOffsetPlacement.ofTriangle(6, 4),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+        );
+
+        // 萤火虫灌木丛：飘浮草原里很稀有，且一次只生成一格
+        PlacementUtils.register(
+                context,
+                FLOATING_PLAINS_FIREFLY_BUSH,
+                floatingPlainsFireflyBush,
+                RarityFilter.onAverageOnceEvery(8),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                BiomeFilter.biome()
+        );
+
+        // 繁星草原的萤火虫灌木丛：生成概率明显提高
+        PlacementUtils.register(
+                context,
+                STARLIT_PLAINS_FIREFLY_BUSH,
+                floatingPlainsFireflyBush,
+                RarityFilter.onAverageOnceEvery(2),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                BiomeFilter.biome()
+        );
+
+        // 繁星草原的荧石：散布在更高的天空里，做出繁星的感觉
+        PlacementUtils.register(
+                context,
+                STARLIT_PLAINS_GLOWSTONE,
+                starlitPlainsGlowstone,
+                CountPlacement.of(4),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                HeightRangePlacement.uniform(VerticalAnchor.belowTop(20), VerticalAnchor.top()),
+                BiomeFilter.biome()
+        );
 
     }
 }
