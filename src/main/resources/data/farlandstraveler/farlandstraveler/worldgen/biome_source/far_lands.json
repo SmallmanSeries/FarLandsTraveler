@@ -207,7 +207,7 @@
         },
         "outside": {
           "type": "fixed",
-          "biome": "farlandstraveler:wood_lands"
+          "biome": "farlandstraveler:starlit_plains"
         }
       }
     }

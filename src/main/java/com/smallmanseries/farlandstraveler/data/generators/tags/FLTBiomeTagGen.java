@@ -22,13 +22,23 @@ public class FLTBiomeTagGen extends BiomeTagsProvider {
 
         // Far Lands Traveler
         this.tag(FLTTags.Biomes.HAS_STRUCTURE_AV_NORMAL).add(
-                FLTBiomes.FAR_LANDS
+                FLTBiomes.FAR_LANDS,
+                FLTBiomes.FLOATING_PLAINS,
+                FLTBiomes.STARLIT_PLAINS
         );
         this.tag(FLTTags.Biomes.HAS_STRUCTURE_EB_INDEV_COBBLESTONE).add(
-                FLTBiomes.FAR_LANDS
+                FLTBiomes.FAR_LANDS,
+                FLTBiomes.WOOD_LANDS,
+                FLTBiomes.FLOATING_PLAINS,
+                FLTBiomes.STARLIT_PLAINS
         );
         this.tag(FLTTags.Biomes.HAS_STRUCTURE_EB_INDEV_WOOD).add(
-                FLTBiomes.FAR_LANDS
+                FLTBiomes.FAR_LANDS,
+                FLTBiomes.FLOATING_PLAINS,
+                FLTBiomes.STARLIT_PLAINS
+        );
+        this.tag(FLTTags.Biomes.HAS_STRUCTURE_FLYING_HOUSE).add(
+                FLTBiomes.STARLIT_PLAINS
         );
         this.tag(FLTTags.Biomes.IS_FAR_LANDS).add(
                 FLTBiomes.FAR_LANDS
