@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 25101648,
+    "separation": 16,
+    "spacing": 64
+  },
+  "structures": [
+    {
+      "structure": "farlandstraveler:flying_house",
+      "weight": 1
+    }
+  ]
+}

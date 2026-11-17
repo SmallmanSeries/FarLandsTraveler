@@ -27,6 +27,7 @@ public class FLTStructureSets {
     public static final ResourceKey<StructureSet> ABANDONED_VILLAGES = createKey("abandoned_villages");
     public static final ResourceKey<StructureSet> EXPLORER_BASES_SURFACE = createKey("explorer_bases_surface");
     public static final ResourceKey<StructureSet> EXPLORER_BASES_UNDERGROUND = createKey("explorer_bases_underground");
+    public static final ResourceKey<StructureSet> FLYING_HOUSES = createKey("flying_houses");
 
     private static ResourceKey<StructureSet> createKey(String name) {
         return ResourceKey.create(Registries.STRUCTURE_SET, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -79,6 +80,13 @@ public class FLTStructureSets {
                         StructureSet.entry(structures.getOrThrow(FLTStructureData.EB_INDEV_COBBLESTONE))
                 ),
                 new RandomSpreadStructurePlacement(40, 10, RandomSpreadType.LINEAR, 12550824)
+        ));
+
+        context.register(FLYING_HOUSES, new StructureSet(
+                List.of(
+                        StructureSet.entry(structures.getOrThrow(FLTStructureData.FLYING_HOUSE))
+                ),
+                new RandomSpreadStructurePlacement(64, 16, RandomSpreadType.LINEAR, 25101648)
         ));
     }
 }

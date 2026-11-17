@@ -43,6 +43,9 @@ public class FLTStructureData {
     // 废弃村庄
     public static final ResourceKey<Structure> AV_NORMAL = createKey("abandoned_village/normal");
 
+    // 飞屋（暂用探境者基地的木屋模板占位）
+    public static final ResourceKey<Structure> FLYING_HOUSE = createKey("flying_house");
+
     private static ResourceKey<Structure> createKey(String name) {
         return ResourceKey.create(Registries.STRUCTURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
     }
@@ -84,6 +87,26 @@ public class FLTStructureData {
                         ConstantHeight.of(VerticalAnchor.absolute(0)),
                         true,
                         Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
+                        new JigsawStructure.MaxDistance(6),
+                        List.of(),
+                        JigsawStructure.DEFAULT_DIMENSION_PADDING,
+                        JigsawStructure.DEFAULT_LIQUID_SETTINGS
+                )
+        );
+
+        context.register(
+                FLYING_HOUSE,
+                new JigsawStructure(
+                        new Structure.StructureSettings.Builder(biomes.getOrThrow(FLTTags.Biomes.HAS_STRUCTURE_FLYING_HOUSE))
+                                .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+                                .terrainAdapation(TerrainAdjustment.NONE)
+                                .build(),
+                        templates.getOrThrow(ExplorerBasePools.INDEV_WOOD),
+                        Optional.of(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "base_anchor")),
+                        1,
+                        ConstantHeight.of(VerticalAnchor.absolute(300)),
+                        true,
+                        Optional.empty(),
                         new JigsawStructure.MaxDistance(6),
                         List.of(),
                         JigsawStructure.DEFAULT_DIMENSION_PADDING,
