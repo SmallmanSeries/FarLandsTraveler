@@ -3,26 +3,33 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 4
+      "count": 32
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "below_top": 0
-        },
-        "min_inclusive": {
-          "below_top": 20
-        }
-      }
+      "type": "farlandstraveler:swirl",
+      "arm_falloff": 1.7,
+      "arms": 2,
+      "cell_size": 120,
+      "density_min": 0.12,
+      "density_scale": 260.0,
+      "fade_start": 0.9,
+      "max_height": {
+        "below_top": 2
+      },
+      "max_radius": 96.0,
+      "min_height": {
+        "below_top": 10
+      },
+      "min_radius": 8.0,
+      "seed": 1346237208,
+      "star_radius": 7.0,
+      "twist": 7.0,
+      "twist_jitter": 0.25,
+      "wave_frequency": 2.0,
+      "y_spread": 4
     },
     {
       "type": "minecraft:biome"

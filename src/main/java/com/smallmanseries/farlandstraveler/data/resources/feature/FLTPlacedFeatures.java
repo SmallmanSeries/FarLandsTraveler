@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.data.resources.feature;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.SwirlPlacement;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.VerticalOffsetPlacement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -383,15 +384,33 @@ public class FLTPlacedFeatures {
                 BiomeFilter.biome()
         );
 
-        // 繁星草原的荧石：散布在更高的天空里，做出繁星的感觉
+        // 繁星草原的荧石：沿「旋涡」场分布。
+        // 图案完全由世界坐标决定，所以螺旋臂能跨区块连续，形成流动的大漩涡（梵高《星空》那种感觉）。
+        // 荧石按高斯散布在螺旋臂周围、并随机上下散布，加上低频噪声调制疏密，得到「星星点点」的星云感。
         PlacementUtils.register(
                 context,
                 STARLIT_PLAINS_GLOWSTONE,
                 starlitPlainsGlowstone,
-                CountPlacement.of(4),
+                CountPlacement.of(32),
                 InSquarePlacement.spread(),
-                PlacementUtils.HEIGHTMAP,
-                HeightRangePlacement.uniform(VerticalAnchor.belowTop(20), VerticalAnchor.top()),
+                new SwirlPlacement(
+                        120,    // cell_size：旋涡中心间距（小于 2×max_radius，旋涡才会互相咬合）
+                        2,      // arms：螺旋臂数
+                        7.0,    // twist：每弧度半径增量，越小缠绕越紧
+                        0.25,   // twist_jitter：每个旋涡缠绕紧度的抖动，破除规整感
+                        96.0,   // max_radius
+                        8.0,    // min_radius
+                        1.7,    // arm_falloff：星带的高斯宽度，越大星点散得越开
+                        0.9,    // fade_start：渐隐起点，太小时旋涡会彼此孤立
+                        7.0,    // star_radius：旋涡中心的星核
+                        VerticalAnchor.belowTop(10),   // min_height：世界顶以下 10 格
+                        VerticalAnchor.belowTop(2),    // max_height：世界顶以下 2 格
+                        2.0,    // wave_frequency：高度起伏
+                        4,      // y_spread：垂直随机散布
+                        260.0,  // density_scale：疏密噪声的波长
+                        0.12,   // density_min：疏处保留的密度下限
+                        1346237208L
+                ),
                 BiomeFilter.biome()
         );
 

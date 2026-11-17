@@ -13,4 +13,8 @@ public class FLTPlacementModifiers {
     // 垂直偏移
     public static final DeferredHolder<PlacementModifierType<?>, PlacementModifierType<VerticalOffsetPlacement>> VERTICAL_OFFSET =
             PLACEMENT_MODIFIER_TYPES.register("vertical_offset", () -> () -> VerticalOffsetPlacement.CODEC);
+
+    // 旋涡：按世界坐标上的螺旋场筛选位置，用于「繁星」
+    public static final DeferredHolder<PlacementModifierType<?>, PlacementModifierType<SwirlPlacement>> SWIRL =
+            PLACEMENT_MODIFIER_TYPES.register("swirl", () -> () -> SwirlPlacement.CODEC);
 }
