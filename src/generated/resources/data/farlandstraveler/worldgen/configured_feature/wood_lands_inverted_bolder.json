@@ -1,0 +1,7 @@
+{
+  "type": "farlandstraveler:transformed",
+  "config": {
+    "feature": "farlandstraveler:bolder_tree",
+    "mirror_y": true
+  }
+}

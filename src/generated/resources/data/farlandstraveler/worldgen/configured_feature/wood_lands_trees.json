@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "farlandstraveler:wood_lands_normal_trees",
+    "features": [
+      {
+        "chance": 0.01,
+        "feature": "farlandstraveler:wood_lands_tall_bolder"
+      },
+      {
+        "chance": 0.01,
+        "feature": "farlandstraveler:imaginarbor"
+      },
+      {
+        "chance": 0.04,
+        "feature": "farlandstraveler:wood_lands_tree_on_tree"
+      },
+      {
+        "chance": 0.005,
+        "feature": "farlandstraveler:voidviolet"
+      },
+      {
+        "chance": 0.004,
+        "feature": "farlandstraveler:wood_lands_inverted_bolder"
+      },
+      {
+        "chance": 0.001,
+        "feature": "farlandstraveler:wood_lands_tall_inverted_bolder"
+      }
+    ]
+  }
+}

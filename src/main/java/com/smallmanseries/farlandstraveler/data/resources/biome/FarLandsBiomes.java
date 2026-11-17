@@ -248,8 +248,8 @@ public class FarLandsBiomes {
         BiomeDefaultFeatures.addDefaultSprings(generation);
         // todo 根据边境森林和白玉森林选择音乐，该功能暂时搁置
         BackgroundMusic music = new BackgroundMusic(FLTSoundEvents.MUSIC_FAR_LANDS_UNIVERSAL);
-        // 包括芍药在内的花
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FOREST_FLOWERS);
+        // 边境芍药等小型花（边境森林暂定不生成大型花）
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.WOOD_LANDS_FLOWERS);
 
         // 矿物设置暂时与森林保持一致
         BiomeDefaultFeatures.addDefaultOres(generation);
@@ -267,7 +267,8 @@ public class FarLandsBiomes {
             if (oldGrowth) {
                 // 这里添加高密度的大型苍境树、大型苍境树上面叠一个小型苍境树、高苍境树、倒置的大苍境树（一个地物包办所有）
             } else {
-                generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_BIRCH_AND_OAK_LEAF_LITTER);
+                // 普通树种（苍境树、白玉树）为主，其中混杂小概率的异常树种（高树、虚树、玄紫树、树上树）
+                generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.WOOD_LANDS_TREES);
             }
         }
 
@@ -285,8 +286,16 @@ public class FarLandsBiomes {
             mobs.addSpawn(MobCategory.CREATURE, 5, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4));
         }
 
-        return baseBiome(opal ? 0.6F : 0.8F, opal ? 0.6F : 0.8F)
+        // 温度与湿度与主世界的森林保持一致（0.7 / 0.8），覆盖色调，使其更接近边境芍药的茎
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .waterColor(4159204)
+                .grassColorOverride(0x5DCA5D)
+                .foliageColorOverride(0x62D22E)
+                .build();
+
+        return baseBiome(opal ? 0.6F : 0.7F, opal ? 0.6F : 0.8F)
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, music)
+                .specialEffects(effects)
                 .mobSpawnSettings(mobs.build())
                 .generationSettings(generation.build())
                 .build();

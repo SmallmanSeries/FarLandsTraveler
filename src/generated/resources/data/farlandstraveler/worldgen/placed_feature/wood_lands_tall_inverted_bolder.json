@@ -1,0 +1,17 @@
+{
+  "feature": "farlandstraveler:wood_lands_tall_inverted_bolder",
+  "placement": [
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "farlandstraveler:vertical_offset",
+      "offset": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 60,
+        "min_inclusive": 40
+      }
+    }
+  ]
+}

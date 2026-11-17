@@ -7,7 +7,7 @@
         "sound": "farlandstraveler:music.far_lands.universal"
       }
     },
-    "minecraft:visual/sky_color": "#78a7ff"
+    "minecraft:visual/sky_color": "#79a6ff"
   },
   "carvers": [
     "farlandstraveler:far_lands_cave",
@@ -16,6 +16,8 @@
   ],
   "downfall": 0.8,
   "effects": {
+    "foliage_color": "#62d22e",
+    "grass_color": "#5dca5d",
     "water_color": "#3f76e4"
   },
   "features": [
@@ -71,8 +73,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:forest_flowers",
-      "minecraft:trees_birch_and_oak_leaf_litter",
+      "farlandstraveler:wood_lands_flowers",
+      "farlandstraveler:wood_lands_trees",
       "minecraft:patch_bush",
       "minecraft:flower_default",
       "minecraft:patch_grass_forest",
@@ -192,5 +194,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.7
 }

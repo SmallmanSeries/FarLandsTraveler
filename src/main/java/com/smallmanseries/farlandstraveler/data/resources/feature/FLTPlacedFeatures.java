@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.data.resources.feature;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.VerticalOffsetPlacement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -11,7 +12,9 @@ import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.valueproviders.ClampedInt;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -37,6 +40,26 @@ public class FLTPlacedFeatures {
     public static final ResourceKey<PlacedFeature> WALL_OF_GREEN_VINES = createKey("wall_of_green_vines");
     public static final ResourceKey<PlacedFeature> WALL_OF_ICE_ICICLE = createKey("wall_of_ice_icicle");
 
+    // 边境森林
+    public static final ResourceKey<PlacedFeature> WOOD_LANDS_TREES = createKey("wood_lands_trees");
+    public static final ResourceKey<PlacedFeature> WOOD_LANDS_INVERTED_BOLDER = createKey("wood_lands_inverted_bolder");
+    public static final ResourceKey<PlacedFeature> WOOD_LANDS_TALL_INVERTED_BOLDER = createKey("wood_lands_tall_inverted_bolder");
+    public static final ResourceKey<PlacedFeature> WOOD_LANDS_TALL_BOLDER = createKey("wood_lands_tall_bolder");
+    public static final ResourceKey<PlacedFeature> IMAGINARBOR = createKey("imaginarbor");
+    public static final ResourceKey<PlacedFeature> VOIDVIOLET = createKey("voidviolet");
+    public static final ResourceKey<PlacedFeature> WOOD_LANDS_TREE_ON_TREE = createKey("wood_lands_tree_on_tree");
+    public static final ResourceKey<PlacedFeature> WOOD_LANDS_FLOWERS = createKey("wood_lands_flowers");
+    public static final ResourceKey<PlacedFeature> WOOD_LANDS_NORMAL_TREES = createKey("wood_lands_normal_trees");
+    public static final ResourceKey<PlacedFeature> BOLDER_TREE = createKey("bolder_tree");
+    public static final ResourceKey<PlacedFeature> FANCY_BOLDER_TREE = createKey("fancy_bolder_tree");
+    public static final ResourceKey<PlacedFeature> OPAL_TREE = createKey("opal_tree");
+    public static final ResourceKey<PlacedFeature> FALLEN_BOLDER_TREE = createKey("fallen_bolder_tree");
+    public static final ResourceKey<PlacedFeature> FALLEN_OPAL_TREE = createKey("fallen_opal_tree");
+    public static final ResourceKey<PlacedFeature> BOLDER_TREE_BEES_LEAF_LITTER = createKey("bolder_tree_bees_leaf_litter");
+    public static final ResourceKey<PlacedFeature> OPAL_TREE_BEES_LEAF_LITTER = createKey("opal_tree_bees_leaf_litter");
+    public static final ResourceKey<PlacedFeature> FANCY_BOLDER_TREE_BEES_LEAF_LITTER = createKey("fancy_bolder_tree_bees_leaf_litter");
+
+
     public static ResourceKey<PlacedFeature> createKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
     }
@@ -55,6 +78,26 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> wallOfGreenMoss = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WALL_OF_GREEN_MOSS);
         Holder<ConfiguredFeature<?, ?>> wallOfGreenTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WALL_OF_GREEN_TREES);
         Holder<ConfiguredFeature<?, ?>> wallOfIceIcicle = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WALL_OF_ICE_ICICLE);
+
+        // 边境森林
+        Holder<ConfiguredFeature<?, ?>> woodLandsTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_TREES);
+        Holder<ConfiguredFeature<?, ?>> woodLandsInvertedBolder = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_INVERTED_BOLDER);
+        Holder<ConfiguredFeature<?, ?>> woodLandsTallInvertedBolder = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_TALL_INVERTED_BOLDER);
+        Holder<ConfiguredFeature<?, ?>> woodLandsTallBolder = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_TALL_BOLDER);
+        Holder<ConfiguredFeature<?, ?>> imaginarbor = configuredFeatures.getOrThrow(FLTConfiguredFeatures.IMAGINARBOR);
+        Holder<ConfiguredFeature<?, ?>> voidviolet = configuredFeatures.getOrThrow(FLTConfiguredFeatures.VOIDVIOLET);
+        Holder<ConfiguredFeature<?, ?>> woodLandsTreeOnTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_TREE_ON_TREE);
+        Holder<ConfiguredFeature<?, ?>> woodLandsPaeonia = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_PAEONIA);
+        Holder<ConfiguredFeature<?, ?>> woodLandsNormalTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_NORMAL_TREES);
+        Holder<ConfiguredFeature<?, ?>> bolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BOLDER_TREE);
+        Holder<ConfiguredFeature<?, ?>> fancyBolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FANCY_BOLDER_TREE);
+        Holder<ConfiguredFeature<?, ?>> opalTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.OPAL_TREE);
+        Holder<ConfiguredFeature<?, ?>> fallenBolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FALLEN_BOLDER_TREE);
+        Holder<ConfiguredFeature<?, ?>> fallenOpalTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FALLEN_OPAL_TREE);
+        Holder<ConfiguredFeature<?, ?>> bolderTreeBeesLeafLitter = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BOLDER_TREE_BEES_LEAF_LITTER);
+        Holder<ConfiguredFeature<?, ?>> opalTreeBeesLeafLitter = configuredFeatures.getOrThrow(FLTConfiguredFeatures.OPAL_TREE_BEES_LEAF_LITTER);
+        Holder<ConfiguredFeature<?, ?>> fancyBolderTreeBeesLeafLitter = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FANCY_BOLDER_TREE_BEES_LEAF_LITTER);
+
 
         PlacementUtils.register(
                 context,
@@ -185,5 +228,74 @@ public class FLTPlacedFeatures {
                 RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
                 BiomeFilter.biome()
         );
+
+        // 边境森林 --------------------------
+        // 特殊树种的“裸”放置：不附加任何放置修饰器，位置完全由外层的树种选择器决定
+        PlacementUtils.register(context, WOOD_LANDS_TALL_BOLDER, woodLandsTallBolder, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, IMAGINARBOR, imaginarbor, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, VOIDVIOLET, voidviolet, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, WOOD_LANDS_TREE_ON_TREE, woodLandsTreeOnTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+
+        // 普通树种的“裸”放置：只带树苗存活判定，与原版 oak_checked 等保持一致
+        PlacementUtils.register(context, BOLDER_TREE, bolderTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, FANCY_BOLDER_TREE, fancyBolderTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, OPAL_TREE, opalTree, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+        PlacementUtils.register(context, WOOD_LANDS_NORMAL_TREES, woodLandsNormalTrees);
+
+
+        // 边境森林的树：密度与原版森林一致（每区块约 10 次尝试），且不长在水里
+        PlacementUtils.register(
+                context,
+                WOOD_LANDS_TREES,
+                woodLandsTrees,
+                PlacementUtils.countExtra(10, 0.1F, 1),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BiomeFilter.biome()
+        );
+
+        // 倒树：先取地面高度，再抬高到地面 30~50 格之上生成。
+        // 镜像后树干朝上、树冠朝下，所以它是垂在地面之上的一棵倒挂的树。
+        PlacementUtils.register(
+                context,
+                WOOD_LANDS_INVERTED_BOLDER,
+                woodLandsInvertedBolder,
+                PlacementUtils.HEIGHTMAP,
+                VerticalOffsetPlacement.of(UniformInt.of(30, 50))
+        );
+
+        // 高的倒树变种
+        PlacementUtils.register(
+                context,
+                WOOD_LANDS_TALL_INVERTED_BOLDER,
+                woodLandsTallInvertedBolder,
+                PlacementUtils.HEIGHTMAP,
+                VerticalOffsetPlacement.of(UniformInt.of(40, 60))
+        );
+
+        // 边境芍药：放置方式与原版森林的“大型花”地物保持一致，只把花换成边境芍药
+        PlacementUtils.register(
+                context,
+                WOOD_LANDS_FLOWERS,
+                woodLandsPaeonia,
+                RarityFilter.onAverageOnceEvery(7),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                CountPlacement.of(ClampedInt.of(UniformInt.of(-3, 1), 0, 1)),
+                BiomeFilter.biome()
+        );
+
+        // 倒下的苍境树/白玉树
+        PlacementUtils.register(context, FALLEN_BOLDER_TREE, fallenBolderTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, FALLEN_OPAL_TREE, fallenOpalTree, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+
+        // 带枯叶堆的苍境树/珍异苍境树/白玉树
+        PlacementUtils.register(context, BOLDER_TREE_BEES_LEAF_LITTER, bolderTreeBeesLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(
+                context, FANCY_BOLDER_TREE_BEES_LEAF_LITTER, fancyBolderTreeBeesLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
+        );
+        PlacementUtils.register(context, OPAL_TREE_BEES_LEAF_LITTER, opalTreeBeesLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+
     }
 }

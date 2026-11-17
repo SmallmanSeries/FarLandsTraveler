@@ -1,0 +1,7 @@
+{
+  "type": "farlandstraveler:stacked_tree",
+  "config": {
+    "base": "farlandstraveler:bolder_tree",
+    "top": "farlandstraveler:bolder_tree"
+  }
+}
