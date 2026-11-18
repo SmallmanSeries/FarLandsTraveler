@@ -87,7 +87,7 @@ public class FLTStructureSets {
                 List.of(
                         StructureSet.entry(structures.getOrThrow(FLTStructureData.FLYING_HOUSE))
                 ),
-                new RandomSpreadStructurePlacement(64, 16, RandomSpreadType.LINEAR, 25101648)
+                new RandomSpreadStructurePlacement(40, 10, RandomSpreadType.LINEAR, 25101648)
         ));
 
         context.register(RUINS_NORMAL, new StructureSet(
@@ -95,7 +95,7 @@ public class FLTStructureSets {
                         StructureSet.entry(structures.getOrThrow(FLTStructureData.HEROBRINE_PYRAMID), 10),
                         StructureSet.entry(structures.getOrThrow(FLTStructureData.HEROBRINE_MINESHAFT), 8)
                 ),
-                new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 29999983)
+                new RandomSpreadStructurePlacement(16, 6, RandomSpreadType.LINEAR, 29999983)
         ));
     }
 }
