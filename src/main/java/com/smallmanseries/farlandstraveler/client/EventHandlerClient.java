@@ -6,11 +6,14 @@ import com.smallmanseries.farlandstraveler.client.particle.PEShockwaveParticle;
 import com.smallmanseries.farlandstraveler.client.render.FLTRenderPipelines;
 import com.smallmanseries.farlandstraveler.client.render.debug.FakeChunkBorderRenderer;
 import com.smallmanseries.farlandstraveler.client.render.entity.FLTLayers;
+import com.smallmanseries.farlandstraveler.client.render.entity.HerobrineRender;
 import com.smallmanseries.farlandstraveler.client.render.entity.PrimitiveEndermanRender;
 import com.smallmanseries.farlandstraveler.client.render.entity.TestEntityRender;
 import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
 import com.smallmanseries.farlandstraveler.common.particle.FLTParticleTypes;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -32,12 +35,14 @@ public class EventHandlerClient {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(FLTEntityTypes.PRIMITIVE_ENDERMAN.get(), PrimitiveEndermanRender::new);
         event.registerEntityRenderer(FLTEntityTypes.TEST_ENTITY.get(), TestEntityRender::new);
+        event.registerEntityRenderer(FLTEntityTypes.HEROBRINE.get(), HerobrineRender::new);
     }
 
     // 注册实体模型层
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(FLTLayers.TEST_ENTITY, () -> TestEntityModel.createBodyLayer(CubeDeformation.NONE));
+        event.registerLayerDefinition(FLTLayers.HEROBRINE, () -> LayerDefinition.create(HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F), 64, 64));
     }
 
     // 注册调试渲染器

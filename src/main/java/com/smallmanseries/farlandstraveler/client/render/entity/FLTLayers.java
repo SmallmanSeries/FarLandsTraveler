@@ -6,6 +6,7 @@ import net.minecraft.resources.Identifier;
 
 public class FLTLayers {
     public static final ModelLayerLocation TEST_ENTITY = register("test_entity", "main");
+    public static final ModelLayerLocation HEROBRINE = register("herobrine", "main");
 
     private static ModelLayerLocation register(String name, String layer) {
         return new ModelLayerLocation(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name), layer);

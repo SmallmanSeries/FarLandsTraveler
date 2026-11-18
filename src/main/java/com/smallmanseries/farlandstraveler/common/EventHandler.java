@@ -5,9 +5,7 @@ import com.smallmanseries.farlandstraveler.Config;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.distance_phenomenon.FakeChunk;
 import com.smallmanseries.farlandstraveler.common.effect.FLTMobEffects;
-import com.smallmanseries.farlandstraveler.common.entity.FLTEntityTypes;
-import com.smallmanseries.farlandstraveler.common.entity.PrimitiveEndermanEntity;
-import com.smallmanseries.farlandstraveler.common.entity.TestEntity;
+import com.smallmanseries.farlandstraveler.common.entity.*;
 import com.smallmanseries.farlandstraveler.common.item.FLTItems;
 import com.smallmanseries.farlandstraveler.common.network.PopUpPacket;
 import com.smallmanseries.farlandstraveler.common.worldgen.biomes.BiomeInjectors;
@@ -18,6 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.piston.PistonStructureResolver;
@@ -28,6 +27,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.level.ExplosionEvent;
+import net.neoforged.neoforge.event.level.ModifyCustomSpawnersEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -56,6 +56,15 @@ public class EventHandler {
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(FLTEntityTypes.PRIMITIVE_ENDERMAN.get(), PrimitiveEndermanEntity.createAttributes().build());
         event.put(FLTEntityTypes.TEST_ENTITY.get(), TestEntity.createAttributes().build());
+        event.put(FLTEntityTypes.HEROBRINE.get(), HerobrineEntity.createAttributes().build());
+    }
+
+    // 自定义生成器注册
+    @SubscribeEvent
+    public static void registerCustomSpawners(ModifyCustomSpawnersEvent event) {
+        if(event.getLevel().dimension().equals(Level.OVERWORLD)) {
+            event.addCustomSpawner(new HerobrineSpawner());
+        }
     }
 
     // 注册实体生成
