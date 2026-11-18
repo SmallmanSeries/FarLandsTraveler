@@ -1,0 +1,18 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 29999983,
+    "separation": 8,
+    "spacing": 32
+  },
+  "structures": [
+    {
+      "structure": "farlandstraveler:ruins/herobrine_pyramid",
+      "weight": 10
+    },
+    {
+      "structure": "farlandstraveler:ruins/herobrine_mineshaft",
+      "weight": 8
+    }
+  ]
+}

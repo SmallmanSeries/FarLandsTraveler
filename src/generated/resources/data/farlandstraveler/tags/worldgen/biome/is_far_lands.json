@@ -1,5 +1,17 @@
 {
   "values": [
-    "farlandstraveler:far_lands"
+    "farlandstraveler:far_lands",
+    "farlandstraveler:wood_lands",
+    "farlandstraveler:floating_plains",
+    "farlandstraveler:starlit_plains",
+    "farlandstraveler:leafless_forest",
+    "farlandstraveler:sky_reaching_forest",
+    "farlandstraveler:flower_lands",
+    "farlandstraveler:ice_desert",
+    "farlandstraveler:freezing_desert",
+    "farlandstraveler:holy_lands",
+    "farlandstraveler:crimson_stone_forest",
+    "farlandstraveler:cube_wells",
+    "farlandstraveler:miners_wells"
   ]
 }

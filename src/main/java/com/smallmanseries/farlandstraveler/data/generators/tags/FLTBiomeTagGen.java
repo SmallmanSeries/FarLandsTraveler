@@ -40,8 +40,23 @@ public class FLTBiomeTagGen extends BiomeTagsProvider {
         this.tag(FLTTags.Biomes.HAS_STRUCTURE_FLYING_HOUSE).add(
                 FLTBiomes.STARLIT_PLAINS
         );
+        this.tag(FLTTags.Biomes.HAS_STRUCTURE_HEROBRINE_RUINS).add(
+                FLTBiomes.LEAFLESS_FOREST
+        );
         this.tag(FLTTags.Biomes.IS_FAR_LANDS).add(
-                FLTBiomes.FAR_LANDS
+                FLTBiomes.FAR_LANDS,
+                FLTBiomes.WOOD_LANDS,
+                FLTBiomes.FLOATING_PLAINS,
+                FLTBiomes.STARLIT_PLAINS,
+                FLTBiomes.LEAFLESS_FOREST,
+                FLTBiomes.SKY_REACHING_FOREST,
+                FLTBiomes.FLOWER_LANDS,
+                FLTBiomes.ICE_DESERT,
+                FLTBiomes.FREEZING_DESERT,
+                FLTBiomes.HOLY_LANDS,
+                FLTBiomes.CRIMSON_STONE_FOREST,
+                FLTBiomes.CUBE_WELLS,
+                FLTBiomes.MINERS_WELLS
         );
         this.tag(FLTTags.Biomes.IS_FAR_LANDS_EDGE).add(
                 FLTBiomes.FAR_LANDS_EDGE,

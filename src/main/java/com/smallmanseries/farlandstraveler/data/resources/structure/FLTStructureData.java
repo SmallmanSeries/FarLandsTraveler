@@ -46,6 +46,10 @@ public class FLTStructureData {
     // 飞屋（暂用探境者基地的木屋模板占位）
     public static final ResourceKey<Structure> FLYING_HOUSE = createKey("flying_house");
 
+    // herobrine遗迹：小型金字塔与矿道（暂用探境者基地的木屋和圆石屋模板占位）
+    public static final ResourceKey<Structure> HEROBRINE_PYRAMID = createKey("ruins/herobrine_pyramid");
+    public static final ResourceKey<Structure> HEROBRINE_MINESHAFT = createKey("ruins/herobrine_mineshaft");
+
     private static ResourceKey<Structure> createKey(String name) {
         return ResourceKey.create(Registries.STRUCTURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
     }
@@ -87,26 +91,6 @@ public class FLTStructureData {
                         ConstantHeight.of(VerticalAnchor.absolute(0)),
                         true,
                         Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
-                        new JigsawStructure.MaxDistance(6),
-                        List.of(),
-                        JigsawStructure.DEFAULT_DIMENSION_PADDING,
-                        JigsawStructure.DEFAULT_LIQUID_SETTINGS
-                )
-        );
-
-        context.register(
-                FLYING_HOUSE,
-                new JigsawStructure(
-                        new Structure.StructureSettings.Builder(biomes.getOrThrow(FLTTags.Biomes.HAS_STRUCTURE_FLYING_HOUSE))
-                                .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
-                                .terrainAdapation(TerrainAdjustment.NONE)
-                                .build(),
-                        templates.getOrThrow(ExplorerBasePools.INDEV_WOOD),
-                        Optional.of(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "base_anchor")),
-                        1,
-                        ConstantHeight.of(VerticalAnchor.absolute(300)),
-                        true,
-                        Optional.empty(),
                         new JigsawStructure.MaxDistance(6),
                         List.of(),
                         JigsawStructure.DEFAULT_DIMENSION_PADDING,
@@ -183,6 +167,66 @@ public class FLTStructureData {
                                 .build(),
                         6,
                         AbandonedVillagePreset.createDefault()
+                )
+        );
+
+        context.register(
+                FLYING_HOUSE,
+                new JigsawStructure(
+                        new Structure.StructureSettings.Builder(biomes.getOrThrow(FLTTags.Biomes.HAS_STRUCTURE_FLYING_HOUSE))
+                                .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+                                .terrainAdapation(TerrainAdjustment.NONE)
+                                .build(),
+                        templates.getOrThrow(ExplorerBasePools.INDEV_WOOD),
+                        Optional.of(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "base_anchor")),
+                        1,
+                        ConstantHeight.of(VerticalAnchor.absolute(300)),
+                        true,
+                        Optional.empty(),
+                        new JigsawStructure.MaxDistance(6),
+                        List.of(),
+                        JigsawStructure.DEFAULT_DIMENSION_PADDING,
+                        JigsawStructure.DEFAULT_LIQUID_SETTINGS
+                )
+        );
+
+        context.register(
+                HEROBRINE_PYRAMID,
+                new JigsawStructure(
+                        new Structure.StructureSettings.Builder(biomes.getOrThrow(FLTTags.Biomes.HAS_STRUCTURE_HEROBRINE_RUINS))
+                                .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+                                .terrainAdapation(TerrainAdjustment.NONE)
+                                .build(),
+                        templates.getOrThrow(ExplorerBasePools.INDEV_WOOD),
+                        Optional.of(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "base_anchor")),
+                        1,
+                        ConstantHeight.of(VerticalAnchor.absolute(0)),
+                        true,
+                        Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
+                        new JigsawStructure.MaxDistance(6),
+                        List.of(),
+                        JigsawStructure.DEFAULT_DIMENSION_PADDING,
+                        JigsawStructure.DEFAULT_LIQUID_SETTINGS
+                )
+        );
+
+        context.register(
+                HEROBRINE_MINESHAFT,
+                new JigsawStructure(
+                        new Structure.StructureSettings.Builder(biomes.getOrThrow(FLTTags.Biomes.HAS_STRUCTURE_HEROBRINE_RUINS))
+                                .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+                                .terrainAdapation(TerrainAdjustment.NONE)
+                                .build(),
+                        templates.getOrThrow(ExplorerBasePools.INDEV_COBBLESTONE),
+                        Optional.of(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "base_anchor")),
+                        1,
+                        ConstantHeight.of(VerticalAnchor.absolute(0)),
+                        true,
+                        Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
+                        new JigsawStructure.MaxDistance(6),
+                        List.of(),
+                        JigsawStructure.DEFAULT_DIMENSION_PADDING,
+                        JigsawStructure.DEFAULT_LIQUID_SETTINGS
                 )
         );
     }
