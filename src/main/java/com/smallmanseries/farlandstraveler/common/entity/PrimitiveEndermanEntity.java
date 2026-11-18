@@ -54,10 +54,29 @@ public class PrimitiveEndermanEntity extends EnderMan {
      * @return 布尔值，生物能否生成
      */
     public static boolean checkMonsterSpawnRules(EntityType<? extends Mob> type, ServerLevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random) {
+        if (!Monster.checkMonsterSpawnRules(type, level, spawnReason, pos, random)) {
+            return false;
+        }
+
+        // 边境之地内部不生成
+        if (FarLands.isInFarLands(pos.getX(), pos.getY(), pos.getZ(), 0)) {
+            return false;
+        }
+
+        // 与世界中心的距离余量：越靠近边境之地越小。
+        // 注意 isInFarLands 用的是严格不等号，所以坐标正好等于边境之地距离时这里会得到 0，
+        // 必须提前挡掉，否则下面的 nextInt 会以 0 为界抛异常。
         int far = Config.FAR_LANDS_DISTANCE.getAsInt();
-        return Monster.checkMonsterSpawnRules(type, level, spawnReason, pos, random)
-                && !FarLands.isInFarLands(pos.getX(), pos.getY(), pos.getZ(), 0)
-                && random.nextInt(Math.ceilDiv(far - Math.max(Math.abs(pos.getX()), Math.abs(pos.getZ())), far / Config.PEM_SPAWN_WEIGHT.getAsInt())) == 0;
+        int margin = far - Math.max(Math.abs(pos.getX()), Math.abs(pos.getZ()));
+        if (margin <= 0) {
+            return false;
+        }
+
+        // 每 (边境之地距离 / 权重) 格余量对应一个名额：
+        // 世界中心附近名额最多、生成最稀；越靠近边境之地名额越少、越容易生成。
+        // 权重配得比距离还大时 far / weight 会取整成 0，这里夹到 1 避免除零。
+        int unit = Math.max(1, far / Config.PEM_SPAWN_WEIGHT.getAsInt());
+        return random.nextInt(Math.ceilDiv(margin, unit)) == 0;
     }
 
     /**
