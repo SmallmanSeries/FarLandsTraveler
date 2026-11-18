@@ -62,7 +62,7 @@ public class EventHandler {
     // 自定义生成器注册
     @SubscribeEvent
     public static void registerCustomSpawners(ModifyCustomSpawnersEvent event) {
-        if(event.getLevel().dimension().equals(Level.OVERWORLD)) {
+        if (event.getLevel().dimension().equals(Level.OVERWORLD)) {
             event.addCustomSpawner(new HerobrineSpawner());
         }
     }
@@ -89,7 +89,7 @@ public class EventHandler {
 
     // 为世界生成器注入边境之地生物群系
     @SubscribeEvent
-    public static void onServerStart(ServerAboutToStartEvent event){
+    public static void onServerStart(ServerAboutToStartEvent event) {
         BiomeInjectors.injectFarBiomes(event.getServer());
     }
 

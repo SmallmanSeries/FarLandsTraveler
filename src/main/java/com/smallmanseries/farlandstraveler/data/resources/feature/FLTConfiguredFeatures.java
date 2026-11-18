@@ -121,7 +121,8 @@ public class FLTConfiguredFeatures {
         Holder<PlacedFeature> leaflessOpal = placedFeatures.getOrThrow(FLTPlacedFeatures.LEAFLESS_OPAL_TREE);
 
         // 边境森林
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);        Holder<ConfiguredFeature<?, ?>> oak = configuredFeatures.getOrThrow(BOLDER_TREE);
+        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+        Holder<ConfiguredFeature<?, ?>> oak = configuredFeatures.getOrThrow(BOLDER_TREE);
         Holder<ConfiguredFeature<?, ?>> tallOak = configuredFeatures.getOrThrow(WOOD_LANDS_TALL_BOLDER);
         Holder<PlacedFeature> normalWoodLandsTrees = placedFeatures.getOrThrow(FLTPlacedFeatures.WOOD_LANDS_NORMAL_TREES);
         Holder<PlacedFeature> tallBolder = placedFeatures.getOrThrow(FLTPlacedFeatures.WOOD_LANDS_TALL_BOLDER);

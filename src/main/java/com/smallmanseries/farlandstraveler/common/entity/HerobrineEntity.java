@@ -25,16 +25,26 @@ import org.jspecify.annotations.Nullable;
  * 生成由 {@link HerobrineSpawner} 负责
  */
 public class HerobrineEntity extends Mob {
-    /** 存在时长：半个游戏日 */
+    /**
+     * 存在时长：半个游戏日
+     */
     public static final int LIFETIME_TICKS = 6400;
-    /** 玩家靠近到这个距离以内就消失 */
+    /**
+     * 玩家靠近到这个距离以内就消失
+     */
     public static final double VANISH_DISTANCE = 16.0;
-    /** 所有玩家都超过这个距离就清除（与敌对生物的清除半径一致） */
+    /**
+     * 所有玩家都超过这个距离就清除（与敌对生物的清除半径一致）
+     */
     public static final double CLEAR_DISTANCE = 128.0;
-    /** 注视 / 被准星指到的判定半径 */
+    /**
+     * 注视 / 被准星指到的判定半径
+     */
     public static final double WATCH_DISTANCE = 64.0;
 
-    /** 已经存在的时长 */
+    /**
+     * 已经存在的时长
+     */
     private int lifeTicks;
 
     public HerobrineEntity(EntityType<? extends HerobrineEntity> type, Level level) {

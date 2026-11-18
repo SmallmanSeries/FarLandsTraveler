@@ -23,13 +23,21 @@ import net.minecraft.world.phys.AABB;
  * 其他消失情形由 {@link HerobrineEntity} 自己负责，这里只管生成。
  */
 public final class HerobrineSpawner implements CustomSpawner {
-    /** 生成间隔：半个游戏日 */
+    /**
+     * 生成间隔：半个游戏日
+     */
     public static final int SPAWN_INTERVAL_TICKS = 4800;
-    /** 生成点与玩家的最近距离 */
+    /**
+     * 生成点与玩家的最近距离
+     */
     public static final double MIN_SPAWN_DISTANCE = 16.0;
-    /** 生成点与玩家的最远距离 */
+    /**
+     * 生成点与玩家的最远距离
+     */
     public static final double MAX_SPAWN_DISTANCE = 48.0;
-    /** 每次生成尝试次数 */
+    /**
+     * 每次生成尝试次数
+     */
     private static final int MAX_ATTEMPTS = 16;
     private int tickDelay;
 
@@ -39,9 +47,9 @@ public final class HerobrineSpawner implements CustomSpawner {
 
     @Override
     public void tick(ServerLevel serverLevel, boolean b) {
-        MinecraftServer server = serverLevel.getServer();
         if (--this.tickDelay <= 0) {
             this.tickDelay = SPAWN_INTERVAL_TICKS;
+            MinecraftServer server = serverLevel.getServer();
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
                 trySpawnNear(player);
             }
