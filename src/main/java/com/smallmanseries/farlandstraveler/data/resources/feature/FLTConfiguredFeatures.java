@@ -11,10 +11,12 @@ import com.smallmanseries.farlandstraveler.common.worldgen.features.configuratio
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -44,7 +46,10 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
@@ -66,7 +71,7 @@ public class FLTConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WALL_OF_ICE_ICICLE = createKey("wall_of_ice_icicle");
 
     // 边境森林
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WOOD_LANDS_PAEONIA = createKey("wood_lands_paeonia");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WOOD_LANDS_FLOWERS = createKey("wood_lands_flowers");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WOOD_LANDS_TALL_BOLDER = createKey("wood_lands_tall_bolder");
     public static final ResourceKey<ConfiguredFeature<?, ?>> IMAGINARBOR = createKey("imaginarbor");
     public static final ResourceKey<ConfiguredFeature<?, ?>> VOIDVIOLET = createKey("voidviolet");
@@ -339,9 +344,20 @@ public class FLTConfiguredFeatures {
         // 边境森林小型花（边境芍药等）
         FeatureUtils.register(
                 context,
-                WOOD_LANDS_PAEONIA,
-                Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(BlockStateProvider.simple(FLTBlocks.FAR_LANDS_PAEONIA.get()))
+                WOOD_LANDS_FLOWERS,
+                Feature.SIMPLE_RANDOM_SELECTOR,
+                new SimpleRandomFeatureConfiguration(
+                        HolderSet.direct(
+                                PlacementUtils.inlinePlaced(
+                                        Feature.SIMPLE_BLOCK,
+                                        new SimpleBlockConfiguration(BlockStateProvider.simple(FLTBlocks.FAR_LANDS_PAEONIA.get())),
+                                        CountPlacement.of(64),
+                                        RandomOffsetPlacement.ofTriangle(7, 3),
+                                        BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+                                )
+
+                        )
+                )
         );
 
         // 边境森林的普通树种：苍境树、珍异苍境树、白玉树，生成参考原版森林。

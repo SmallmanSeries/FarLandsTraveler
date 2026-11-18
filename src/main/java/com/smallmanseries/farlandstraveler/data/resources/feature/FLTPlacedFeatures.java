@@ -104,7 +104,7 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> imaginarbor = configuredFeatures.getOrThrow(FLTConfiguredFeatures.IMAGINARBOR);
         Holder<ConfiguredFeature<?, ?>> voidviolet = configuredFeatures.getOrThrow(FLTConfiguredFeatures.VOIDVIOLET);
         Holder<ConfiguredFeature<?, ?>> woodLandsTreeOnTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_TREE_ON_TREE);
-        Holder<ConfiguredFeature<?, ?>> woodLandsPaeonia = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_PAEONIA);
+        Holder<ConfiguredFeature<?, ?>> woodLandsFlowers = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_FLOWERS);
         Holder<ConfiguredFeature<?, ?>> woodLandsNormalTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_NORMAL_TREES);
         Holder<ConfiguredFeature<?, ?>> bolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BOLDER_TREE);
         Holder<ConfiguredFeature<?, ?>> fancyBolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FANCY_BOLDER_TREE);
@@ -311,7 +311,7 @@ public class FLTPlacedFeatures {
         PlacementUtils.register(
                 context,
                 WOOD_LANDS_FLOWERS,
-                woodLandsPaeonia,
+                woodLandsFlowers,
                 RarityFilter.onAverageOnceEvery(7),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP,
