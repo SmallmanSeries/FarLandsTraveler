@@ -30,6 +30,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
@@ -42,6 +43,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.treedecorators.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -89,6 +91,12 @@ public class FLTConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLOATING_PLAINS_FIREFLY_BUSH = createKey("floating_plains_firefly_bush");
     public static final ResourceKey<ConfiguredFeature<?, ?>> STARLIT_PLAINS_GLOWSTONE = createKey("starlit_plains_glowstone");
 
+    // 无叶树林
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LEAFLESS_BOLDER_TREE = createKey("leafless_bolder_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LEAFLESS_FANCY_BOLDER_TREE = createKey("leafless_fancy_bolder_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LEAFLESS_OPAL_TREE = createKey("leafless_opal_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LEAFLESS_FOREST_TREES = createKey("leafless_forest_trees");
+
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
     }
@@ -102,9 +110,13 @@ public class FLTConfiguredFeatures {
         Holder<PlacedFeature> fallenJungle = placedFeatures.getOrThrow(TreePlacements.FALLEN_JUNGLE_TREE);
         Holder<PlacedFeature> jungleTreeChecked = placedFeatures.getOrThrow(TreePlacements.JUNGLE_TREE_CHECKED);
 
+        // 无叶树林
+        Holder<PlacedFeature> leaflessBolder = placedFeatures.getOrThrow(FLTPlacedFeatures.LEAFLESS_BOLDER_TREE);
+        Holder<PlacedFeature> leaflessFancyBolder = placedFeatures.getOrThrow(FLTPlacedFeatures.LEAFLESS_FANCY_BOLDER_TREE);
+        Holder<PlacedFeature> leaflessOpal = placedFeatures.getOrThrow(FLTPlacedFeatures.LEAFLESS_OPAL_TREE);
+
         // 边境森林
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
-        Holder<ConfiguredFeature<?, ?>> oak = configuredFeatures.getOrThrow(BOLDER_TREE);
+        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);        Holder<ConfiguredFeature<?, ?>> oak = configuredFeatures.getOrThrow(BOLDER_TREE);
         Holder<ConfiguredFeature<?, ?>> tallOak = configuredFeatures.getOrThrow(WOOD_LANDS_TALL_BOLDER);
         Holder<PlacedFeature> normalWoodLandsTrees = placedFeatures.getOrThrow(FLTPlacedFeatures.WOOD_LANDS_NORMAL_TREES);
         Holder<PlacedFeature> tallBolder = placedFeatures.getOrThrow(FLTPlacedFeatures.WOOD_LANDS_TALL_BOLDER);
@@ -495,6 +507,49 @@ public class FLTConfiguredFeatures {
                 new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.GLOWSTONE))
         );
 
+        // 无叶树
+        // 无叶苍境树
+        FeatureUtils.register(
+                context,
+                LEAFLESS_BOLDER_TREE,
+                Feature.TREE,
+                createLeaflessTree(Blocks.OAK_LOG, new StraightTrunkPlacer(4, 2, 0), new TwoLayersFeatureSize(1, 0, 1))
+                        .ignoreVines().build()
+        );
+
+        // 无叶珍异苍境树
+        FeatureUtils.register(
+                context,
+                LEAFLESS_FANCY_BOLDER_TREE,
+                Feature.TREE,
+                createLeaflessTree(Blocks.OAK_LOG, new FancyTrunkPlacer(3, 11, 0),
+                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))
+                        .ignoreVines().build()
+        );
+
+        // 无叶白玉树
+        FeatureUtils.register(
+                context,
+                LEAFLESS_OPAL_TREE,
+                Feature.TREE,
+                createLeaflessTree(Blocks.BIRCH_LOG, new StraightTrunkPlacer(5, 2, 0), new TwoLayersFeatureSize(1, 0, 1))
+                        .ignoreVines().build()
+        );
+
+        // 无叶树林的树种
+        FeatureUtils.register(
+                context,
+                LEAFLESS_FOREST_TREES,
+                Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(leaflessFancyBolder, 0.1F),
+                                new WeightedPlacedFeature(leaflessOpal, 0.2F)
+                        ),
+                        leaflessBolder
+                )
+        );
+
     }
 
     private static FallenTreeConfiguration.FallenTreeConfigurationBuilder createFallenTrees(Block logBlock, int minLength, int maxLength) {
@@ -523,6 +578,18 @@ public class FLTConfiguredFeatures {
                 BlockStateProvider.simple(oakLeaves),
                 new BlobFoliagePlacer(ConstantInt.of(blobRadius), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)
+        );
+    }
+
+    // 无叶树基础配置
+    private static TreeConfiguration.TreeConfigurationBuilder createLeaflessTree(
+            Block logBlock, TrunkPlacer trunkPlacer, FeatureSize minimumSize) {
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(logBlock),
+                trunkPlacer,
+                BlockStateProvider.simple(Blocks.AIR),
+                new BlobFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), 3),
+                minimumSize
         );
     }
 }

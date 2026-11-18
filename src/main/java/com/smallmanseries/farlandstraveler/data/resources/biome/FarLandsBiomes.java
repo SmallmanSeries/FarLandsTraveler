@@ -351,6 +351,48 @@ public class FarLandsBiomes {
                 .build();
     }
 
+    // 无叶树林
+    // 灵感来自经典 Herobrine 都市传说：只剩树干的无叶树林、偏暗的色调、浓厚的大雾、没有音乐、没有生物。
+    public static Biome leaflessForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        // 不生成任何生物
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        globalOverworldGeneration(generation);
+        BiomeDefaultFeatures.addDefaultSprings(generation);
+
+        // 只生成树干的无叶树
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.LEAFLESS_FOREST_TREES);
+
+        BiomeDefaultFeatures.addDefaultOres(generation);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+
+        // 普通森林的草和少量枯萎的灌木
+        BiomeDefaultFeatures.addForestGrass(generation);
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.LEAFLESS_FOREST_DEAD_BUSH);
+
+        // 偏暗的配色
+        BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
+                .waterColor(0x2E4148)
+                .grassColorOverride(0x46503A)
+                .foliageColorOverride(0x3A4232)
+                .dryFoliageColorOverride(0x5A4A33)
+                .build();
+
+        return baseBiome(0.7F, 0.8F)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0xFF46505A)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0xFF3A4147)
+                // 低能见度，还原都市传说
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 8.0F)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 80.0F)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, BackgroundMusic.EMPTY)
+                .setAttribute(EnvironmentAttributes.MUSIC_VOLUME, 0.0F)
+                .specialEffects(effects)
+                .mobSpawnSettings(mobs.build())
+                .generationSettings(generation.build())
+                .build();
+    }
+
     // 遥远之地
 
     // 边缘之地

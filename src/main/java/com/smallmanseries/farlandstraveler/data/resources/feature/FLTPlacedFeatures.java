@@ -69,6 +69,13 @@ public class FLTPlacedFeatures {
     public static final ResourceKey<PlacedFeature> STARLIT_PLAINS_FIREFLY_BUSH = createKey("starlit_plains_firefly_bush");
     public static final ResourceKey<PlacedFeature> STARLIT_PLAINS_GLOWSTONE = createKey("starlit_plains_glowstone");
 
+    // 无叶树林
+    public static final ResourceKey<PlacedFeature> LEAFLESS_BOLDER_TREE = createKey("leafless_bolder_tree");
+    public static final ResourceKey<PlacedFeature> LEAFLESS_FANCY_BOLDER_TREE = createKey("leafless_fancy_bolder_tree");
+    public static final ResourceKey<PlacedFeature> LEAFLESS_OPAL_TREE = createKey("leafless_opal_tree");
+    public static final ResourceKey<PlacedFeature> LEAFLESS_FOREST_TREES = createKey("leafless_forest_trees");
+    public static final ResourceKey<PlacedFeature> LEAFLESS_FOREST_DEAD_BUSH = createKey("leafless_forest_dead_bush");
+
 
     public static ResourceKey<PlacedFeature> createKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -114,6 +121,13 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> floatingPlainsFlowers = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOATING_PLAINS_FLOWERS);
         Holder<ConfiguredFeature<?, ?>> floatingPlainsFireflyBush = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOATING_PLAINS_FIREFLY_BUSH);
         Holder<ConfiguredFeature<?, ?>> starlitPlainsGlowstone = configuredFeatures.getOrThrow(FLTConfiguredFeatures.STARLIT_PLAINS_GLOWSTONE);
+
+        // 无叶树林
+        Holder<ConfiguredFeature<?, ?>> leaflessBolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.LEAFLESS_BOLDER_TREE);
+        Holder<ConfiguredFeature<?, ?>> leaflessFancyBolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.LEAFLESS_FANCY_BOLDER_TREE);
+        Holder<ConfiguredFeature<?, ?>> leaflessOpalTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.LEAFLESS_OPAL_TREE);
+        Holder<ConfiguredFeature<?, ?>> leaflessForestTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.LEAFLESS_FOREST_TREES);
+        Holder<ConfiguredFeature<?, ?>> deadBush = configuredFeatures.getOrThrow(VegetationFeatures.DEAD_BUSH);
 
 
         PlacementUtils.register(
@@ -411,6 +425,34 @@ public class FLTPlacedFeatures {
                         0.12,   // density_min：疏处保留的密度下限
                         1346237208L
                 ),
+                BiomeFilter.biome()
+        );
+
+        // 无叶树林 --------------------------
+        PlacementUtils.register(context, LEAFLESS_BOLDER_TREE, leaflessBolderTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, LEAFLESS_FANCY_BOLDER_TREE, leaflessFancyBolderTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
+        PlacementUtils.register(context, LEAFLESS_OPAL_TREE, leaflessOpalTree, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
+
+        // 树的密度与原版森林一致（每区块约 10 次尝试），且不长在水里
+        PlacementUtils.register(
+                context,
+                LEAFLESS_FOREST_TREES,
+                leaflessForestTrees,
+                PlacementUtils.countExtra(10, 0.1F, 1),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BiomeFilter.biome()
+        );
+
+        // 少量枯萎的灌木
+        PlacementUtils.register(
+                context,
+                LEAFLESS_FOREST_DEAD_BUSH,
+                deadBush,
+                CountPlacement.of(2),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
                 BiomeFilter.biome()
         );
 
