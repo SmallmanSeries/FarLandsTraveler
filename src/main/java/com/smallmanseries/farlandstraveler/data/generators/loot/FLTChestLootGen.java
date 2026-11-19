@@ -265,5 +265,12 @@ public record FLTChestLootGen(HolderLookup.Provider registries) implements LootT
                         .add(LootItem.lootTableItem(Items.DIAMOND_HORSE_ARMOR).setWeight(1))
                 )
         );
+
+        // 飞屋箱子
+        consumer.accept(FLTLootTables.CHESTS_FLYING_HOUSE, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1, 1))
+                        .add(LootItem.lootTableItem(Items.GRASS_BLOCK).setWeight(1))
+                )
+        );
     }
 }

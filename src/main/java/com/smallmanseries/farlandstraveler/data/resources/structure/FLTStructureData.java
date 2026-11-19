@@ -43,7 +43,7 @@ public class FLTStructureData {
     // 废弃村庄
     public static final ResourceKey<Structure> AV_NORMAL = createKey("abandoned_village/normal");
 
-    // 飞屋（暂用探境者基地的木屋模板占位）
+    // 飞屋
     public static final ResourceKey<Structure> FLYING_HOUSE = createKey("flying_house");
 
     // herobrine遗迹：小型金字塔与矿道（暂用探境者基地的木屋和圆石屋模板占位）
@@ -174,13 +174,13 @@ public class FLTStructureData {
                 FLYING_HOUSE,
                 new JigsawStructure(
                         new Structure.StructureSettings.Builder(biomes.getOrThrow(FLTTags.Biomes.HAS_STRUCTURE_FLYING_HOUSE))
-                                .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
+                                .generationStep(GenerationStep.Decoration.TOP_LAYER_MODIFICATION)
                                 .terrainAdapation(TerrainAdjustment.NONE)
                                 .build(),
-                        templates.getOrThrow(ExplorerBasePools.INDEV_WOOD),
-                        Optional.of(Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, "base_anchor")),
+                        templates.getOrThrow(FlyingHousePools.FLYING_HOUSE),
+                        Optional.empty(),
                         1,
-                        ConstantHeight.of(VerticalAnchor.absolute(300)),
+                        ConstantHeight.of(VerticalAnchor.belowTop(18)),
                         true,
                         Optional.empty(),
                         new JigsawStructure.MaxDistance(6),

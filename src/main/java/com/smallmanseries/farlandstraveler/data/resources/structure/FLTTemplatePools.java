@@ -27,5 +27,6 @@ public class FLTTemplatePools {
         context.register(Pools.EMPTY, new StructureTemplatePool(empty, ImmutableList.of(), StructureTemplatePool.Projection.RIGID));
 
         ExplorerBasePools.bootstrap(context);
+        FlyingHousePools.bootstrap(context);
     }
 }

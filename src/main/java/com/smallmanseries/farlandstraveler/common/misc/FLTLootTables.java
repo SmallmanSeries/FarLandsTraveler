@@ -29,6 +29,8 @@ public class FLTLootTables {
     public static final ResourceKey<LootTable> CHESTS_OOTSLAB_MAZE_BARGE = register("chests/oots_laboratory/maze_barge");
     // 废弃村庄-铁匠铺
     public static final ResourceKey<LootTable> CHESTS_AV_NORMAL_BLACKSMITH = register("chests/abanconed_village/normal_blacksmith");
+    // 飞屋
+    public static final ResourceKey<LootTable> CHESTS_FLYING_HOUSE = register("chests/flying_house");
 
     private static ResourceKey<LootTable> register(String id) {
         ResourceKey<LootTable> location = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, id));

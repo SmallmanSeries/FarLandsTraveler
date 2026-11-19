@@ -87,7 +87,7 @@ public class FLTStructureSets {
                 List.of(
                         StructureSet.entry(structures.getOrThrow(FLTStructureData.FLYING_HOUSE))
                 ),
-                new RandomSpreadStructurePlacement(40, 10, RandomSpreadType.LINEAR, 25101648)
+                new RandomSpreadStructurePlacement(32, 8, RandomSpreadType.LINEAR, 25101648)
         ));
 
         context.register(RUINS_NORMAL, new StructureSet(

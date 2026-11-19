@@ -5,10 +5,9 @@
   "size": 1,
   "spawn_overrides": {},
   "start_height": {
-    "absolute": 300
+    "below_top": 18
   },
-  "start_jigsaw_name": "farlandstraveler:base_anchor",
-  "start_pool": "farlandstraveler:explorer_base/indev_wood",
-  "step": "surface_structures",
+  "start_pool": "farlandstraveler:flying_house",
+  "step": "top_layer_modification",
   "use_expansion_hack": true
 }
