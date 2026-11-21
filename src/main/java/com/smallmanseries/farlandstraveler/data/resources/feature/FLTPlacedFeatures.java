@@ -76,6 +76,13 @@ public class FLTPlacedFeatures {
     public static final ResourceKey<PlacedFeature> LEAFLESS_FOREST_TREES = createKey("leafless_forest_trees");
     public static final ResourceKey<PlacedFeature> LEAFLESS_FOREST_DEAD_BUSH = createKey("leafless_forest_dead_bush");
 
+    // 擎天森林
+    public static final ResourceKey<PlacedFeature> ATLAS_TREE_CHECKED = createKey("atlas_tree_checked");
+    public static final ResourceKey<PlacedFeature> BARE_ATLAS_TREE_CHECKED = createKey("bare_atlas_tree_checked");
+    public static final ResourceKey<PlacedFeature> SMALL_ATLAS_TREE_CHECKED = createKey("small_atlas_tree_checked");
+    public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_TREES = createKey("sky_reaching_forest_trees");
+    public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_ISLANDS = createKey("sky_reaching_forest_islands");
+    public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_PODZOL = createKey("sky_reaching_forest_podzol");
 
     public static ResourceKey<PlacedFeature> createKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -128,6 +135,14 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> leaflessOpalTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.LEAFLESS_OPAL_TREE);
         Holder<ConfiguredFeature<?, ?>> leaflessForestTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.LEAFLESS_FOREST_TREES);
         Holder<ConfiguredFeature<?, ?>> deadBush = configuredFeatures.getOrThrow(VegetationFeatures.DEAD_BUSH);
+
+        // 擎天森林
+        Holder<ConfiguredFeature<?, ?>> atlasTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.ATLAS_TREE);
+        Holder<ConfiguredFeature<?, ?>> bareAtlasTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BARE_ATLAS_TREE);
+        Holder<ConfiguredFeature<?, ?>> smallAtlasTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SMALL_ATLAS_TREE);
+        Holder<ConfiguredFeature<?, ?>> skyReachingTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_REACHING_FOREST_TREES);
+        Holder<ConfiguredFeature<?, ?>> podzolPatch = configuredFeatures.getOrThrow(FLTConfiguredFeatures.PODZOL_PATCH);
+        Holder<ConfiguredFeature<?, ?>> skyIsland = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_ISLAND);
 
 
         PlacementUtils.register(
@@ -451,6 +466,45 @@ public class FLTPlacedFeatures {
                 LEAFLESS_FOREST_DEAD_BUSH,
                 deadBush,
                 CountPlacement.of(2),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                BiomeFilter.biome()
+        );
+
+        // 擎天森林 --------------------------
+        PlacementUtils.register(context, ATLAS_TREE_CHECKED, atlasTree, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+        PlacementUtils.register(context, BARE_ATLAS_TREE_CHECKED, bareAtlasTree, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+        PlacementUtils.register(context, SMALL_ATLAS_TREE_CHECKED, smallAtlasTree, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
+
+        // 擎天森林的树：大量小型擎天树打底，散布大型擎天树支撑，偶尔有光杆擎天树。
+        PlacementUtils.register(
+                context,
+                SKY_REACHING_FOREST_TREES,
+                skyReachingTrees,
+                PlacementUtils.countExtra(8, 0.1F, 1),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BiomeFilter.biome()
+        );
+
+        // 浮岛：三个变种，“草坪”、“水塘”和“废墟”
+        PlacementUtils.register(
+                context,
+                SKY_REACHING_FOREST_ISLANDS,
+                skyIsland,
+                RarityFilter.onAverageOnceEvery(5),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.belowTop(3), VerticalAnchor.top()),
+                BiomeFilter.biome()
+        );
+
+        // 灰化土斑块：参考原版巨型针叶林的地表灰化土
+        PlacementUtils.register(
+                context,
+                SKY_REACHING_FOREST_PODZOL,
+                podzolPatch,
+                CountPlacement.of(3),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP,
                 BiomeFilter.biome()

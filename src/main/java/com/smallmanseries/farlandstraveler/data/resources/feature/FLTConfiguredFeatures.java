@@ -4,10 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.block.FLTBlocks;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.FLTFeatures;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.CascadeConfiguration;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.MegaVineConfiguration;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.StackedTreeConfiguration;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.TransformedConfiguration;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.*;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.foliageplacers.AtlasFoliagePlacer;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.trunkplacers.AtlasTrunkPlacer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -34,14 +33,8 @@ import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseThresholdProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
+import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.treedecorators.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -55,6 +48,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalInt;
 
 public class FLTConfiguredFeatures {
@@ -101,6 +95,14 @@ public class FLTConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEAFLESS_FANCY_BOLDER_TREE = createKey("leafless_fancy_bolder_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEAFLESS_OPAL_TREE = createKey("leafless_opal_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEAFLESS_FOREST_TREES = createKey("leafless_forest_trees");
+
+    // 擎天森林
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ATLAS_TREE = createKey("atlas_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BARE_ATLAS_TREE = createKey("bare_atlas_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_ATLAS_TREE = createKey("small_atlas_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_ISLAND = createKey("sky_island");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PODZOL_PATCH = createKey("podzol_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_REACHING_FOREST_TREES = createKey("sky_reaching_forest_trees");
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
@@ -567,6 +569,142 @@ public class FLTConfiguredFeatures {
                 )
         );
 
+        // 擎天森林 --------------------------
+        // 擎天树：树干用自定义的 3×3 放置器把树冠顶锚定在世界顶部附近（默认314~319，与地形高度无关）
+        // 树冠用自定义放置器，分为云杉式锥形段和顶部的“伞”
+        // 树叶不可腐烂，不然会变成“掉帧森林”的！！！“伞”的最外圈半径10，离树干已经超出原版7格传播范围
+        FeatureUtils.register(
+                context,
+                ATLAS_TREE,
+                Feature.TREE,
+                createAtlasTree(
+                        new AtlasTrunkPlacer(
+                                Optional.empty(),
+                                8,
+                                1,
+                                2,
+                                12
+                        ),
+                        new AtlasFoliagePlacer(
+                                43,
+                                7,
+                                4,
+                                3,
+                                5,
+                                10,
+                                4,
+                                0.5F
+                        )
+                ).build()
+        );
+
+        // 光杆变种：只顶着个“伞”的光棍
+        FeatureUtils.register(
+                context,
+                BARE_ATLAS_TREE,
+                Feature.TREE,
+                createAtlasTree(
+                        new AtlasTrunkPlacer(
+                                Optional.empty(),
+                                8,
+                                1,
+                                2,
+                                12
+                        ),
+                        new AtlasFoliagePlacer(
+                                0,
+                                7,
+                                4,
+                                3,
+                                5,
+                                10,
+                                4,
+                                0.5F
+                        )
+                ).build()
+        );
+
+        // 小型擎天树：暂时完全复用原版云杉，本轮概念设计及可行性验证完毕后制作专属方块替换
+        FeatureUtils.register(
+                context,
+                SMALL_ATLAS_TREE,
+                Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(Blocks.SPRUCE_LOG),
+                        new StraightTrunkPlacer(5, 2, 1),
+                        BlockStateProvider.simple(Blocks.SPRUCE_LEAVES),
+                        new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)),
+                        new TwoLayersFeatureSize(2, 0, 2)
+                ).ignoreVines().build()
+        );
+
+        // 擎天浮岛：草方块 + 泥土的末地风格小空岛，检测到下方有树叶才会生成。
+        // wip：“草坪”、“水塘”、“废墟”三个变种（目前空岛顶上光秃秃的，感觉得加点什么）
+        FeatureUtils.register(
+                context,
+                SKY_ISLAND,
+                FLTFeatures.SKY_ISLAND.get(),
+                new SkyIslandConfiguration(
+                        BlockStateProvider.simple(Blocks.GRASS_BLOCK),
+                        BlockStateProvider.simple(Blocks.DIRT),
+                        UniformInt.of(8, 12),
+                        UniformInt.of(3, 5),
+                        BlockPredicate.matchesTag(BlockTags.LEAVES)
+                )
+        );
+
+        // 灰化土斑块：参考原版巨型针叶林的灰化土，用原版 disk 地物在地表把泥土类方块换成灰化土
+        FeatureUtils.register(
+                context,
+                PODZOL_PATCH,
+                Feature.DISK,
+                new DiskConfiguration(
+                        BlockStateProvider.simple(Blocks.PODZOL),
+                        BlockPredicate.matchesTag(BlockTags.DIRT),
+                        UniformInt.of(2, 4),
+                        1
+                )
+        );
+
+        // 擎天森林的树种：小型擎天树打底，散布巨型擎天树，偶尔有光杆擎天树
+        Holder<PlacedFeature> atlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.ATLAS_TREE_CHECKED);
+        Holder<PlacedFeature> bareAtlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.BARE_ATLAS_TREE_CHECKED);
+        Holder<PlacedFeature> smallAtlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.SMALL_ATLAS_TREE_CHECKED);
+        FeatureUtils.register(
+                context,
+                SKY_REACHING_FOREST_TREES,
+                Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(atlasTreeChecked, 0.45F),
+                                new WeightedPlacedFeature(bareAtlasTreeChecked, 0.1F)
+                        ),
+                        smallAtlasTreeChecked
+                )
+        );
+
+    }
+
+    /**
+     * 擎天树/光杆擎天树共用的外表配置
+     *
+     * @param trunkPlacer   树干放置器
+     * @param foliagePlacer 树冠放置器
+     * @return 树配置的构建器
+     */
+    private static TreeConfiguration.TreeConfigurationBuilder createAtlasTree(TrunkPlacer trunkPlacer, FoliagePlacer foliagePlacer) {
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.SPRUCE_LOG),
+                trunkPlacer,
+                BlockStateProvider.simple(Blocks.SPRUCE_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true)),
+                foliagePlacer,
+                new TwoLayersFeatureSize(1, 1, 1)
+        )
+                .ignoreVines()
+                // 参考原版巨型云杉：树干底下铺一层灰化土
+                .decorators(List.of(new AlterGroundDecorator(
+                        RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate.matchesTag(BlockTags.BENEATH_TREE_PODZOL_REPLACEABLE), Blocks.PODZOL)
+                )));
     }
 
     private static FallenTreeConfiguration.FallenTreeConfigurationBuilder createFallenTrees(Block logBlock, int minLength, int maxLength) {

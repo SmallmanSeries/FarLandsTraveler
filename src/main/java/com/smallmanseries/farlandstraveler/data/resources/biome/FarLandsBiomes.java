@@ -393,6 +393,48 @@ public class FarLandsBiomes {
                 .build();
     }
 
+    // 擎天森林
+    // 以夸张的尺寸为主题的生物群系，充满树干3×3、高约 64 格的擎天树，树顶上托着小型空岛。
+    // 除树种以外，其余设置与原版巨型针叶林（old growth spruce taiga）保持一致。
+    public static Biome skyReachingForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        globalOverworldGeneration(generation);
+        BiomeDefaultFeatures.addDefaultSprings(generation);
+
+        // 生物设置与暂时保持与原版巨型针叶林一致
+        BiomeDefaultFeatures.farmAnimals(mobs);
+        mobs.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 4, 4))
+                .addSpawn(MobCategory.CREATURE, 4, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3))
+                .addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.FOX, 2, 4));
+        BiomeDefaultFeatures.commonSpawns(mobs);
+
+        BiomeDefaultFeatures.addMossyStoneBlock(generation);
+        BiomeDefaultFeatures.addFerns(generation);
+        BiomeDefaultFeatures.addDefaultOres(generation);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+
+        // 灰化土斑块（参考原版巨型针叶林）
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.SKY_REACHING_FOREST_PODZOL);
+        // 擎天树
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.SKY_REACHING_FOREST_TREES);
+        // 空岛必须排在擎天树之后，否则读不到本区块刚生成的树冠
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.SKY_REACHING_FOREST_ISLANDS);
+
+        BiomeDefaultFeatures.addDefaultFlowers(generation);
+        BiomeDefaultFeatures.addGiantTaigaVegetation(generation);
+        BiomeDefaultFeatures.addDefaultMushrooms(generation);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(generation, true);
+        BiomeDefaultFeatures.addCommonBerryBushes(generation);
+
+        return baseBiome(0.5F, 0.8F)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(FLTMusics.createMusic(FLTSoundEvents.MUSIC_FAR_LANDS_UNIVERSAL)))
+                .mobSpawnSettings(mobs.build())
+                .generationSettings(generation.build())
+                .build();
+    }
+
     // 遥远之地
 
     // 边缘之地
