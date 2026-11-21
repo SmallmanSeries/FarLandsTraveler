@@ -12,7 +12,9 @@ import com.smallmanseries.farlandstraveler.common.particle.FLTParticleTypes;
 import com.smallmanseries.farlandstraveler.common.worldgen.biomesources.FLTBiomeSources;
 import com.smallmanseries.farlandstraveler.common.worldgen.densityfunctions.FLTDensityFunctions;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.FLTFeatures;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.foliageplacers.FLTFoliagePlacers;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.FLTPlacementModifiers;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.trunkplacers.FLTTrunkPlacers;
 import com.smallmanseries.farlandstraveler.common.worldgen.materialrules.FLTMaterialRules;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.FLTStructurePieceType;
 import com.smallmanseries.farlandstraveler.common.worldgen.structures.FLTStructures;
@@ -48,6 +50,8 @@ public class FarLandsTraveler {
         FLTStructures.STRUCTURES.register(modEventBus);
         FLTStructurePieceType.STRUCTURE_PIECES.register(modEventBus);
         FLTFeatures.FEATURES.register(modEventBus);
+        FLTTrunkPlacers.TRUNK_PLACER_TYPES.register(modEventBus);
+        FLTFoliagePlacers.FOLIAGE_PLACER_TYPES.register(modEventBus);
         FLTPlacementModifiers.PLACEMENT_MODIFIER_TYPES.register(modEventBus);
         // Todo 26.3及以后的版本，原版自带材料规则功能，本模组的此功能可以删除
         FLTMaterialRules.MATERIAL_RULES.register(modEventBus);
