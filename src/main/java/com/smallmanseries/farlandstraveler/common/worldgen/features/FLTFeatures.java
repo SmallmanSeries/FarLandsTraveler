@@ -1,10 +1,7 @@
 package com.smallmanseries.farlandstraveler.common.worldgen.features;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.CascadeConfiguration;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.MegaVineConfiguration;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.StackedTreeConfiguration;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.TransformedConfiguration;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.configurations.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -20,4 +17,5 @@ public class FLTFeatures {
     public static final DeferredHolder<Feature<? extends FeatureConfiguration>, Feature<TransformedConfiguration>> TRANSFORMED = FEATURES.register("transformed", () -> new TransformedFeature(TransformedConfiguration.CODEC));
     public static final DeferredHolder<Feature<? extends FeatureConfiguration>, Feature<StackedTreeConfiguration>> STACKED_TREE = FEATURES.register("stacked_tree", () -> new StackedTreeFeature(StackedTreeConfiguration.CODEC));
     public static final DeferredHolder<Feature<? extends FeatureConfiguration>, Feature<SimpleBlockConfiguration>> FLOATING_PLANT = FEATURES.register("floating_plant", () -> new FloatingPlantFeature(SimpleBlockConfiguration.CODEC));
+    public static final DeferredHolder<Feature<? extends FeatureConfiguration>, Feature<SkyIslandConfiguration>> SKY_ISLAND = FEATURES.register("sky_island", () -> new SkyIslandFeature(SkyIslandConfiguration.CODEC));
 }
