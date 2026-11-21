@@ -31,22 +31,6 @@ import java.util.stream.Stream;
  *   <li>旋涡中心另有一小团「星核」。</li>
  * </ul>
  *
- * @param cellSize      旋涡中心的网格间距（格）。必须小于 2 × maxRadius，相邻旋涡才会咬合
- * @param arms          螺旋臂数量
- * @param twist         每弧度的半径增量，越小缠绕越紧、圈数越多
- * @param twistJitter   每个旋涡缠绕紧度的相对抖动（0.25 表示 ±25%），用来破除格子感
- * @param maxRadius     旋涡的最大半径
- * @param minRadius     螺旋臂开始出现的半径（以内由星核接管）
- * @param armFalloff    星带的高斯宽度：离臂脊线距离为它时密度降到 37%
- * @param fadeStart     半径渐隐的起点（占 maxRadius 的比例），越小旋涡越孤立
- * @param starRadius    星核半径
- * @param minHeight     星带高度中线的下界（垂直锚点，建议用世界顶的相对量，这样改世界高度的数据包也能贴顶）
- * @param maxHeight     星带高度中线的上界
- * @param waveFrequency 每弧度的高度起伏次数
- * @param ySpread       垂直随机散布的半幅（三角形分布，正中密、两端稀）
- * @param densityScale  疏密调制的噪声波长（格），越大疏密斑块越大
- * @param densityMin    噪声低谷处的密度下限（占满密度的比例），0 表示可以完全空出来
- * @param seed          随机种子，改变它会得到完全不同的旋涡布局
  */
 public class SwirlPlacement extends PlacementModifier {
     public static final MapCodec<SwirlPlacement> CODEC = RecordCodecBuilder.mapCodec(
@@ -93,6 +77,25 @@ public class SwirlPlacement extends PlacementModifier {
     private final double densityMin;
     private final long seed;
 
+    /**
+     * 创建“漩涡”地物放置修饰器
+     * @param cellSize      旋涡中心的网格间距（格）。必须小于 2 × maxRadius，相邻旋涡才会咬合
+     * @param arms          螺旋臂数量
+     * @param twist         每弧度的半径增量，越小缠绕越紧、圈数越多
+     * @param twistJitter   每个旋涡缠绕紧度的相对抖动（0.25 表示 ±25%），用来破除格子感
+     * @param maxRadius     旋涡的最大半径
+     * @param minRadius     螺旋臂开始出现的半径（以内由星核接管）
+     * @param armFalloff    星带的高斯宽度：离臂脊线距离为它时密度降到 37%
+     * @param fadeStart     半径渐隐的起点（占 maxRadius 的比例），越小旋涡越孤立
+     * @param starRadius    星核半径
+     * @param minHeight     星带高度中线的下界（垂直锚点，建议用世界顶的相对量，这样改世界高度的数据包也能贴顶）
+     * @param maxHeight     星带高度中线的上界
+     * @param waveFrequency 每弧度的高度起伏次数
+     * @param ySpread       垂直随机散布的半幅（三角形分布，正中密、两端稀）
+     * @param densityScale  疏密调制的噪声波长（格），越大疏密斑块越大
+     * @param densityMin    噪声低谷处的密度下限（占满密度的比例），0 表示可以完全空出来
+     * @param seed          随机种子，改变它会得到完全不同的旋涡布局
+     */
     public SwirlPlacement(int cellSize, int arms, double twist, double twistJitter, double maxRadius, double minRadius,
                           double armFalloff, double fadeStart, double starRadius, VerticalAnchor minHeight,
                           VerticalAnchor maxHeight, double waveFrequency, int ySpread, double densityScale,

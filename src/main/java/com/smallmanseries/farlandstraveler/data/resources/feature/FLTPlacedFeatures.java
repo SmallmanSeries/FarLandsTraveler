@@ -423,21 +423,21 @@ public class FLTPlacedFeatures {
                 CountPlacement.of(32),
                 InSquarePlacement.spread(),
                 new SwirlPlacement(
-                        120,    // cell_size：旋涡中心间距（小于 2×max_radius，旋涡才会互相咬合）
-                        2,      // arms：螺旋臂数
-                        7.0,    // twist：每弧度半径增量，越小缠绕越紧
-                        0.25,   // twist_jitter：每个旋涡缠绕紧度的抖动，破除规整感
-                        96.0,   // max_radius
-                        8.0,    // min_radius
-                        1.7,    // arm_falloff：星带的高斯宽度，越大星点散得越开
-                        0.9,    // fade_start：渐隐起点，太小时旋涡会彼此孤立
-                        7.0,    // star_radius：旋涡中心的星核
-                        VerticalAnchor.belowTop(10),   // min_height：世界顶以下 10 格
-                        VerticalAnchor.belowTop(2),    // max_height：世界顶以下 2 格
-                        2.0,    // wave_frequency：高度起伏
-                        4,      // y_spread：垂直随机散布
-                        260.0,  // density_scale：疏密噪声的波长
-                        0.12,   // density_min：疏处保留的密度下限
+                        120,
+                        2,
+                        7.0,
+                        0.25,
+                        96.0,
+                        8.0,
+                        1.7,
+                        0.9,
+                        7.0,
+                        VerticalAnchor.belowTop(10),
+                        VerticalAnchor.belowTop(2),
+                        2.0,
+                        4,
+                        260.0,
+                        0.12,
                         1346237208L
                 ),
                 BiomeFilter.biome()
