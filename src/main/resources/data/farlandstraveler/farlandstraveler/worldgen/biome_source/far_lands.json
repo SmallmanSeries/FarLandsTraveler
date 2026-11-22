@@ -206,8 +206,17 @@
           ]
         },
         "outside": {
-          "type": "fixed",
-          "biome": "farlandstraveler:flower_lands"
+          "type": "checkerboard",
+          "scale": 3,
+          "biomes": [
+            "farlandstraveler:far_lands",
+            "farlandstraveler:wood_lands",
+            "farlandstraveler:floating_plains",
+            "farlandstraveler:starlit_plains",
+            "farlandstraveler:leafless_forest",
+            "farlandstraveler:sky_reaching_forest",
+            "farlandstraveler:flower_lands"
+          ]
         }
       }
     }
