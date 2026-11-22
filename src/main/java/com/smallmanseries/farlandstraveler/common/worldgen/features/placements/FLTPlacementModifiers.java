@@ -17,4 +17,8 @@ public class FLTPlacementModifiers {
     // 旋涡：按世界坐标上的螺旋场筛选位置，用于「繁星」
     public static final DeferredHolder<PlacementModifierType<?>, PlacementModifierType<SwirlPlacement>> SWIRL =
             PLACEMENT_MODIFIER_TYPES.register("swirl", () -> () -> SwirlPlacement.CODEC);
+
+    // 每一列：把区块的 256 列全部按高度图取出来，用于「边境花田」的花毯
+    public static final DeferredHolder<PlacementModifierType<?>, PlacementModifierType<EveryColumnPlacement>> EVERY_COLUMN =
+            PLACEMENT_MODIFIER_TYPES.register("every_column", () -> () -> EveryColumnPlacement.CODEC);
 }
