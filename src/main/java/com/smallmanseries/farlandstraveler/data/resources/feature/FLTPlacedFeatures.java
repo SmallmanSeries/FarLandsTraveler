@@ -1,6 +1,7 @@
 package com.smallmanseries.farlandstraveler.data.resources.feature;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.EveryColumnPlacement;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.SwirlPlacement;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.VerticalOffsetPlacement;
 import net.minecraft.core.BlockPos;
@@ -18,6 +19,7 @@ import net.minecraft.util.valueproviders.ClampedInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -84,6 +86,17 @@ public class FLTPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_ISLANDS = createKey("sky_reaching_forest_islands");
     public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_PODZOL = createKey("sky_reaching_forest_podzol");
 
+    // 边境花田
+    public static final ResourceKey<PlacedFeature> BLOOM_BOLDER_TREE_RED_CHECKED = createKey("bloom_bolder_tree_red_checked");
+    public static final ResourceKey<PlacedFeature> BLOOM_BOLDER_TREE_ORANGE_CHECKED = createKey("bloom_bolder_tree_orange_checked");
+    public static final ResourceKey<PlacedFeature> BLOOM_BOLDER_TREE_LIGHT_BLUE_CHECKED = createKey("bloom_bolder_tree_light_blue_checked");
+    public static final ResourceKey<PlacedFeature> BLOOM_BOLDER_TREE_PINK_CHECKED = createKey("bloom_bolder_tree_pink_checked");
+    public static final ResourceKey<PlacedFeature> BLOOM_BOLDER_TREE_YELLOW_CHECKED = createKey("bloom_bolder_tree_yellow_checked");
+    public static final ResourceKey<PlacedFeature> FANCY_BLOOM_BOLDER_TREE_CHECKED = createKey("fancy_bloom_bolder_tree_checked");
+    public static final ResourceKey<PlacedFeature> FLOWER_LANDS_NORMAL_TREES = createKey("flower_lands_normal_trees");
+    public static final ResourceKey<PlacedFeature> FLOWER_LANDS_TREES = createKey("flower_lands_trees");
+    public static final ResourceKey<PlacedFeature> FLOWER_LANDS_FLOWERS = createKey("flower_lands_flowers");
+
     public static ResourceKey<PlacedFeature> createKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
     }
@@ -143,6 +156,18 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> skyReachingTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_REACHING_FOREST_TREES);
         Holder<ConfiguredFeature<?, ?>> podzolPatch = configuredFeatures.getOrThrow(FLTConfiguredFeatures.PODZOL_PATCH);
         Holder<ConfiguredFeature<?, ?>> skyIsland = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_ISLAND);
+
+        // 边境花田
+        Holder<ConfiguredFeature<?, ?>> bloomBolderTreeRed = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BLOOM_BOLDER_TREE_RED);
+        Holder<ConfiguredFeature<?, ?>> bloomBolderTreeOrange = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BLOOM_BOLDER_TREE_ORANGE);
+        Holder<ConfiguredFeature<?, ?>> bloomBolderTreeLightBlue = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BLOOM_BOLDER_TREE_LIGHT_BLUE);
+        Holder<ConfiguredFeature<?, ?>> bloomBolderTreePink = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BLOOM_BOLDER_TREE_PINK);
+        Holder<ConfiguredFeature<?, ?>> bloomBolderTreeYellow = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BLOOM_BOLDER_TREE_YELLOW);
+        Holder<ConfiguredFeature<?, ?>> fancyBloomBolderTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FANCY_BLOOM_BOLDER_TREE);
+        Holder<ConfiguredFeature<?, ?>> flowerLandsNormalTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOWER_LANDS_NORMAL_TREES);
+        Holder<ConfiguredFeature<?, ?>> flowerLandsTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.FLOWER_LANDS_TREES);
+        // 花毯直接复用原版繁花森林的花配置：它按噪声给出花的种类，正是骨粉在繁花森林里长出来的那种渐变分布
+        Holder<ConfiguredFeature<?, ?>> flowerFlowerForest = configuredFeatures.getOrThrow(VegetationFeatures.FLOWER_FLOWER_FOREST);
 
 
         PlacementUtils.register(
@@ -507,6 +532,51 @@ public class FLTPlacedFeatures {
                 CountPlacement.of(3),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP,
+                BiomeFilter.biome()
+        );
+
+        // 边境花田 --------------------------
+        // 裸放置：只做在地判定，供树种选择器引用。
+        PlacementUtils.register(
+                context, BLOOM_BOLDER_TREE_RED_CHECKED, bloomBolderTreeRed, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
+        );
+        PlacementUtils.register(
+                context, BLOOM_BOLDER_TREE_ORANGE_CHECKED, bloomBolderTreeOrange, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
+        );
+        PlacementUtils.register(
+                context, BLOOM_BOLDER_TREE_LIGHT_BLUE_CHECKED, bloomBolderTreeLightBlue, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
+        );
+        PlacementUtils.register(
+                context, BLOOM_BOLDER_TREE_PINK_CHECKED, bloomBolderTreePink, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
+        );
+        PlacementUtils.register(
+                context, BLOOM_BOLDER_TREE_YELLOW_CHECKED, bloomBolderTreeYellow, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
+        );
+        PlacementUtils.register(
+                context, FANCY_BLOOM_BOLDER_TREE_CHECKED, fancyBloomBolderTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
+        );
+        PlacementUtils.register(context, FLOWER_LANDS_NORMAL_TREES, flowerLandsNormalTrees);
+
+        // 花田的树：少量生成，零星散布
+        PlacementUtils.register(
+                context,
+                FLOWER_LANDS_TREES,
+                flowerLandsTrees,
+                RarityFilter.onAverageOnceEvery(3),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BiomeFilter.biome()
+        );
+
+        // 花毯：区块里每一列都长一朵花。
+        // 高度图用 WORLD_SURFACE_WG，它不会算树叶，因此一定会长在地上。
+        PlacementUtils.register(
+                context,
+                FLOWER_LANDS_FLOWERS,
+                flowerFlowerForest,
+                EveryColumnPlacement.of(Heightmap.Types.WORLD_SURFACE_WG),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
                 BiomeFilter.biome()
         );
 

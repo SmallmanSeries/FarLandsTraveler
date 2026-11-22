@@ -207,7 +207,7 @@
         },
         "outside": {
           "type": "fixed",
-          "biome": "farlandstraveler:sky_reaching_forest"
+          "biome": "farlandstraveler:flower_lands"
         }
       }
     }

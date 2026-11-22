@@ -435,6 +435,39 @@ public class FarLandsBiomes {
                 .build();
     }
 
+    // 边境花田
+    // 地表每一列都长花，花的种类直接沿用原版繁花森林那套按噪声渐变的花配置（也就是骨粉在繁花森林里长出来的分布）。
+    // 树是繁花苍境树，其余设置与原版繁花森林一致。
+    public static Biome flowerLands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
+
+        globalOverworldGeneration(generation);
+        BiomeDefaultFeatures.addDefaultSprings(generation);
+
+        // 生物设置与原版繁花森林一致
+        BiomeDefaultFeatures.farmAnimals(mobs);
+        BiomeDefaultFeatures.commonSpawns(mobs);
+        mobs.addSpawn(MobCategory.CREATURE, 4, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3));
+
+        BiomeDefaultFeatures.addDefaultOres(generation);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generation);
+
+        // 树先长、花后铺：花按地表高度图放置，树冠底下的那一列会被花自己的存活判定挡掉
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.FLOWER_LANDS_TREES);
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLTPlacedFeatures.FLOWER_LANDS_FLOWERS);
+
+        BiomeDefaultFeatures.addDefaultMushrooms(generation);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(generation, true);
+
+        // 温湿度与原版繁花森林一致（0.7 / 0.8）
+        return baseBiome(0.7F, 0.8F)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(FLTMusics.createMusic(FLTSoundEvents.MUSIC_FAR_LANDS_UNIVERSAL)))
+                .mobSpawnSettings(mobs.build())
+                .generationSettings(generation.build())
+                .build();
+    }
+
     // 遥远之地
 
     // 边缘之地

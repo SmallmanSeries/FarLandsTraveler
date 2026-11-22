@@ -104,6 +104,16 @@ public class FLTConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PODZOL_PATCH = createKey("podzol_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_REACHING_FOREST_TREES = createKey("sky_reaching_forest_trees");
 
+    // 边境花田
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOM_BOLDER_TREE_RED = createKey("bloom_bolder_tree_red");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOM_BOLDER_TREE_ORANGE = createKey("bloom_bolder_tree_orange");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOM_BOLDER_TREE_LIGHT_BLUE = createKey("bloom_bolder_tree_light_blue");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOM_BOLDER_TREE_PINK = createKey("bloom_bolder_tree_pink");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOM_BOLDER_TREE_YELLOW = createKey("bloom_bolder_tree_yellow");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_BLOOM_BOLDER_TREE = createKey("fancy_bloom_bolder_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_LANDS_NORMAL_TREES = createKey("flower_lands_normal_trees");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_LANDS_TREES = createKey("flower_lands_trees");
+
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(FarLandsTraveler.MODID, name));
     }
@@ -650,6 +660,65 @@ public class FLTConfiguredFeatures {
                         UniformInt.of(8, 12),
                         UniformInt.of(3, 5),
                         BlockPredicate.matchesTag(BlockTags.LEAVES)
+
+        // 边境花田 --------------------------
+        // 繁花苍境树：普通橡树的形状，树叶暂时用彩色羊毛代替，共五种颜色
+        FeatureUtils.register(context, BLOOM_BOLDER_TREE_RED, Feature.TREE, createBloomBolderTree(Blocks.RED_WOOL).build());
+        FeatureUtils.register(context, BLOOM_BOLDER_TREE_ORANGE, Feature.TREE, createBloomBolderTree(Blocks.ORANGE_WOOL).build());
+        FeatureUtils.register(
+                context, BLOOM_BOLDER_TREE_LIGHT_BLUE, Feature.TREE, createBloomBolderTree(Blocks.LIGHT_BLUE_WOOL).build()
+        );
+        FeatureUtils.register(context, BLOOM_BOLDER_TREE_PINK, Feature.TREE, createBloomBolderTree(Blocks.PINK_WOOL).build());
+        FeatureUtils.register(context, BLOOM_BOLDER_TREE_YELLOW, Feature.TREE, createBloomBolderTree(Blocks.YELLOW_WOOL).build());
+
+        // 珍异繁花苍境树：珍异橡树的形状，一棵树上五种颜色随机分布
+        FeatureUtils.register(
+                context,
+                FANCY_BLOOM_BOLDER_TREE,
+                Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(Blocks.OAK_LOG),
+                        new FancyTrunkPlacer(3, 11, 0),
+                        bloomWools(),
+                        new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
+                )
+                        .ignoreVines().build()
+        );
+
+        // 五种颜色平分：前四项各 20%，剩下的 20% 落到默认项（红色）
+        Holder<PlacedFeature> bloomRed = placedFeatures.getOrThrow(FLTPlacedFeatures.BLOOM_BOLDER_TREE_RED_CHECKED);
+        Holder<PlacedFeature> bloomOrange = placedFeatures.getOrThrow(FLTPlacedFeatures.BLOOM_BOLDER_TREE_ORANGE_CHECKED);
+        Holder<PlacedFeature> bloomLightBlue = placedFeatures.getOrThrow(FLTPlacedFeatures.BLOOM_BOLDER_TREE_LIGHT_BLUE_CHECKED);
+        Holder<PlacedFeature> bloomPink = placedFeatures.getOrThrow(FLTPlacedFeatures.BLOOM_BOLDER_TREE_PINK_CHECKED);
+        Holder<PlacedFeature> bloomYellow = placedFeatures.getOrThrow(FLTPlacedFeatures.BLOOM_BOLDER_TREE_YELLOW_CHECKED);
+        FeatureUtils.register(
+                context,
+                FLOWER_LANDS_NORMAL_TREES,
+                Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(bloomOrange, 0.2F),
+                                new WeightedPlacedFeature(bloomLightBlue, 0.2F),
+                                new WeightedPlacedFeature(bloomPink, 0.2F),
+                                new WeightedPlacedFeature(bloomYellow, 0.2F)
+                        ),
+                        bloomRed
+                )
+        );
+
+        // 花田的树种：少数珍异繁花苍境树，其余是普通繁花苍境树
+        Holder<PlacedFeature> fancyBloomBolderTree = placedFeatures.getOrThrow(FLTPlacedFeatures.FANCY_BLOOM_BOLDER_TREE_CHECKED);
+        Holder<PlacedFeature> flowerLandsNormalTrees = placedFeatures.getOrThrow(FLTPlacedFeatures.FLOWER_LANDS_NORMAL_TREES);
+        FeatureUtils.register(
+                context,
+                FLOWER_LANDS_TREES,
+                Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(fancyBloomBolderTree, 0.08F)
+                        ),
+                        flowerLandsNormalTrees
                 )
         );
 
@@ -705,6 +774,33 @@ public class FLTConfiguredFeatures {
                 .decorators(List.of(new AlterGroundDecorator(
                         RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate.matchesTag(BlockTags.BENEATH_TREE_PODZOL_REPLACEABLE), Blocks.PODZOL)
                 )));
+    }
+
+    /**
+     * 繁花苍境树：普通橡树的形状
+     *
+     * @param leaves 当树叶用的方块
+     * @return 树配置的构建器
+     */
+    private static TreeConfiguration.TreeConfigurationBuilder createBloomBolderTree(Block leaves) {
+        return createStraightBlobTree(Blocks.OAK_LOG, leaves, 4, 2, 0, 2).ignoreVines();
+    }
+
+    /**
+     * 珍异繁花苍境树的树叶：五种颜色同权重，逐格随机，同一棵树上5种颜色都会出现
+     *
+     * @return 加权方块状态提供器
+     */
+    private static WeightedStateProvider bloomWools() {
+        return new WeightedStateProvider(
+                WeightedList.<BlockState>builder()
+                        .add(Blocks.RED_WOOL.defaultBlockState(), 1)
+                        .add(Blocks.ORANGE_WOOL.defaultBlockState(), 1)
+                        .add(Blocks.LIGHT_BLUE_WOOL.defaultBlockState(), 1)
+                        .add(Blocks.PINK_WOOL.defaultBlockState(), 1)
+                        .add(Blocks.YELLOW_WOOL.defaultBlockState(), 1)
+                        .build()
+        );
     }
 
     private static FallenTreeConfiguration.FallenTreeConfigurationBuilder createFallenTrees(Block logBlock, int minLength, int maxLength) {

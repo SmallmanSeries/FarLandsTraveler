@@ -28,7 +28,7 @@ public class FLTBiomeData {
         context.register(FLTBiomes.STARLIT_PLAINS, FarLandsBiomes.floatingPlains(placedFeatures, carvers, true));
         context.register(FLTBiomes.LEAFLESS_FOREST, FarLandsBiomes.leaflessForest(placedFeatures, carvers));
         context.register(FLTBiomes.SKY_REACHING_FOREST, FarLandsBiomes.skyReachingForest(placedFeatures, carvers));
-        context.register(FLTBiomes.FLOWER_LANDS, FarLandsBiomes.farLands(placedFeatures, carvers));
+        context.register(FLTBiomes.FLOWER_LANDS, FarLandsBiomes.flowerLands(placedFeatures, carvers));
         context.register(FLTBiomes.ICE_DESERT, FarLandsBiomes.farLands(placedFeatures, carvers));
         context.register(FLTBiomes.FREEZING_DESERT, FarLandsBiomes.farLands(placedFeatures, carvers));
         context.register(FLTBiomes.HOLY_LANDS, FarLandsBiomes.farLands(placedFeatures, carvers));
