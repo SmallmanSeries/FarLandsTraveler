@@ -9,12 +9,14 @@
       "heightmap": "MOTION_BLOCKING"
     },
     {
-      "type": "farlandstraveler:vertical_offset",
-      "offset": {
+      "type": "farlandstraveler:offset",
+      "x_offset": 0,
+      "y_offset": {
         "type": "minecraft:uniform",
         "max_inclusive": 80,
         "min_inclusive": 0
-      }
+      },
+      "z_offset": 0
     },
     {
       "type": "minecraft:count",

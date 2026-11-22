@@ -23,12 +23,14 @@
       "heightmap": "MOTION_BLOCKING"
     },
     {
-      "type": "farlandstraveler:vertical_offset",
-      "offset": {
+      "type": "farlandstraveler:offset",
+      "x_offset": 0,
+      "y_offset": {
         "type": "minecraft:biased_to_bottom",
         "max_inclusive": 72,
         "min_inclusive": 0
-      }
+      },
+      "z_offset": 0
     },
     {
       "type": "minecraft:biome"

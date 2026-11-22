@@ -2,8 +2,8 @@ package com.smallmanseries.farlandstraveler.data.resources.feature;
 
 import com.smallmanseries.farlandstraveler.FarLandsTraveler;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.EveryColumnPlacement;
+import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.OffsetPlacement;
 import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.SwirlPlacement;
-import com.smallmanseries.farlandstraveler.common.worldgen.features.placements.VerticalOffsetPlacement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -335,7 +335,7 @@ public class FLTPlacedFeatures {
                 WOOD_LANDS_INVERTED_BOLDER,
                 woodLandsInvertedBolder,
                 PlacementUtils.HEIGHTMAP,
-                VerticalOffsetPlacement.of(UniformInt.of(30, 50))
+                OffsetPlacement.of(UniformInt.of(30, 50))
         );
 
         // 高的倒树变种
@@ -344,7 +344,7 @@ public class FLTPlacedFeatures {
                 WOOD_LANDS_TALL_INVERTED_BOLDER,
                 woodLandsTallInvertedBolder,
                 PlacementUtils.HEIGHTMAP,
-                VerticalOffsetPlacement.of(UniformInt.of(40, 60))
+                OffsetPlacement.of(UniformInt.of(40, 60))
         );
 
         // 边境芍药：放置方式与原版森林的“大型花”地物保持一致，只把花换成边境芍药
@@ -379,7 +379,7 @@ public class FLTPlacedFeatures {
                 CountPlacement.of(2),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP,
-                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                OffsetPlacement.of(UniformInt.of(0, 80)),
                 CountPlacement.of(14),
                 RandomOffsetPlacement.of(UniformInt.of(-3, 3), ConstantInt.of(0)),
                 BiomeFilter.biome()
@@ -392,7 +392,7 @@ public class FLTPlacedFeatures {
                 floatingPlainsTallGrass,
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP,
-                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                OffsetPlacement.of(UniformInt.of(0, 80)),
                 CountPlacement.of(4),
                 RandomOffsetPlacement.of(UniformInt.of(-4, 4), ConstantInt.of(0)),
                 BiomeFilter.biome()
@@ -408,7 +408,7 @@ public class FLTPlacedFeatures {
                 InSquarePlacement.spread(),
                 CountPlacement.of(16),
                 PlacementUtils.HEIGHTMAP,
-                VerticalOffsetPlacement.of(BiasedToBottomInt.of(0, 72)),
+                OffsetPlacement.of(BiasedToBottomInt.of(0, 72)),
                 BiomeFilter.biome(),
                 RandomOffsetPlacement.ofTriangle(6, 4),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
@@ -422,7 +422,7 @@ public class FLTPlacedFeatures {
                 RarityFilter.onAverageOnceEvery(8),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP,
-                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                OffsetPlacement.of(UniformInt.of(0, 80)),
                 BiomeFilter.biome()
         );
 
@@ -434,7 +434,7 @@ public class FLTPlacedFeatures {
                 RarityFilter.onAverageOnceEvery(2),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP,
-                VerticalOffsetPlacement.of(UniformInt.of(0, 80)),
+                OffsetPlacement.of(UniformInt.of(0, 80)),
                 BiomeFilter.biome()
         );
 
