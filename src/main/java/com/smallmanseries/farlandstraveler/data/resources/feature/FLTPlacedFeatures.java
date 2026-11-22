@@ -10,6 +10,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.AquaticFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
@@ -29,6 +30,8 @@ import net.minecraft.world.level.levelgen.placement.*;
 public class FLTPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> FLOWER_FAR_LANDS_PLAINS = createKey("flower_far_lands_plains");
+    public static final ResourceKey<PlacedFeature> GRASS_CHECKED = createKey("grass_checked");
+    public static final ResourceKey<PlacedFeature> SEAGRASS_CHECKED = createKey("seagrass_checked");
 
     // 边境之地边缘装饰
     public static final ResourceKey<PlacedFeature> FLOWER_CHERRY_WALL_OF_BLOOM = createKey("flower_cherry_wall_of_bloom");
@@ -83,6 +86,9 @@ public class FLTPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BARE_ATLAS_TREE_CHECKED = createKey("bare_atlas_tree_checked");
     public static final ResourceKey<PlacedFeature> SMALL_ATLAS_TREE_CHECKED = createKey("small_atlas_tree_checked");
     public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_TREES = createKey("sky_reaching_forest_trees");
+    public static final ResourceKey<PlacedFeature> SKY_ISLAND_LAWN_CHECKED = createKey("sky_island_lawn_checked");
+    public static final ResourceKey<PlacedFeature> SKY_ISLAND_POND_CHECKED = createKey("sky_island_pond_checked");
+    public static final ResourceKey<PlacedFeature> SKY_ISLAND_RUINS = createKey("sky_island_ruins");
     public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_ISLANDS = createKey("sky_reaching_forest_islands");
     public static final ResourceKey<PlacedFeature> SKY_REACHING_FOREST_PODZOL = createKey("sky_reaching_forest_podzol");
 
@@ -115,6 +121,7 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> wallOfGreenMoss = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WALL_OF_GREEN_MOSS);
         Holder<ConfiguredFeature<?, ?>> wallOfGreenTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WALL_OF_GREEN_TREES);
         Holder<ConfiguredFeature<?, ?>> wallOfIceIcicle = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WALL_OF_ICE_ICICLE);
+        Holder<ConfiguredFeature<?, ?>> seaGrass = configuredFeatures.getOrThrow(AquaticFeatures.SEAGRASS_SLIGHTLY_LESS_SHORT);
 
         // 边境森林
         Holder<ConfiguredFeature<?, ?>> woodLandsTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.WOOD_LANDS_TREES);
@@ -155,7 +162,10 @@ public class FLTPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> smallAtlasTree = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SMALL_ATLAS_TREE);
         Holder<ConfiguredFeature<?, ?>> skyReachingTrees = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_REACHING_FOREST_TREES);
         Holder<ConfiguredFeature<?, ?>> podzolPatch = configuredFeatures.getOrThrow(FLTConfiguredFeatures.PODZOL_PATCH);
-        Holder<ConfiguredFeature<?, ?>> skyIsland = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_ISLAND);
+        Holder<ConfiguredFeature<?, ?>> skyIslandLawn = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_ISLAND_LAWN);
+        Holder<ConfiguredFeature<?, ?>> skyIslandPond = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_ISLAND_POND);
+        Holder<ConfiguredFeature<?, ?>> ruinsPillar = configuredFeatures.getOrThrow(FLTConfiguredFeatures.RUINS_PILLAR);
+        Holder<ConfiguredFeature<?, ?>> skyReachingIslands = configuredFeatures.getOrThrow(FLTConfiguredFeatures.SKY_REACHING_FOREST_ISLANDS);
 
         // 边境花田
         Holder<ConfiguredFeature<?, ?>> bloomBolderTreeRed = configuredFeatures.getOrThrow(FLTConfiguredFeatures.BLOOM_BOLDER_TREE_RED);
@@ -182,6 +192,28 @@ public class FLTPlacedFeatures {
                 CountPlacement.of(64),
                 RandomOffsetPlacement.ofTriangle(6, 2),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+        );
+
+        // 无biomefilter的草/海草地物，用于其他地物引用
+        PlacementUtils.register(
+                context,
+                GRASS_CHECKED,
+                grass,
+                OffsetPlacement.of(ConstantInt.of(-8), ConstantInt.ZERO, ConstantInt.of(-8)),
+                NoiseThresholdCountPlacement.of(-0.8, 5, 10),
+                InSquarePlacement.spread(),
+                CountPlacement.of(32),
+                RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
+        );
+        PlacementUtils.register(
+                context,
+                SEAGRASS_CHECKED,
+                seaGrass,
+                OffsetPlacement.of(ConstantInt.of(-8), ConstantInt.ZERO, ConstantInt.of(-8)),
+                InSquarePlacement.spread(),
+                CountPlacement.of(48),
+                PlacementUtils.HEIGHTMAP
         );
 
         PlacementUtils.register(
@@ -513,11 +545,24 @@ public class FLTPlacedFeatures {
                 BiomeFilter.biome()
         );
 
-        // 浮岛：三个变种，“草坪”、“水塘”和“废墟”
+        // 浮岛：三个变种，“草坪”、“水塘”和“废墟”。
+        // 裸放置供选择器引用（嵌套地物，不能带 BiomeFilter），位置由外层的 SKY_REACHING_FOREST_ISLANDS 统一抽样
+        PlacementUtils.register(context, SKY_ISLAND_LAWN_CHECKED, skyIslandLawn);
+        PlacementUtils.register(context, SKY_ISLAND_POND_CHECKED, skyIslandPond);
+        PlacementUtils.register(
+                context,
+                SKY_ISLAND_RUINS,
+                ruinsPillar,
+                OffsetPlacement.of(ConstantInt.of(-8), ConstantInt.ZERO, ConstantInt.of(-8)),
+                CountPlacement.of(48),
+                InSquarePlacement.spread(),
+                PlacementUtils.filteredByBlockSurvival(Blocks.SHORT_GRASS)
+        );
+
         PlacementUtils.register(
                 context,
                 SKY_REACHING_FOREST_ISLANDS,
-                skyIsland,
+                skyReachingIslands,
                 RarityFilter.onAverageOnceEvery(5),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.uniform(VerticalAnchor.belowTop(3), VerticalAnchor.top()),

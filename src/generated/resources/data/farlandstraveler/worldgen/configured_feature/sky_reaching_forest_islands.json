@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "farlandstraveler:sky_island_lawn_checked",
+    "features": [
+      {
+        "chance": 0.3,
+        "feature": "farlandstraveler:sky_island_pond_checked"
+      }
+    ]
+  }
+}

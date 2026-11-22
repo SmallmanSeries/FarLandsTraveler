@@ -6,9 +6,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 
 /**
  * “空岛”地物
@@ -16,6 +19,13 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
  * 通用的空岛地物，生成一个类似小型末地岛的不规则空岛，中间厚四周薄。
  * <p>
  * 当然也可以是不浮空的，比如被擎天树托举着。通过测试中点下方的方块是否满足特定的谓词来决定是否放置，这样就能做到“有东西托着才生成”的效果
+ * <p>
+ * 另外支持两件附加内容，都是可选的：
+ * <ul>
+ *     <li>水塘：在岛心挖一个水塘，使用指定方块构成；</li>
+ *     <li>装饰地物：岛铺完后在岛面上随机取列，把指定的配置地物再放一遍。
+ *     26.1.2 没有 {@code sequence} 地物，所以“空岛 + 岛上的东西”靠这个字段组合出来。</li>
+ * </ul>
  */
 public class SkyIslandFeature extends Feature<SkyIslandConfiguration> {
 
@@ -52,6 +62,7 @@ public class SkyIslandFeature extends Feature<SkyIslandConfiguration> {
         double phase = random.nextDouble() * 2.0 * Math.PI;
         BlockState surfaceState = config.surfaceProvider().getState(level, random, origin);
         BlockState fillerState = config.fillerProvider().getState(level, random, origin);
+        BlockState pondState = config.pondStateProvider().isPresent() ? config.pondStateProvider().get().getState(level, random, origin) : null;
 
         int placed = 0;
         for (int dx = -radius; dx <= radius; dx++) {
@@ -68,15 +79,32 @@ public class SkyIslandFeature extends Feature<SkyIslandConfiguration> {
                 double normalized = Math.min(1.0, distance / Math.max(edge, 1.0E-4));
                 int thickness = 1 + (int) Math.round(depth * (1.0 - normalized * normalized));
 
+                BlockState state;
                 for (int y = topY; y > topY - thickness; y--) {
-                    BlockState state = y == topY ? surfaceState : fillerState;
+                    if (pondState != null && y - topY + thickness > 2) {
+                        state = pondState;
+                    } else {
+                        state = y == topY ? surfaceState : fillerState;
+                    }
                     if (placeIslandBlock(level, new BlockPos(origin.getX() + dx, y, origin.getZ() + dz), state)) {
                         placed++;
                     }
                 }
             }
         }
-        return placed > 0;
+        if (placed == 0) {
+            return false;
+        }
+
+        // 放置装饰地物
+        if (config.decorations().isPresent()) {
+            for (WeightedPlacedFeature feature : config.decorations().get()) {
+                if (random.nextFloat() < feature.chance) {
+                    feature.place(level, context.chunkGenerator(), random, origin);
+                }
+            }
+        }
+        return true;
     }
 
     /**
@@ -91,6 +119,10 @@ public class SkyIslandFeature extends Feature<SkyIslandConfiguration> {
         BlockState existing = level.getBlockState(pos);
         if (!existing.isAir() && !existing.is(BlockTags.LEAVES) && !existing.is(BlockTags.REPLACEABLE_BY_TREES)) {
             return false;
+        }
+        if (state.is(Blocks.WATER) && existing.hasProperty(BlockStateProperties.WATERLOGGED)) {
+            level.setBlock(pos, existing.setValue(BlockStateProperties.WATERLOGGED, true), 2);
+            return true;
         }
         level.setBlock(pos, state, 2);
         return true;

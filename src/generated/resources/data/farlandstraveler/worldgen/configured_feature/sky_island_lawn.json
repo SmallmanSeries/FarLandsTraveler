@@ -5,6 +5,16 @@
       "type": "minecraft:matching_block_tag",
       "tag": "minecraft:leaves"
     },
+    "decorations": [
+      {
+        "chance": 1.0,
+        "feature": "farlandstraveler:grass_checked"
+      },
+      {
+        "chance": 0.6,
+        "feature": "farlandstraveler:sky_island_ruins"
+      }
+    ],
     "depth": {
       "type": "minecraft:uniform",
       "max_inclusive": 5,

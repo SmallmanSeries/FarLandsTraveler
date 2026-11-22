@@ -100,9 +100,12 @@ public class FLTConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ATLAS_TREE = createKey("atlas_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BARE_ATLAS_TREE = createKey("bare_atlas_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_ATLAS_TREE = createKey("small_atlas_tree");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_ISLAND = createKey("sky_island");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_ISLAND_LAWN = createKey("sky_island_lawn");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_ISLAND_POND = createKey("sky_island_pond");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RUINS_PILLAR = createKey("ruins_pillar");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PODZOL_PATCH = createKey("podzol_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_REACHING_FOREST_TREES = createKey("sky_reaching_forest_trees");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SKY_REACHING_FOREST_ISLANDS = createKey("sky_reaching_forest_islands");
 
     // 边境花田
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOM_BOLDER_TREE_RED = createKey("bloom_bolder_tree_red");
@@ -126,6 +129,8 @@ public class FLTConfiguredFeatures {
         Holder<PlacedFeature> wallOfGreenBush = placedFeatures.getOrThrow(FLTPlacedFeatures.WALL_OF_GREEN_BUSH);
         Holder<PlacedFeature> fallenJungle = placedFeatures.getOrThrow(TreePlacements.FALLEN_JUNGLE_TREE);
         Holder<PlacedFeature> jungleTreeChecked = placedFeatures.getOrThrow(TreePlacements.JUNGLE_TREE_CHECKED);
+        Holder<PlacedFeature> grassChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.GRASS_CHECKED);
+        Holder<PlacedFeature> seagrassChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.SEAGRASS_CHECKED);
 
         // 无叶树林
         Holder<PlacedFeature> leaflessBolder = placedFeatures.getOrThrow(FLTPlacedFeatures.LEAFLESS_BOLDER_TREE);
@@ -648,18 +653,105 @@ public class FLTConfiguredFeatures {
                 ).ignoreVines().build()
         );
 
-        // 擎天浮岛：草方块 + 泥土的末地风格小空岛，检测到下方有树叶才会生成。
-        // wip：“草坪”、“水塘”、“废墟”三个变种（目前空岛顶上光秃秃的，感觉得加点什么）
+        // 擎天森林的浮岛：草方块 + 泥土构成类似末地小岛的小空岛，检测到下方有树叶才会生成。
+        // 用配置里的 decorations 字段挂上“岛上的东西”，因为 26.1.2 没有 sequence 地物。
+        Holder<PlacedFeature> skyIslandLawnChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.SKY_ISLAND_LAWN_CHECKED);
+        Holder<PlacedFeature> skyIslandPondChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.SKY_ISLAND_POND_CHECKED);
+
+        // 废墟的方块柱：橡木木板、圆石。
+        // 岛面已经贴着世界顶部，所以柱子大多会被限高截断——要的就是这个效果
         FeatureUtils.register(
                 context,
-                SKY_ISLAND,
+                RUINS_PILLAR,
+                Feature.BLOCK_COLUMN,
+                new BlockColumnConfiguration(
+                        List.of(
+                                BlockColumnConfiguration.layer(UniformInt.of(0, 2), BlockStateProvider.simple(Blocks.COBBLESTONE)),
+                                BlockColumnConfiguration.layer(UniformInt.of(1, 3), BlockStateProvider.simple(Blocks.OAK_PLANKS))
+                        ),
+                        Direction.UP,
+                        BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        false
+                )
+        );
+
+        // 空岛（两个变种“草坪”和“水塘”，都有概率生成废墟）
+        Holder<PlacedFeature> skyIslandRuins = placedFeatures.getOrThrow(FLTPlacedFeatures.SKY_ISLAND_RUINS);
+        // 草坪：空岛 + 平原的草，概率生成废墟
+        FeatureUtils.register(
+                context,
+                SKY_ISLAND_LAWN,
                 FLTFeatures.SKY_ISLAND.get(),
-                new SkyIslandConfiguration(
-                        BlockStateProvider.simple(Blocks.GRASS_BLOCK),
-                        BlockStateProvider.simple(Blocks.DIRT),
-                        UniformInt.of(8, 12),
-                        UniformInt.of(3, 5),
-                        BlockPredicate.matchesTag(BlockTags.LEAVES)
+                createSkyIsland(
+                        Optional.empty(),
+                        Optional.of(
+                                List.of(
+                                        new WeightedPlacedFeature(grassChecked, 1.0F),
+                                        new WeightedPlacedFeature(skyIslandRuins, 0.6F)
+                                )
+                        )
+                )
+        );
+
+        // 水塘：中间有个水塘的空岛 + 河流的水草（海草），概率生成废墟
+        FeatureUtils.register(
+                context,
+                SKY_ISLAND_POND,
+                FLTFeatures.SKY_ISLAND.get(),
+                createSkyIsland(
+                        Optional.of(SimpleStateProvider.simple(Blocks.WATER)),
+                        Optional.of(
+                                List.of(
+                                        new WeightedPlacedFeature(grassChecked, 1.0F),
+                                        new WeightedPlacedFeature(seagrassChecked, 1.0F),
+                                        new WeightedPlacedFeature(skyIslandRuins, 0.4F)
+                                )
+                        )
+                )
+        );
+
+        // 浮岛变种共用一个位置：默认草坪，其次是水塘
+        FeatureUtils.register(
+                context,
+                SKY_REACHING_FOREST_ISLANDS,
+                Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(skyIslandPondChecked, 0.3F)
+                        ),
+                        skyIslandLawnChecked
+                )
+        );
+
+        // 灰化土斑块：参考原版巨型针叶林的灰化土，用原版 disk 地物在地表把泥土类方块换成灰化土
+        FeatureUtils.register(
+                context,
+                PODZOL_PATCH,
+                Feature.DISK,
+                new DiskConfiguration(
+                        BlockStateProvider.simple(Blocks.PODZOL),
+                        BlockPredicate.matchesTag(BlockTags.DIRT),
+                        UniformInt.of(2, 4),
+                        1
+                )
+        );
+
+        // 擎天森林的树种：小型擎天树打底，散布巨型擎天树，偶尔有光杆擎天树
+        Holder<PlacedFeature> atlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.ATLAS_TREE_CHECKED);
+        Holder<PlacedFeature> bareAtlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.BARE_ATLAS_TREE_CHECKED);
+        Holder<PlacedFeature> smallAtlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.SMALL_ATLAS_TREE_CHECKED);
+        FeatureUtils.register(
+                context,
+                SKY_REACHING_FOREST_TREES,
+                Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(atlasTreeChecked, 0.45F),
+                                new WeightedPlacedFeature(bareAtlasTreeChecked, 0.1F)
+                        ),
+                        smallAtlasTreeChecked
+                )
+        );
 
         // 边境花田 --------------------------
         // 繁花苍境树：普通橡树的形状，树叶暂时用彩色羊毛代替，共五种颜色
@@ -722,36 +814,6 @@ public class FLTConfiguredFeatures {
                 )
         );
 
-        // 灰化土斑块：参考原版巨型针叶林的灰化土，用原版 disk 地物在地表把泥土类方块换成灰化土
-        FeatureUtils.register(
-                context,
-                PODZOL_PATCH,
-                Feature.DISK,
-                new DiskConfiguration(
-                        BlockStateProvider.simple(Blocks.PODZOL),
-                        BlockPredicate.matchesTag(BlockTags.DIRT),
-                        UniformInt.of(2, 4),
-                        1
-                )
-        );
-
-        // 擎天森林的树种：小型擎天树打底，散布巨型擎天树，偶尔有光杆擎天树
-        Holder<PlacedFeature> atlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.ATLAS_TREE_CHECKED);
-        Holder<PlacedFeature> bareAtlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.BARE_ATLAS_TREE_CHECKED);
-        Holder<PlacedFeature> smallAtlasTreeChecked = placedFeatures.getOrThrow(FLTPlacedFeatures.SMALL_ATLAS_TREE_CHECKED);
-        FeatureUtils.register(
-                context,
-                SKY_REACHING_FOREST_TREES,
-                Feature.RANDOM_SELECTOR,
-                new RandomFeatureConfiguration(
-                        List.of(
-                                new WeightedPlacedFeature(atlasTreeChecked, 0.45F),
-                                new WeightedPlacedFeature(bareAtlasTreeChecked, 0.1F)
-                        ),
-                        smallAtlasTreeChecked
-                )
-        );
-
     }
 
     /**
@@ -774,6 +836,25 @@ public class FLTConfiguredFeatures {
                 .decorators(List.of(new AlterGroundDecorator(
                         RuleBasedStateProvider.ifTrueThenProvide(BlockPredicate.matchesTag(BlockTags.BENEATH_TREE_PODZOL_REPLACEABLE), Blocks.PODZOL)
                 )));
+    }
+
+    /**
+     * 擎天森林浮岛三个变种共用的外观：草方块 + 泥土、半径 8~12、厚度 3~5，并要求下方 depth 格内有树叶托着
+     *
+     * @param pondStateProvider 用于水塘的方块（留空则不生成水塘）
+     * @param decorations       一个列表，用于空岛上面的装饰地物
+     * @return 空岛配置
+     */
+    private static SkyIslandConfiguration createSkyIsland(Optional<BlockStateProvider> pondStateProvider, Optional<List<WeightedPlacedFeature>> decorations) {
+        return new SkyIslandConfiguration(
+                BlockStateProvider.simple(Blocks.GRASS_BLOCK),
+                BlockStateProvider.simple(Blocks.DIRT),
+                UniformInt.of(8, 12),
+                UniformInt.of(3, 5),
+                BlockPredicate.matchesTag(BlockTags.LEAVES),
+                pondStateProvider,
+                decorations
+        );
     }
 
     /**

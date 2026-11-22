@@ -1,0 +1,27 @@
+{
+  "feature": "farlandstraveler:ruins_pillar",
+  "placement": [
+    {
+      "type": "farlandstraveler:offset",
+      "x_offset": -8,
+      "y_offset": 0,
+      "z_offset": -8
+    },
+    {
+      "type": "minecraft:count",
+      "count": 48
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "minecraft:short_grass"
+        }
+      }
+    }
+  ]
+}
